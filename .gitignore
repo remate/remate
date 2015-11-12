@@ -1,0 +1,16 @@
+node_modules/
+assets/temp/
+assets/node_modules/
+assets/activity/*/node_modules/
+
+assets/activity/*/temp/
+
+assets/wap/*/node_modules/
+assets/wap/temp/
+.idea/
+
+
+
+
+
+

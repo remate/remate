@@ -1,0 +1,22 @@
+.share_wrap {
+    width: 328px;
+    margin: 0 auto;
+    position: relative;
+}
+.div {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    float: left;
+}
+.div_empty {
+    width: 10px;
+    height: 58px;
+    float: left;
+}
+.moreShare {
+    text-align: center;
+}

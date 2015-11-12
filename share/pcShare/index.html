@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../jquery-1.9.1.js" ></script>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<section class="share_wrap">
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style_32x32" style="height: 72px;position: absolute;top: 0;left: 81px;">
+                            <a class="jiathis_button_tsina" style="background: red;width: 72px; height: 72px;display: inline-block;float: left;margin-right: 10px;border-radius:50%;-o-border-radius:50%;-ms-border-radius:50%;-webkit-border-radius:50%;filter:alpha(opacity=0);opacity:0;-moz-opacity:0;-khtml-opacity: 0;"></a>
+                            <a class="jiathis_button_weixin" style="background: red;width: 72px; height: 72px;display: inline-block;float: left;margin-right: 10px;border-radius:50%;-o-border-radius:50%;-ms-border-radius:50%;-webkit-border-radius:50%;filter:alpha(opacity=0);opacity:0;-moz-opacity:0;-khtml-opacity: 0;"></a>
+                            <a class="jiathis_button_douban" style="background: red;width: 72px; height: 72px;display: inline-block;float: left;border-radius:50%;-o-border-radius:50%;-ms-border-radius:50%;-webkit-border-radius:50%; filter:alpha(opacity=0);opacity:0;-moz-opacity:0;-khtml-opacity: 0;"></a>
+                            <div style="width: 62px;float:left;height: 10px"></div>
+                            <a href="javascript:" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" style="filter:alpha(opacity=0);opacity:0;-moz-opacity:0;-khtml-opacity: 0;"></a>
+                        </div>
+                        <script type="text/javascript" >
+                                var jiathis_config={
+                                    summary:"我已在想去领取50元现金红包，你也快来领取吧！",
+                                    siteName:"想去",
+                                    url: "http://"+window.location.host+"/activity/11-11/share/${userId}?v37",
+                                    title: "想去双11，有你不孤单",
+                                    pic:"http://xqproduct.xiangqu.com/FpXWbdatmAD82pOmipO9dh6yDKQn?imageView2/2/w/300/q/75/format/jpg/@w/$w$@/@h/$h$@/300x300/",
+                                    shortUrl:false,
+                                    hideMore:true
+                                }
+                        </script>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                        <!--qq好友分享插件-->
+                        <script type="text/javascript">
+                            (function(){
+                                    var p = {
+                                        url:"http://"+window.location.host+"/activity/11-11/share/${userId}?v37", /*获取URL，可加上来自分享到QQ标识，方便统计*/
+                                        desc:'', /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/
+                                        title:'我已在想去领取50元现金红包，你也快来领取吧！', /*分享标题(可选)*/
+                                        summary:'50元现金免费拿！！！', /*分享摘要(可选)*/
+                                        pics:'http://xqproduct.xiangqu.com/FpXWbdatmAD82pOmipO9dh6yDKQn?imageView2/2/w/300/q/75/format/jpg/@w/$w$@/@h/$h$@/300x300/', /*分享图片(可选)*/
+                                        flash: '', /*视频地址(可选)*/
+                                        site:'想去', /*分享来源(可选) 如：QQ分享*/
+                                        style:'202',
+                                        width:24,
+                                        height:24
+                                    };
+                                    var s = [];
+                                for(var i in p){
+                                    s.push(i + '=' + encodeURIComponent(p[i]||''));
+                                }
+                                document.write(['<a class="qcShareQQdiv" style="display:block; width: 72px;height:72px;background:#eee; filter:alpha(opacity=0);opacity:0;-moz-opacity:0;-khtml-opacity: 0;position:absolute;top:0;z-index:21;left:0;border-radius:50%;-o-border-radius:50%;-ms-border-radius:50%;-webkit-border-radius:50%;" href="http://connect.qq.com/widget/shareqq/index.html?',s.join('&'),'" target="_blank"></a>'].join(''));
+                                });                                                          
+                        </script>
+                        <script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>
+
+                        <!--分享qq好友结束-->
+                        <section class=" div qqdiv">
+                            <img src="http://xqproduct.xiangqu.com/FmSodsuWzKd_sfesohMl9fDGfY2-?imageView2/2/w/72/q/75/format/jpg/@w/$w$@/@h/$h$@/72x72/"/>
+                        </section>
+                        <div class="div_empty"></div>
+                        <section class=" div xldiv">
+                            <img src="http://xqproduct.xiangqu.com/FmLmyef0E16Yrllsjo9CtJzPUybK?imageView2/2/w/72/q/75/format/jpg/@w/$w$@/@h/$h$@/72x72/">
+                        </section>
+                        <div class="div_empty"></div>
+                        <section class=" div wxdiv">
+                            <img src="http://xqproduct.xiangqu.com/FkJ5VYCzHyIWUCvInGRk0VF2uhXq?imageView2/2/w/72/q/75/format/jpg/@w/$w$@/@h/$h$@/72x72/">
+                        </section>
+                        <div class="div_empty"></div>
+                        <section class=" div dbdiv">
+                            <img src="http://xqproduct.xiangqu.com/Fn4vflA0rdHUQr5-WlwOFk6Gkf_O?imageView2/2/w/72/q/75/format/jpg/@w/$w$@/@h/$h$@/72x72/">
+                        </section>
+                        <section style="height: 5px;clear:both"></section>
+                        <section class="moreShare">
+                            <a>更多</a>
+                        </section>
+                        <section style="height: 11px"></section>
+                    </section>
+	</body>
+</html>
