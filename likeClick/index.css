@@ -1,0 +1,28 @@
+ul{
+	width: 100%;
+	overflow: hidden;
+}
+li{
+	float: left;
+	display: block;
+	width: 47%;
+	margin-right: 3px;
+	height: 200px;
+	background: darkgoldenrod;
+}
+li a{
+	position: relative;
+	display: block;
+	background: forestgreen;
+	width: 100%;
+	height: 140px;
+}
+a section{
+	width: 50%;
+	height: 20px;
+	display: block;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	background: darkkhaki;
+}
