@@ -1,0 +1,12 @@
+ul{
+	width: 100%;
+	overflow: hidden;
+}
+li{
+	float: left;
+	display: block;
+	width: 18%;
+	margin-right: 3px;
+	height: 200px;
+	background: darkgoldenrod;
+}
