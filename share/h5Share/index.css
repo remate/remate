@@ -1,0 +1,16 @@
+.sharebottom{
+    /*padding-bottom:50px;*/
+    text-align: left}
+.share_wap{
+    text-align:center;
+}
+.share_wap a img{
+    width:19%;
+    margin:5px;
+}
+h1{
+    font-size:15px;
+    margin-left:16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
