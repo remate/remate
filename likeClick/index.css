@@ -1,3 +1,7 @@
+*{
+	margin: 0;
+	padding: 0;
+}
 ul{
 	width: 100%;
 	overflow: hidden;
@@ -25,4 +29,15 @@ a section{
 	right: 10px;
 	bottom: 10px;
 	background: darkkhaki;
+}
+.img_icon{
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+}
+.like_img{
+	background: url("http://xqproduct.xiangqu.com/FhLYWtvtEM4YjkIqz9afZ3CpCEC2") no-repeat;
+}
+.notLike_img{
+	background: url("http://xqproduct.xiangqu.com/FpwF10FHUlKvxEkslL7txv0HQu2v") no-repeat;
 }

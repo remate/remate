@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../require.min.js" defer async="true"></script>
+</head>
+<script>
+    requirejs.config({
+        paths: {
+                index:'index',
+                index2:'index_2'
+        }
+    });
+    //声明下面的代码是需要jquery这个库的
+        $(function () {
+            //只有用户点击了某个按钮，才动态加载
+            $("#test").click(
+                    function () {
+                        require(['index'], function () {
+                            alert(1);
+                        });
+                    }
+            );
+        });
+</script>
+<body>
+<button id="test">点击我试一试</button>
+<button class="btn1">再点击一次</button>
+<button class="btn2">最后点击一次哦</button>
+</body>
+</html>
