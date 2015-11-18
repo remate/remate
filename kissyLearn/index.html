@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kissy</title>
+    <script src="kissy-1.3.2/build/kissy-min.js"></script>
+</head>
+<body>
+<!--<p><input type="button" value="监听事件" id="demo1" /></p>-->
+
+<p><input type="button" value="单击这里" id="demo5" /></p>
+
+<script>
+    (function(S){
+//        var helloWorld = "Hello World！";
+//        alert(helloWorld);
+//
+//        S.use('core',function(){
+//            S.DOM.html('body',helloWorld);
+//        });
+
+        var Event = S.Event;
+//        Event.add('#demo1','click',function(ev){
+//            alert('你触发了'+ev.type+'事件,目标对象id为'+ev.target.id);
+//        });
+
+
+                Event.add('#demo5','click',function(ev){
+                    alert('你触发了'+ev.type+'事件,目标对象id为'+ev.target.id+'，但是this指向id为'+this.id+'的对象');
+                },S.DOM.get('#demo4'))
+    })(KISSY);
+</script>
+
+</body>
+</html>

@@ -19,9 +19,6 @@ module.exports = function(grunt) {
             src:'dev',//开发目录
             temp:'temp',//临时目录
             dist:'../../../build/activity/<%= actName %>',//发布目录
-            page_copy:'../../../WEB-INF/velocity/activity/<%= actName %>',
-            pre:'../commons',//activity目录
-            dist_pre:'../../../build/activity/common'
         },
         clean:{
             options:{
