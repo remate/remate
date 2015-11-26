@@ -1,0 +1,103 @@
+body,html{
+    font-size: 62.5%;
+}
+.flipster {
+    display: block;
+    margin: 1rem auto;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+.flip-items,
+.flip-item {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+.flip-items {
+    height: 150px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.flip-item {
+    position: absolute;
+    opacity: 0.99;
+}
+.flip-item img {
+    display: block;
+    width: 100%;
+}
+.flipster-carousel .flip-items {
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+}
+.flipster-carousel .flip-item {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all 350ms ease-out;
+    transition: all 350ms ease-out;
+}
+
+.flipster-carousel .flip-items img {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.flipster-carousel .flip-past {
+    -webkit-transform: translateX(-80%) translateZ(0) rotateY(80deg) scale(0.65);
+    transform: translateX(-80%) translateZ(0) rotateY(80deg) scale(0.65);
+}
+.flipster-carousel .flip-future {
+    -webkit-transform: translateX(80%) translateZ(0) rotateY(-80deg) scale(0.65);
+    transform: translateX(80%) translateZ(0) rotateY(-80deg) scale(0.65);
+}
+.flipster-carousel .flip-prev {
+    -webkit-transform: translateX(-60%) translateZ(0) rotateY(80deg) scale(0.8);
+    transform: translateX(-60%) translateZ(0) rotateY(80deg) scale(0.8);
+}
+.flipster-carousel .flip-next {
+    -webkit-transform: translateX(60%) translateZ(0) rotateY(-80deg) scale(0.8);
+    transform: translateX(60%) translateZ(0) rotateY(-80deg) scale(0.8);
+}
+.flipster-carousel .flip-past,
+.flipster-carousel .flip-future {
+    -webkit-opacity: 0.6;
+    opacity: 0.6;
+    z-index: 1;
+    -webkit-transition-delay: 87.5ms;
+    transition-delay: 87.5ms;
+}
+.flipster-carousel .flip-prev,
+.flipster-carousel .flip-next {
+    -webkit-opacity: 0.8;
+    opacity: 0.8;
+    z-index: 2;
+    -webkit-transition-delay: 58.333333333333336ms;
+    transition-delay: 58.333333333333336ms;
+}
+.flipster-carousel .flip-current {
+    z-index: 999;
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    -webkit-transition-delay: 58.333333333333336ms;
+    transition-delay: 58.333333333333336ms;
+}
+.flipster-carousel .flip-hidden {
+    visibility: hidden;
+    -webkit-opacity: 0;
+    opacity: 0;
+    -webkit-transform: rotateY(0deg) translateX(0) scale(0.5);
+    transform: rotateY(0deg) translateX(0) scale(0.5);
+    -webkit-transition-delay: 116.66666666666667ms;
+    transition-delay: 116.66666666666667ms;
+}
+.img{
+    visibility: hidden;
+}
