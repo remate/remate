@@ -160,51 +160,50 @@
                    }
                 });
 
+                    // 方法二
+                // var mouseDown;
+                // LR();
+                // function LR(){
+                //     var start_X;
+                //     var end_X;
+                //     mouseDown = false;
 
-                //LR();
-                //function LR(){
-                //    var start_X;
-                //    var end_X;
-                //    mousedown = false;
-                //
-                //    function eventDown(e){
-                //        //e.preventDefault();
-                //        mousedown = true;
-                //        if(e.changedTouches){
-                //            e = e.changedTouches[e.changedTouches.length-1];
-                //        }
-                //        start_X = e.pageX;
-                //        end_X = e.pageX;
-                //    }
-                //    function eventUp(e){
-                //        //e.preventDefault();
-                //        if(end_X - start_X > 50){
-                //            jump("left");
-                //        }
-                //        if(start_X - end_X > 50){
-                //
-                //            jump("right");
-                //        }
-                //
-                //        mousedown = false;
-                //
-                //
-                //    }
-                //
-                //    function eventMove(e){
-                //        e.preventDefault();
-                //        if(mousedown) {
-                //            if(e.changedTouches){
-                //                e = e.changedTouches[e.changedTouches.length-1];
-                //            }
-                //            end_X = e.pageX;
-                //        }
-                //    }
-                //    var wrap = document.getElementsByClassName("flip-items")[0];
-                //    wrap.addEventListener('touchstart', eventDown);
-                //    wrap.addEventListener('touchend', eventUp);
-                //    wrap.addEventListener('touchmove', eventMove);
-                //}
+                //     function eventDown(e){
+                //         //e.preventDefault();
+                //         mouseDown = true;
+                //         if(e.changedTouches){
+                //             e = e.changedTouches[e.changedTouches.length-1];
+                //         }
+                //         start_X = e.pageX;
+                //         end_X = e.pageX;
+                //     }
+                //     function eventUp(e){
+                //         //e.preventDefault();
+                //         if(end_X - start_X > 50){
+                //             jump("left");
+                //         }
+                //         if(start_X - end_X > 50){
+                //             jump("right");
+                //         }
+
+                //         mouseDown = false;
+
+                //     }
+                //     function eventMove(e){
+                //         e.preventDefault();
+                //         if(mouseDown) {
+                //             if(e.changedTouches){
+                //                 e = e.changedTouches[e.changedTouches.length-1];
+                //             }
+                //             end_X = e.pageX;
+                //         }
+                //     }
+                //     var wrap = document.getElementsByClassName("flip-items")[0];
+                //     wrap.addEventListener('touchstart', eventDown);
+                //     wrap.addEventListener('touchend', eventUp);
+                //     wrap.addEventListener('touchmove', eventMove);
+                // }
+
 
             }
             if ( !_flipster.hasClass("flipster-active") ) {
