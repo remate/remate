@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <title>想去模块化二</title>
+    <meta name="Keywords" content="想去,春节,模块化">
+    <meta name="Description" content="想去年终奖">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <style>
+ @charset "UTF-8";
+.subject_two .subject_head img, .subject_two .subject_main ul li .wrap_all, .subject_two .subject_main ul li .wrap_all .shop_information h2, .subject_more .subject_head img, .subject_more .subject_main ul li a {
+  display: block;
+}
+
+.header_img a img, .act_state img, .subject_two .subject_head img, .subject_two .subject_main ul, .subject_two .subject_main ul li .wrap_all, .subject_two .subject_main ul li .wrap_all .img_wrap, .subject_two .subject_main ul li .wrap_all .img_wrap .img_hold, .subject_two .subject_main ul li .wrap_all .img_wrap .img_hold .img_outer, .subject_more .subject_head img, .subject_more .subject_main ul, .subject_more .subject_main ul li a {
+  width: 100%;
+}
+
+.subject_two .subject_main, .subject_two .subject_main ul, .subject_two .subject_main ul li, .subject_two .subject_main ul li .wrap_all, .subject_two .subject_main ul li .wrap_all .img_wrap, .subject_two .subject_main ul li .wrap_all .img_wrap .img_hold .img_outer, .subject_more .subject_main, .subject_more .subject_main ul, .subject_more .subject_main ul li, .subject_more .subject_main ul li a {
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+li {
+  list-style: none;
+}
+
+html {
+  width: 100%;
+  font-size: 62.5%;
+  line-height: 0;
+}
+
+body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+b, i, h1, h2, h3, span {
+  font-style: normal;
+  font-weight: normal;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+span {
+  line-height: 0;
+}
+
+em {
+  width: 10px;
+  height: 0;
+  border-top: 3px solid transparent;
+  border-left: 4px solid #000;
+  border-bottom: 3px solid transparent;
+  display: inline-block;
+  vertical-align: middle;
+}
+.header_img a {
+  display: block;
+}
+.header_img a img{
+  width: 100%;
+}
+.act_state {
+  margin-top: -8px;
+}
+.act_state .act_state_text {
+  background: #393939;
+  padding: 8px 1.2rem 5px;
+  color: #fff;
+  line-height: 18px;
+}
+.act_state .act_state_text ul li {
+  margin-bottom: 4px;
+  font-size: 1.4rem;
+}
+.act_state .act_state_text ul li ins {
+  padding: 0 10px 0 0;
+  position: relative;
+}
+.act_state .act_state_text ul li ins:before {
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 3px;
+  display: inline-block;
+  background: #fff;
+}
+
+.jianju {
+  height: 0.9rem;
+  background: #f0f0f0;
+}
+
+.subject_two .subject_head {
+  padding: 0 1.2rem;
+}
+.subject_two .subject_head img {
+  min-height: 22px;
+}
+.subject_two .subject_main {
+  padding: 0 1.2rem;
+}
+.subject_two .subject_main ul li {
+  width: 49%;
+  float: left;
+  margin-bottom: 2%;
+}
+.subject_two .subject_main ul li:nth-child(2n) {
+  margin-left: 2%;
+}
+.subject_two .subject_main ul li .wrap_all .img_wrap {
+  padding-bottom: 100%;
+  position: relative;
+}
+.subject_two .subject_main ul li .wrap_all .img_wrap .position {
+  position: absolute;
+  left: 0;
+}
+.subject_two .subject_main ul li .wrap_all .img_wrap .img_hold {
+  top: 0;
+  height: 100%;
+}
+.subject_two .subject_main ul li .wrap_all .img_wrap .img_hold .img_outer {
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+.subject_two .subject_main ul li .wrap_all .img_wrap .img_hold .img_outer img {
+  min-height: 120px;
+  position: absolute;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.subject_two .subject_main ul li .wrap_all .shop_information {
+  height: 20px;
+}
+.subject_two .subject_main ul li .wrap_all .shop_information h2 {
+  margin-top: 10px;
+  height: 20px;
+  color: #666666;
+  line-height: 20px;
+  font-size: 1.3rem;
+  text-align: left;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price {
+  height: 18px;
+  overflow: hidden;
+  text-align: left;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .introduce_priceBody {
+  display: inline-block;
+  margin-left: -2px;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .introduce_icon {
+  border: 1px solid #e51027;
+  margin-left: -3px;
+  color: #e51027;
+  height: 18px;
+  line-height: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: .2rem;
+  vertical-align: middle;
+  display: inline-block;
+  transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  /* IE 9 */
+  -moz-transform: scale(0.7);
+  /* Firefox */
+  -webkit-transform: scale(0.7);
+  /* Safari 和 Chrome */
+  -o-transform: scale(0.7);
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .introduce_nowPrice {
+  font-size: 1.2rem;
+  color: #e51027;
+  display: inline-block;
+  line-height: 18px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .introduce_originalPrice {
+  font-size: 1.2rem;
+  color: #777;
+  height: 18px;
+  line-height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  /* IE 9 */
+  -moz-transform: scale(0.7);
+  /* Firefox */
+  -webkit-transform: scale(0.7);
+  /* Safari 和 Chrome */
+  -o-transform: scale(0.7);
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .introduce_originalPrice .i_4 {
+  text-decoration: line-through;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .price_wrap i, .subject_two .subject_main ul li .wrap_all .introduce_price .price_wrap_original i {
+  font-family: "Helvetica Neue";
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .i_2 {
+  font-size: 1.3rem;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .price_wrap {
+  display: inline-block;
+  float: left;
+  height: 18px;
+  line-height: 18px;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .price_wrap_now {
+  margin-left: -0.4rem;
+}
+.subject_two .subject_main ul li .wrap_all .introduce_price .price_wrap_original {
+  display: inline-block;
+  float: left;
+  margin-left: -0.4rem;
+  height: 18px;
+  line-height: 20px;
+}
+.subject_two .subject_main ul li .wrap_all .get_now {
+  margin-top: 4px;
+  height: 24px;
+  text-align: center;
+  display: block;
+  line-height: 24px;
+  font-size: 1.7rem;
+  border-radius: 4px;
+  color: #e51027;
+  border: 1px solid #e51027;
+}
+
+        
+    </style>
+</head>
+<body>
+    <header class="header_img">
+        <a href="http://www.xiangqu.com">
+            <img src="http://xqproduct.xiangqu.com/Flrt8wEAJsyDc9hvRW6GobtAYz2s?imageView2/2/w/748/q/100/format/jpg/748x379/" />
+        </a>
+    </header>
+    <section class="act_state">
+        <img src="http://xqproduct.xiangqu.com/Fp7F_QUEJlUQt3k1D37NfKWh3s6z">
+        <div class="act_state_text">
+            <ul>
+                <li><ins></ins><span>苦瓜苦瓜苦瓜苦瓜苦瓜苦瓜苦瓜苦瓜苦瓜苦</span></li>
+                <li><ins></ins><span>放假啊减肥我都将前往</span></li>
+            </ul>
+        </div>
+    </section>
+    <section class="subject_two subject">
+        <div class="subject_head">
+            <img src="http://xqproduct.xiangqu.com/FtDhjr0IKjObx_sF4q-2PJVi3q5A"/>
+        </div>
+        <div class="subject_main">
+            <ul>
+                <li>
+                    <section class="wrap_all">
+                        <div class="img_wrap">
+                            <div class="img_hold position">
+                                <div class="img_outer">
+                                    <img src="http://xqproduct.xiangqu.com/Fv2NkPrB7sdixyRj_YSvTgqHsC1s?imageView2/2/w/220/q/100/format/jpg/339x340/">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shop_information">
+                            <h2>左左大人</h2>
+                        </div>
+                        <!--价格一栏-->
+                        <div class="introduce_price"><div class="introduce_priceBody"><div class="price_wrap"><span class="introduce_icon">活动价</span></div><div class="price_wrap price_wrap_now"><span class="introduce_nowPrice"><i class="i_1">￥</i><i class="i_2">8999.00</i></span></div><div class="price_wrap_original"><span class="introduce_originalPrice"><i class="i_4">1080.00</i></span></div></div></div>
+                        <!--价格一栏end-->
+                        <a class="get_now">立即抢购</a>
+                    </section>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
