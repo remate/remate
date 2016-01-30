@@ -1,0 +1,212 @@
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+input[type=radio],
+input[type=checkbox],
+input[type=range],
+pre,
+xmp,
+plaintext,
+listing {
+  margin: 0;
+  padding: 0;
+}
+ul,
+menu,
+dir,
+ol,
+legend,
+fieldset,
+input,
+input[type=password],
+input[type=search],
+isindex,
+textarea,
+input[type=hidden],
+input[type=image],
+input[type=file],
+input[type=radio],
+input[type=checkbox],
+input[type=range],
+input[type=button],
+input[type=submit],
+input[type=reset],
+button {
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 62.5%;
+  font-weight: 400;
+}
+input,
+select,
+textarea {
+  vertical-align: middle;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+button {
+  background: none;
+  border: none;
+}
+img {
+  border: none;
+  vertical-align: top;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table,
+td {
+  border: none;
+}
+i,
+cite,
+em,
+var,
+address,
+dfn {
+  font-style: normal;
+}
+:focus {
+  outline: 0;
+}
+ins {
+  text-decoration: none;
+}
+caption,
+th,
+td {
+  font-weight: normal;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+blockquote,
+q {
+  quotes: "" "";
+}
+td,
+th,
+div {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+form {
+  display: inline;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  font-family: Helvetica;
+  font-size: 62.5%;
+  /* 10/16*100%=62.5% */
+  color: #484848;
+}
+body {
+  font-size: 12px;
+  font-size: 1.2rem ;
+  /* 12÷10=1.2 */
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:-webkit-any-link {
+  text-decoration: none;
+}
+a,
+img,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+input,
+textarea {
+  -webkit-appearance: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+iframe {
+  border: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+select,
+button,
+input {
+  color: inherit;
+}
+html {
+  -webkit-text-size-adjust: none;
+}
+a img {
+  border: 0;
+}
+
+

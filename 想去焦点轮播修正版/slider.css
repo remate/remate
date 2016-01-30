@@ -1,0 +1,88 @@
+
+.kslider {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  background: #f0f0f0;
+}
+.kslider .ks_warp {
+  width: 100%;
+  text-align: center;
+}
+.kslider .ks_ts {
+  -webkit-transition: 500ms ;
+  -moz-transition: 500ms ;
+  -ms-transition: 500ms ;
+  -o-transition: 500ms ;
+  transition: 500ms ;
+}
+.kslider .ks_dbox {
+  width: 100%;
+  display: -webkit-box;
+  text-align: left;
+}
+.kslider .ks_wt {
+  display: -webkit-box;
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-pack: center;
+}
+.kslider .ks_wt li {
+  text-align: center;
+  list-style: none;
+  background: #a0a1aa;
+  color: #fff;
+}
+.ks_wt_1 .ks_wt li {
+  -webkit-box-flex: 1;
+  height: 35px;
+  line-height: 35px;
+  border-right: solid 1px #BBB;
+}
+.ks_wt_1 .ks_wt .ks_t2 {
+  background: #a0a1aa;
+  color: #000;
+}
+.ks_wt_2 .ks_wt li {
+  background: #86878e;
+  text-indent: 20px;
+  height: 7px;
+  width: 7px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 3px;
+}
+.ks_wt_2 .ks_wt .ks_t2 {
+  background: #fff;
+  margin: 2px;
+  border: 1px solid #86878e;
+  /*-webkit-animation: kt2 200ms linear;*/
+}
+
+
+.ks_wt_2 {
+  position: relative;
+}
+.ks_wt_2 .ks_warp {
+  position: relative;
+  display: block;
+  vertical-align: middle;
+  width: 100%;
+  height: 370px;
+  background: #fff;
+  text-align: center;
+  line-height: 370px;
+}
+.ks_wt_2 .ks_warp img {
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 100%;
+}
+.ks_wt_2 .ks_wt {
+  position: absolute;
+  bottom: 2rem;
+  width: 70%;
+  left: 50%;
+  margin-left: -35%;
+}
+
