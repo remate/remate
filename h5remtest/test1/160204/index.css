@@ -10,6 +10,7 @@ header {
 
 section div {
   font-size: 14px;
+  line-height: 0.625rem;
 }
 [data-dpr="2"] section div {
   font-size: 28px;

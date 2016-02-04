@@ -1,5 +1,5 @@
 @function px2rem($px) {
-  @return $px/64 + rem; //64为js生成的html的font-size大小
+  @return $px/64 + rem; //64为js生成的html的font-size大小  不同手机屏幕不一样
 }
 @mixin font-dpr($font-size){
   font-size: $font-size;
@@ -21,6 +21,7 @@
  section {
  div{
      @include font-dpr(14px);
+   line-height: px2rem(40);
  }//字号不使用 rem
  img{
         width: 100%;
