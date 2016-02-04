@@ -8,6 +8,7 @@ assets/activity/*/temp/
 assets/wap/*/node_modules/
 assets/wap/temp/
 .idea/
+.sass-cache/
 
 
 
