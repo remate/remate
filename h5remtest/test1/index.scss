@@ -1,4 +1,28 @@
+@function px2rem($px) {
+  @return $px/64 + rem; //64为js生成的html的font-size大小
+}
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}
 *{
   margin: 0;
   padding: 0;
+}
+ header{
+    height: px2rem(85);
+    background: navajowhite;
+        }
+ section {
+ div{
+     @include font-dpr(14px);
+ }//字号不使用 rem
+ img{
+        width: 100%;
+       } 
 }
