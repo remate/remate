@@ -1,5 +1,5 @@
 @function px2rem($px) {
-  @return $px/64 + rem; //64为js生成的html的font-size大小  不同手机屏幕不一样
+  @return $px/64 + rem; //64为js生成的html的font-size大小  依照标注设计稿的尺寸750或640下的font-size
 }
 @mixin font-dpr($font-size){
   font-size: $font-size;
