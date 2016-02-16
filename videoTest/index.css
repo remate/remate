@@ -1,0 +1,34 @@
+video{
+	width: 100%;
+	display: block;
+}
+a:active,a:visited{
+	color: darkcyan;
+}
+.control{
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	background: darkkhaki;
+}
+.progressTime div{
+	margin: 10px;
+	padding: 10px;
+	background: darkcyan;
+}
+.progressBar  
+{  
+    position: relative;  
+    width: 100%;  
+    height:10px;  
+    background: rgba(153,153,153,0.2);  
+}  
+.timeBar  
+{  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    width: 0;  
+    height: 100%;  
+    background: #c90f0b;  
+}
