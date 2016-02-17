@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 1.32813rem;
+  background: navajowhite;
+}
+
+section div {
+  font-size: 14px;
+  line-height: 0.625rem;
+}
+[data-dpr="2"] section div {
+  font-size: 28px;
+}
+[data-dpr="3"] section div {
+  font-size: 42px;
+}
+section img {
+  width: 100%;
+}

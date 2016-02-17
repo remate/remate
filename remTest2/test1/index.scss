@@ -1,0 +1,43 @@
+@function px2rem($px) {
+  @return $px/64 + rem; //64为js生成的html的font-size大小  依照标注设计稿的尺寸750或640下的font-size
+}//若用了sublime的cssrem插件,这个函数可以省略
+@mixin font-dpr($font-size){
+  font-size: $font-size/2;
+  [data-dpr="2"] & {
+    font-size: $font-size/2 * 2;
+  }
+  [data-dpr="3"] & {
+    font-size: $font-size/2 * 3;
+  }
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  width:10.0rem;
+  margin:0 auto;
+}
+ header{
+    height: px2rem(85);
+    background: navajowhite;
+        }
+ section {
+ div{
+  width:10rem;
+  background:#afdb00;
+  @include font-dpr(28px);
+  // font-size:14px;
+  line-height: px2rem(40);
+ }//字号不使用 rem
+ img{
+        width: 100%;
+       } 
+       .circle{
+        width:1.03125rem;
+        height:1.03125rem;
+        display:block;
+        margin-left:0.5rem;
+        border-radius:0.515625rem;
+       }
+}
