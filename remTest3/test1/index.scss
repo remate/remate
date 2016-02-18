@@ -15,17 +15,17 @@
   padding: 0;
 }
 body{
-  width:10.0rem;
+  width:6.4rem;
   margin:0 auto;
 }
  header{
-    width:10rem;
+    width:6.4rem;
     height: px2rem(85);
     background: navajowhite;
         }
  section {
  div{
-  width:10rem;
+  width:6.4rem;
   background:#afdb00;
   @include font-dpr(28px);
   // font-size:14px;
@@ -35,13 +35,13 @@ body{
         width: 100%;
        } 
        .circle{
-        width:1.03125rem;
-        height:1.03125rem;
+        width:0.66rem;
+        height:0.66rem;
         display:block;
-        margin-left:0.5rem;
-        border-radius:0.515625rem;
+        margin-left:0.32rem;
+        border-radius:0.33rem;
        }
        .circle2{
-        
+      
        }
 }
