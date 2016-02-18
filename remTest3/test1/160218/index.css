@@ -36,3 +36,10 @@ section .circle {
   margin-left: 0.32rem;
   border-radius: 0.33rem;
 }
+section .circle2 {
+  width: 33px;
+  height: 33px;
+  display: block;
+  margin-left: 0.32rem;
+  border-radius: 33px;
+}
