@@ -16,9 +16,19 @@
     <!-- 切记这里已经写好，所以js中的无效，以设定为主 -->
 
     <script src="flexible3.js"></script>
+    <style type="text/css">
+        #loadMB{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #afdb00;
+            z-index: 29000;
+        }
+    </style>
     <link href="160218/index.min.css" rel="stylesheet" />
 </head>
 <body>
+<div id="loadMB"></div>
 <header></header>
 <section>
 	<div>看看真机上显示的效果吧。我截了两种设备下的效果</div>
@@ -26,6 +36,9 @@
     <div class="circle"></div>
     <div class="circle2"></div>
 </section>
+<script type="text/javascript">
+var timer=setTimeout(function(){document.getElementById('loadMB').style.display='none';},500)
+</script>
 <script src="zepto.js"></script>
 </body>
 </html>
