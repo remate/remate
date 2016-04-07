@@ -1,0 +1,58 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	text-align: center;
+	background-color:#fff!important;
+}
+h1{
+	margin-top: 30px;
+	font-size: 21px;
+	color: #505557;
+	font-weight:bold;
+}
+p{
+	margin-top: 15px;
+	font-size: 12px;
+	color: #9a9a9a;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+#button{
+	margin: 48px auto;
+	margin-bottom: 0;
+	height: 35px;
+	line-height: 35px;
+	width: 145px;
+	border-radius: 3px;
+	background-color: #DA500E;
+}
+h2{
+	line-height: 35px;
+	font-size: 15px;
+	color: #FFF;
+}
+.nocart{
+	background: url('../images/noCartProduct.png');
+}
+.noproduct{
+	background: url('../images/noProduct.png');
+}
+.noresult{
+	background: url('../images/noSearchResult.png');
+}
+.cantvisit{
+	background: url('../images/禁止访问.png');
+}
+#img{
+	margin: 70px auto;
+	margin-bottom:0; 
+	width: 99px;
+	height: 99px;
+	background-color: #D7D8DA;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	border-radius: 98.5px;
+	background-size:50px 50px;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>异常数据修复</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+    	$('#cc').layout(); 
+    	var spiderGrid;
+    	var vdlmGrid;
+		var jsQuery = function() {
+			if($('#from').val() == '' || $('#to').val() == ''){
+				alert('非空');
+				return;
+			}
+			if($('#from').val() == $('#to').val()){
+				alert('不同');
+				return;
+			}
+			jsShopId();
+			$(':text').each(function(){
+				$(this).val($.trim($(this).val()));
+			});
+		};
+		var jsShopId = function() {
+			var params = {
+				'from' : $('#from').val(),
+				'to' : $('#to').val()
+			};
+			$.getJSON('fixData/shop', params, function(data) {
+				if(data != null){
+					if(data.msg == '-1')
+						alert('未查到规则内店铺id');
+					else {
+						$('#shopId').html(data.msg);
+						$('#shop_id').val(data.msg);
+						
+						var params =  $.serializeObject($('#searchForm'));
+						params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+						spiderGrid.datagrid('load', params);
+						vdlmGrid.datagrid('load', params);
+					}
+				}
+			});
+		};
+    	$(function() {
+    		spiderGrid = $('#spiderGrid').datagrid({
+				title : '',
+				url : 'fixData/SpiderList',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '300',
+					title : '标题',
+					field : 'name',
+					formatter: function(value,row,index){
+						return "<a href='http://item.taobao.com/item.htm?id="+row.itemId+"' target='_blank'>" + value + "</a>";
+					}
+				},{
+					width : '100',
+					title : '淘宝ID',
+					field : 'itemId'
+				} ] ],
+				toolbar : '#toolbar'
+			});
+    		vdlmGrid = $('#vdlmGrid').datagrid({
+				title : '',
+				url : 'fixData/VdlmList',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '300',
+					title : '标题',
+					field : 'name',
+					formatter: function(value,row,index){
+						return "<a href='http://www.kkkd.com/p/"+row.id+"' target='_blank'>" + value + "</a>";
+					}
+				},{
+					width : '100',
+					title : '淘宝ID',
+					field : 'thirdItemId',
+					editor:{
+                        type:'text'
+                    }
+				},{
+					field:'action',title:'操作',width:70,align:'center',
+                    formatter:function(value,row,index){
+	                    if (row.editing){
+	                        var s = '<a href="#" onclick="saverow('+index+')">保存</a> ';
+	                        var c = '<a href="#" onclick="cancelrow('+index+')">取消</a>';
+	                        $('#hidProductId').val(row.id);
+	                        $('#hidThirdId').val(row.thirdItemId);
+	                        return s+c;
+	                    } else {
+	                        var e = '<a href="#" onclick="editrow('+index+')">编辑</a> ';
+	                        return e;
+	                    }
+                	}
+				} ] ],
+				onBeforeEdit:function(index,row){     
+			        row.editing = true;     
+			        $('#vdlmGrid').datagrid('refreshRow', index);     
+			    },     
+			    onAfterEdit:function(index,row){     
+			        row.editing = false;     
+			        $('#vdlmGrid').datagrid('refreshRow', index);     
+			    },     
+			    onCancelEdit:function(index,row){     
+			        row.editing = false;     
+			        $('#vdlmGrid').datagrid('refreshRow', index);     
+			    },
+				toolbar : '#toolbar'
+			});
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+    	});
+    	function editrow(index){     
+    	    $('#vdlmGrid').datagrid('beginEdit', index);     
+    	}        
+    	function saverow(index){
+    		$('#vdlmGrid').datagrid('endEdit', index);
+    		if($('#hidThirdId').val() != '') {
+	    		if(confirm("确定保存吗？")){
+	    			var params = {
+	    				'productid' : $('#hidProductId').val(),
+	    				'thirdid' : $('#hidThirdId').val()
+	    			};
+	    			$.getJSON('fixData/update', params, function(data) {
+	    				if(data != null){
+	    					alert(data.msg);
+	    					$('#vdlmGrid').datagrid('reload');
+	    				}
+	    			});
+	    		}
+    		}
+    	}     
+    	function cancelrow(index){     
+    	    $('#vdlmGrid').datagrid('cancelEdit', index);     
+    	}    
+	/*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+<div id="cc" class="easyui-layout" style="width:1180px;height:542px;">
+	<div region="north" title="查询" style="height:60px;">
+	<form id="searchForm">
+		<table>
+			<tr>
+				<td style="width: 60px; text-align: right;">limit:</td>
+				<td><input type="text" id="from"  name="from" style="width:80px;"/></td>
+				<td>-</td>
+				<td><input type="text" id="to"  name="to" style="width:80px;"/></td>
+				<td><a href="javascript:void(0);" class="easyui-linkbutton" 
+						onclick="jsQuery()">查询</a></td>
+				<td style="width: 100px; text-align: right;">当前shopID:</td>
+				<td>
+					<label id="shopId"  name="shopId" style="width:80px;"/>
+					<input id="shop_id" name="shop_id" type="hidden" />
+				</td>
+			</tr>
+		</table>
+	</form>
+	<input id="hidProductId" type="hidden" />
+	<input id="hidThirdId" type="hidden" />
+	</div>
+	<div region="west" title="Spider数据" style="width:590px;">
+		<table id="spiderGrid" data-options="fit:true,border:false">
+		</table>
+	</div>  
+	<div region="center" title="快店数据" style="width:590px;">
+		<table id="vdlmGrid" data-options="fit:true,border:false">
+		</table>
+	</div>  
+</div>  
+</body>   
+</html>

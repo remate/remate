@@ -1,0 +1,40 @@
+
+
+<!-- 发货弹窗 begin -->
+<div class="am-modal am-modal-confirm J_goodsSendPop" tabindex="-1">
+    <div class="kd-modal-dialog am-modal-dialog">
+        <p class="kd-modal-title">发货</p>
+        <div class="kd-modal-body">
+            <form class="am-form am-form-horizontal kd-form" id="J_formGoodsSends">
+                <ul class="list-formSend">
+                    <li class="am-cf am-hide">
+                        <span class="am-fl">是否使用快递&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <div class="am-fl">
+                            <input class="am-switch open-desc" name="kdType" id="J_kdType" type="checkbox" checked="checked" />
+                        </div>
+                    </li>
+                    <li class="am-cf">
+                        <label for="">快递公司</label>
+                        <div class="am-form-group-sm am-cf am-fl kd-form pad-0">
+                            <div class="am-fl am-cf">
+                                <select class="combox" id="J_kdSect" name="kdSect">
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="am-cf">
+                        <label for="">快运单号</label>
+                        <input type="text" name="logisticsNo" id="J_logisticsNo" placeHolder="请输入"/>
+                    </li>
+                </ul>
+                <input type="hidden" name="orderId" id="J_orderId" value=""/>
+                <div class="modal-footer am-text-center mlr--10">
+                    <button type="submit" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                    <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 发货弹窗 end -->
+

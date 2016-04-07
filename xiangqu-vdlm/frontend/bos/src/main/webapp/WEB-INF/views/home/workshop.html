@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>后台系统</title>
+	
+	 <script type="text/javascript">
+	 /*<![CDATA[*/
+		var mainMenu;
+		var mainTabs;
+	
+		$(function() {
+			var treeData = [ {
+				text : '运营后台管理',
+				iconCls : 'ext_computer',
+				children : [ {
+					text : '店铺管理',
+					iconCls : 'ext_folder_wrench',
+					attributes : {
+						url : "shop",
+						price : 100
+					}
+				},{
+					text : '商品管理',
+					iconCls : 'ext_box',
+					attributes : {
+						url : "product",
+						price : 100
+					}
+				}, {
+					text : '订单管理',
+					iconCls : 'ext_basket',
+					attributes : {
+						url : "order",
+						price : 100
+					}
+				}, {
+					text : '订单退款管理',
+					iconCls : 'ext_refund',
+					attributes : {
+						url : "orderRefund",
+						price : 100
+					}
+				}, {
+					text : '佣金管理',
+					iconCls : 'ext_money',
+					attributes : {
+						url : "commission",
+						price : 100
+					}
+				}, {
+					text : '提现管理',
+					iconCls : 'ext_money_yen',
+					attributes : {
+						url : "withdraw",
+						price : 100
+					}
+				},  {
+					text : '消息管理',
+					iconCls : 'ext_phone',
+					attributes : {
+						url : "msg",
+						price : 100
+					}
+				},  {
+					text : '用户消息管理',
+					iconCls : 'ext_phone',
+					attributes : {
+						url : "user/message",
+						price : 100
+					}
+				}, {
+					text: '同步管理',
+					iconCls : 'ext_sync',
+					attributes : {
+						url  : "sync",
+						price : 100
+					}
+				}, {
+					text : '意见反馈',
+					iconCls : 'ext_comments',
+					attributes : {
+						url : "feedback",
+						price : 100
+					}
+				}, {
+					text : '活动订单管理',
+					iconCls : 'ext_basket',
+					attributes : {
+						url : "activityOrder",
+						price : 100
+					}
+				}, {
+					text : '小助手管理',
+					iconCls : 'ext_text_list_numbers',
+					attributes : {
+						url : "helper",
+						price : 100
+					}
+				}/* ,{
+					text : '优惠码管理',
+					iconCls : 'ext_bricks',
+					attributes : {
+						url : "coupon",
+						price : 100
+					}
+				} */,{
+					text : '活动查询',
+					iconCls : 'ext_basket',
+					attributes : {
+						url : "activity",
+						price : 100
+					}
+				},{
+					text : '优惠券管理',
+					iconCls : 'ext_bricks',
+					attributes : {
+						url : "couponActivity",
+						price : 100
+					}
+				}]
+			},
+			{
+				text : '工具',
+				iconCls : 'ext_bullet_wrench',
+				state:'closed',
+				children : [ {
+					text : '图片上传',
+					iconCls : 'ext_picture_add',
+					attributes : {
+						url : "imgUpload",
+						price : 100
+					}
+				},{
+					text : '图片工具',
+					iconCls : 'ext_plugin',
+					attributes : {
+						url : "tool/imgTool",
+						price : 100
+					}
+				},{
+					text : 'ID工具',
+					iconCls : 'ext_plugin',
+					attributes : {
+						url : "tool/idTool",
+						price : 100
+					}
+				},{
+					text : '新手工搬家',
+					iconCls : 'ext_plugin',
+					attributes : {
+						url : "newMoveProduct",
+						price : 100
+					}
+				}]
+			}
+			];
+			mainMenu = $('#mainMenu').tree({
+						lines:true,
+						data : treeData,
+						//parentField : 'pid',
+						onClick : function(node) {
+							if (node.attributes.url) {
+								var src = node.attributes.url;
+								var tabs = $('#mainTabs');
+								var opts = {
+									title : node.text,
+									closable : true,
+									iconCls : node.iconCls,
+									content : '<iframe src="' + src + '" allowTransparency="true" style="border:0;width:100%;height:99%;" frameBorder="0"/>',
+									border : false,
+									fit : true
+								};
+								if (tabs.tabs('exists', opts.title)) {
+									tabs.tabs('select', opts.title);
+								} else {
+									tabs.tabs('add', opts);
+								}
+							}
+						}
+					});
+	
+			/**
+			 * 设置iframe高度
+			 */
+			setIframeHeight = function(iframe, height) {
+				iframe.height = height;
+			}
+	
+			$('#mainLayout').layout('panel', 'center').panel({
+				onResize : function(width, height) {
+					setIframeHeight('centerIframe', $('#mainLayout').layout('panel', 'center').panel('options').height - 5);
+				}
+			});
+	
+			mainTabs = $('#mainTabs').tabs({
+				fit : true,
+				border : false,
+				tools : [{
+					text : '刷新',
+					iconCls : 'icon-reload',
+					handler : function() {
+						var panel = mainTabs.tabs('getSelected').panel('panel');
+						var frame = panel.find('iframe');
+						try {
+							if (frame.length > 0) {
+								for (var i = 0; i < frame.length; i++) {
+									frame[i].contentWindow.document.write('');
+									frame[i].contentWindow.close();
+									frame[i].src = frame[i].src;
+								}							
+								if (navigator.userAgent.indexOf("MSIE") > 0) {// IE特有回收内存方法
+								try {
+										CollectGarbage();
+									} catch (e) {
+									}
+								}
+							}
+						} catch (e) {
+							$.messager.alert('提示', '[' + tab.panel('options').title + ']不可以刷新！', 'error');
+						}
+					}
+				}, {
+					//text : '关闭',
+					iconCls : 'icon-cancel',
+					handler : function() {
+						var index = mainTabs.tabs('getTabIndex', mainTabs.tabs('getSelected'));
+						var tab = mainTabs.tabs('getTab', index);
+						if (tab.panel('options').closable) {
+							mainTabs.tabs('close', index);
+						} else {
+							$.messager.show({
+								title:'提示',
+								msg:'不可以关闭'
+							});
+						}
+					}
+				}, {
+					iconCls : 'ext_arrow_up',
+					handler : function() {
+						mainTabs.tabs({
+							tabPosition : 'top'
+						});
+					}
+				}, {
+					iconCls : 'ext_arrow_down',
+					handler : function() {
+						mainTabs.tabs({
+							tabPosition : 'bottom'
+						});
+					}
+				} ]
+			});
+	
+		});
+		/*]]>*/
+	</script>
+</head> 
+
+<body id="mainLayout" class="easyui-layout" layout:fragment="content">
+	<div data-options="region:'north',href:'layout/north'" style="height: 70px; overflow: hidden;" class="logo"></div>
+	<div data-options="region:'west',split:true" title="导航" style="width: 180px; padding: 10px;">
+		<ul id="mainMenu"></ul>
+	</div>
+	<div data-options="region:'center'" style="overflow: hidden; ">
+		<div id="mainTabs">
+			<div title="首页" data-options="iconCls:'ext_house'">
+				<iframe src="http://www.kkkd.com" allowTransparency="true" style="border: 0; width: 100%; height: 99%;" frameBorder="0"></iframe>
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'south',href:'layout/south',border:false" style="height: 30px; overflow: hidden;"></div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8"/>
+    <title>付款成功</title>
+    <link rel="stylesheet" href="/_resources/css/scss/order_success.css?t=2" />
+
+</head>
+<body>
+<div class="wap-success-down-box">
+    <a class="wap-log" href="//m.xiangqu.com">
+        <img src="/_resources/images/xiangqu/wap_success_logo.png" alt="" />
+    </a>
+    <a class="hasapp" href="javascript:;">
+        <img src="/_resources/images/xiangqu/wap_success_down.png" alt="" />
+    </a>
+</div>
+<div class="wxTop" style="height: 150px;display: none"></div>
+    <div class="wap-order-layout">
+
+    </div>
+
+    <div class="wap-other-btn-box" >
+        <a class="aboutOthers" href="http://m.xiangqu.com">逛逛其他</a>
+        <!--<a data-th-if="${imgUrl == ''}" data-th-href="'/order/'+'1'+'/pay'" >查看订单</a>-->
+<!--         <a data-th-if="${orders.size() == 1}" data-th-href="'/order/'+${order.id}+'/pay'" >查看订单</a>
+        <a data-th-if="${orders.size()} > 1"  data-th-href="/orders?orderStatus=PAID" >查看订单</a> -->
+        <a  class="seeLists" data-th-href="${orders.size()} > 1? 'http://m.xiangqu.com/m/order/list?status=PAID' : '/order/'+${order.id}+'/pay'" >查看订单</a>
+    </div>
+
+
+
+    <!--<div class="wap-fave"></div>-->
+    <div   data-th-if="${imgUrl != ''}" class="wap-success-act">
+        <a data-th-href="${pageUrl}">
+            <img data-th-src="${imgUrl}" alt="" />
+        </a>
+    </div>
+
+    <script src="/_resources/js/jquery-2.2.0.min.js"></script>
+    <script src="/_resources/js/xiangqu/app160127.js?t=1"></script>
+    <script type="text/javascript">
+        $(function(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                $('.wap-success-down-box').hide();
+                $('.wxTop').show();
+                $('.aboutOthers').hide();
+                $('.seeLists').css('float','none');
+                var linkhref=$('.seeLists').attr('href');
+                var timeOut = setTimeout(function(){
+                    window.location.href= linkhref;
+                },2500);
+            } else {
+
+            }
+        });
+    </script>
+</body>
+</html>

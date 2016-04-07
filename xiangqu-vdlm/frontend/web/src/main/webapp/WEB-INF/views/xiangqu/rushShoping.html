@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+    <title>手机号码验证</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+    <meta charset="utf-8" />
+	<script type="text/javascript" charset="utf-8" src="/_resources/js/appframework.js"></script>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/rushbuy.css?v=1.2}" />
+</head>
+
+<body class="bg-grayed">
+	<section data-layout-fragment="content">
+		<div class="bg-white">
+			<div class="inputbox">
+				<input id="phone" type="text" numcanuse="false" class="phonenumber" value="手机号码" />
+        		<input type="text" class="identifyingcode" value="验证码" /><span class="getcodebtn">获取验证码</span>
+			<button type="button" class="getagain">重新获取(<span>60</span>s)</button>
+			</div>
+		</div>
+		<button type="button" class="postcodebtn">提交</button>
+	</section>
+<div data-layout-fragment="postScript">
+	<script>
+	//手机号正则
+	$("#phone").bind('blur',function(){
+        var regu =/^[1][3-8][0-9]{9}$/;
+        var re = new RegExp(regu);
+        var phoneobj = $("#phone").val();
+        if (re.test(phoneobj)) {
+        	$("#phone").attr("numcanuse","true");
+        }else{
+        	$("#phone").attr("numcanuse","false");
+        	$("#phone").val("请填写正确的手机号");
+        }
+    });
+	
+	//获取验证码
+	$(".getcodebtn").bind("click",function(){
+		if($("#phone").attr("numcanuse")){
+			$("#phone").val("请填写正确的手机号");
+			return false;
+		}
+		if(!canGetCode){return false;};
+		var phoneNumber = $("#phone").val();
+		$.ajax({
+			url: '/front/reply/',
+			type: 'POST',
+			data:
+			{"phone":phoneNumber
+				},
+			dataType: 'json',
+			timeout: 50000,
+			error: function(XMLHttpRequest, textStatus, errorThrown){},
+			success: function(data){
+				if(data.code==200) {
+					$(".getagain span").val("60");
+					var phoneCountDown = setInterval(function(){
+						var nextNum = $(".getagain span").val()-1;
+						if(nextNum === -1){
+							clearInterval(phoneCountDown);
+							return false;
+						}
+						$(".getagain span").val(nextNum);
+					},1000);
+				}
+			}
+		});
+	});
+	
+	//重新获取验证码
+	$(".getagain").bind("click",function(){
+		$(".getcodebtn").click();
+	})
+	$(".postcodebtn").bind("click",function(){
+		
+		var phoneNumber = "";
+		var phoneCode = $(".identifyingcode").val();
+		$.ajax({
+			url: '/front/reply/',
+			type: 'POST',
+			data:
+			{"phone":phoneNumber,
+			"code":phoneCode
+				},
+			dataType: 'json',
+			timeout: 50000,
+			error: function(XMLHttpRequest, textStatus, errorThrown){},
+			success: function(data){
+				if(data.code==200) {
+					
+				}
+			}
+		});
+	})
+	</script>
+</div>
+</body>
+</html>

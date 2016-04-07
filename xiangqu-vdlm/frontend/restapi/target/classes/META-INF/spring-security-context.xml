@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<security:http auto-config="false" disable-url-rewriting="true" use-expressions="true"
+	    entry-point-ref="loginEntryPoint">
+        <security:form-login authentication-success-handler-ref="myAuthenticationSuccessHandler" authentication-failure-url="/signin_fail" 
+        always-use-default-target="true" login-page="/signin" default-target-url="/signined"
+        login-processing-url="/signin_check" username-parameter="u" password-parameter="p" />
+		<security:logout logout-url="/logout" logout-success-url="/signined" />
+		<security:remember-me key="${rememberMeServices.key}" services-ref="rememberMeServices" />
+		<security:intercept-url pattern="/" access="permitAll" />
+    	<security:intercept-url pattern="/favicon.ico" access="permitAll" />
+		<security:intercept-url pattern="/signin" access="permitAll" />
+		<security:intercept-url pattern="/signin_fail" access="permitAll" />
+		<security:intercept-url pattern="/signined" access="permitAll" />
+		<security:intercept-url pattern="/register" access="permitAll" />
+		<security:intercept-url pattern="/register/verify" access="permitAll" />
+		<security:intercept-url pattern="/pwdModify/verify" access="permitAll" />
+		<security:intercept-url pattern="/register/create" access="permitAll" />
+		<security:intercept-url pattern="/login_check" access="permitAll" />
+		<security:intercept-url pattern="/registered" access="permitAll" />
+		<security:intercept-url pattern="/send-sms-code" access="permitAll" />
+		<security:intercept-url pattern="/forget-pwd" access="permitAll" />
+		<security:intercept-url pattern="/feedback/save" access="permitAll" />
+		<security:intercept-url pattern="/feedback/reportError" access="permitAll" />	
+		<security:intercept-url pattern="/validate-forget-pwd" access="permitAll" />
+		<security:intercept-url pattern="/tool/**" access="permitAll" />
+		<security:intercept-url pattern="/update/check" access="permitAll" />
+		<security:intercept-url pattern="/index/start" access="permitAll" />
+		<security:intercept-url pattern="/index/home-activity**" access="permitAll" />
+		<security:intercept-url pattern="/category/**" access="permitAll" />
+		<security:intercept-url pattern="/activity/one" access="permitAll" />
+		<security:intercept-url pattern="/product/*/skus" access="permitAll" />
+		<security:intercept-url pattern="/product/skus" access="permitAll" />
+		<security:intercept-url pattern="/zone/**" access="permitAll" />
+		<security:intercept-url pattern="/shop/styles/banners" access="permitAll" />
+		<security:intercept-url pattern="/_f/u" access="isAuthenticated()" />
+		<security:intercept-url pattern="/_f/u/log" access="permitAll" />
+		<security:intercept-url pattern="/_f/**" access="permitAll" />
+		<security:intercept-url pattern="/api-docs/**" access="permitAll" />
+		<security:intercept-url pattern="/_resources/**" access="permitAll" />
+		<security:intercept-url pattern="/product/synchronous" access="permitAll" />
+		<security:intercept-url pattern="/product/view" access="permitAll" />
+		<security:intercept-url pattern="/im/p/*" access="permitAll" />
+		<security:intercept-url pattern="/im/order/*" access="permitAll" />
+		<security:intercept-url pattern="/sync/shop/*" access="permitAll" />
+		<security:intercept-url pattern="/sync/product/*" access="permitAll" />
+		<security:intercept-url pattern="/sync/activity/*" access="permitAll" />
+		<security:intercept-url pattern="/test/spider/fragment" access="permitAll" />
+		<!-- /unionShop 代表第三方的应用调用的api  -->
+		<security:intercept-url pattern="/partner/**" access="permitAll" />
+		<security:intercept-url pattern="/openapi/**" access="permitAll" />
+		<security:intercept-url pattern="/swagger_ui/**" access="permitAll" />
+		<security:intercept-url pattern="/**" access="isAuthenticated()" />
+		<security:session-management>
+			<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
+		</security:session-management>
+	</security:http>
+	
+	<!-- by charon
+		//使用了authentication-success-handler-ref 属性，
+        //原有的always-use-default-target="true" default-target-url="/signined"不生效
+        //现在使用bean注入默认的跳转配置 response.sendRedirect(defaultTargetUrl)
+	 -->
+    <bean id="myAuthenticationSuccessHandler" class="com.vdlm.filter.MyAuthenticationSuccessHandler">  
+        <property name="defaultTargetUrl" value="/signined"></property>  
+    </bean>  
+    
+    <bean id="xiangquLogin" class="com.vdlm.authentication.XiangquLoginStrategy" />  
+    
+</beans>

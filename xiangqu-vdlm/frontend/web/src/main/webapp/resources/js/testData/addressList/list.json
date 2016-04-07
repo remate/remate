@@ -1,0 +1,133 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "archive": false,
+      "common": false,
+      "consignee": "test2",
+      "createdAt": 1452138458000,
+      "details": "中国江西省鹰潭市贵溪市fsddfsdddd fsdfsd fsd ",
+      "hashCode": null,
+      "id": "8rp19jv9",
+      "isDefault": false,
+      "phone": "13136183225",
+      "street": "fsddfsdddd fsdfsd fsd ",
+      "updatedAt": 1452138458000,
+      "userId": "ajux2bwu",
+      "weixinId": null,
+      "zipcode": "",
+      "zoneId": "1411",
+      "zones": [
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "1",
+          "name": "中国",
+          "parentId": "0",
+          "path": "",
+          "updatedAt": null,
+          "zipCode": null,
+          "zoneTag": null
+        },
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "1363",
+          "name": "江西省",
+          "parentId": "1",
+          "path": "1&#62;",
+          "updatedAt": null,
+          "zipCode": "360000",
+          "zoneTag": "华东"
+        },
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "1407",
+          "name": "鹰潭市",
+          "parentId": "1363",
+          "path": "1&#62;1363&#62;",
+          "updatedAt": null,
+          "zipCode": "360600",
+          "zoneTag": null
+        },
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "1411",
+          "name": "贵溪市",
+          "parentId": "1407",
+          "path": "1&#62;1363&#62;1407&#62;",
+          "updatedAt": null,
+          "zipCode": "360681",
+          "zoneTag": null
+        }
+      ]
+    },
+    {
+      "archive": false,
+      "common": false,
+      "consignee": "wrerwe",
+      "createdAt": 1451532358000,
+      "details": "中国山西省晋城市陵川县ewqeqw",
+      "hashCode": null,
+      "id": "8rp0n2rp",
+      "isDefault": true,
+      "phone": "13135162345",
+      "street": "ewqeqw",
+      "updatedAt": 1452074752000,
+      "userId": "ajux2bwu",
+      "weixinId": null,
+      "zipcode": "310000",
+      "zoneId": "287",
+      "zones": [
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "1",
+          "name": "中国",
+          "parentId": "0",
+          "path": "",
+          "updatedAt": null,
+          "zipCode": null,
+          "zoneTag": null
+        },
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "234",
+          "name": "山西省",
+          "parentId": "1",
+          "path": "1&#62;",
+          "updatedAt": null,
+          "zipCode": "140000",
+          "zoneTag": "华北"
+        },
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "282",
+          "name": "晋城市",
+          "parentId": "234",
+          "path": "1&#62;234&#62;",
+          "updatedAt": null,
+          "zipCode": "140500",
+          "zoneTag": null
+        },
+        {
+          "archive": false,
+          "createdAt": 1399363200000,
+          "id": "287",
+          "name": "陵川县",
+          "parentId": "282",
+          "path": "1&#62;234&#62;282&#62;",
+          "updatedAt": null,
+          "zipCode": "140524",
+          "zoneTag": null
+        }
+      ]
+    }
+  ],
+  "msg": null,
+  "success": true
+}

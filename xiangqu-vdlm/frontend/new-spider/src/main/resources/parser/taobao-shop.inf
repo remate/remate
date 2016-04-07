@@ -1,0 +1,25 @@
+﻿[item]
+prop = item
+tag = dt
+attrs-name = class
+attrs-value = photo
+
+[item-extract]
+tag = a
+attrs-name = href
+attrs-value = 
+;取值
+extract-attr = href
+
+[pagination]
+prop = pagination
+tag = div
+attrs-name = class
+attrs-value = pagination
+
+[pagination-extract]
+tag = a
+attrs-name = class
+attrs-value = J_SearchAsync next
+;取值
+extract-attr = href

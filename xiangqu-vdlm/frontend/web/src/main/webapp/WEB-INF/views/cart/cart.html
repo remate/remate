@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>购物车</title>
+</head>
+
+<body id="cart-body" class="as_page bg-grayed" >
+
+<div data-layout-fragment="content">
+	<div data-th-if="${#arrays.isEmpty(cartItems)==true}">
+		<div class="content">
+			<div data-th-replace="fragments/cartEmpty"></div>
+		</div>
+	</div>
+	<div data-th-if="${#arrays.isEmpty(cartItems)==false}">
+		<section>
+	        <input type="hidden" id="shopId" name="shopId" data-th-value="${shopId}"/>
+	        <input type="hidden" id="skuId" name="skuId" data-th-value="${skuId}"/>
+	        <h2 class="bg-grayed font-dark-bold cart-title plr30">购买的商品<span data-th-if="${#arrays.isEmpty(cartItems)}" data-th-text="(还未加入任何商品)"></span></h2>
+	        <!--
+	        <ul class="error" data-th-each="error : ${errors}">
+	            <li data-th-text="${error}"></li>
+	        </ul>
+	        -->
+	        <ul class="order_list">
+	            <li class="bg-white" data-th-each="cartItem : ${cartItems}">
+	                <div class="box order-bar">
+	                    <div class="flex5 w80 order-bar-title mr84">
+	                        <a class="font-dark-bold" data-th-href="${'/p/' + cartItem.productId}" data-th-text="${cartItem.product.name}" target="_blank"></a>
+	                    </div>
+	                    <span class="flex1 font-dark-bold font-dark-opacity cart-pro-del inlineb">
+							<th:block data-th-if="${shopId != null}">
+		                        <a class="item-del-btn right" data-th-attr="itemId=${cartItem.id}" data-th-text="#{Delete}"></a>
+							</th:block>
+	                    </span>
+	                </div>
+	                <div class="ptb22 cartProduct box">
+	                    <div class="flex1">
+	                        <a class="img180 bd" data-th-href="${'/p/' + cartItem.productId}" target="_blank">
+	                            <img data-vd-src="${cartItem.product.img[s03]}"/>
+	                        </a>
+	                    </div>
+	                    <div class="flex9 cartProduct-info width80">
+	                        <div class="clearfix" data-th-attr="sku_id=${cartItem.sku.id}">
+	                            <div class="fl-l">
+	                                <p class="fz24 font-dark-bold font-dark-opacity pb25">数量</p>
+	                                <div class="font-dark-bold fz30">
+	                                    <div class="ff-numb" data-th-replace="fragments/numEditor::numEditor(stock=${cartItem.sku.amount}, amount=${cartItem.amount})"></div>
+	                                </div>
+	                            </div>
+	                            <div class="fl-r">
+	                                <p class="fz24 font-dark-bold font-dark-opacity pb25 taright">类型</p>
+	                                <p class="pro-sku fz24 font-dark ff-numb" data-th-text="${cartItem.sku.spec }" ></p>
+	                            </div>
+	                        </div>
+	                        <div class="cart-price bdt clearfix pt20">
+	                            <span class="fl-l fz24 font-dark-bold font-dark-opacity cart-pro-numb">价格：</span>
+	                            <span class="fl-r cart-total-right font-dark-bold fz24 ff-numb cart-total-left" data-vd-price="${cartItem.sku.price}"></span>
+	                        </div>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+	    </section>
+	    <section class="bg-white">
+	        <ul class="plr40 pt40 mt20">
+	            <li class="box"><div class="flex1 font-dark-bold font-dark-opacity">合计</div><div id="goodsFee" class="flex1 cart-total-right ff-numb fz24" data-vd-price="${prices.goodsFee}"></div></li>
+	            <!--
+	            <li class="mt20 box"><div class="flex1 fz24 font-light-bold">运费</div><div id="logisticsFee" class="flex1 cart-total-right ff-numb fz24" data-vd-price="${prices.logisticsFee}"></div></li>
+	            -->
+	            <li class="mt20 box"><div class="flex1 font-dark-bold font-dark-opacity">优惠</div><div id="discountFee" class="flex1 cart-total-right ff-numb fz24" data-vd-price="${prices.discountFee}"></div></li>
+	        </ul>
+	        <div class="bdt mt30 cart-total-price box bdt">
+	            <div class="flex1 fz28 font-dark-bold ml30">应付总额</div>
+	            <div id="totalFee" class="flex1 cart-total-right fz34 font-orange-bold mr30 ff-numb" data-vd-price="${prices.totalFee}"></div>
+	        </div>
+	    </section>
+	    <!--<section class="pt15b25lr30 bdt">-->
+	    <!--<textarea class="cart-textarea fz26 font-dark" name="" id="" cols="30" rows="3" placeholder="给卖家的备注留言"></textarea>-->
+	    <!--</section>-->
+	    <section class="bg-grayed p30">
+	        <a id="checkout-btn" data-th-href="${nextUrl}" class="button bg-orange cart-checkout-btn fz30 font-white ptb23">结算</a>
+	    </section>
+	</div>
+</div>
+
+<script data-layout-fragment="postScript" type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/cart.js?v=0616}"></script>
+
+</body>
+</html>

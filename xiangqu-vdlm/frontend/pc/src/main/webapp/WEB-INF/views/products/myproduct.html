@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8" />
+    <title>我的商品</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/myproduct.css?v=2}" />
+</head>
+
+<body>
+<ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='product')"></ul>
+<div data-layout-fragment="content">
+    <div class="order-list">
+        <div class="am-kd-search am-cf">
+            <div class="am-form-group am-form-group-sm am-cf am-fl kd-form pad-0">
+                <div class="am-fl">
+                    <select class="combox" name="productStatus">
+                        <option value="onsale" selected="selected">在售商品</option>
+                        <option value="draft">草稿箱</option>
+                        <option value="delay">计划发布</option>
+                        <option value="offsale">已下架</option>
+                    </select>
+                </div>
+            </div>
+            <form class="am-form am-fr" onsubmit="return false;">
+                <div class="am-form-group am-form-icon am-form-search">
+                    <span class="am-icon-search"></span>
+                    <input type="text" class="am-form-field" placeholder="搜索商品" />
+                </div>
+            </form>
+        </div>
+        <div class="order-items column5">
+
+            <!-- table-head start -->
+            <div class="am-table-sort">
+                <span class="col1">商品</span>
+                <span class="col2"><em class="j-order-sales asc j-order" data-dir="desc">&#xe613;</em><i>销量</i></span>
+                <span class="col3"><em class="j-order-amount j-order asc" data-dir="asc">&#xe613;</em><i>库存</i></span>
+                <span class="col4"><em class="j-order-price asc j-order" data-dir="desc">&#xe613;</em><i>价格</i></span>
+                <span class="col5">操作</span>
+            </div>
+            
+            <div class="order-item tab-myproduct">
+                <form id="pagerForm" method="post">
+                    <input type="hidden" name="pageNum" value="1" />
+                    <input type="hidden" name="pageSize" value="8" />
+                    <input type="hidden" name="orderField" value="" />
+                    <input type="hidden" name="direction" value="" />
+                    <input type="hidden" name="status"  value="onsale" />
+                </form>
+                <table class="am-table am-table-hover am-table-border0">
+                    <tbody class="order-item-body">
+                    </tbody>
+                </table>
+            </div>
+            <!-- order-item end -->
+
+        </div>
+        <div class="am-cf my-footer am-pannel">
+            <!-- table 操作 start -->
+            <div class="am-table-handle am-fl">
+                <input type="checkbox" class="kd-checkbox checkAll" group="productId" />全选
+                <button type="button" class="am-btn am-btn-black am-round am-btn-xs am-margin-left-xs" id="J-downs">批量下架</button>   
+                <button type="button" class="am-btn am-btn-black am-round am-btn-xs am-margin-left-xs" id="J-ups">批量上架</button> 
+            </div>
+            <!-- table 操作 end -->
+
+            <div class="pagers pagination am-fr">
+            </div>
+        </div>
+        <script type="text/template" class="tpl-proList">
+        /*<![CDATA[*/
+        {{ if(it.data.list){var listS =  it.data.list;}else if( it.data[0] && it.data[0].list ){ var listS = it.data[0].list } else{var listS =  it.data;} }}
+        {{? it.type !='delay'}}
+            {{~listS:item:index}}
+            <tr class="{{=index%2 == 0 ? '' : 'trbg'}}" data-id="{{=item.id}}">
+                <td class="am-pr col1 tn-l">
+                        <input type="checkbox" name="productId" value="{{=item.id}}" class="kd-checkbox icheck" />
+                    <a href="javascript:;" modal-productShow="{{=item.id}}" class="order-item-desc kd-pictext-td">
+                        <img src="{{=item.imgUrl}}" class="kd-pictext-td-img" />
+                        <p>{{=item.name}}
+                        {{? item.synchronousFlag }}
+                        <br />
+                        <img class="flag-xq" src="/sellerpc/_resources/images/xiangqu20x20.png" title="已通过想去审核" alt="已通过想去审核" />
+                        {{?}}
+                        </p>
+                    </a>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="am-pr col2">
+                    <p class="am-color-gray">销量</p>
+                    <span>{{=item.sales}}</span>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="am-pr col3">
+                    <p class="am-color-gray">库存</p>
+                    <span>{{=item.amount}}</span>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="am-pr col4"> 
+                    <p class="am-color-gray">单价</p>
+                    <span>{{=item.price}}</span>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="col5 table-op">
+                    {{? item.status == 'ONSALE'}}
+                    <a class="btn-proOff" href="javascript:;" data-id="{{=item.id}}">下架</a><br/>
+                    {{?? item.status == 'INSTOCK'}}
+                        <a class="btn-proOn" href="javascript:;" data-id="{{=item.id}}">上架</a><br/>
+                    {{?}}
+                    <a class="btn-proEdit" href="/sellerpc/products/product?id={{=item.id}}" data-id="{{=item.id}}">编辑</a>
+                </td>
+            </tr>
+            {{~}}
+        {{??}}
+            {{~it.data.list:item:index}}
+            <tr class="{{=index%2 == 0 ? '' : 'trbg'}}" data-id="{{=item.list[0].id}}">
+                <td class="am-pr col1 tn-l">
+                    <label class="am-checkbox am-warning">
+                        <input type="checkbox" name="productId" value="{{=item.list[0].id}}" class="kd-checkbox" />
+                    </label>
+                    <a href="javascript:;" modal-productShow="{{=item.list[0].id}}" class="order-item-desc kd-pictext-td">
+                        <img src="{{=item.list[0].imgUrl}}" class="kd-pictext-td-img" />
+                        <p>{{=item.list[0].name}}</p>
+                    </a>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="am-pr col2">
+                    <p class="am-color-gray">发布时间</p>
+                    <span>{{= moment(item.list[0].forsaleAt).format('MM月DD日 HH:mm')  }}</span>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="am-pr col3">
+                    <p class="am-color-gray">库存</p>
+                    <span>{{=item.list[0].amount}}</span>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="am-pr col4"> 
+                    <p class="am-color-gray">单价</p>
+                    <span>{{=item.list[0].price}}</span>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="col5 table-op">
+                    <a class="btn-proEdit" href="/sellerpc/products/product?id={{=item.list[0].id}}" data-id="{{=item.list[0].id}}">编辑</a>
+                </td>
+            </tr>
+            {{~}}
+        {{?}}
+        /*]]>*/
+    </script>
+        
+    </div>
+    <!-- order-list end -->
+</div>
+<!-- fragment-content end -->
+
+<div data-layout-fragment="postScript">
+    <script>
+    require(['base/all', 'base/myproduct']);
+    </script>
+</div>
+<!-- fragment-postScript end -->
+</body>
+</html>
+

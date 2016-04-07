@@ -1,0 +1,49 @@
+
+
+/* 符合快店主题的搜索框 
+使用案例：
+<div class="am-kd-search">
+  <form class="am-form am-fr">
+    <div class="am-form-group am-form-icon am-form-search">
+        <span class="am-icon-search"></span>
+        <input type="text" class="am-form-field" placeholder="搜索订单" />
+    </div>
+  </form>
+ </div> 
+*/
+
+.am-kd-search {
+    .am-form {
+        width: 220px;
+        height: 40px;
+    }
+    .am-selected-btn.am-btn-default{
+        background: #fff;        
+    }
+    .am-form .am-form-group {
+        margin-bottom: 0;
+    }
+    .am-form .am-icon-search {
+        top: 54%;
+        font-size: 14px;
+        color: #91939a;
+        cursor:pointer;
+    }
+    .am-form .am-form-field {
+        height: 40px;
+        font-size: 12px;
+        border-color: #f6f7f8; 
+        background-color: #fff;
+        border-radius: 3px;
+        border: 2px solid #e3e4e8;
+        background-clip: padding-box;
+        overflow: hidden;
+    }
+}
+
+.ie8{
+    .am-kd-search .am-form .am-form-field{
+        line-height: 28px;
+    }
+}
+

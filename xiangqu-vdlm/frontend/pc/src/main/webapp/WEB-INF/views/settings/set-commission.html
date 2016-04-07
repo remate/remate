@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+
+<head>
+    <meta charset="utf-8" />
+    <title>佣金设置 - 想去商家版</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/set-commission.css}" />
+</head>
+
+<body>
+    <ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='settings')">
+    </ul>
+    <div data-layout-fragment="content">
+        <div class="setCommission">
+            <div class="am-kdbar am-kd-search am-pannel am-pannel-round">
+                <nav data-th-replace="fragments/settings-nav::settings_nav(step=3)"></nav>
+            </div>
+            <div class="am-pannel set-pannel am-pr">
+                <form class="am-form am-form-horizontal kd-form" id="J-commission-form">
+                    <p class="set-title">分佣设置</p>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="Proportion" class="am-fl am-form-label">佣金比例</label>
+                        <div class="am-fl">
+                            <input type="text" id="Proportion" name="Proportion" value="" placeholder="请输入分佣比例" data-th-if="${shop.commisionRate} == null or ${shop.commisionRate} == ''" />
+                            <input type="text" id="Proportion" name="Proportion" data-th-value="${#numbers.formatDecimal(shop.commisionRate * 100 ,0,2)}" placeholder="请输入分佣比例" data-th-unless="${shop.commisionRate} == null or ${shop.commisionRate} == ''" />
+                        </div>
+                        <label class="am-fl am-form-label am-text-center set-union">%</label>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label am-label-switch">是否开启分佣</label>
+                        <div class="am-fl">
+                            <input class="am-switch open-pro open-shop-com" type="checkbox" data-th-attr="checked= ${shop.commisionRate != null or shop.commisionRate == 0}" />
+                        </div>
+                    </div>
+                    <hr />
+                    <p class="am-padding-bottom-sm commissionTitle">销售平台
+                        <span class="commissionsState" data-th-if="${#lists.size(shop.thirdCommissions) != 0 and shop.thirdCommissions[0].auditSts == 'AUDITTING' }">后台审核中，暂时无法修改，请耐心等待审核结果</span>
+                        <span class="commissionsState" data-th-if="${#lists.size(shop.thirdCommissions) != 0 and shop.thirdCommissions[0].auditSts == 'DENY' }">审核未通过</span>
+                        <span class="commissionsState" data-th-if="${#lists.size(shop.thirdCommissions) != 0 and shop.thirdCommissions[0].auditSts == 'PASS' }">审核通过，请查看商品列表中通过审核的商品。需要修改请联系我们</span>
+                    </p>
+                    <table class="am-table am-table-hover commission-table">
+                        <tbody>
+                            <tr data-th-each="thirdCommission:${shop.thirdCommissions}" data-th-attr="data-id=${thirdCommission.thirdId},data-partner=${thirdCommission.thirdPartner}">
+                                <td class="kd-pictext-td commission-info am-pr">
+                                    <img  data-th-src="@{/_resources/images/xiangquLogo.png}" class="commission-info-img kd-pictext-td-img" />
+                                    <p>想去网,汇集全球高品质,好设计的购物社区,想去网坚持独特,不追随潮流,静静为用户提供好东西
+                                    </p>
+                                    <i class="kd-table-line"></i>
+                                </td>
+                                <td class="commission-percent am-pr">
+                                    <div class="am-form-group am-form-group-sm">
+                                        <label class="am-fl am-form-label">佣金比例</label>
+                                        <div class="am-fl">
+                                            <input type="text" class="thirdComm" value="" data-th-if="${thirdCommission.commissionRate} == null" />
+                                            <input type="text" class="thirdComm" data-th-value="${#numbers.formatDecimal(thirdCommission.commissionRate * 100 ,0,2)}" data-th-if="${thirdCommission.commissionRate} != null and ${thirdCommission.auditSts} == 'UNAUDIT'" />
+                                            <input type="text" class="thirdComm" data-th-value="${#numbers.formatDecimal(thirdCommission.commissionRate * 100 ,0,2)}" data-th-if="${thirdCommission.commissionRate} != null and ${thirdCommission.auditSts} == 'AUDITTING'" readonly="readonly" />
+                                            <input type="text" class="thirdComm" data-th-value="${#numbers.formatDecimal(thirdCommission.commissionRate * 100 ,0,2)}" data-th-if="${thirdCommission.commissionRate} != null and ${thirdCommission.auditSts} == 'PASS'" readonly="readonly" />
+                                            <input type="text" class="thirdComm" data-th-value="${#numbers.formatDecimal(thirdCommission.commissionRate * 100 ,0,2)}" data-th-if="${thirdCommission.commissionRate} != null and ${thirdCommission.auditSts} == 'DENY'" />
+                                        </div>
+                                        <label class="am-fl am-form-label am-text-center set-union">%</label>
+                                    </div>
+                                    <i class="kd-table-line"></i>
+                                </td>
+                                <td class="commission-join">
+                                    <div class="am-form-group am-form-group-sm">
+                                        <label class="am-fl am-form-label label-open-pro">是否加入平台</label>
+                                        <div class="am-fl">
+                                            <input class="am-switch open-pro open-third-com" type="checkbox" data-th-if="${thirdCommission.auditSts == 'UNAUDIT'}" />
+                                            <input class="am-switch open-pro open-third-com" type="checkbox" data-th-if="${thirdCommission.auditSts == 'AUDITTING'}" checked="checked" disabled="disabled" />
+                                            <input class="am-switch open-pro open-third-com" type="checkbox" data-th-if="${thirdCommission.auditSts == 'PASS'}" checked="checked" disabled="disabled" />
+                                            <input class="am-switch open-pro open-third-com" type="checkbox" data-th-if="${thirdCommission.auditSts == 'DENY'}" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div data-th-replace="fragments/settings-footer"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        require(['base/all', 'base/set-commission']);
+        </script>
+    </div>
+</body>
+
+</html>

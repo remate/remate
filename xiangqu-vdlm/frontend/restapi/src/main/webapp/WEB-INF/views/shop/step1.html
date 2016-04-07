@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html layout:decorator="/layout/mainPage">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta charset="utf-8" />
+    <title>step1</title>
+</head>
+<body class="as_page">
+	<div layout:fragment="content" class="mt44">
+        <section>
+            <ul class="step-list bd-shb box fz24">
+                <li class="step-list-item flex1">
+                    <span class="step-ico">
+                        <img src="../../../_resources/images/shop/step1-sel.png" alt=""/>
+                    </span>
+                    <span class="step-text font-dark">获取验证码</span>
+                </li>
+                <li class="step-list-item flex1">
+                    <span class="step-ico">
+                        <img src="../../../_resources/images/shop/step2.png" alt=""/>
+                    </span>
+                    <span class="step-text font-light">店铺验证</span>
+                </li>
+                <li class="step-list-item flex1">
+                    <span class="step-ico">
+                        <img src="../../../_resources/images/shop/step3.png" alt=""/>
+                    </span>
+                    <span class="step-text font-light">开始搬家</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <div class="step-password">
+                <div class="step-password-title fz30 font-dark">搬家验证码: <span class="fz36 ff-numb font-orange pl20" th:text="${rnd}"></span></div>
+                <div class="step-password-text fz24 font-light">请登录淘宝的卖家中心，将验证码加入任意一个商品的标题中（也可以发布一个新商品，在商品标题中填写该验证码）。</div>
+                <div class="step-exemp pt20">
+                    <p class="step-exemp-title">例如</p>
+                    <p class="step-exemp-img pt20"><img src="../../../_resources/images/shop/step1-intro.png" alt="" /></p>
+                </div>
+            </div>
+        </section>
+        <section class="bg-grayed p30 box-sht">
+            <a class="button bg-orange cart-checkout-btn fz30 font-white ptb30" th:href="@{'/shop/step2?rnd='+${rnd}}">下一步</a>
+        </section>
+	</div>
+	<div layout:fragment="postScript">
+	    <script type="text/javascript" charset="utf-8" th:src="@{/_resources/js/page/shop.js}"></script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE" th:text="#{appName}">快快开店</title>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" th:href="@{/_resources/css/vd_base.css}" />
+	<link id="easyuiTheme" rel="stylesheet" type="text/css" th:href="@{'/_resources/js/easyui/1.3.6/themes/default/easyui.css'}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/_resources/js/easyui/1.3.6/themes/icon.css?v=1.2}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/_resources/js/easyui/extIcons.css?v=1.2}"/>
+	
+	<!-- script -->
+	<script type="text/javascript" th:src="@{/_resources/js/easyui/1.3.6/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/_resources/js/easyui/1.3.6/jquery.easyui.min.js}"></script>
+	<script type="text/javascript" th:src="@{/_resources/js/easyui/1.3.6/locale/easyui-lang-zh_CN.js}" charset="utf-8"></script>
+	<script type="text/javascript" th:src="@{/_resources/js/easyui/easyuiUtils.js?v=1.6}"></script>
+	<script type="text/javascript" th:src="@{/_resources/js/jqueryUtils.js}"></script>
+	<script type="text/javascript" th:src="@{/_resources/js/jquery.cookie.js}"></script> 
+	<script type="text/javascript" th:src="@{/_resources/js/date.js}"></script>
+	<script type="text/javascript" th:src="@{/_resources/js/json2.js}"></script>
+	<script type="text/javascript" th:inline="text">
+	/*<![CDATA[*/
+	/*
+	$(function() {
+		var themeName = $.cookie('easyuiThemeName');
+		if(themeName && themeName != 'default'){
+			var $easyuiTheme = $('#easyuiTheme');
+			var url = $easyuiTheme.attr('href');
+			var href = url.substring(0, url.indexOf('themes')) + 'themes/' + themeName + '/easyui.css';
+			$easyuiTheme.attr('href', href);			
+		}
+	});*/
+	/*]]>*/
+	</script>
+</head>
+<body layout:fragment="content">
+</body>
+</html>

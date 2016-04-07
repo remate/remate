@@ -1,0 +1,109 @@
+<html data-layout-decorator="/layout/mainPageXQKD">
+
+<head>
+    <title>退款进度</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate" />
+    <META HTTP-EQUIV="expires" CONTENT="0" />
+    <link rel="stylesheet" type="text/css" href="/_resources/css/xiangqu/refund.css?v=1.1" />
+</head>
+
+<body class="refund refundProcess">
+    <div data-layout-fragment="content">
+    <form>
+    <input type="hidden" id="id" name="id" data-th-value="${orderRefund.id==null?'':orderRefund.id}"/>
+    <input type="hidden" id="orderId" name="orderId" data-th-value="${orderRefund.orderId==null?'':orderRefund.orderId}"/>
+        <section class="refundProcess-main">
+
+
+	<div data-th-if="${orderRefunded!= null }">
+		<div data-th-each="refundone:${orderRefunded}">
+        <div data-th-each="refunItem : ${refundone.opDetails}" class="refundMsg clearfix" data-th-classappend="${refunItem.from == 2 ? 'refundMsg_1' : 'refundMsg_2'}">
+                <div class="refundMsg-time" data-th-text="${#dates.format(refunItem.time, 'yyyy-MM-dd HH:mm')}">
+                </div>
+                <div class="refundMsg-main">
+                    <div class="refundMsg-title" data-th-if="${refunItem.title != '' and (refunItem.type == 1 || refunItem.type == 0)}" data-th-text="${refunItem.title}">
+                    </div>
+                    <div class="refundMsg-title" data-th-if="${refunItem.type != 0 and refunItem.type != 1}" data-th-text="${refunItem.defaultTitle}">
+                    </div>
+
+                    <div class="clearfix"  data-th-if="${refunItem.type == 0}">
+                        <pre data-th-text="${refunItem.content}">
+                        </pre>
+                    </div>
+                    <div class="clearfix" data-th-if="${refunItem.type == 1}">
+                        <img data-vd-src="${refunItem.content}" />
+                    </div>
+                    <div class="clearfix" data-th-if="${refunItem.type != 0 and refunItem.type != 1}">
+                        <pre data-th-text="${refunItem.defaultContent}">
+                        </pre>
+                    </div>
+                </div>
+            </div>
+             <hr color="1A272F" width="90%"/>
+            </div>
+          </div>
+
+            
+            <!-- 未发货申请退款 -->
+            <div data-th-each="refunItem : ${orderRefund.opDetails}" class="refundMsg clearfix" data-th-classappend="${refunItem.from == 2 ? 'refundMsg_1' : 'refundMsg_2'}">
+                <div class="refundMsg-time" data-th-text="${#dates.format(refunItem.time, 'yyyy-MM-dd HH:mm')}">
+                </div>
+                <div class="refundMsg-main">
+                    <div class="refundMsg-title" data-th-if="${refunItem.title != '' and (refunItem.type == 1 || refunItem.type == 0)}" data-th-text="${refunItem.title}">
+                    </div>
+                    <div class="refundMsg-title" data-th-if="${refunItem.type != 0 and refunItem.type != 1}" data-th-text="${refunItem.defaultTitle}">
+                    </div>
+
+                    <div class="clearfix"  data-th-if="${refunItem.type == 0}">
+                        <pre data-th-text="${refunItem.content}">
+                        </pre>
+                    </div>
+                    <div class="clearfix" data-th-if="${refunItem.type == 1}">
+                        <img data-vd-src="${refunItem.content}" />
+                    </div>
+                    <div class="clearfix" data-th-if="${refunItem.type != 0 and refunItem.type != 1}">
+                        <pre data-th-text="${refunItem.defaultContent}">
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 未发货申请退款 -->
+        <div data-th-if="${orderRefund.status.name().equals('SUBMITTED')}">
+            <section class="refund-bottom">
+                <a data-th-href="${'/order/refund/toRequest?id=' + orderRefund.id}" class="cart_btn cart_btn_1">修改申请</a>
+                <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_cancel">取消申请</a>
+            </section>
+        </div>
+        <!-- 已发货申请退款 -->
+        <div data-th-if="${orderRefund.status.name().equals('AGREE_RETURN')}">
+            <section class="refund-bottom">
+                <a data-th-href="${'/order/refund/toShip/' + orderRefund.id}" class="cart_btn cart_btn_1">录入退货信息</a>
+                <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_cancel">取消申请</a>
+            </section>
+        </div>
+
+        <!-- 已发货申请退款并已退货 -->
+        <div data-th-if="${orderRefund.status.name().equals('RETURN_ING')}">
+            <section class="refund-bottom">
+                <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_cancel">取消申请</a>
+            </section>
+        </div>
+        
+            <!-- 继续退款 -->
+        <div data-th-if="${continueRefund != null }">
+            <section class="refund-bottom">
+                <a data-th-href="${'/order/refund/'+orderRefund.orderId}+${'?continueRefund='+continueRefund.longValue()}" class="cart_btn cart_btn_1">继续申请</a>
+            </section>
+        </div>
+        
+		</form>        
+    </div>
+
+    <div data-layout-fragment="postScript">
+    <script type="text/javascript" data-th-src="@{/_resources/js/page/orderRefund.js?v=6}"></script>
+    </div>
+</body>
+
+</html>

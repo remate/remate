@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>ID工具</title>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    var obfuscated = function(){
+    	
+    var obfuscatedType = $('#obfuscatedType').val();
+    var val = $('#idCode').val();
+    var params = {};
+		//$.messager.progress();
+		$.getJSON('img/' + obfuscatedType+'/' + val, params, function(data) {
+			//$.messager.progress('close');
+			if(data){
+				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+val+"</td><td><a href='"+data.msg+"' target='_blank'>" + data.msg + "</a></td></tr>" ;
+				$("#tabBody").prepend(trHTML);
+			}
+		});
+    }
+    /*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 20px;">	    
+	    <div>
+	    	<input type="text" name="idCode" id="idCode" style="width:350px;"/>
+	    	<select name="obfuscatedType" id="obfuscatedType">
+	    		<option value="decode">key转URL</option>
+	    		<!-- 
+	    		<option value="encode">加密(encode)</option>
+	    		 -->
+	    	</select>
+	    	<input type="button" value="确定" onclick="javascript:obfuscated();"/>
+	    </div>
+    </div>
+    <div style="margin: 20px;">
+    	<table id="tab" border="1">
+    		<tr><td style="width:30px;">&nbsp;</td><td style="width:200px;">原值</td><td style="width:500px;">结果</td></tr>
+    		<tbody id="tabBody">
+    		
+    		</tbody>
+    	</table>
+    </div>
+</body>   
+</html>

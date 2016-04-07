@@ -1,0 +1,55 @@
+<div data-layout-fragment="cardBank">
+        <!-- Nav tabs -->
+        <ul class="card-tab clearfix" role="tablist" id="menu">
+            <li role="presentation" id="creditCardLi" class="card-tab-item fl-l active" >
+                <a role="tab" data-toggle="tab"  href="#xinyongka">信用卡</a>
+            </li>
+            <li role="presentation" id="debitCardLi" class="card-tab-item fl-l">
+                <a role="tab" data-toggle="tab"  href="#chuxuka">储蓄卡</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div id="myTabContent" class="tab-content">
+            <div role="tabpanel" class="card-content-xinyongka tab-pane fade in active" id="xinyongka">
+                <div id="creditCardHotTab" style="display:block;">
+                        <div data-th-each="creditCardBanks : ${creditCardBanks}" class="clearfix card-bank-list" id="creditHot" data-th-if="${creditCardBanks.keyName.equals('hot')}">
+                               <div class="fl-l card-bank-item"  data-th-each="bean,stat:${creditCardBanks.valueList}" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" data-pay-type="UMPAY" data-th-attr="data-card-type=@{CREDITCARD},data-bank-code=${bean.bankCode}">
+                                <img data-th-src="${bean.img}"/><span class="" data-th-text="${bean.bankName}"></span>
+                            </div>
+                        </div>
+                </div>
+                <div id="creditCardAllTab" style="display:block;">
+                        <div data-th-each="creditCardBanks : ${creditCardBanks}" id="creditNotHot" data-th-if="${!creditCardBanks.keyName.equals('hot')}">
+                            <h3 class="cart_word" data-th-text="${creditCardBanks.keyName}"></h3>
+                            <div class="card-bank-list clearfix">
+                                <div data-th-each="bean,stat:${creditCardBanks.valueList}" class="card-bank-item fl-l" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" data-pay-type="UMPAY" data-th-attr="data-card-type=@{CREDITCARD},data-bank-code=${bean.bankCode}">
+                                    <span data-th-text="${bean.bankName}"></span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div role="tabpanel" id="chuxuka" class="tab-pane fade in">
+                <div class="clearfix card-bank-list" data-th-each="debitCardBanks : ${debitCardBanks}" id="debitHot" data-th-if="${debitCardBanks.keyName.equals('hot')}">
+                    <div data-th-each="bean,stat:${debitCardBanks.valueList}" class="fl-l card-bank-item" data-th-id="${debitCardBanks.keyName}+'_'+${stat.index}"  data-pay-type="UMPAY"  data-th-attr="data-card-type=@{DEBITCARD},data-bank-code=${bean.bankCode}">
+                            <img class="flex1" data-th-src="${bean.img}"/><span class="" data-th-text="${bean.bankName}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="p30" id="showAllBtn" style="display:block">
+            <input class="button bg-orange cart-checkout-btn cart-checkout-btn-new fz30 font-white ptb30" type="button" value="显示所有银行" onclick="showAll()"/>
+        </div>
+         -->
+</div>
+<!--
+    <script data-layout-fragment="postScript" type="text/javascript" charset="utf-8" data-th-inline="text">
+        var submitReq = function (type, obj) {
+            var id = $(obj).attr("ID");
+            var url = $("#" + type + "_" + id).val();
+            $("#order_submit_form").attr("action", url);
+            $("#order_submit_form")[0].submit();
+        }
+    </script>
+-->

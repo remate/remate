@@ -1,0 +1,53 @@
+
+
+.am-modal {
+    max-height: 750px;
+    overflow: auto;
+}
+/* 开店弹出框 */
+
+.kd-modal-dialog {
+    padding: 14px 30px 20px;
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #7c7c7f;
+    .kd-modal-title {
+        text-align: center;
+        line-height: 70px/2;
+    }
+    .kd-form {
+        padding: 0;
+    }
+}
+
+//重写alert弹出框
+.KD-alert,
+.KD-confirm {
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
+    .kd-modal-dialog {
+        padding: 0 0 11px 0;
+        color: @black;
+    }
+    .kd-modal-title {
+        margin-bottom: 0;
+        line-height: 90px/2;
+        font-size: 14px;
+        border-bottom: 1px solid @borderColor;
+    }
+    .am-modal-body {
+        font-size: 12px;
+        padding: 38px/2 8px 30px/2;
+    }
+}
+//此处加important是为了防止框架改变弹层的大小
+.KD-alert {
+    width: 560px/2!important;
+    margin-left: -560px/4!important;
+}
+
+.KD-confirm {
+    width: 380px!important;
+    margin-left: -380px/2!important;
+}
+

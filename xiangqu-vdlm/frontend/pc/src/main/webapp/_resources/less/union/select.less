@@ -1,0 +1,79 @@
+.am-selected-btn {
+    width: 270px/2;
+    height: 40px;
+    border: 2px solid #e3e4e8;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.am-selected-btn .am-selected-status {
+    text-align: center;
+}
+
+.am-selected-btn.am-btn-default {
+    background: #fafbfc;
+}
+
+.am-active .am-selected-btn {
+    border-bottom: none;
+    background-color: #fff;
+    border-radius: 3px 3px 0 0;
+}
+
+.am-selected-btn .am-icon-caret-down:before {
+    content: "\f107";
+}
+
+.am-active .am-selected-btn .am-icon-caret-down:before {
+    content: "\f106";
+}
+
+.am-btn-default:active,
+.am-btn-default.am-active,
+.am-active .am-btn-default.am-dropdown-toggle {
+    background-color: #fff;
+}
+
+.am-selected-content:before,
+.am-selected-content:after {
+    display: none;
+}
+
+.am-selected-content {
+    margin: 0;
+    padding: 0;
+    border: 2px solid #e3e4e8;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    max-height: 220px;
+    overflow: auto;
+}
+
+.am-btn-default:hover,
+.am-btn-default:focus,
+.am-btn-default:active,
+.am-btn-default.am-active,
+.am-active .am-btn-default.am-dropdown-toggle {
+    border-color: #e3e4e8;
+}
+
+.am-selected-list {
+    font-size: 12px;
+}
+
+.am-selected-list li {
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    text-align: center;
+    &.am-checked, &:hover {
+        background-color: #e3e4e8;
+    }
+    .am-icon-check {
+        display: none;
+    }
+}
+
+.am-selected-list li .am-selected-text {
+    margin-right: 0;
+}

@@ -1,0 +1,59 @@
+<div  data-th-fragment="addressEditor(address, editable)" class="cart-address">
+    <div class="address-modify" id="j-address" data-th-if="${editable}" data-th-attr="style=${address == null ? '' : 'display:none'}">
+        <i class="cart-address-bd1"></i>
+        <form id="post_form" method="post" action="/address/save">
+            <input type="hidden" id="addId" name="id" data-th-if="${address != null}" data-th-value="${address.id}"/>
+            <input type="hidden" id="zoneId" name="zoneId"/>
+            <input type="hidden" id="weixinId" name="weixinId" value=""/>
+            <ul class="address">
+                <li class="clearfix">
+                    <label class="fl-l" for="idChoose">所在地区:</label>
+                    <div id="idChoose" class="fl-l clearfix choose-address">
+                        <select id="province" name="province" class="form-control fl-l" >
+                            <option value="0">--省份--</option>
+                            <option data-th-each="provinceItem : ${provinceList}" data-th-value="${provinceItem.id}" data-th-text="${provinceItem.name}" data-th-attr="selected=${province != null and provinceItem.id eq province.id}"></option>
+                        </select>
+                        <select id="city" name="city" class="form-control fl-l">
+                            <option value="0">--城市--</option>
+                            <option data-th-each="cityItem : ${cityList}" data-th-value="${cityItem.id}" data-th-text="${cityItem.name}" data-th-attr="selected=${cityItem.id eq city.id}"></option>
+                        </select>
+                        <select id="district" name="district" class="form-control fl-l">
+                            <option value="0">--地区--</option>
+                            <option data-th-each="districtItem : ${districtList}" data-th-value="${districtItem.id}" data-th-text="${districtItem.name}" data-th-attr="selected=${districtItem.id eq district.id}"></option>
+                        </select>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <label class="fl-l" for="address">详细地址:</label>
+                    <textarea id="street" name="street" placeholder="详细地址" required="required" class="address-textarea fl-l" cols="30" rows="10" data-th-inline="text">[[${address == null ? '' : address.street}]]</textarea>
+                </li>
+                <li class="clearfix">
+                    <label class="fl-l" for="idName">收货人姓名:</label>
+                    <input class="fl-l address-input" id="consignee" name="consigneename" type="text" required="required" data-th-value="${address == null ? '' : address.consignee}"/>
+                </li>
+                <li class="clearfix">
+                    <label class="fl-l" for="idNumb">手机号码:</label>
+                    <input class="fl-l address-input" id="phone" name="phone" type="text"  required="required" data-th-value="${address == null ? '' : address.phone}"/>
+                </li>
+                <li>
+                    <input id="addressBtn" class="addressBtn" type="button"/>
+                </li>
+            </ul>
+        </form>
+        <i class="cart-address-bd2"></i>
+    </div>
+    <div class="address-show bg-white" data-th-attr="style=${address == null ? 'display:none' : ''}" >
+        <div class="address-show-container">
+            <i class="address-show-bd1"></i>
+            <ul class="address-list">
+                <li class="address-show-item">
+                    <span class="address-show-name" data-th-text="${address == null ? '' : address.consignee}"></span>
+                    <span class="address-show-tel" data-th-text="${address == null ? '' : address.phone}"></span>
+                </li>
+                <li class="address-show-item pt20 address-show-address" data-th-text="${address == null ? '' : address.details}"></li>
+            </ul>
+            <i class="address-show-bd2"></i>
+        </div>
+        <input type="button" class="addrss-editor" data-th-if="${editable}" value="修改收货地址"/>
+    </div>
+</div>

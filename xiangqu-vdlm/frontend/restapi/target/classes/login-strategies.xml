@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<login-strategies>
+<!-- 	<default type="customized-ref" strategy="restapiLogin" /> -->
+	<domains>
+		<domain name="kkkd.xiangqu.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="kkkd.xiangqutest.com" type="customized-ref" strategy="xiangquLogin" />
+		<domain name="xiangqu.kkkd.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="xiangqu.kkkdtest.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="pre.kkkd.xiangqu.com" type="customized-ref" strategy="xiangquLogin" />
+    </domains>
+</login-strategies>

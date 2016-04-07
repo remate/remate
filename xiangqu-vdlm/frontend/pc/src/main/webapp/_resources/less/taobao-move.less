@@ -1,0 +1,164 @@
+@import 'variable';
+.move {
+    padding: 26px 22px;
+    height:@siderBarHeight;
+    ul{
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        list-style: none;
+    }
+    .move-title {
+        margin: 0;
+    }
+    .move-bar {
+        width: 890px/2;
+        height: 44px;
+        overflow: hidden;
+        margin: 0 auto;
+        font-size: 0;
+    }
+    .move-bar .move-line-bg,
+    .move-line-now {
+        left: 42px;
+        top: 50%;
+        width: 360px;
+        margin-top: -8px;
+        height: 16px;
+    }
+    .move-bar .move-line-bg {
+        background-color: #f6f7f8;
+    }
+    .move-bar .move-line-now {
+        width: 0;
+        background-color: @orange;
+        transition: .6s;
+    }
+    .move-bar .move-bar-step {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        color: #fff;
+        font-size: 30px;
+        background-color: #f6f7f8;
+        border-radius: 1000px;
+        transition: .6s .4s;
+    }
+    .move-bar .move-bar-step-1{
+        background-color: @orange;
+    }
+    .move-bar .move-bar-step-2 {
+        display: inline-block;
+        left: -20px;
+    }
+    .move-bar .move-bar-step-3{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    //各步骤状态
+    .move-bar.step-1 .move-bar-step-1 {
+        background-color: @orange;
+    }
+    .move-bar.step-2 .move-bar-step-1,
+    .move-bar.step-2 .move-bar-step-2 {
+        background-color: @orange;
+    }
+    .move-bar.step-2 .move-line-now {
+        width: 190px;
+    }
+    .move-bar.step-3 .move-bar-step {
+        background-color: @orange;
+    }
+    .move-bar.step-3 .move-line-now {
+        width: 90%;
+    }
+    //各步骤状态end
+    .move-status {
+        margin: 5px auto 30px;
+        width: 500px;
+        font-size: 0;
+    }
+    .move-status li{
+        width: 100px;
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    .move-next{
+        display: block;
+        margin: 76px/2 auto;
+        width: 400px;
+    }
+    //下面步骤的公共样式
+    .move-step {
+        display: none;
+    }
+    .move-step .label-auto{
+        width: auto;
+    }
+    .move-step .move-step-state{
+        margin-top: 0;
+    }
+    .move-step .move-step-imgtip{
+        margin-bottom: 0;
+    }
+    .move-step .move-step-imgtip .kkkd{
+        color:@orange;
+        font-size: 20px;
+    }
+
+    //第一步的css
+    .move-step1{
+        display: block;
+    }
+    .move-step1 .copycode{
+        width: 90px;
+    }
+    .move-step3 .car{
+        margin-bottom: 30px;
+        height: 140px;
+        line-height: 210px;
+        color:#bababf;
+        font-size: 130px;
+        text-align: center;
+    }
+
+    //弹出的选项
+    .move-pop .kd-modal-body{
+        padding-top: 20px;
+        padding-bottom: 120px;
+    }
+    .move-pop .kd-modal-title{
+        font-size: 14px;
+    }
+    .move-pop .move-pop-item{
+        padding-left: 30px;
+        margin-bottom: 20px;
+        label{
+            cursor: pointer;
+        }
+        .move-pop-item-title,
+        .move-pop-item-text{
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 28px;
+            font-size: 14px;
+        }
+        .move-pop-item-title{
+            color:#505557;
+        }
+        .move-pop-item-text{
+            margin-top: -5px;
+            color:#9eaab3;
+            padding-left: 28px;
+        }
+        .iradiobox{
+            top:-1px;
+            margin-right: 6px;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<a data-th-href="'/p/'+${prod.id}" data-th-fragment="card(prod)">
+    <div class="img-outer">
+        <img class="js-img-size" data-th-attr="imgWidth=${prod.imgWidth},imgHeight=${prod.imgHeight}" data-vd-src="${prod.img}" data-th-alt="${prod.name}" />
+    </div>
+    <div class="pro-item-text p10">
+        <p class="widthhuanh fz20 font-dark" data-th-text="${prod.name}"></p>
+        <span class="fz22 ff-numb pt10 font-orange-bold" data-vd-price="${prod.price}"></span>
+        <span class="fz22 ff-numb pt10 font-dark-bold" style="text-decoration: line-through;"></span>
+    </div>
+</a>

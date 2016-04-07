@@ -1,0 +1,543 @@
+/**
+ * Created by ziyu on 2016/1/19.
+ */
+@charset "UTF-8";
+@import "config.scss";
+
+$icon-address-w:'/_resources/images/xiangqu/address_icon.png';
+$icon-right-w:'/_resources/images/xiangqu/right-icon.gif';
+html,body{
+  -webkit-text-size-adjust: none;
+
+}
+
+.state-show,body{
+  background: #f0f0f0;
+  //font-weight:900;
+}
+.state-show{
+  .J_home{
+    overflow: hidden;
+  }
+}
+.my-address-lists{
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  .no-address{
+    display: none;
+    padding:0 px2rem(24);
+    height:px2rem(100);
+    border-bottom:1px solid #e5e5e5;
+    background: #fff;
+    margin-bottom:px2rem(20);
+    .address-tip{
+      padding-top:px2rem(34);
+      overflow: hidden;
+      height: px2rem(34);
+      i{
+        background: url($icon-address-w) no-repeat;
+        background-position: 0  0;
+        background-size:contain;
+        width:px2rem(34);
+        height:px2rem(34);
+        margin-right:px2rem(12);
+        display: block;
+        float: left;
+      }
+      span{
+        float: left;
+        height:px2rem(25);
+        line-height:px2rem(34);
+        font-size:px2rem(28);
+        &.new-address-btn{
+          width: px2rem(14);
+          height: px2rem(26);
+          margin-top:px2rem(4);
+          background: url("#{$icon-right-w}") no-repeat;
+          background-position: 0 0;
+          display: block;
+          float: right;
+          background-size:cover;
+        }
+      }
+
+      
+    }
+  }
+
+  .have-address{
+    display: none;
+    padding:px2rem(15) px2rem(24);
+    border-bottom:1px solid #e5e5e5;
+    background: #fff;
+    margin-bottom:px2rem(20);
+    .address-info{
+      position: relative;
+      z-index:10;
+      .info-l{
+        float: left;
+        width:89%;
+        text-align: center;
+        overflow: hidden;
+        .tips{
+          display: block;
+          //font-size:px2rem(28);
+          font-size:px2(28);
+          height:px2rem(80);
+          line-height:px2rem(80);
+        }
+        h3{
+          //font-size:px2rem(28);
+          font-size:px2(28);
+          color: #000;
+          text-align: left;
+          line-height:px2rem(30);
+          padding-top:px2rem(5);
+          padding-bottom:px2rem(12);
+          em{
+            font-style:normal;
+          }
+          .phone{
+            float: right;
+          }
+        }
+        .street{
+          padding-top:0;
+          color: #ababab;
+          font-size:px2(28);
+          line-height:px2rem(36);
+          text-align:left;
+
+        }
+      }
+      .show-addresslist{
+        position: absolute;
+        top:50%;
+        right:0;
+        width: px2rem(14);
+        height: px2rem(25);
+        margin-top:- px2rem(13);
+        i{
+          display: block;
+          width: px2(14);
+          height: px2(25);
+          background: url("#{$icon-right-w}") no-repeat;
+          background-position: 0 0;
+          display: block;
+          background-size:cover;
+        }
+
+      }
+    }
+  }
+
+}
+
+//product list
+.product-lists-box{
+  padding:0 ;
+  background: #fff;
+  margin-bottom:px2rem(20);
+  .saler-info{
+    padding:0 px2rem(24);
+    height:px2rem(50);
+    padding-top:px2rem(20);
+
+    i{
+      background: url($icon-shop) no-repeat;
+      width: px2rem(34);
+      height: px2rem(34);
+      margin-right:px2rem(10);
+      overflow: hidden;
+      display: block;
+      float: left;
+      background-size:contain;
+    }
+    a{
+      font-size:px2rem(28);
+      line-height:px2rem(33);
+      font-weight: 400;
+      color: #2e2e2e;
+      float: left;
+    }
+  }
+  .product-items{
+
+    ul{
+      li{
+        &.product-item{
+          border-bottom:1px solid #e6e6e6;
+          //margin-bottom:px2rem(20);
+          .product-item-body{
+            position: relative;
+            background: #f5f5f5;
+            padding:px2rem(12) px2rem(24);
+            margin-bottom:px2rem(10);
+            min-height: px2rem(188);
+            overflow: hidden;
+            &:last-child{
+              margin: 0;
+            }
+            .item-img{
+              position: absolute;
+              top:px2rem(12);
+              left:px2rem(24);
+              width:px2rem(184);
+              height:px2rem(184);
+              text-align: center;
+              a{
+                display: table-cell;
+                width:px2rem(183);
+                height:px2rem(183);
+                border:1px solid #e6e6e6;
+                text-align:center;
+                overflow: hidden;
+                vertical-align: middle;
+                margin:0 auto;
+                img{
+                  max-width: px2rem(183);
+                  vertical-align: middle;
+                }
+              }
+              
+            }
+            .item-info{
+
+              margin-left:px2rem(210);
+              overflow: hidden;
+              .product-name{
+                line-height:px2rem(28);
+                a{
+                  display: inline;
+                  font-size:px2rem(26);
+                  color: #000;
+                }
+              }
+              .product-sku{
+                padding-top:px2rem(15);
+                font-size: px2rem(24);
+                line-height:px2rem(28);
+                color: #ababab;
+              }
+              .product-price{
+                display: block;
+                padding-top:5px;
+                font-size: px2rem(30);
+                height:px2rem(44);
+                overflow: hidden;
+                .price{
+                  float: left;
+                }
+                .num{
+                  float: right;
+                }
+              }
+              
+            }
+
+          }
+
+        }
+      }
+    }
+  }
+
+}
+.item-shop-youfei{
+  height:px2rem(88);
+  border-bottom:1px solid #e5e5e5;
+  line-height:px2rem(88);
+  margin: 0 px2rem(24);
+  font-size:px2rem(28);
+
+  .tips{
+    font-size:px2rem(24);
+    text-align: right;
+    color: #ccc;
+    padding-right:px2rem(15);
+  }
+
+}
+.item-amount{
+  display: none;
+  height:px2rem(88);
+  border-bottom:1px solid #e5e5e5;
+  line-height:px2rem(88);
+  margin: 0 px2rem(24);
+  font-size:px2rem(28);
+  .update-amount{
+    text-align: right;
+    font-size:0;
+    padding-top:px2rem(13);
+    span{
+      display: inline-block;
+      background: #f5f5f5;
+      text-align: center;
+      font-size:0;
+      line-height:0;
+      height:px2rem(60);
+      float: left;
+      overflow: hidden;
+      img{
+        
+      }
+      &.jian{
+        width:px2rem(66);
+        -moz-border-radius-topleft: px2rem(3);
+        -moz-border-radius-bottomleft: px2rem(3);
+        font-weight: bold;
+        background: url('/_resources/images/xiangqu/jian_32.png') #f5f5f5 no-repeat center center;
+        background-size:12px;
+
+      }
+      &.amount{
+        margin:0 2px;
+        width:px2rem(77);
+        font-size:px2rem(28);
+        line-height:px2rem(60);
+      }
+      &.jia{
+        width:px2rem(66);
+        -moz-border-radius-topright: px2rem(3);
+        -moz-border-radius-bottomright: px2rem(3);
+        font-weight: bold;
+        background: url('/_resources/images/xiangqu/jia_32.png') #f5f5f5 no-repeat center center;
+        background-size:12px;
+      }
+    }
+  }
+}
+
+.message-box{
+  height:px2rem(88);
+  width:px2rem(590);
+  padding:0 px2rem(24);
+  overflow:hidden;
+  div{
+    //float: left;
+    //width:px2rem(180);
+    //height:px2rem(88);
+    //line-height:px2rem(88);
+    //font-size:px2rem(30);
+    //overflow: hidden;
+    &.message-input{
+      overflow: hidden;
+      input{
+        float: left;
+        display: block;
+        width:px2rem(600);
+        height:px2rem(36);
+        margin-top:px2rem(26);
+        font-size:px2rem(28);
+        line-height: px2rem(36);
+        padding: 0;
+        overflow:hidden;
+      }
+    }
+  }
+  input{
+    //border:1px solid #ccc;
+    border:none;
+    font-size:px2rem(30);
+    height:px2rem(36);
+    line-height:px2rem(32);
+    padding: 0;
+
+    outline:none;
+
+  }
+}
+.amount-total-price{
+  text-align: right;
+  border-top:1px solid #e5e5e5;
+  margin: 0 px2rem(24);
+  font-size:px2rem(28);
+  height:px2rem(90);
+  line-height:px2rem(90);
+
+  span{
+    display: inline;
+    float: right;
+    &.product-num{
+      padding-right:px2rem(24);
+    }
+    &.price{
+      color: #e70000;
+    }
+  }
+}
+.coupon-check-box{
+
+  border-bottom:1px solid #e5e5e5;
+  padding:0 px2rem(24);
+  background: #fff;
+  font-size:px2rem(28);
+  margin-bottom:px2rem(20);
+
+  .coupon-title{
+    height:px2rem(85);
+    line-height:px2rem(85);
+    //padding-bottom:px2rem(20);
+    .text{
+      color:#bebebe;
+    }
+    .right-act{
+      display: block;
+      width: px2rem(14);
+      height: px2rem(26);
+      margin-top:px2rem(30);
+      background: url("#{$icon-right-w}") no-repeat;
+      background-position: 0 0;
+      display: block;
+      background-size:cover;
+    }
+    .coupon-num{
+      padding-right:px2rem(10);
+
+    }
+  }
+
+  .total-coupon{
+    ul{
+      li{
+        height:px2rem(84);
+        line-height:px2rem(84);
+        font-size:px2rem(28);
+        border-top:1px solid #e5e5e5;
+        color: #000;
+
+      }
+    }
+  }
+}
+
+.pay-style-box{
+  background: #fff;
+  padding:px2rem(20) px2rem(24) px2rem(94) px2rem(24);
+
+    .cart-titles{
+      font-size:px2rem(28);
+      padding-bottom:px2rem(20);
+    }
+
+    .payment-method{
+      .pay-check-body{
+        li{
+          &.payment-method-item{
+
+            padding:px2rem(24) 0;
+            border-bottom:1px solid #e5e5e5;
+            overflow: hidden;
+            &.weixin{
+              display: none;
+            }
+            &:first-child{
+              padding-top:0;
+            }
+            .payment-method-item-img{
+              float: left;
+              width:px2rem(64);
+              height:px2rem(64);
+              overflow: hidden;
+              span{
+                display: table-cell;
+                width:px2rem(64);
+                height:px2rem(64);
+                text-align: center;
+                vertical-align: middle;
+                overflow: hidden;
+                img{
+                  vertical-align: middle;
+                  max-width: px2rem(64);
+                }
+              }
+            }
+            .payment-method-item-info{
+              float: left;
+              padding-left:px2rem(15);
+              .font-dark-bold{
+                font-size:px2rem(28);
+                line-height:px2rem(26);
+                font-weight:normal;
+
+              }
+              .font-light{
+                font-size:px2rem(26);
+                padding-top:px2rem(10);
+                line-height:px2rem(32);
+              }
+            }
+            .check-status{
+              float: right;
+              width:px2rem(36);
+              height:px2rem(36);
+              margin-top:px2rem(14);
+              .img-check{
+                margin-top:0;
+                width:100%;
+                height:100%;
+              }
+            }
+
+          }
+        }
+      }
+    }
+}
+
+.cart-total{
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width:100%;
+  height:px2rem(94);
+  border-top:1px solid #ccc;
+  background: #fff;
+  overflow: hidden;
+  .sub-box{
+    position: relative;
+    z-index:10;
+  }
+  .price-total{
+    float: left;
+    padding:0 px2rem(24);
+    font-size:px2rem(24);
+    line-height:px2rem(94);
+    .js-totalFee{
+      font-size:px2rem(30);
+      font-weight:normal;
+    }
+    .postage{
+      font-size:px2rem(20);
+      b{
+        font-weight: normal;
+      }
+    }
+  }
+  .pay-btn{
+    position: absolute;
+    top:0;
+    right:0;
+    width:px2rem(220);
+    height:px2rem(95);
+    background: #2e2e2e;
+    color: #fff;
+    font-size:px2rem(30);
+    line-height:px2rem(94);
+    text-align: center;
+    &.disabled{
+      span{
+        opacity: 0.3;
+      }
+    }
+  }
+
+}
+
+
+//下单弹层
+@import "tc_xiadan.scss";
+
+
+

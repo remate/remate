@@ -1,0 +1,285 @@
+
+
+@import 'variable';
+.order-detail {
+    font-size: 12px;
+    .am-breadcrumb {
+        padding-left: 0;
+        margin-bottom: 4px;
+    }
+    .am-breadcrumb > .am-active {
+        font-size: 12px;
+        color: @gray;
+    }
+    .am-breadcrumb a {
+        color: @gray;
+    }
+    .order-detail-title {
+        height: 62px;
+        line-height: 72px;
+        text-indent: 20px;
+    }
+    &>.am-pannel {
+        margin-bottom: 10px;
+    }
+    .reciever b {
+        height: 72px;
+        line-height: 72px;
+        padding-left: 10px;
+        font-size: 100px;
+        color: #f0f2f5;
+        font-weight: normal;
+    }
+    .reciever h3 {
+        max-width: 670px;
+        margin-bottom: 6px;
+    }
+    .reciever h3 span {
+        display: inline-block;
+        line-height: 31px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 50px;
+    }
+    .reciever p {
+        line-height: 18px;
+        margin: 0;
+    }
+    .reciever p span {
+        color: @gray;
+        padding-right: 8px;
+    }
+    .message {
+        margin: 0;
+        line-height: 22px;
+        padding: 0 20px;
+        span{
+            margin-right: 15px;
+        }
+    }
+    .am-table {
+        margin-bottom: 0;
+        border: none;
+    }
+    .am-table thead th {
+        height: 60px;
+        line-height: 60px;
+        padding: 0;
+        font-weight: normal;
+        border: none;
+    }
+    .am-table tfoot p{
+        padding-left: 13px;
+        margin: 0;
+    }
+    .order-info p {
+        margin: 0;
+        padding-left: 24px;
+        line-height: 18px;
+        font-size: 12px;
+    }
+    .order-info p span {
+        color: #7c7c7f;
+        padding-right: 8px;
+    }
+    .reciever p {
+        span.order-timeSure,span.order-timePay,span.order-num{
+            color: @black;
+        }
+    }
+    .pannel-reply{
+        .item-header{
+            padding: 20px;
+            border-bottom: 1px solid #edeff0;
+            .pro-pic{
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+            .pro-title{
+                line-height: 30px;
+                margin: 0;
+            }
+        }
+        .item-contents{
+            padding: 20px 35px 0 25px;
+            .pro-comment{
+                width: 550px;
+                margin: 0 45px 10px 0;
+                p{
+                    padding: 0;
+                    margin: 0;
+                }
+                .pro-titme{
+                    display: block;
+                    margin-top: 2px;
+                    font-size: 12px;
+                    color: #bababf;
+                }
+            }
+            .pro-score{
+                width: 100px;
+                p{  
+                    width: 100px;
+                    font-size: 12px;
+                    margin: 0;
+                    text-align: center;
+                    color: #bababf;
+                }
+            }
+        }
+        .item-reply{
+            margin: 0 35px 20px 25px;
+            padding: 15px;
+            position: relative;
+            background: #f6f7f8;
+            .reply-arrow{
+                font-family: "kkkd";
+                font-style: normal;
+                font-size: 20px;
+                line-height: 20px;
+                color: #f6f7f8;
+                position: absolute;
+                top: -18px;
+                right: 23px;
+            }
+            .editArea{
+                width: 665px;
+                line-height: 18px;
+                background: #fff;
+                border: 1px solid #d8dbdd;
+                border-radius: 5px;
+                position: relative;
+                text-indent: 45px;
+                padding: 10px;
+            }
+            .editArea.edit-disabeld{
+                border: 1px solid #f6f7f8;
+                background: transparent;
+            }
+            span.reply-tip{
+                position: absolute;
+                top: 15px;
+                left: 25px;
+                z-index: 5;
+                display: block;
+                line-height: 40px;
+            }
+            button{
+                margin-top: 2px;
+                background: #fff;
+            }
+        }
+    }
+    .wrap-dialog {
+        .J_addressEditPop{
+            overflow: visible;
+            line-height: 40px;
+            ul{
+                padding: 0;
+                margin: 0;
+                &>li.am-cf{
+                    padding: 0 0 5px 80px;
+                    min-height: 65px;
+                }
+            }
+            label.form-em{
+                display: block;
+                float: left;
+                width: 80px;
+                text-align: right;
+                margin: 0 0 0 -95px;
+            }
+            label.error{
+                float: left;
+                min-width: 250px;
+                text-align: left;
+                line-height: 20px;
+                padding: 0;
+                margin: 0;
+            }
+            .shoper-mark{
+                width: 445px;
+                height: 50px;
+                line-height: 20px;
+            }
+        }
+        .J_rateEditPop{
+            label{
+                text-align: left;
+                width: auto;
+                padding: 0;
+            }
+            input[type="text"]{
+                width: 225px;
+                margin: 0 5px;
+            }
+            .kd-modal-dialog{
+                padding: 14px 15px 20px;
+            }
+            .am-form-group-sm.am-cf label{
+                height: 24px;
+                line-height: 24px;
+            }
+            label.error{
+                min-width: 225px;
+            }
+            .am-form-group-sm.am-cf div.am-fl{
+                min-height: 65px;
+                label{
+                    float: left;
+                    padding-left: 10px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .J_goodsSendPop{
+            line-height: 40px;
+            overflow: visible;
+            .kd-modal-dialog{
+                width: 320px;
+                padding: 14px 15px 20px;
+            }
+            ul{
+                padding: 0;
+                margin: 0;
+                &>li.am-cf{
+                    padding: 0 0 0 65px;
+                    min-height: 65px;
+                }
+            }
+            label{
+                display: block;
+                float: left;
+                text-align: left;
+                width: 65px;
+                margin: 0 0 0 -65px;
+            }
+            label.error{
+                width: auto;
+                margin-left: 0;
+                padding-top: 0;
+                height: 24px;
+                line-height: 24px;
+            }
+            .am-selected-btn{
+                width: 220px;
+            }
+        }
+        #J_sectOrderType{
+            width: 135px;
+            opacity: 0;
+            filter:alpha(opacity=0);
+        }
+    }
+    #sect_province_chosen,#sect_area_chosen,#sect_city_chosen{
+        width: 135px !important;
+    }
+    #J_kdSect_chosen{
+        width: 220px !important;
+    }
+    .reciever-name{
+        max-width: 670px;
+    }
+}
+

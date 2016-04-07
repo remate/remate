@@ -1,0 +1,140 @@
+﻿[shop-url]
+prop = shop-url
+tag = div
+attrs-name = class
+attrs-value = tb-shop-name
+
+[shop-url-extract]
+tag = a
+attrs-name = href
+attrs-value =
+;取值
+extract-attr = href
+
+[shop-url2]
+prop = shop-url
+tag = a
+attrs-name = class
+attrs-value = tb-seller-name
+;取值
+extract-attr = href
+
+[shop-url3]
+prop = shop-url
+tag = a
+attrs-name = class
+attrs-value = shop-name
+;取值
+extract-attr = href
+
+[title]
+prop = title
+tag = title
+attrs-name = 
+attrs-value =
+;取值
+extract-attr = strText
+
+[nickname]
+prop = nickname
+tag = span
+attrs-name = data-nick
+attrs-value = 
+;取值
+extract-attr = data-nick
+
+[shop-name]
+prop = shop-name
+tag = div
+attrs-name = class
+attrs-value = tb-shop-name
+
+[shop-name-extract]
+tag = a
+attrs-name = title
+attrs-value = 
+;取值
+extract-attr = title
+
+[shop-name2]
+prop = shop-name
+tag = a
+attrs-name = class
+attrs-value = shop-name
+;取值
+extract-attr = strText
+
+[shop-id]
+prop = shop-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = shopId=,;
+
+[user-id]
+prop = user-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = userid=,;
+
+[user-id2]
+prop = user-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = userId=,;
+
+[score]
+prop = score
+tag = span
+attrs-name = class
+attrs-value = dsr-num green
+;取值
+extract-attr = strText
+
+[score2]
+prop = score
+tag = dd
+attrs-name = class
+attrs-value = tb-rate-lower
+;取值
+extract-attr = strText
+
+[score3]
+prop = score
+tag = dd
+attrs-name = class
+attrs-value = tb-rate-higher
+;取值
+extract-attr = strText
+
+[score4]
+prop = score
+tag = dd
+attrs-name = class
+attrs-value = tb-rate-equal
+;取值
+extract-attr = strText
+
+[score5]
+prop = score
+tag = span
+attrs-name = class
+attrs-value = dsr-num red
+;取值
+extract-attr = strText
+
+[score6]
+prop = score
+tag = em
+attrs-name = class
+attrs-value = count
+;取值
+extract-attr = strText

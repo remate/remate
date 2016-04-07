@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>运营消息</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+	    $(function(){
+	        $('#btnSubmit').bind('click', function(){
+	        	 if($('#toUserPhone').val() == ''){
+	        		alert('用户手机号码不能为空！');
+	        		return false;
+	        	}
+	        	if($('#title').val() == ''){
+	        		alert('标题不能为空！');
+	        		return false;
+	        	}
+	        	
+	        	if($('#content').val() == ''){
+	        		alert('内容不能为空！');
+	        		return false;
+	        	}
+	        	$.messager.confirm('确认', '确认要发送消息吗?', function(r){
+	        		if (r){
+						$('#btnSubmit').linkbutton('disable');
+						$.messager.progress({text:'发送中...'});
+						$('#frmMessage').submit();
+	        		}
+	        	});
+	        });
+	      });
+	    /*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 5px;">   
+	    <form id="frmMessage" th:action="@{send}" method="post">
+	    	<table>
+	    		<tr>
+	    			<td>用户手机号码</td>
+	    			<td>
+	    				<input id="toUserPhone" name="toUserPhone" type="text" style="width: 200px;" th:value="${userMessage.toUserPhone}" required="required"/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>消息标题</td>
+	    			<td>
+	    				<input id="title" name="title" type="text" style="width: 200px;" th:value="${userMessage.title}" required="required"/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>消息内容</td>
+	    			<td>
+	    				<textarea id="content" name="content" placeholder="不超过50个汉字"  style="width:300px;height:60px;" th:text="${userMessage.content}" required="required"></textarea>
+	    			</td>
+	    		</tr>
+	    	</table>
+	    	<table>
+	    		<!-- <tr>
+   					<td>终端平台</td>
+    				<td>
+	    				<select id="plantForm" name="plantForm" >
+						<option value="ALL">全部</option>
+						<option value="ANDROID">ANDORID</option>
+						<option value="IOS">IOS</option>
+						</select>
+	    			</td>
+   					<td>应用平台</td>
+    				<td>
+	    				<select id="appName" name="appName">
+						<option value="kkkd">快快开店</option>
+						<option value="xiangqu">想去</option>
+						</select>
+	    			</td>
+	    		</tr>-->
+	    		<tr>
+	    			<td colspan="4" align="center"><br/>
+		                <div th:text="${success}"></div><div th:text="${errors}"></div>
+	    				<a id="btnSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确认发送消息</a>
+	    			</td>
+	    		</tr>	
+    		</table>
+	     </form>
+    </div>
+</body>   
+</html>

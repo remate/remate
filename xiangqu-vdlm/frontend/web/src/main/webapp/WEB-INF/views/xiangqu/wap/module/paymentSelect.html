@@ -1,0 +1,92 @@
+          <h2 class="cart-titles">选择支付方式</h2>
+          <div class="content paymentMethod payment-method">
+               <input type="hidden" id="payType" name="payType" value=""/>
+		    	<input type="hidden" id="payAgreementId" name="payAgreementId" value=""/>
+
+                <ul class="pay-check-body">
+                    <li data-th-each="userAgreeBank : ${userAgreeBanks}" class="payment-method-item clearfix" data-th-onclick="'javascript:selectPayType(this, \'UMPAY\', \'' +${userAgreeBank.aggreeId} + '\');'">
+                        <div class="payment-method-item-img ">
+                               <span>
+                                    <img style="width: 100%;" data-th-src="${userAgreeBank.bankImg}"/>
+                               </span>
+                        </div>
+                        <div class="payment-method-item-info"  >
+                            <div class="font-dark-bold" data-th-text="${userAgreeBank.bankName}">招商银行</div>
+                            <div class="font-light" >尾号<span  data-th-text="${userAgreeBank.accountNum}">9999</span>信用卡</div>
+                        </div>
+
+                        <p  class="check-status">
+                            <img class="img-check" src="/_resources/images/pay/c_00.png"/>
+                        </p>
+                    </li>
+                    <li class="payment-method-item clearfix" id="aliPayMethod" onclick="selectPayType(this, 'ALIPAY', '')">
+                        <div class="payment-method-item-img ">
+                            <span>
+                                <img  src="/_resources/images/xiangqu/pay_zfb.png"/>
+                            </span>
+                        </div>
+                        <div class="payment-method-item-info" >
+                            <div class="font-dark-bold" >支付宝</div>
+                            <div class="font-light" >推荐支付宝用户使用</div>
+                        </div>
+                        <p  class="check-status">
+                            <img class="img-check " src="/_resources/images/pay/c_00.png" />
+                        </p>
+                    </li>
+                    <li class="J_weixinBox payment-method-item weixin clearfix" id="weixinMethod" onclick="selectPayType(this, 'WEIXIN', '')">
+                        <div class="payment-method-item-img">
+                            <span>
+                                <img src="/_resources/images/xiangqu/pay_wx.png"/>
+                            </span>
+                        </div>
+                        <div class="payment-method-item-info">
+                            <div class="font-dark-bold">微信支付</div>
+                            <div class="font-light">推荐微信用户使用</div>
+                        </div>
+                        <p  class="check-status">
+                            <img class="img-check" src="/_resources/images/pay/c_00.png" />
+                        </p>
+                    </li>
+                    <li class="payment-method-item clearfix" onclick="selectPayType(this, 'UMPAY', '')">
+                           <div class="payment-method-item-img">
+                               <span>
+                                   <img  src="/_resources/images/xiangqu/pay_yhk.png"/>
+                               </span>
+                           </div>
+                           <div class="payment-method-item-info" >
+                               <div class="font-dark-bold" >银行卡支付</div>
+                               <div class="font-light" >支持信用卡、储蓄卡无需开通网银</div>
+                           </div>
+                           <p  class="check-status">
+                                <img class="img-check " src="/_resources/images/pay/c_00.png" />
+                           </p>
+                    </li>
+
+                </ul>
+          </div>
+
+
+<script type="text/javascript">
+  var selectPayType = function(liObj, payType, agreementId){
+
+      if(payType == 'WEIXIN'){
+          $('#payBtn').attr('data-pay','WEIXIN');
+      }else{
+          $('#payBtn').removeAttr('data-pay');
+          //$('#payBtn').removeClass('disabled').removeAttr('disabled');
+      }
+	  setPayType($(liObj).find('.img-check')[0], payType, agreementId);
+  }
+
+  var setPayType = function(imgObj, payType, agreementId){
+	$(".img-check").each(function(i){
+		  this.src = "/_resources/images/pay/c_00.png";
+	});
+	 
+	$(imgObj).attr('src', '/_resources/images/pay/c_01.png');
+    $("#payType").val(payType);
+    $("#payAgreementId").val(agreementId);
+  };
+  //请注意 cart.js引用了 class checkImg
+  
+</script>

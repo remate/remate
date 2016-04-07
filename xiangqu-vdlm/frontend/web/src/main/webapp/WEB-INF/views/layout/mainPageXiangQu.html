@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title data-layout-title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE" >想去</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=0" name="viewport"/>
+    <meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/base.css?v=1.2}" />
+</head>
+<body>
+<div id="afui">
+    <div id="header" data-layout-fragment="header"></div>
+    <div id="content">
+        <div id="nav" data-layout-fragment="nav">
+        </div>
+        <div id="main" data-layout-fragment="content">
+        </div>
+    </div>
+    <div data-layout-fragment="footer" data-th-remove="tag"></div>
+    <!--[if !IE]><!-->
+	<script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/appframework.min.js}"></script>
+	<!--<![endif]-->
+	<!--[if IE]>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/jquery-1.11.1.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/vd_base.js}"></script>
+    <script data-layout-fragment="postScript"></script>
+</div>
+</body>
+</html>

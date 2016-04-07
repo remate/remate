@@ -1,0 +1,115 @@
+@import "skin";
+.refund {
+    background: @bg-gray;
+}
+pre{
+    margin: 0;
+    padding: 0;
+    word-break: break-word;
+}
+.refundProcess-main, .refundRequest-main {
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+    padding-bottom: 10px;
+    left: 0;
+    right: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+.refund-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    padding: 7px 0;
+    background: #fff;
+    border-top: 1px solid @border-color;
+    text-align: center;
+}
+.cart_btn.cart_btn_ship{
+    display: none;
+}
+@import "refundProcess";
+@import "refundRequest";
+
+
+
+
+
+//dialog
+.tc-layout {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    display: none;
+    overflow: hidden;
+}
+
+.tc-opacity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 51, 51, 0.47);
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.tc-tips {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1003;
+    background: rgba(51, 51, 51, 0.47);
+    overflow: hidden;
+}
+
+.tc-tips .tc-tips-body {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1500;
+    width: 224px;
+    height: 100px;
+    margin-top: -100px;
+    margin-left: -112px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.tc-tips .tc-tips-body .tc-tips-text {
+    font-size: 13px;
+    text-align: center;
+    height: 60px;
+    width: 224px;
+    display: table-cell;
+    vertical-align: middle;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tc-tips .tc-tips-body .tc-tips-btn {
+    height: 40px;
+}
+
+.tc-tips .tc-tips-body .tc-tips-btn span {
+    width: 111.5px;
+    float: left;
+    font-size: 15px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.tc-tips .tc-tips-body .tc-tips-btn span.sure {
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid #e5e5e5;
+}

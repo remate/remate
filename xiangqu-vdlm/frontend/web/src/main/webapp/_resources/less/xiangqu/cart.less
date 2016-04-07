@@ -1,0 +1,337 @@
+@import "skin";
+
+.pt1{
+	padding-top: 1px;
+}
+
+//购物车第一页
+.cartPannel{
+	padding: 0 14px;
+	margin: 12px auto;
+	border-bottom: 1px solid @border-color;
+	background: #fff;
+}
+.cart-red{
+	color:@red; 
+}
+.cart{
+	//按钮
+	.numEditor{
+		border:1px solid #a2a2a2;
+		border-radius:2px;
+		button{
+			width:30px;
+			background-size:50%;
+		}
+		button,input{
+			height:23px;
+			line-height: 23px;
+		}
+		.numed{
+			border-color:#a2a2a2;
+		}
+	}
+	//删除按钮
+	.cartDelete{
+		width: 88px/2;
+		height: 44px/2;
+		line-height: 44px/2;
+		font-size: 12px;
+		color:@color-yellow;
+		border:1px solid @color-yellow;
+		border-radius:2px;
+		text-align: center;
+	}
+	padding: 1px 0;
+	.salerInfo{
+		padding: 11px 0 0;
+		height: 25px;
+		line-height: 25px;
+		font-size: 12px;
+		border-bottom:1px solid #000;
+		.operation{
+			width:45px;
+			position: relative;
+			right:-15px;
+			height:100%;
+			.done{
+				text-indent: 5px;
+			}
+			.todo{
+				position: absolute;
+				.icon-edit();
+				top: 5px;
+				right: 15px;
+			}
+		}
+	}
+	.cartProduct{
+		border-bottom: 1px solid @border-color;
+		padding: 12px 0;
+		width:100%;
+		overflow: hidden;
+		opacity: 1;
+		&:last-of-type{
+			border-bottom:none;
+		}
+		.cartImg{
+			width: 128px/2;
+			height: 128px/2;
+			font-size: 0;
+			text-align: center;
+			overflow: hidden;
+			margin-right: 10px;
+			a{
+				display: block;
+			}
+			span{
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+			img{
+				vertical-align: middle;
+				max-width:128px/2;
+				max-height:128px/2;
+			}
+		}
+		.changeType{
+			//编辑状态
+			.changeNum{
+				margin-bottom: 9px;
+			}
+			.changeSku{
+				height:28px;
+				line-height: 28px;
+				width:202px/2;
+				select{
+					width:98px;
+					display: block;
+					height:28px;
+					padding: 0;
+					border-radius:2px;
+					text-indent: 6px;
+				}
+			}
+		}
+	} 
+	.cartInfo{
+		//信息状态
+		width:290px/2;
+		font-size: 10px;
+		line-height: 12px;
+		word-break: break-all;
+		margin-top: 2px;
+		.productName{ 
+			a{
+				color:#000;
+			}
+		}
+		.productSku,.productNum{
+			color:@font-gray;
+		}
+		.productNum{
+			margin-top: 3px;
+		}
+	}
+	.cartPriceArea{
+		//右侧
+		height:100%;
+		display: -webkit-box;
+		-webkit-box-align:center;
+		-webkit-box-pack:center;
+		-webkit-box-orient:vertical;
+		min-height:128px/2;
+		font-size: 11px;
+		line-height: 12px;
+		min-width:46px;
+		.cartPriceNum{
+			margin-bottom: 4px;
+		}
+	}
+	.cartTransport{
+		height: 36px;
+		line-height: 36px;
+		color:@font-gray;
+		border-bottom:1px solid @border-color;
+	}
+	.cartMessage{
+		line-height: 36px;
+		height: 36px;
+		// border-bottom:1px solid @border-color;
+		.cartMessage-box{
+			margin-left: 84px;
+		}
+		.cartMessage-ipt{
+			display: block;
+			width: 100%;
+			height: 36px;
+			line-height: 36px;
+			padding: 0;
+			border:none;
+			font-size: 12px;
+		}
+		.cartMessage-info{
+			padding-top: 10px;
+			line-height: 16px;
+		}
+		.state{
+			height:36px;
+			text-indent: 14px;
+			&:before{
+				content:"";
+				position: absolute;
+				.icon-user();
+				left: 0;
+				top: 12px;
+			}
+		}
+	}
+	.cartMessage-show{
+		padding-bottom: 8px;
+		border-bottom:1px solid @border-color;
+		.state{
+			line-height: 16px;
+			padding-top: 10px;
+			text-indent: 14px;
+			&:before{
+				content:"";
+				position: absolute;
+				.icon-user();
+				left: 0;
+				top: 12px;
+			}
+		}
+	}
+	.amountBar{
+		height: 38px;
+		line-height: 38px;
+		text-align: right; 
+		.amountBarNum{
+			display: inline-block;
+			margin-right: 13px;
+			span{
+				padding: 0 2px;
+			}
+		}
+		.amountPrice{
+			display: inline-block;	
+		}
+	}
+	.cartTotal{
+		height: 54px;
+		line-height: 54px;
+		font-size: 12px;
+		.cartPay{
+			height: 32px;
+			line-height: 32px;
+			padding: 0 12px;
+			border:1px solid @color-yellow;
+			color:@color-yellow;
+			top: 11px;
+			right: 15px;
+			border-radius:2px;
+			font-size: 12px;
+		}
+	}
+	.cartFavour{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		color:#363636;
+		.cartFavour-row{
+			display: block;
+			line-height: 30px;
+			border-bottom:1px solid @border-color;
+			i{
+				.icon-arrow-r();
+				right:0;
+				top: 12px;
+			}
+		}
+		.cartFavour-link{
+			color:#363636;
+			display: block;
+			
+			li{
+				line-height: 30px;
+			}
+		}
+	}
+}
+//购物车第二页
+.cartAddress{
+	padding-top: 15px;
+	padding-bottom: 6px;
+	margin: 26px auto;
+	color:#2f2f2f;
+	line-height: 18px;
+	font-size: 12px;
+	border-bottom:1px solid #000;
+	.cartUser{
+		text-indent: 16px;
+		margin-bottom: 2px;
+		&:before{
+			content:"";
+			display: block;
+			position: absolute;
+			.icon-address();
+			left: 0px;
+			top: 2px;
+		}
+		.js-editAddress{
+			width: 60px;
+			height: 30px;
+			b{
+				position: absolute;
+				.icon-edit();
+				right: 15px;
+				top: 0;
+			}
+			right:-15px;
+			top: 2px;
+		}
+	}
+	p{
+		text-indent: 16px;
+	}
+	.bird{
+		.icon-bird();
+		right: 23px;
+		bottom: -14px;
+	}
+}
+
+.cartShow .cartPriceArea{
+	-webkit-box-align:end;
+}
+
+// cartOrder orderview 样式
+.cartStatus{
+	margin: 0;
+	height: 35px;
+	line-height: 35px;
+	font-size: 14px;
+	color:@color-gold;
+	border-bottom:1px solid @border-color;
+}
+.cartOperate{
+	height: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: right;
+}
+.cartOrderStatus{
+	padding-bottom: 13px;
+	.cartOrderBar{
+		height: 30px;
+		line-height: 30px;
+		font-size: 12px;
+		border-bottom:1px solid @border-color;
+		margin-bottom: 13px;
+	}
+	p{
+		font-size: 12px;
+		color:#333;
+		line-height: 15px;
+	}
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title data-th-text="${title}"></title>
+</head>
+
+<body id="cart-body" class="as_page">
+    <header class="box header bg-white font-orange-bold" data-layout-fragment="header">
+        <a id="backButton" class="flex1 back-button arrow-before fz30" data-th-text="#{Back}"></a>
+    </header>
+    <div class="container">
+	    <div data-th-replace="fragments/alert :: alert (type='danger', message=${errorMessage})">Error: Error</div>
+	    <div data-th-include="fragments/footer">&copy; 2014~2015 The Static Templates</div>
+    </div>
+    <div data-layout-fragment="content" class="mt44" style="text-align:center">
+        <div class="notfound-404" style="margin:20px 0;"></div>
+        <p class="bigger" data-th-text="${title}"></p>
+        <p data-th-text="${message}"></p>
+    </div>
+</body>
+</html>

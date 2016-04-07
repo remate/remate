@@ -1,0 +1,80 @@
+﻿[shop-url]
+prop = shop-url
+tag = div
+attrs-name = class
+attrs-value = slogo
+
+[shop-url-extract]
+tag = a
+attrs-name = class
+attrs-value = slogo-shopname
+;取值
+extract-attr = href
+
+[shop-url2]
+prop = shop-url
+tag = a
+attrs-name = class
+attrs-value = enter-shop
+;取值
+extract-attr = href
+
+[title]
+prop = title
+tag = title
+attrs-name = 
+attrs-value =
+;取值
+extract-attr = strText
+
+[nickname]
+prop = nickname
+tag = span
+attrs-name = data-nick
+attrs-value = 
+;取值
+extract-attr = data-nick
+
+[shop-name]
+prop = shop-name
+tag = a
+attrs-name = class
+attrs-value = slogo-shopname
+;取值
+extract-attr = strText
+
+[shop-id]
+prop = shop-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = shopId=,;
+
+[user-id]
+prop = user-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = userid=,;
+
+
+[user-id2]
+prop = user-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = userId=,;
+
+[score]
+prop = score
+tag = span
+attrs-name = class
+attrs-value = shopdsr-score-con
+;取值
+extract-attr = strText

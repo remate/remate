@@ -1,0 +1,107 @@
+/**
+ * Created by ziyu on 2016/1/26.
+ */
+@charset "UTF-8";
+
+@import "config0308.scss";
+
+$wap-order-success:'/_resources/images/xiangqu/order_success.png';
+$wap-order-success-bg:'/_resources/images/xiangqu/wap_success_down_bg.png';
+$wap-order-success-fave:'/_resources/images/xiangqu/wap_fave.png';
+html,body{
+  -webkit-text-size-adjust: none;
+}
+body{
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+.wap-order-layout{
+  width:px2rem(329);
+  height:px2rem(344);
+  margin:px2rem(56) auto px2rem(100) auto;
+  background: url($wap-order-success) no-repeat;
+  background-size:contain;
+  overflow: hidden;
+}
+.wap-other-btn-box{
+  padding:0 px2rem(54) px2rem(40) px2rem(54);
+  font-size:0;
+  text-align: center;
+  overflow: hidden;
+  
+  
+  a{
+    display: inline-block;
+    width:px2rem(230);
+    height:px2rem(96);
+    font-size:px2rem(40);
+    line-height:px2rem(96);
+    border-radius:px2rem(5);
+    border:1px solid #c0c0c0;
+    text-decoration:none;
+    color: #000;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+
+    &:hover,&:active,&:visited{
+      color:#000;
+      text-decoration: none;
+    }
+    &:first-child{
+      float: left;
+    }
+    &:last-child{
+      float: right;
+    }
+
+  }
+}
+
+.wap-success-down-box{
+  background: url($wap-order-success-bg) no-repeat ;
+  width:100%;
+  padding:px2rem(34) 0;
+  background-size:cover;
+  font-size:0;
+  overflow: hidden;
+
+  a{
+    display: inline-block;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+  }
+  .wap-log{
+    margin-left: 24px;
+    float: left;
+    width:px2rem(268);
+    img{
+      width:100%;
+    }
+  }
+  .hasapp{
+    margin-right: 24px;
+    width:px2rem(272);
+    float: right;
+    margin-top:px2rem(14);
+    img{
+      width:100%;
+    }
+    
+  }
+}
+.wap-fave{
+  background: url($wap-order-success-fave) no-repeat;
+  height:px2rem(86);
+  background-size:contain;
+  overflow: hidden;
+}
+.wap-success-act{
+  width:100%;
+  padding-bottom:px2rem(10);
+  overflow: hidden;
+  text-align: center;
+  img{
+    width:100%;
+  }
+}

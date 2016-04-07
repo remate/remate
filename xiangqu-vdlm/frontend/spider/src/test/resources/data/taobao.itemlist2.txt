@@ -1,0 +1,382 @@
+
+
+ 
+ 
+{
+	"status":
+	{
+		"code":  "200" ,
+		"url": "" 	},
+		
+																								"crumb":
+				{"marketInfo":{"displayName":"所有市场","marketHref":"http://list.taobao.com/cat-0.htm"},
+		"catPathList" : [
+						
+	]
+	}
+
+												,
+																					"keyword":
+	{"key":"q","value":""}												,
+																								"sort2List":null
+													,
+																					"promotion":{
+		"options":[
+							{
+			"name":"全部促销",
+			"key":"zk",
+			"value":"all",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"打折秒杀",
+			"key":"zk",
+			"value":"dzms",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"淘金币",
+			"key":"zk",
+			"value":"tjb",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"聚划算",
+			"key":"zk",
+			"value":"jhs",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"集分宝",
+			"key":"zk",
+			"value":"jfb",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"免运费",
+			"key":"zk",
+			"value":"myf",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"vip优惠",
+			"key":"zk",
+			"value":"vip",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"天天特价",
+			"key":"zk",
+			"value":"tttj",
+			"isSelected":"0"
+		}
+		 , 							{
+			"name":"搭配减价",
+			"key":"zk",
+			"value":"dpjj",
+			"isSelected":"0"
+		}
+				],
+	"name":"折扣促销",
+	"key":"zkFlag",
+	"value":"1",
+	"isSelected":"0"	
+}												,
+																					"style":{"key":"style","value":"list"}
+												,
+																					
+		    	    		    		    		    		    			"selectedCondition":
+		{
+			"totalNumber":"0",
+			"keyword":
+			{
+				"key":"q",
+				"value":""
+			},
+			"selectedPropertyList":
+			[
+				 								
+				
+																		{
+						"name":"卖家昵称",
+						"valueList":
+						[
+							{
+								"name":"wdwwe",
+								"key":"nick",
+								"value":"wdwwe"
+							}
+						]
+					}
+																																				]
+		}
+												,
+																						"sortList":
+	[
+		{
+			"name":"默认排序",
+			"key":"sort",
+						"value":"",
+			"status":"0",
+			"isSelected":  "1" 		},
+		{
+			"name":"销量",
+			"key":"sort",
+			"value":"biz30day",
+			"status": "2",
+			"isSelected": "0" 		},
+                		{
+			"name":"人气",
+			"key":"sort",
+			"value":"coefp",
+			"status":"2",
+			"isSelected": "0" 		},
+        		{
+			"name":"信用",
+			"key":"sort",
+			"value":"ratesum",
+			"status":"2",
+			"isSelected":  "0" 		}
+		,
+		{
+			"name":"总价",
+			"key":"sort",
+			"value": "bid" ,
+			"status": "1" ,
+			"isSelected": "0" 		}
+	]
+
+												,
+																					"tmsList":
+[
+			{
+		"id":"topbanner",
+						"extendInfo":null
+				}
+		,{
+			"id":"tms-right",
+							"extendInfo":null
+					}
+	]												,
+																                    
+
+
+
+	"p4pItemList":null
+
+                								,
+																					
+	"recommend":null
+                								,
+																					        	    	    	    	    "msp":null
+												,
+																						"p4pShop":{
+		"param":{
+			"offset":0,
+			"count":3,
+			"keyword":"",
+			"frontcatid":"0",
+			"sbid":"1"
+		}
+	}
+												,
+																										"cat":null
+	                								,
+																					
+
+
+
+	"itemList":null
+												,
+																					
+
+
+
+					
+		
+												
+				
+															
+																																																										"p4p":
+		{
+			"api":"\/\/tmatch.simba.taobao.com\/?pid=419253_1006,419096_1006&count=5&catid=&keyword=&propertyid=&offset=0&frontcatid=0&type=2&refpid=&name=tbuad&o=j&gprice=10,100000000&rct=11&ip=115.197.208.185&sbid=1&q2cused=0&p4p=__p4p_sidebar__,__p4p_bottom__&pos=U&tab=&marketid=5221&t=", 			"oldApi":"pid=419253_1006,419096_1006&count=5&catid=&cat=&keyword=&rword=&scat=&scatid=0&propertyid=&property=&offset=0&frontcatid=0&bigpic=1&type=2&orikey=&refpid=419253_1006,419096_1006&name=tbuad&o=j&loc=&gprice=10,100000000&sort=&rct=11&q2cused=0&ip=115.197.208.185&sbid=1&marketid=5221"
+					}
+													,
+																						"baseItem":null
+
+												,
+																						"page":null
+												,
+																                    
+"oneSearchItem":null
+												,
+																					"price":
+	{
+		"min":"",
+		"max":""
+	}
+												,
+																					"loc":
+	{"selectedLoc":"所在地"}												,
+																					
+
+
+
+	"mallItemList":null
+												,
+																					"filterForm":
+[
+	{
+		"name":"天猫",
+		"key":"viewIndex",
+		"value":"10",
+		"isDisable":"0",
+		"isSelected": "0" ,
+		"isHidden":"0"
+	},
+							{
+				"name":"二手",
+				"key":"viewIndex",
+				"value":"4",
+				"isDisable":"0",
+				"isSelected": "0" ,
+				"isHidden":"0"
+			},
+							{
+			"name":"拍卖",
+			"key":"viewIndex",
+			"value":"6",
+			"isDisable":"0",
+			"isSelected": "0" ,
+			"isHidden":"0"
+		},
+					{
+		"name":"旺旺在线",
+		"key":"olu",
+		"value":"yes",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "0" ,
+		"title":""
+	},	{
+		"name":"货到付款",
+		"key":"support_cod",
+		"value":"1",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "0" ,
+		"title":""
+	},	{
+		"name":"消费者保障",
+		"key":"isprepay",
+		"value":"1",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "0" ,
+		"title":""
+	},	{
+		"name":"正品保障",
+		"key":"user_type",
+		"value":"1",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "0" ,
+		"title":""
+	},	{
+		"name":"假一赔三",
+		"key":"promoted_service2",
+		"value":"tag",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "1" ,
+		"title":""
+	},	{
+		"name":"信用卡",
+		"key":"support_xcard",
+		"value":"1",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "1" ,
+		"title":""
+	},	{
+		"name":"全球购",
+		"key":"promote",
+		"value":"2097152",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "1" ,
+		"title":""
+	},	{
+		"name":"淘宝代购",
+		"key":"onsale_actcard",
+		"value":"1:101;2:120",
+		"isDisable": "0" ,
+		"isSelected": "0" ,
+		"isHidden": "1" ,
+		"title":""
+	}]												,
+																								"propertyList":null
+													,
+																						"spu": null
+												,
+							"extraInfo":
+	{
+                		"url": "/itemlist/market/default.htm?atype=b&cat=0&nick=wdwwe&style=list&as=0&viewIndex=1&same_info=1&isnew=2&commend=all",
+				"double1212":false,
+				"tid":"0",
+		"navId":"",
+		"scmId":"1029.newlist-0.bts1.0",
+		"subNavId":"",
+		"marketId":"5221",
+		"feedbackUrl":"http://ur.taobao.com/survey/view.htm?id=74",
+		"userIp":"115.197.208.185",
+		"userId":"",
+		"itemLinkSuffix":"&scm=1029.newlist-0.bts1.0&ppath=&sku=&ug=",
+		"server-num":"list010097004061.cm3 2014-07-24 16:31:57",
+		"tbskipUrl":"http://tbskip.taobao.com/",
+		"otsCdnUrl":"http://ots.alicdn.com/",
+		"wuliuUrl":"http://shuju.wuliu.taobao.com/",
+		"keyword":"",
+		"recommendItemsUrl":"http://tui.taobao.com/api/item?p=c&from=list_noresults&f=jp&count=8&pid=0",
+		"atpanelData":"http:\/\/ga.mmstat.com\/hesper.99.6?logtype=6&gokey=q%3D%26olu%3D%26prepay%3D%26se%3D%26ss%3D%26st%3D%26sf%3D%26new%3D2%26atype%3Db%26cat%3D0%26sort%3Dcommend%26viewindex%3D1%26pidvid%3D%26psize%3D50%26rn%3D8cdaa79d6db510334f2449406877ba78%26bid%3D54%26mid%3D5221%26ug%3D%26suggestver%3D%26scm%3D%26pscm%3D1029.newlist-0.bts1.0%26src%3D{source}%26aid%3D{itemId}%26srow%3D{aindex}",
+		"itemLogData":{
+			"logkey":"/hesper.99.6",
+			"gmkey":"",
+			"gokey":"q=&olu=&prepay=&se=&ss=&st=&sf=&new=2&atype=b&cat=0&sort=commend&viewindex=1&pidvid=&psize=50&rn=8cdaa79d6db510334f2449406877ba78&bid=54&mid=5221&ug=&suggestver=&scm=&pscm=1029.newlist-0.bts1.0&src={source}&aid={itemId}&srow={aindex}",
+			"chksum":"H46777409"
+		},
+		"wwLogData":{
+			"logkey":"/hesper.99.5",
+			"gmkey":"",
+			"gokey":"sellerid=",
+			"chksum":"H46777408"
+		},
+		"autoLogData":[
+							{
+					"logkey":"/hesper.99.1",
+					"gmkey":"",
+					"gokey":"spm=&scm=1029.newlist-0.bts1.0&ppath=&mid=5221&rn=8cdaa79d6db510334f2449406877ba78&bid=54&p=atype%3Db%26cat%3D0%26nick%3Dwdwwe%26style%3Dlist%26as%3D0%26viewIndex%3D1%26same_info%3D1%26isnew%3D2%26commend%3Dall&k=&v=&md=&a=&rz=0&qf=&ug=",
+					"chksum":"H46777383"
+				}
+				 , 							{
+					"logkey":"/hesper.99.2",
+					"gmkey":"",
+					"gokey":"url%3Dhttp%253A%252F%252Flist.taobao.com%252Fitemlist%252Fdefault.htm%253F_input_charset%253Dutf-8%2526json%253Don%2526atype%253Db%2526cat%253D0%2526nick%253Dwdwwe%2526style%253Dlist%2526as%253D0%2526viewIndex%253D1%2526same_info%253D1%2526isnew%253D2%2526commend%253Dall%2526pSize%253D50%26refer%3D%26pscm%3D1029.newlist-0.bts1.0",
+					"chksum":"H46777405"
+				}
+									],
+		"userOperationLogData":{
+			"logkey":"/hesper.99.7",
+			"gmkey":"",
+			"gokey":"pscm=1029.newlist-0.bts1.0&marketid=5221&des={des}&type={type}",
+			"chksum":"H46777410"
+		},
+		"perfLogData":{
+			"logkey":"/hesper.99.9",
+			"gmkey":"",
+			"gokey":"spm=&pscm=1029.newlist-0.bts1.0&marketid=5221&md=",
+			"chksum":"H46777412"
+		}
+	}
+}
+

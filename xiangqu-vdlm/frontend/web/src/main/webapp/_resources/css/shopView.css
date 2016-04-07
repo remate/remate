@@ -1,0 +1,288 @@
+body {
+	padding: 0px; margin: 0px;
+	background-color: #f6f0eb;
+}
+.shop-intro-canvas{
+	width:100%;
+	height:146px;
+	overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.info-wrap{
+	/*width:300px;
+	margin: auto;*/
+	margin: 17px 0px 0px 15px;
+    position: absolute;
+    z-index: 10;
+}
+.user-photo-canvas{
+	float:left;
+}
+.user-photo img{
+    display: block;
+	width:100%;
+	height:100%;
+	/*border:2.5px solid #ffffff;
+    border-radius: 40px;*/
+    
+}
+.user-level{
+	margin: 15px 0px 0px 10px;
+}
+.user-level span{
+	display: inline-block;
+	width:16px; height:16px;
+	background-size: 16px 16px;
+}
+.shop-intro-bg{
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.secure{
+	background: url(/../_resources/images/test/diamond.png) no-repeat;
+}
+.diamond{
+	background: url(/../_resources/images/test/secure.png) no-repeat;
+}
+.crown{
+	background: url(/../_resources/images/test/crown.png) no-repeat;
+}
+.intro{
+	float:left;
+	margin-left: 13px;
+	margin-top: 8px;
+}
+.intro .shop-name{
+	width:210px;
+	font-size:17px;
+	font-weight:bold;
+	color:#bbc89a;
+	padding: 0px;
+	white-space: nowrap;
+	text-overflow:ellipsis; 
+	overflow:hidden;
+}
+.location-info{
+	margin-top: 5px;
+}
+.location-icon{
+	float:left;
+	width:10px;
+    height:11px;
+	background: url(/../_resources/images/test/location2.png) no-repeat;
+    background-position: -99px -1px;
+    background-size: 110px 11px;
+	margin: 6px 3px 0px 5px;
+}
+.location-address,.location-deliver{
+	font-size:9px;
+	color:#bbc89a;
+	display:inline-block;
+	height:11px; 
+	line-height: 11px;
+}
+.location-sep{
+	display:inline-block;
+	opacity: 0.7;
+	height:9px;
+	border-left:1px solid #bbc89a;
+	vertical-align:top;
+	margin-top: 7px;
+}
+.function-canvas{
+	margin-top: 15px;
+}
+.function-canvas span{
+	display:inline-block;
+	width:60px; height:23px;
+	border-radius: 4px;
+	background-color: #000;
+	opacity:0.5;
+	margin-right: 3px;
+	background-size: 44px 16px;
+}
+.btn-wechat{
+	background: url(/../_resources/images/test/wechat.png) no-repeat 6px 4px;
+}
+.btn-share{
+	background: url(/../_resources/images/test/share.png) no-repeat 6px 4px;
+}
+.btn-notice{
+	background: url(/../_resources/images/test/notice.png) no-repeat 6px 4px;
+}
+.shop-notice{
+	color:#505557;
+	font-size:13px;
+	padding: 15px 25px;
+	background-color: #fff;
+    position: relative;
+    z-index: 15;
+    word-break:break-word;
+}
+.shop-zinex{
+    position: relative;
+    z-index: 501;
+}
+.shop-tab{
+	 position: relative;
+	 width:100%;
+    z-index: 1000;
+}
+.shop-tab-wrap{
+	height:40px;
+	 width: 100%;
+	 background-color: #f5f5f5;
+	 position: relative;
+	 -webkit-box-shadow: 0px 1px 3px #dddddd;
+}
+.tab-wrap,.tab-category{
+	display:block;
+    height:40px;
+    line-height: 40px;
+	vertical-align:middle;
+	text-align: center;
+    z-index: 10;
+}
+.tab-wrap span{
+	display: inline-block;
+	color:#898683;
+	font-size:15px;
+	margin:0px 22px 0px 22px;
+}
+.tab-wrap .tab-sel{
+	position: absolute;
+	width:48px;
+	border-top:2px solid #ff6e52;
+	bottom:0px;
+}
+.tab-wrap span.sel{
+	color:#2f353c;
+	font-weight: bold;
+}
+#btn-category{
+    display: block;
+	width:40px; height:40px;
+	position: absolute;
+	left: 0px; top:0px;
+	background: url(/../_resources/images/test/category.png) no-repeat 12px 13px;
+	background-size: 15px 13px;
+	background-color: #5a5a5a;
+	/*-webkit-box-shadow: 0px 1px 3px #dddddd;*/
+}
+.tab-category{
+    display: none;
+}
+.img-wrap{
+	width:calc(100% - 44px);
+	padding:5px 22px 5px 22px;
+}
+.img-big{
+	width:100%;
+	height:325px;
+	background-color: #fff;
+	margin-top: 20px;
+	border-radius: 4px;
+	box-shadow: 0px 2px 4px #dedede;
+}
+.img-big img{
+	width:100%; height:265px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.img-big .product-describe{
+	font-size:13px;
+	color:#424242;
+	height:13px; line-height: 13px;
+	width:100%;
+	margin-top: 13px;
+	text-indent: 13px;
+}
+.img-big .product-price{
+	font-size:14px;
+	color:#424242;
+	font-weight: bold;
+	text-indent: 12px;
+	margin-top: 5px;
+}
+
+/*wechat ID*/
+.wechat-tip{
+	width:100px; height:0px;
+	margin-top: -4px;
+	opacity:0;
+}
+.tip-bg{
+	width:9px; height:4px;
+	background: url(/../_resources/images/test/tip-bg.png) no-repeat;
+	background-size:9px 4px;
+	margin-left: 25px;
+}
+.wechat-id{
+	display:inline-block;
+	height:20px;
+	background-color: #000;
+	opacity:0.5;
+	min-width:60px;
+	border-radius:3px;
+	font-size:9px;
+	color:#fff;
+	line-height:20px;
+	vertical-align: top;
+	padding: 0px 5px 0px 5px;
+}
+/*类目*/
+#category{
+	display:none;
+	position: fixed;
+	top:186px;
+	min-height:100px;
+	padding-bottom:10px;
+	width:100%;
+	background-color: #fff;
+    z-index: 2;
+}
+.category-title{
+	position:relative;
+	height:44px;
+	background-color: #eaeaea;
+	border-bottom:1px solid #c8c7cc;
+	border-top:1px solid #c8c7cc;
+	color:#676767;
+	font-size:12px;
+	padding-left:12px;
+	line-height:44px;
+}
+.btn-category-close{
+	width:12px; height:12px;
+	background:url(/../_resources/images/test/btn-close.png) no-repeat;
+	background-size:12px 12px;
+    margin: 15px 10px 0 0;
+}
+#category ul{
+	padding-left: 12px;
+    overflow: auto;
+}
+#category li,.category-home{
+	height:42.5px;
+	color:#212121;
+	font-size:17px;
+	border-bottom:1px solid #c8c7cc;
+	line-height:42.5px;
+}
+.category-home{
+    padding-left: 12px;
+    color: #9a9a9a;
+    cursor: pointer;
+}
+.info-section{
+    position: relative;
+    z-index: 1;
+}
+
+.shop_all_btn{
+    display: block;
+    margin: 10px auto ;
+}

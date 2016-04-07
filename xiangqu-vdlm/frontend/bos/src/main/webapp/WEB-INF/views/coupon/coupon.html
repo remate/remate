@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>生成优惠码</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+  		var grid;
+		var jsQuery = function() {
+			$(':text').each(function(){
+			    $(this).val($.trim($(this).val()));
+			  });
+			var params =  $.serializeObject($('#SearchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		var jsOpenWin = function(){
+			$('#dvForm').dialog('open');
+			$("#dvForm").find(":input").not(":button,:submit,:reset,:hidden").val("").removeAttr("checked").removeAttr("selected");
+		}
+		var jsCreate = function(){
+			if($('#discount').val()=='' | $('#discount').val() <= 0){
+				alert('优惠金额必须输入大于0');
+				return;
+			}
+			var validFrom = $('#validFrom').datebox('getValue');
+			if(validFrom == ''){
+				alert('优惠开始时间不能为空');
+				return;
+			}
+			if(!DateCompare(getDate(), validFrom, false)){
+				alert('优惠开始时间不得早于当前时间');
+				return;
+			}
+			var validTo = $('#validTo').datebox('getValue');
+			if(validTo == ''){
+				alert('优惠结束时间不能为空');
+				return;
+			}
+			if(DateCompare(validTo, validFrom, true)){
+				alert('优惠结束时间不得早于开始时间');
+				return;
+			}
+			if($('#count').val()=='' | $('#count').val() <= 0){
+				alert('生成优惠码数量必须输入大于0');
+				return;
+			}
+			$.messager.confirm('确认', '确认要生成' + $('#count').val() + '张从' + validFrom + '至' + validTo + '优惠金额：' + $('#discount').val() + '元的优惠码吗？', function(r){
+        		if (r){
+        			var params =  $.serializeObject($('#ContentForm'));
+        			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+        			$.getJSON('coupon/create', params, function(data) {
+        				if(data.rc == '1'){
+        					$.messager.show({
+        						title:'提示',
+        						msg: data.msg
+        					});
+        					jsQuery();
+        				}else{
+        					parent.$.messager.alert('错误', data.msg,'error');
+        				}
+        			});	
+        		}
+        	});
+		}
+		jsDelete = function() {
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				alert("请至少选择一行数据!");  
+				return;  
+			}
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	var status = selRows[i].status;
+            	if(status == 'USED'){
+            		alert('已使用的优惠码不允许进行删除，请重新选择');
+            		return;
+            	}
+            	sIds += id + ',';  
+            }  
+			$.messager.confirm('确认', '确认要删除该 ' + selRows.length + ' 条优惠码吗？', function(r){
+				if (r){
+					var params = {
+						'ids' : sIds.substring(0,sIds.length-1)
+					};
+					$.getJSON('coupon/delete', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}
+			});
+		}
+		$(function() {
+			//初始化活动类型
+			$('#activity_title').prepend("<option value=''>全部</option>");
+			$.getJSON("coupon/activity", function(result){
+				for(var i=0;i<result.rows.length;i++){
+					$('#activity_title').append("<option value='"+ result.rows[i].id +"'>"+ result.rows[i].title +"</option>");
+				}
+			});
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'coupon/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : false,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '250',
+					title : '优惠码',
+					align: 'left',
+					field : 'code'
+				},{
+					width : '120',
+					title : '活动方式',
+					align: 'center',
+					field : 'activityTitle'
+				},{
+					width : '100',
+					title : '优惠金额',
+					align: 'center',
+					field : 'discount'
+				}, {
+					width : '120',
+					align: 'center',
+					title : '有效开始时间',
+					field : 'validFrom',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm');
+						}
+					}
+				}, {
+					width : '120',
+					title : '有效结束时间',
+					align: 'center',
+					field : 'validTo',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm');
+						}
+					}
+				},{
+					width : '100',
+					title : '状态', 
+					align: 'center',
+					field : 'status',
+					formatter: function(value,row,index){
+						var d;
+						switch(value){
+							case "VALID":
+								d="<font color=\"green\">有效</font>";
+								break;
+							case "OVERDUE":
+								d="<font color=\"grey\">过期</font>";
+								break;
+							case "USED":
+								d="<font color=\"red\">已使用</font>";
+								break;
+							default:
+								d="";
+								break;
+						}
+						return d;
+					}
+				},{
+					width : '120',
+					title : '创建时间',
+					align: 'center',
+					field : 'createdAt',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm');
+						}
+					}
+				},{
+					width : '150',
+					title : '付款单号',
+					align: 'left',
+					field : 'bizNo'
+				},{
+					width : '120',
+					title : '付款时间',
+					align: 'center',
+					field : 'cashieritemCreatedAt',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm');
+						}
+					}
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+		});
+		var queryTradeDetails4Excel = function() {
+			var params1 =  $.serializeObject($('#SearchForm'));
+			params1.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			$("#SearchForm")[0].submit();
+	 	};
+		/*获取当前日期 yyyy-mm-dd*/
+		function getDate() {
+			var now=new Date()
+			y=now.getFullYear()
+			m=now.getMonth()+1
+			d=now.getDate()
+			m=m<10?"0"+m:m
+			d=d<10?"0"+d:d
+			return y+"-"+m+"-"+d
+		} 
+		/*日期比较 yyyy-mm-dd
+		@bool 是否允许日期相同
+		*/
+		function DateCompare(a, b, bool) {
+			var arr = a.split("-");
+			var starttime = new Date(arr[0], arr[1], arr[2]);
+			var starttimes = starttime.getTime();
+			
+			var arrs = b.split("-");
+			var lktime = new Date(arrs[0], arrs[1], arrs[2]);
+			var lktimes = lktime.getTime();
+			
+			if(!bool){
+				if (starttimes > lktimes)
+					return false;
+				else
+					return true;
+			} else {
+				if (starttimes >= lktimes)
+					return false;
+				else
+					return true;
+			}
+		}
+	/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="SearchForm" th:action="@{/coupon/list/exportExcel}" method="GET">
+			<table>
+				<tr>
+					<td>优惠码：</td>
+					<td>
+						<input type="text" id="code_kwd" name="code_kwd" style="width:150px;" />
+					</td>
+					<td>有效日期：</td>
+					<td style="width: 115px;">
+						<input id="valid1_kwd" name="valid1_kwd" type="text" class="easyui-datebox" style="width:100px;" editable="false" />
+					</td>
+					<td style="width: 10px;">
+						-
+					</td>
+					<td style="width: 115px;">	
+						<input id="valid2_kwd" name="valid2_kwd" type="text" class="easyui-datebox" style="width:100px;" editable="false" />
+					</td>
+					<td>活动类型：</td>
+					<td>
+						<select id="activity_title" name="activity_title"></select>
+					</td>
+					<td>状态：</td>
+					<td>
+						<select id="status_kwd" name="status_kwd">
+							<option value="">全部</option>
+							<option value="VALID">有效</option>
+							<option value="OVERDUE">过期</option>
+							<option value="USED">已使用</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>付款日期：</td>
+					<td style="width: 115px;" colspan="2">
+						<input type="text" id="cashieritem1_kwd" name="cashieritem1_kwd" class="easyui-datebox" style="width:100px;" editable="false" />
+					</td>
+					<td style="width: 10px;">
+						-
+					</td>
+					<td style="width: 115px;">	
+						<input type="text" id="cashieritem2_kwd" name="cashieritem2_kwd" class="easyui-datebox" style="width:100px;" editable="false" />
+					</td>
+					<td>
+						<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+							onclick="jsQuery()" style="margin-left: 40px;">查询</a>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" 
+							onclick="jsOpenWin()" style="margin-left: 40px;">生成优惠码</a>
+					</td>
+					<td>			
+					 	<a href="#" class="easyui-menubutton" data-options="menu:'#mm_opt',iconCls:'icon-edit'">操作</a>
+					  	<div id="mm_opt" style="width: 200px;">
+					  		<div data-options="iconCls:'ext_page_excel'" onclick='queryTradeDetails4Excel()'>导出明细</div>
+					  		<div data-options="iconCls:'icon-remove'" onclick='jsDelete()'>批量删除</div>
+					  		<!-- 
+					  		 -->
+						</div>
+					</td>	
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+	<div class="easyui-dialog" title="生成优惠码" id="dvForm"
+	 	data-options="closed:true,buttons:[{
+					text:'确定',
+					iconCls:'icon-save',
+					handler:function(){jsCreate();}
+				}]" style="width:380px;height:220px;padding:30px 10px 10px 10px">
+		<form id="ContentForm">
+			<table>
+				<tr>
+					<td style="width: 60px; text-align: left;">金额：</td>
+					<td style="width: 115px;">
+						<input id="discount" name="discount" type="text" class="easyui-numberbox" precision="2" max="99999.99" size="8" maxlength="8" style="width:100px;" placeholder="金额" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 60px; text-align: left;">有效日期：</td>
+					<td style="width: 115px;">
+						<input id="validFrom" name="validFrom" type="text" class="easyui-datebox" style="width:120px;" editable="false" />
+					</td>
+					<td style="width: 10px;">
+						-
+					</td>
+					<td style="width: 115px;">	
+						<input id="validTo" name="validTo" type="text" class="easyui-datebox" style="width:120px;" editable="false" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 40px; text-align: left;">数量：</td>
+					<td style="width: 60px;">
+						<input id="count" name="count" type="text" style="width:80px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" maxlength="5" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>   
+</html>

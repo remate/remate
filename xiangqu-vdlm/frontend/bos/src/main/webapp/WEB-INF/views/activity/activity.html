@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>活动管理</title>
+	
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+	    String.prototype.trim = function() {  
+            return this.replace(/(^\s*)|(\s*$)/g, "");  
+        };
+		var jsQuery = function() {
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		
+		var jsCreate = function() {
+			var szUrl = 'toAddProduct';
+			var dialog = commonDialog({
+				title : '导入商品',
+				width : 600,
+				height: 350,
+				content : '<iframe frameborder="0" src="' + szUrl + '" style="width:100%;height:100%;"></iframe>'
+			});
+		};
+		
+
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'activity/list',
+				striped : true,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [{
+					width : '60',
+					title : '活动id',
+					field : 'id'
+				}, {
+					width : '150',
+					title : '活动名称',
+					field : 'name'
+				}, {
+					width : '100',
+					title : '活动类型',
+					align: 'right',
+					field : 'type'
+				}, {
+					width : '100',
+					title : '活动状态',
+					field : 'status'
+				}, {
+					width : '110',
+					title : '开始时间', 
+					field : 'startTime',
+					formatter: function(value,row,index){
+						if(!value){
+							return "";
+						}
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm');
+					}
+				}, {
+					width : '110',
+					title : '结束时间',
+					field : 'endTime',
+					formatter: function(value,row,index){
+						if(!value){
+							return "";
+						}
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm');
+					}
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+		});
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm">
+		<table>
+			<tr>
+			</tr>
+		</table>
+		</form>
+		<a href="#" onclick="jsCreate()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">导入活动商品</a>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+</body>
+</html>

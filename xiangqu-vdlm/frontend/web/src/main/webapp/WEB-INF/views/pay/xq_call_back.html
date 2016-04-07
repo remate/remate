@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageNoTitle">
+<head>
+    <title>支付成功</title>
+    
+</head>
+
+<body id="cart-body" class="as_page">
+    <div data-layout-fragment="content" class="bg-grayed ">
+    	<div data-th-if="${order eq null}" data-th-remove="tag">
+            <div class="call-back-img">
+                <img src="/_resources/images/order/false.png" alt="" />
+            </div>
+            <!--<input type="hidden" name="orderId" data-th-value="${order.id}"/>-->
+            <p class="call-false font-dark-bold centered">支付失败</p>
+            <p class="fz30 font-light centered pb86">请返回订单页面重新支付</p>
+            <section class="bg-grayed p30">
+                <a id="submitBtn" type="button" data-th-href="'/order/'+${order.id}" class="button bg-orange cart-checkout-btn fz30 font-white ptb30">返回订单</a>
+            </section>
+
+    	</div>
+    	<div data-th-if="${order ne null}" data-th-remove="tag">
+            <div class="call-back-img">
+                <img src="/_resources/images/order/success.png" alt="" />
+            </div>
+	    	<!--<input type="hidden" name="orderId" data-th-value="${order.id}"/>-->
+        	<p class="bigger font-dark-bold centered">支付成功xaingqu</p>
+            <ul class="bg-white call-order-list font-dark fz26 plr30">
+                <li>商品名称:<span data-th-text="${order.orderItems.get(0).getProductName()}"></span></li>
+                <!--  
+                <li class="bdt">店铺名称:<span data-th-text="${shop.name}"></span></li>
+                -->
+                <li class="bdt">订单编号:<span class="ff-numb" data-th-text="${order.orderNo}"></span></li>
+                <li class="bdt">支付金额:<span class="ff-numb" data-th-text="${order.totalFee}">&yen;</span></li>
+            </ul>
+            <section class="bg-grayed p30">
+                <a id="submitBtn" type="button" data-th-href="'/order/'+${order.id}" class="button bg-orange cart-checkout-btn fz30 font-white ptb30">查看订单</a>
+            </section>
+    	</div>
+    </div>
+    <script data-layout-fragment="postScript">
+   /* $(document).ready(function() {
+        setTimeout(function() {
+            var orderId = $('input[name=orderId]').val();
+            if(orderId)
+            	location.href = "/order/" + orderId;
+        }, 3000);       
+    });*/
+    </script>
+</body>
+</html>

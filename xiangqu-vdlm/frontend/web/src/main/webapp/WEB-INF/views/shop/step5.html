@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8" />
+    <title>step5</title>
+</head>
+<body class="as_page">
+    <div data-layout-fragment="content" class="centered pt75b40">
+        <img src="../../../_resources/images/shop/move-again.png" alt=""/>
+        <div class="pt40 fz42 font-dark">再次搬家</div>
+        <p class="pt20 fz24 font-light widthhuanh w50">您已经进行过搬家点击开始搬家将店铺新增商品搬过来</p>
+        <p class="pt40 step-success-btn">
+                <input type="hidden" id="J-shopUrl" name="shopUrl" data-th-value="${shopUrl}"/>
+                <input type="hidden" id="J-href1" data-th-value="@{/shop/step4}"/>
+                <input type="hidden" id="J-href2" data-th-value="@{/shop/step5}"/>
+            <a class="button bg-orange cart-checkout-btn fz29 font-white ptb30"  id="moveAgbtn"  href="javascript:void(0)">开始搬家</a>
+        </p>
+    </div>
+        <div data-layout-fragment="postScript">
+            <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/shop.js}"></script>
+        </div>
+</body>
+</html>

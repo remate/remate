@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>店铺商品同步</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+	    $(function(){
+	        $('#btnSubmit').bind('click', function(){
+	        	if($('#shopUrl').val() == ''){
+	        		alert('店铺地址不能为空！');
+	        		return false;
+	        	}
+	        	
+	        	$.messager.confirm('确认', '确认开始同步?', function(r){
+	        		if (r){
+						$('#btnSubmit').linkbutton('disable');
+						$.messager.progress({text:'同步中...'});
+						$('#cfmSync').submit();
+	        		}
+	        	});
+	        });
+	      });
+	    /*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 5px;">   
+	    <form id="cfmSync" th:action="@{start}" method="post">
+	    	<table>
+	    		<tr>
+	    			<td>店铺地址</td>
+	    			<td>
+	    				<input id="shopUrl" name="shopUrl" type="text" style="width: 300px;" th:value="${syncItem.shopUrl}" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+					<td>佣金比例</td>
+					<td><input id="commisionRate"   name="commisionRate" placeholder="比如15%直接输入0.15" style="width:140px;" th:value="${syncItem.commisionRate}" /></td>
+				</tr>
+	    	</table>
+	    	<table>
+   				<tr>
+   					<td>第三方</td>
+    				<td>
+	    				<select id="plantForm" name="plantForm" >
+						<option value="ALL">全部</option>
+						<option value="XIANGQU">想去</option>
+						</select>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td colspan="4" align="center"><br/>
+		                <div th:text="${success}"></div><div th:text="${errors}"></div>
+	    				<a id="btnSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">开始同步</a>
+	    			</td>
+	    		</tr>	
+    		</table>
+	     </form>
+    </div>
+</body>   
+</html>

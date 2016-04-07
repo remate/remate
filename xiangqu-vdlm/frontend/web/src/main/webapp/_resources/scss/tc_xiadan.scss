@@ -1,0 +1,290 @@
+/**
+ * Created by ziyu on 2016/1/22.
+ */
+@charset "UTF-8";
+
+.tc-layout {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  display: none;
+
+  overflow: hidden;
+}
+
+
+  .tc-opacity{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    background:rgba(51, 51, 51, 0.47);
+    overflow: hidden;
+    z-index:1001;
+  }
+
+
+  .tc-my-address-box{
+    position: relative;
+    bottom: 0;
+    left:0;
+    display: none;
+    width:100%;
+    height:px2rem(864);
+    //background: #fff;
+    z-index: 1002;
+  }
+  .tc-address-manage-box{
+    position: relative;
+    bottom:0;
+    left: 0;
+    display: none;
+    width:100%;
+    //height:px2rem(864);
+    //overflow: hidden;
+    background: #fff;
+    z-index:2000;
+  }
+  .tc-tips{
+    display: none;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    //max-height:px2rem(864);
+    height:100%;
+    z-index: 1003;
+    background: rgba(51, 51, 51, 0.47);
+    overflow:hidden;
+    .tc-tips-body{
+      position: fixed;
+      top:50%;
+      left:50%;
+      z-index: 1500;
+      width:px2rem(448);
+      height:px2rem(200);
+      margin-top:- px2rem(200);
+      margin-left:- px2rem(224);
+      overflow: hidden;
+      background: #fff;
+      border-radius:px2rem(10);
+      .tc-tips-text{
+        font-size:px2rem(26);
+        text-align: center;
+        height:px2rem(120);
+        width:px2rem(448);
+        display:table-cell;
+        vertical-align: middle;
+        border-bottom:1px solid #e5e5e5;
+      }
+      .tc-tips-btn{
+        height:px2rem(80);
+        span{
+          width:px2rem(223);
+          float: left;
+          font-size:px2rem(30);
+          text-align: center;
+          line-height:px2rem(80);
+          &.sure{
+            //background: #000;
+            //color: #fff;
+            border-bottom-right-radius: px2rem(10);
+            border-left:1px solid #e5e5e5;
+          }
+          
+        }
+        
+      }
+    }
+  }
+
+
+
+.tc-cont-title{
+  height:px2rem(80);
+  padding:0;
+  border-bottom:1px solid #e5e5e5;
+  background: #fff;
+  span{
+    display: block;
+  }
+  .title{
+    float: left;
+    font-size:px2rem(28);
+    line-height:px2rem(80);
+    padding-left: px2rem(24);
+  }
+  .close-addresslist{
+    float: right;
+    width:px2rem(80);
+    height:px2rem(80);
+    background: #fff;
+    padding-right: px2rem(24);
+    //background: url($icon-closeTc) no-repeat center center;
+    overflow: hidden;
+
+    i{
+      float: right;
+      display: block;
+      width:px2rem(38);
+      height:px2rem(38);
+      margin-top:px2rem(21);
+      background: url($icon-closeTc) no-repeat center center;
+      background-size:contain;
+      overflow: hidden;
+      text-indent: -9999px;
+    }
+
+  }
+
+}
+
+.tc-cont-body{
+  background: #f0f0f0;
+  //height:px2rem(690);
+  //overflow-x: hidden;
+  //overflow-y:auto;
+  //margin-bottom:px2rem(93);
+.last-children-zw{
+  height:px2rem(93);
+  overflow: hidden;
+}
+  ul{
+    li{
+      margin-bottom:px2rem(20);
+      padding:px2rem(24) px2rem(24) 0 px2rem(24);
+      background: #fff;
+      &:last-child{
+        margin-bottom:0;
+      }
+      .address-info{
+        position: relative;
+        z-index:10;
+        .info-l{
+          float: left;
+          width:89%;
+          overflow: hidden;
+          h3{
+            font-size:px2rem(28);
+            color: #000;
+            em{
+              font-style:normal;
+            }
+            .phone{
+              float: right;
+            }
+          }
+          .street{
+            padding-top:px2rem(5);
+            padding-bottom:px2rem(24);
+            color: #ababab;
+            font-size:px2rem(26);
+            line-height:px2rem(36);
+            span{
+              &.street-info{
+                font-size:0;
+                em{
+                  font-size:px2rem(26);
+                }
+              }
+            }
+
+          }
+        }
+        .show-addresslist{
+          position: absolute;
+          top:50%;
+          right:0;
+          width: px2rem(34);
+          height: px2rem(34);
+          margin-top:- px2rem(29);
+          i{
+            display: none;
+            width: px2rem(34);
+            height: px2rem(34);
+            background: url("#{$icon-checkedAddress}") no-repeat;
+            background-position: 0 0;
+            background-size:contain;
+          }
+
+        }
+
+        &.active{
+          .show-addresslist{
+            i{
+              display:block;
+            }
+          }
+        }
+
+      }
+
+      .address-shops{
+        height:px2rem(70);
+        border-top:1px solid #e5e5e5;
+        font-size:0;
+        span{
+          display: inline-block;
+          float: left;
+          font-size:px2rem(26);
+          line-height:px2rem(70);
+          &.edit-current{
+            padding:0 px2rem(24);
+            float: right;
+          }
+          &.del-current{
+            float: right;
+            padding:0 px2rem(30);
+          }
+          &.active{
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tc-address-btn{
+  background: #2e2e2e;
+  text-align: center;
+  height:px2rem(93);
+  line-height:px2rem(93);
+  font-size:px2rem(34);
+  overflow: hidden;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  z-index: 1003;
+
+}
+.edit-address-btn{
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  z-index:9998;
+  background: #2e2e2e;
+  text-align: center;
+  width:100%;
+  overflow: hidden;
+  span{
+    display: block;
+    width:100%;
+    height: px2rem(93);
+    line-height: px2rem(93);
+    text-align: center;
+    font-size:px2rem(34);
+    overflow: hidden;
+    color: #fff;
+  }
+
+}
+
+@import "add_address.scss";

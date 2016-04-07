@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageNoTitle">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8"/>
+    <title>身份验证</title>
+</head>
+
+<body class="as_page">
+<div data-layout-fragment="content">
+    <h2 class="sms-title mb30 font-dark">填写验证码</h2>
+    <form id="pay_sms_submit_form" data-th-action="@{/pay/umpayConfirm}" method="post">
+    <input type="hidden" name="tradeNo" data-th-value="${paymentVO.billNo}"/>
+    <input type="hidden" name="outTradeNo" data-th-value="${paymentVO.billNoPay}"/>
+    <input type="hidden" name="totalFee" data-th-value="${paymentVO.totalFee}"/>
+    <input type="hidden" name="subject" value="1"/>
+    <input type="hidden" name="payAgreementId" data-th-value="${paymentVO.payAgreementId}"/>
+        <div class="clearfix mb30 sms-active">
+            <input class="db fl-l sms-input-l" id="verifyCode" name="verifyCode" type="text" placeholder="输入您手机收到的验证码" required="required"/>
+            <span id="btnSend" class="fl-l sms-input-r">89</span>
+        </div>
+       <div class="m60tbr30">
+           <a id="submitBtn" type="button" class="button bg-orange cart-checkout-btn fz30 font-white ptb30">提交</a>
+       </div>
+    </form>
+</div>
+    <div data-layout-fragment="postScript">
+        <script type="text/javascript">
+           $(document).ready(function(){
+        	   $('#submitBtn').bind('click', function() {
+        		   if($('#verifyCode').val() == ''){
+        			   alert("请选择验证码");
+        			   return ;
+        		   }
+        		   
+        		   if (!$('#submitBtn').is('.disabled')) {
+        	            $('#submitBtn').removeClass('bg-orange').addClass('disabled').attr('disabled', 'disabled');
+        	            $.getJSON("/pay/umpayConfirm?" + $('#pay_sms_submit_form').serialize(), {},function(data){
+        	            	if(data.rc == '0'){
+        	            		$('#submitBtn').addClass('bg-orange').removeClass('disabled').attr('disabled', '');
+        	            		alert(data.msg);
+        	            	}else{
+        	            		window.location.href='/pay/umpayConfirmDone?orderNo='+data.obj;
+        	            	}
+        	            });
+        	        }
+        	   });
+        	   
+        	   $('#btnSend').bind('click', function() {
+        		   if($(this).hasClass("sms-again")){
+        			 time();
+        			//重新发送
+       	            $.getJSON("/pay/sendSmsAgain?" + $('#pay_sms_submit_form').serialize(), {},function(data){
+    	            	alert(data.msg);
+    	            });
+        		   }
+        	   });
+        	   time();
+           });
+           
+	    	var wait = 90;
+			function time() {
+				if (wait == 0) {
+					$("#btnSend").addClass("sms-again");
+					$("#btnSend").html("重新发送");
+					wait = 90;
+				} else {
+					$("#btnSend").removeClass("sms-again");
+					$("#btnSend").html("重新发送("+wait+")");
+					wait--;
+					setTimeout(function() { time() }, 1000)
+				}
+			}
+
+		</script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../_resources/css/bootstrap.min.css" rel="stylesheet" media="screen" data-th-href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../_resources/css/core.css" rel="stylesheet" media="screen" data-th-href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<form class="form-narrow form-horizontal" method="post" data-th-action="@{/signup}" data-th-object="${signupForm}">
+    <!-- /* Show general error message when form contains errors */ -->
+    <th:block data-th-if="${#fields.hasErrors('${signupForm.*}')}">
+        <div data-th-replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
+    </th:block>
+    <fieldset>
+        <legend>Please Sign Up</legend>
+        <div class="form-group" data-th-classappend="${#fields.hasErrors('email')}? 'has-error'">
+            <label for="email" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="email" placeholder="Email address" data-th-field="*{email}" />
+                <span class="help-block" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}">Incorrect email</span>
+            </div>
+        </div>
+        <div class="form-group" data-th-classappend="${#fields.hasErrors('password')}? 'has-error'">
+            <label for="password" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="password" placeholder="Password" data-th-field="*{password}"/>
+                <span class="help-block" data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}">Incorrect password</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-default">Sign up</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <p>Already have an account? <a href="signin" data-th-href="@{/signin}">Sign In</a></p>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

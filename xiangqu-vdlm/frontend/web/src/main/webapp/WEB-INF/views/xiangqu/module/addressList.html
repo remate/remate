@@ -1,0 +1,104 @@
+<div data-th-fragment="addressList" class="J_myAddressBox address-lists clearfix">
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/address_lists.css}" />
+
+    <div class=" address-box clearfix">
+        <ul>
+
+        </ul>
+        <div class="J_addNewAddress add-new-address"></div>
+    </div>
+    <div class="J_showMoreAddress show-more-address" data-isshow="0">显示全部地址</div>
+
+    <script type="text/html" id="J_tempAddressList">
+        {{each _data as value i }}
+
+        <li class="J_checkAdd {{if value.isDefault}}default active{{/if}}  " >
+
+            <h3 class="name" data-name="{{value.consignee}}">{{value.consignee}}&nbsp;(收)</h3>
+            <div class="address">
+                {{each value.zones as value i}}
+                {{if i > 0}}
+                <span class="pcd" data-id="{{value.id}}">{{value.name}}</span>
+                {{/if}}
+                {{/each}}
+                <em class="street">{{value.street}}</em>
+                <em class="tel">{{value.phone}}</em>
+
+            </div>
+
+            <span class="J_setDefault default-address {{if value.isDefault}} active {{/if}}">默认地址</span>
+
+            <span class="J_editAddress edit-address"  data-zipcode="{{if value.zipcode}}{{value.zipcode}}{{/if}}"   data-addressid="{{value.id}}">修改</span>
+
+            <!--<i class="bird"></i>-->
+        </li>
+
+
+        {{/each}}
+    </script>
+</div>
+
+<div class="J_editAddressBox edit-address-box">
+    <div class="edit-title">
+        <h3>添加新地址</h3>
+        <span class="J_clearEditAddress clear"></span>
+    </div>
+    <div class="content-box clearfix">
+        <ul class="J_groupItems">
+            <li>
+                <span class="lable-form">所在地区<i>*</i></span>
+                <div class="J_citiesCheck group-input">
+                    <select class="J_province" name="province">
+                        <option value="0">--省份--</option>
+                    </select>
+                    <select class="J_city" name="city">
+                        <option value="0">--城市--</option>
+                    </select>
+                    <select name="district" class="J_district">
+                        <option value="0">--地区--</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <span class="lable-form">详细地址<i>*</i></span>
+                <div class="group-input">
+                    <textarea class="J_addressInfo" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层
+和房间号等信息"></textarea>
+                </div>
+            </li>
+
+            <li>
+                <span class="lable-form">收货人姓名<i>*</i></span>
+                <div class="group-input">
+                    <input type="text" class="J_userName" placeholder="长度不超过30个字符" />
+                </div>
+
+            </li>
+            <li>
+                <span class="lable-form">手机号码<i>*</i></span>
+                <div class="group-input">
+                    <input type="text" class="J_userTel"  />
+                </div>
+            </li>
+            <li>
+                <span class="lable-form">邮政编码<i></i></span>
+                <div class="group-input">
+                    <input type="text" class="J_zipcode" placeholder="如您不清楚邮递区号，请填写000000" />
+                </div>
+            </li>
+            <li>
+                <span class="lable-form"></span>
+                <div class="group-input default">
+                    <input type="checkbox" class="J_defaultAddress" id="defaultAddress" />
+                    <label for="defaultAddress">设置默认地址</label>
+                </div>
+            </li>
+        </ul>
+        <div class="save-setting">
+            <a href="javascript:void(0);" class="J_editAddressSave save" id="setting-save" imgChange="">保存</a>
+
+        </div>
+
+    </div>
+</div>
+

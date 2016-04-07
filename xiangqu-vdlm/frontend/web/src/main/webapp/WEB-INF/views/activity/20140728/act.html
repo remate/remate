@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8" />
+    <title data-th-text="${actObj.name}">9块9</title>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+            /*box-flex*/
+        .box {
+            /* Firefox */
+            display: -moz-box;
+            -moz-box-pack: center;
+            -moz-box-align: center;
+            /* Safari、Opera 以及 Chrome */
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            /* W3C */
+            display: box;
+            box-pack: center;
+            box-align: center;
+            width: 100%;
+        }
+
+        .flex1 {
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+        }
+
+        .pt75b40 {
+            padding: 3.525em 0 2em;
+        }
+
+        .pl10r30 {
+            padding-right: 1.5em;
+        }
+
+        .p10 {
+            padding: 0.5em;
+        }
+
+        .font-dark-bold {
+            color: #505557;
+        }
+
+        .fz20 {
+            font-size: 1em;
+        }
+
+        .discount {
+            display: inline-block;
+            padding: 0.2em 0.3em;
+            background-color: #ff8d00;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            color: #fff;
+        }
+
+        .price {
+            color: #4a4a4a;
+            font-size: 1em;
+            font-family: helveticaneue;
+        }
+
+        .price strong {
+            color: #ff4000;
+            font-size: 1.6em;
+            padding-left: 0.2em;
+        }
+        .pro-infor{
+            display: inline-block;
+            float: left;
+            width: 50%;
+        }
+    </style>
+</head>
+<body class="as_page">
+<!-- 
+	<header class="header" style="display: block;" data-layout-fragment="header">
+		<a id="backButton" class="button backButton" data-th-text="#{Back}">Back</a>
+		<div class="h1" data-th-text="${activityName}">所有商品</div>
+	</header>
+ -->
+    <div data-layout-fragment="content" class="shop-bg">
+        <section>
+            <img class="full" data-vd-src="${actObj.banner}" alt="" />
+        </section>
+        <section class="pt75b40">
+            <div class="pl10r30 clearfix">
+                <div class="pro-infor" data-th-each="prod:${products}">
+                    <a data-th-href="@{'/p/'+${prod.id}+'?union_id='+${union_id}}">
+                        <div class="img-outer">
+                            <img class="js-img-size" data-th-attr="imgWidth=${prod.imgWidth},imgHeight=${prod.imgHeight}" data-vd-src="${prod.img}" data-th-alt="${prod.name}" />
+                        </div>
+                        <div class="p10">
+                            <p class="widthhuanh fz20 font-dark-bold" data-th-text="${prod.name}" ></p>
+                            <div class="box">
+                                <p class="flex1 price">
+                                    <strong data-vd-price="${prod.price}">0.11</strong>
+                                </p>
+                                <p class="flex1 discount" data-th-text="${prod.discount} + '折'">4.5折</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+	</div>
+	<div data-layout-fragment="postScript">
+        <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/imgsize.js?t=201408080246}"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var imgObj= $(".js-img-size");
+                var imgWidth= $(".pro-infor");
+                imgSize(imgObj,imgWidth);
+            })
+
+        </script>
+    </div>
+</body>
+</html>

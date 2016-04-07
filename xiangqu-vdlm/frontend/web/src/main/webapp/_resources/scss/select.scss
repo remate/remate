@@ -1,0 +1,92 @@
+/**
+ * Created by ziyu on 2016/1/23.
+ */
+@charset "UTF-8";
+
+.select, .select ul, .select li, .select ol{
+  list-style: none;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+.select {
+  padding: 0;
+  margin: 2px;
+  line-height: 1.7em;
+  /*font-size: 12px;*/
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  background-image: linear-gradient(#fff,#f5f5f5 49%,#eaeaea 50%, #f2f2f2);
+  /*border: 1px solid #ccc;*/
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+  box-shadow: 0 1px 3px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.5);
+}
+.select>span {
+  padding: 2px 20px 2px .6em;
+  margin: 0;
+  white-space: nowrap;
+}
+.select>span::after, .select>span::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 4px solid #000;
+  border-width: 4px 3px;
+  right: 6px;
+  top: 50%;
+}
+.select>span::after {
+  border-color: transparent transparent #444 transparent;
+  margin-top: -10px;
+}
+.select>span::before {
+  border-color: #444 transparent transparent transparent;
+  margin-top: 2px;
+}
+.select>ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #fff;
+  padding: 5px 0;
+  /*border: 1px solid #e8e8e8;*/
+  border-radius: 4px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  top: -2px;
+  z-index: 2;
+  box-shadow: 0 7px 10px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,0.3);
+  text-align: left;
+  height:300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.select>ul>li {
+  padding: 0 1.5em;
+  position: relative;
+  white-space: nowrap;
+}
+.select>ul>li:hover {
+  background-image: linear-gradient(#609cfe, #5183d4);
+  color: #fff;
+  box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+.select>ul>li.select-cat::before {
+  position: absolute;
+  content: "✓";
+  width: 1em;
+  height: 18px;
+  line-height: 18px;
+  top: 50%;
+  margin-top: -10px;
+  left: 5px;
+}

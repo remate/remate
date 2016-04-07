@@ -1,0 +1,58 @@
+<!-- 修改弹窗 begin -->
+<div class="am-modal am-modal-confirm J_addressEditPop" tabindex="-1" data-th-fragment="addressModify">
+    <div class="kd-modal-dialog am-modal-dialog">
+        <p class="kd-modal-title">收货人信息</p>
+        <div class="kd-modal-body">
+            <form class="am-form am-form-horizontal kd-form" id="form-buyerInfo" novalidate="novalidate">
+                <ul class="list-formSend">
+                    <li class="am-cf">
+                        <label for="J_buyerName" class="form-em">姓名</label>
+                        <input type="text" name="J_buyerName" id="J_buyerName" data-th-value="${order.orderAddress.consignee}" />
+                    </li>
+                    <li class="am-cf">
+                        <label for="J_buyerTel" class="form-em">电话</label>
+                        <input type="text" name="J_buyerTel" id="J_buyerTel" data-th-value="${order.OrderAddress.phone}" />
+                    </li>
+                    <li class="am-cf">
+                        <label for="J_buyerChart" class="form-em">微信号</label>
+                        <input type="text" name="J_buyerChart" id="J_buyerChart" data-th-value="${order.OrderAddress.weixinId}" />
+                    </li>
+                    <li class="am-cf group-select">
+                        <label for="" class="form-em">地址</label>
+                        <div class="am-form-group-sm am-cf am-fl kd-form pad-0">
+                            <div class="am-fl">
+                                <select class="combox" name="sect_province" id="sect_province">
+                                   
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group-sm am-cf am-fl kd-form pad-0 ml-20">
+                            <div class="am-fl">
+                                <select class="combox" name="sect_city" id="sect_city">
+                                   
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group-sm am-cf am-fl kd-form pad-0 ml-20">
+                            <div class="am-fl">
+                                <select class="combox" name="sect_area" id="sect_area">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="am-cf">
+                        <textarea class="shoper-mark" name="J_addCare" id="J_addCare" cols="30" rows="10" data-th-text="${order.OrderAddress.street}"></textarea>
+                    </li>
+                    <input type="hidden" name="orderId" id="orderId" data-th-value="${order.id}"/>
+                    <input type="hidden" name="orderAddId" id="orderAddId" data-th-value="${order.OrderAddress.id}"/>
+                </ul>
+                <div class="modal-footer am-text-center">
+                    <button type="submit" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="" id="J_submitAddress">确认修改</button>
+                    <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 修改弹窗 end -->

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="/layout/mainPage">
+	<head>
+		<title data-th-text="#{order}">订单</title>
+		<link rel="stylesheet" href="../../../resources/css/orderManagement.css" type="text/css"/>
+	</head>
+	<body>
+			<!-- <div class="tab">
+				<span class="title">订单类型:</span>
+				<span class="status">直接支付</span>
+			</div> -->
+			<div class="tab">
+				<span class="title">状态:</span>
+				<span class="status" data-th-text="${order.status}">已完成</span>
+			</div>
+			<table cellpadding="0" cellspacing="0">
+				<th colspan="2">收款人信息</th>
+				<tr>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="number">18058705864</td>
+				</tr>
+				<tr>
+					<td colspan="2">浙江省 杭州市 滨江区 东流路700号</td>
+				</tr>
+				<tr>
+					<td width="30%">买家备注</td>
+					<td width="70%" class="td-right"></td>
+				</tr>
+				<tr>
+					<td class="last-left">微信号</td>
+					<td class="td-right last-right"></td>
+				</tr>
+			</table>
+			<table cellpadding="0" cellspacing="0">
+				<th colspan="2">商品信息</th>
+				
+				<tr>
+					<td colspan="2">
+						<div class="product-detail" data-th-each="orderItem:${order.orderItems}">
+							<img width="80" height="80" data-vd-src="/resources/images/order/test-img.png" data-th-src="@{orderItem.productImg}"/>
+							<ul>
+								<li class="detail-title" data-th-text="${orderItem.productName}">后悔药</li>
+								<li>价格:<span class="price" data-th-text="${orderItem.price}">0.01</span></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">定金总价</td>
+					<td width="70%" class="td-right" data-th-text="'￥'+${order.totalPrice}">￥100.00</td>
+				</tr>
+				<tr>
+					<td>运费</td>
+					<td class="td-right" data-th-text="'￥'+${order.fare}">￥15.00</td>
+				</tr>
+				<tr>
+					<td width="30%">推广费</td>
+					<td width="70%" class="td-right">￥0.00</td>
+				</tr>
+				<tr>
+					<td class="last-left">订单优惠</td>
+					<td class="td-right last-right" data-th-text="'￥'+${order.discountAmount}">无优惠</td>
+				</tr>
+			</table>
+			<table cellpadding="0" cellspacing="0">
+				<th colspan="2">订单信息</th>
+				<tr>
+					<td width="30%">订单编号</td>
+					<td width="70%" class="td-right">261921</td>
+				</tr>
+				<tr>
+					<td width="30%">下单时间</td>
+					<td width="70%" class="td-right">2014-04-18  15:40:14</td>
+				</tr>
+				<tr>
+					<td width="30%">付款时间</td>
+					<td width="70%" class="td-right">2014-04-18  15:40:14</td>
+				</tr>
+				<tr>
+					<td width="30%">发货时间</td>
+					<td width="70%" class="td-right">2014-04-18  15:40:14</td>
+				</tr>
+				<tr>
+					<td width="30%">物流公司</td>
+					<td width="70%" class="td-right">顺丰速运</td>
+				</tr>
+				<tr>
+					<td width="30%">物流编号</td>
+					<td width="70%" class="td-right">123456789</td>
+				</tr>
+				<tr>
+					<td class="last-left">订单备注</td>
+					<td class="td-right last-right"></td>
+				</tr>
+			</table>
+	</body>
+</html>

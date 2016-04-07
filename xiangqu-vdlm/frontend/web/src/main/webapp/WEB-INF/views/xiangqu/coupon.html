@@ -1,0 +1,103 @@
+<html data-layout-decorator="/layout/mainPageXQKD">
+
+<head>
+    <title>确认优惠券</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate" />
+    <META HTTP-EQUIV="expires" CONTENT="0" />
+    <style>
+        .js-cantUseHb{
+            opacity: 0.5;
+        }
+        .coupons-toggle{
+            height: 50px;
+            padding: 0 15px;
+            border-bottom: 1px solid #f0eeea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pos-r" data-layout-fragment="content">
+        <form>
+            <input type="hidden" name="couponType" id="couponType" value="" />
+            <input type="hidden" name="extHongbaoId" id="extHongbaoId" value="" />
+            <input type="hidden" name="couponId" id="couponId" value="" />
+            <input type="hidden" name="discount" id="discount" value="0" />
+          <!--   <input type="hidden" name="orderId" id="orderId" data-th-value="${orderId}" />
+            <input type="hidden" name="backUrl" id="backUrl" data-th-value="${backUrl}" /> -->
+            
+            <ul class="plr30">
+                <li class="clearfix bdb height55 mt5 mb5 js-checkbox" data-th-each="coupons:${coupons}" data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected},data-title=${coupons.activity.title}" >
+                    <div class="fl-l  width60">
+                        <div class="fz24 font-dark-bold pt5 line25" data-th-text="${coupons.activity.title}+'('+ ${coupons.discount} +'元)'"></div>
+                    </div>
+                    <div data-th-remove="tag" data-th-if="${coupons.selected == true}">
+                        <p class="fl-r width5 talignr mr20 mtf5">
+                            <span class="imgDiscountCode imgCheck imgUnCheck imgChecked mt10"></span>
+                        </p>
+                    </div>
+                    <div data-th-remove="tag" data-th-if="${coupons.selected != true}">
+                        <p class="fl-r width5 talignr mr20 mtf5">
+                            <span class="imgDiscountCode imgCheck imgUnCheck mt10"></span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <section>
+                <div class=" p30">
+                    <a type="discountBtn" class="cart-checkout-btn cart-checkout-btn-new line25emheigh45 js-confirm">确认优惠方式</a>
+                </div>
+            </section>
+
+            
+                <!-- <div data-th-each="coupons:${coupons}" data-th-if="${#lists.size(coupons) != 0}">
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.title}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.id}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.discount}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.couponType.name()}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.actCode}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.extCouponId}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.selected}"/>
+                </div>   -->
+            
+
+        </form>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        /*<![CDATA[*/
+        $(function() {
+            //模拟复选框
+            $('.js-checkbox').on('click', function() {
+                var _this = this;
+                $(this).find('.imgCheck').toggleClass('imgChecked');
+            });
+
+            $('.js-confirm').on('click',function(){
+                //遍历选中的红包
+                var arr = [];
+                $('ul li .imgChecked').each(function(index,em){
+                    var _this = $(em);
+                    var _li = _this.parents('.js-checkbox');
+                    var objCoupon = {};
+                    objCoupon = {
+                        title : _li.attr('data-title'),
+                        id : _li.attr('data-id'),
+                        couponType : _li.attr('data-coupon-type'),
+                        extCouponId : _li.attr('data-extCouponId'),
+                        numb : _li.attr('data-numb'),
+                        selected :  _li.attr('data-selected')
+                    }
+                    arr.push(objCoupon);
+                });
+            	window.parent.frameCallBack(arr);
+            });
+
+        })
+        /*]]>*/
+        </script>
+    </div>
+</body>
+
+</html>

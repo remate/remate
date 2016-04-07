@@ -1,0 +1,23 @@
+{
+  "code": 200,
+  "data": {
+    "discountFee": "10",
+    "logisticsFee": "0",
+    "pricingList": [
+      {
+        "commissionDetails": {},
+        "commissionFee": "0",
+        "coupon": null,
+        "discountFee": "0",
+        "goodsFee": "263.00",
+        "logisticsFee": "0",
+        "promotion": null,
+        "shopId": "cyua9k",
+        "totalFee": "263.00"
+      }
+    ],
+    "totalFee": "253.00"
+  },
+  "msg": null,
+  "success": true
+}

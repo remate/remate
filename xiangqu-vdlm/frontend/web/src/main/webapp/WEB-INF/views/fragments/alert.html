@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div data-th-fragment="alert (type, message)" class="alert alert-dismissable" data-th-classappend="'alert-' + ${type}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <span data-th-text="${message}"></span>
+    </div>
+</body>
+</html>
+

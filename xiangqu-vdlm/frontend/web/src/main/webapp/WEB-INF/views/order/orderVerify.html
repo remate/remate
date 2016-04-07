@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>订单详情</title>
+</head>
+<body>
+<body class="as_page">
+    <div data-layout-fragment="content">
+        <form data-th-action="${'/order/' + order.id + '/verify'}">
+	        <section>
+	            <h2 class="bg-grayed cart-title fz26 font-dark box">
+                    <span class="flex1 tal ml30">请输入手机号码后四位</span>
+                    <span class="flex1 tar mr30 font-orange-bold" data-th-if="${!#strings.isEmpty(error)}" data-th-text="${error}"></span>
+                </h2>
+	            <div class="bdt fz60 font-dark order-title ff-numb box">
+	                <div class="flex1 ml30 tal" data-th-text="${#strings.substring(order.orderAddress.phone, 0, 3)}"></div>
+                    <div class="flex2 pl10" data-th-text="${#strings.substring(order.orderAddress.phone, 3, 7)}"></div>
+                    <div class="flex1 mr10 verify-right">
+                        <input class=" ff-numb font-dark" type="number" placeholder="----" name="postfix"/>
+                    </div>
+	            </div>
+	        </section>
+	        <section class="bg-grayed p30">
+	            <input type="submit" id="checkout-btn" class="button bg-orange cart-checkout-btn fz30 font-white ptb30" title="查看全部收货人信息"/>
+            </section>
+        </form>
+    </div>
+</body>
+</body>
+</html>

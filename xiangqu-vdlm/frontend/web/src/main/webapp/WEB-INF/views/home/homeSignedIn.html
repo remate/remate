@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title data-th-text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/_resources/css/bootstrap.min.css" rel="stylesheet" media="screen" data-th-href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="/_resources/css/core.css" rel="stylesheet" media="screen" data-th-href="@{/_resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<div data-th-replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block data-th-if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div data-th-replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+    <p>
+        Welcome to the Spring MVC Quickstart application!
+    </p>
+</div>
+</body>
+</html>

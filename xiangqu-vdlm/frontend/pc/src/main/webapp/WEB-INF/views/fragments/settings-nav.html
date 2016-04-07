@@ -1,0 +1,6 @@
+<nav class="am-kdbar-nav" data-th-fragment="settings_nav(step)">
+    <a  data-th-href="@{/setShop}"  href="" data-th-attr="class=${step} == 1 ? 'active' : '' ">店铺设置</a>
+    <a data-th-href="@{/shop/getPostageSet}" data-th-attr="class=${step} == 2 ? 'active' : '' ">邮费设置</a>
+    <a data-th-href="@{/shop/getCommissionList}"  data-th-attr="class=${step} == 3 ? 'active' : '' ">佣金设置</a>
+    <a data-th-href="@{/fragment/list}" data-th-attr="class=${step} == 4 ? 'active' : '' ">段落描述</a>
+</nav>    

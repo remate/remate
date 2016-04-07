@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/layout/mainPage">
+<head>
+<title>提现管理</title>
+<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+		var jsQuery = function() {
+			$(':text').each(function(){
+			    $(this).val($.trim($(this).val()));
+			  });
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		var transDetailsHandler = function(userId, phone){
+			parent.commonDialog({
+			    title:'账务明细表' + phone,
+			    width:850,
+			    height:500,
+			    iconCls: 'ext_table_multiple',
+			    href:'tradeDetails/'+userId
+		    });
+		};
+		
+		var queryWithdrawApply4Excel = function() {
+			$.messager.confirm('请确认', '确认导出提现记录Excel吗？', function(r){
+				if (r){
+					var params1 =  $.serializeObject($('#searchForm'));
+					params1.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+					$("#searchForm")[0].submit();
+				}
+			});
+	 	};
+	 	
+		var jsPayOffline = function(){
+			var updateds = grid.datagrid('getSelections');
+			if(updateds.length == 0 ){ 
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			var lockIds = '';  
+			var confirmStr = '';
+			var ids = '', confirmMoneys = '';
+			$.each(updateds, function(index, row){
+				confirmStr += '卖家：' + row.phone + ' 金额：' + row.applyMoney + '<br/>';
+				if (row.lock != null) {
+					lockIds += row.applyNo + ', \t';				
+				}
+				
+				if(ids != '') {
+					ids += ',';
+					confirmMoneys += ',';
+				}
+				ids += row.id;
+				confirmMoneys += row.applyMoney;
+			});
+			if (lockIds.length != null && lockIds.length > 0) {
+				alert('操作记录中有锁定状态的记录, 需要先解除锁定状态 ' + lockIds);
+				return ;
+			}
+			
+			$.messager.confirm('请确认', '确认<br/>'+confirmStr+'<br/>已打款吗？', function(r){
+				if (r){
+					jsPayOfflineOk(ids, confirmMoneys);
+				}
+			});
+		}
+		
+		var jsPayOfflineByChange = function(){
+			if($('#changeConfirmMoney').val() == ''){
+				alert('请录入核准金额');
+				return;
+			}
+			
+			$.messager.confirm('请确认', contextRow.phone + '的核准金额为'+$('#changeConfirmMoney').val()+'并已打款吗？', function(r){
+				if (r){
+					jsPayOfflineOk($('#changeWithdrawId').val(), $('#changeConfirmMoney').val());
+				}
+			});
+			//var json = JSON.stringify(updateds);
+		}
+		
+		var jsPayOfflineOk = function(ids, confirmMoneys){
+				$.messager.progress();
+				var params = {
+						'ids' : ids,
+						'confirmMoneys' : confirmMoneys
+					};
+				$.getJSON('withdraw/pay', params, function(json) {
+					$.messager.progress('close');
+					if(json.rc == "1"){
+						$.messager.show({
+							title:'提示',
+							msg:'操作成功'
+						});
+						
+						$('#dvChangeConfirmMoney').dialog('close');
+						
+						jsQuery();
+					}else{
+						parent.$.messager.alert('提示',json.msg,'error');
+					}
+				});
+
+		}
+		
+		var jsLockOk = function(){
+
+			var remark = $('#remark').combobox('getText'); 
+		
+			if(remark == ''){
+				alert('请输入锁定原因');
+				return ;
+			}
+			
+			var amount =  $('#amount').val();
+			if(amount == ''){
+				alert('请录入锁定金额');
+				return;
+			}
+			
+			var updated = grid.datagrid('getSelected');
+			
+			$.messager.confirm('请确认', '确认'+updated.phone+'锁定该用户提现吗？', function(r){
+				if (r){
+				var params = {
+					'userId' : updated.userId,
+					'remark' : remark,
+					'amount' : amount,
+					'op' : 1
+				};
+
+				parent.$.messager.progress();
+				$.getJSON('withdraw/opLock', params, function(data) {
+					parent.$.messager.progress('close');
+					if(data.rc == '1'){
+						$.messager.show({
+							title:'提示',
+							msg: data.msg
+						});
+						$('#dvLock').dialog('close');
+						jsQuery();
+					}else{
+						parent.$.messager.alert('错误', data.msg,'error');
+					}
+				});
+				}
+			});
+		}
+		
+		var jsunLockOk = function(){
+
+			var remark = $('#ulremark').combobox('getText'); 
+			var updated = grid.datagrid('getSelected');
+			
+			$.messager.confirm('请确认', '确认'+updated.phone+'消除该用户所有待操作提现记录？', function(r){
+				if (r){
+				var params = {
+					'userId' : updated.userId,
+					'remark' : remark,
+					'op' : 0
+				};
+
+				parent.$.messager.progress();
+				$.getJSON('withdraw/opLock', params, function(data) {
+					parent.$.messager.progress('close');
+					if(data.rc == '1'){
+						$.messager.show({
+							title:'提示',
+							msg: data.msg
+						});
+						$('#dvLock').dialog('close');
+						jsQuery();
+					}else{
+						parent.$.messager.alert('错误', data.msg,'error');
+					}
+				});
+				}
+			});
+		}
+		
+		
+		var jsCancelOk = function(){
+
+			var opRemark = $('#opRemark').combobox('getText'); 
+		
+			if(opRemark == ''){
+				alert('请输入关闭原因');
+				return ;
+			}
+			
+			var updated = grid.datagrid('getSelected');
+			
+			$.messager.confirm('请确认', '确认'+updated.phone+'关闭该笔提现吗？', function(r){
+				if (r){
+				var params = {
+					'withdrawId' : updated.id,
+					'opRemark' : opRemark
+				};
+
+				parent.$.messager.progress();
+				$.getJSON('withdraw/cancel', params, function(data) {
+					parent.$.messager.progress('close');
+					if(data.rc == '1'){
+						$.messager.show({
+							title:'提示',
+							msg: data.msg
+						});
+						$('#dvCancel').dialog('close');
+						jsQuery();
+					}else{
+						parent.$.messager.alert('错误', data.msg,'error');
+					}
+				});
+				}
+			});
+		}
+		
+		
+		var jsLock = function(){
+			var updated = grid.datagrid('getSelected');
+			if(updated == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			var updateds = grid.datagrid('getSelections');
+			if(updateds.length != 1 ){
+				parent.$.messager.alert('提示','请选择一条要操作的记录!，你选择了'+updateds.length+'条','info');
+				return ;
+			}
+			
+			$('#dvLock').dialog('open');
+		}
+		
+		var jsunLock = function(){
+			var updated = grid.datagrid('getSelected');
+			if(updated == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			var updateds = grid.datagrid('getSelections');
+			if(updateds.length != 1 ){
+				parent.$.messager.alert('提示','请选择一条要操作的记录!，你选择了'+updateds.length+'条','info');
+				return ;
+			}
+			
+			$('#dvunLock').dialog('open');
+		}
+		
+		var jsCancel = function(){
+			var updated = grid.datagrid('getSelected');
+			if(updated == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			var updateds = grid.datagrid('getSelections');
+			if(updateds.length != 1 ){
+				parent.$.messager.alert('提示','请选择一条要操作的记录!，你选择了'+updateds.length+'条','info');
+				return ;
+			}
+			
+			$('#dvCancel').dialog('open');
+		}
+		
+		var jsPayAlipayByChange = function(){
+			
+			if(contextRow.type != 2){
+				$.messager.alert('提示',contextRow.phone +'不支持支付宝提现!','info');
+				return;
+			}
+			
+			if($('#changeConfirmMoney').val() == ''){
+				alert('请录入核准金额');
+				return;
+			}
+			
+			$.messager.confirm('请确认', contextRow.phone + '的核准金额为'+$('#changeConfirmMoney').val()+'用支付宝打款吗？', function(r){
+				if (r){
+					src = "paymentBatch/alipay?withdrawApplyIds="+$('#changeWithdrawId').val()+"&withdrawconfirmMoneys=" + $('#changeConfirmMoney').val();
+					parent.commonDialog({
+					    title:'支付宝批量打款',
+					    width:1000,
+					    height:500,
+					    resizable:true,
+					    iconCls: 'ext_alipay',
+					    content : '<iframe src="' + src + '" allowTransparency="true" style="border:0;width:100%;height:99%;" frameBorder="0"/>',
+					    onBeforeClose : function(){
+					    	jsQuery();
+					    	$('#dvChangeConfirmMoney').dialog('close');
+					    }
+				    });
+				}
+			});
+			//var json = JSON.stringify(updateds);
+		}
+		
+		var jsPayAlipay = function(){
+			var updateds = grid.datagrid('getSelections');
+			if(updateds.length == 0 ){ 
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			var b = true;
+			var confirmStr = '';
+			var lockIds = '';
+			var ids = '', confirmMoneys = '';
+			$.each(updateds, function(index, row){
+				if(row.status!="NEW"  && row.status != 'FAILED'&& row.status!='PENDING'){
+					$.messager.alert('提示',row.phone + '已完成提现，无法继续操作!','info');
+					b = false;
+					return false;
+				}
+				
+				if(row.type != 2){
+					parent.$.messager.alert('提示',row.phone +'不支持支付宝提现!','info');
+					b = false;
+					return false;
+				}
+				confirmStr += '卖家：' + row.phone + ' 金额：' + row.applyMoney + '<br/>';
+				if (row.lock != null) {
+					lockIds += row.applyNo + ', \t';				
+				}
+				
+				if(ids != '') {
+					ids += ',';
+					confirmMoneys += ',';
+				}
+				ids += row.id;
+				confirmMoneys += row.applyMoney;
+			});
+			if (lockIds.length != null && lockIds.length > 0) {
+				alert('操作记录中有锁定状态的记录, 需要先解除锁定状态 ' + lockIds);
+				return ;
+			}
+			
+			if(!b)
+				return ;
+
+			$.messager.confirm('请确认', '确认<br/>'+confirmStr+'<br/>使用支付宝提现吗？', function(r){
+				if (r){
+					src = "paymentBatch/alipay?withdrawApplyIds="+ids+"&withdrawconfirmMoneys="+confirmMoneys;
+					parent.commonDialog({
+					    title:'支付宝批量打款',
+					    width:1000,
+					    height:500,
+					    resizable:true,
+					    iconCls: 'ext_alipay',
+					    content : '<iframe src="' + src + '" allowTransparency="true" style="border:0;width:100%;height:99%;" frameBorder="0"/>',
+					    onBeforeClose : function(){
+					    	jsQuery();
+					    }
+				    });
+					
+				}
+			});
+		}
+		
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'withdraw/list',
+				striped : true,
+				showFooter: true,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				//singleSelect : true,
+				//idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				frozenColumns : [ [ {
+					field : 'id',
+					checkbox: true
+				},/*{
+					width : '50',
+					title : '操作',
+					field : 'action',
+					formatter: function(value,row,index){
+						if(row.userId == null)
+							return '';
+						var str = '';
+						str += $.formatString('<a href="queryShopByUser/{0}"  target="_blank" title="查看店铺"><img src="{1}"/></a>', row.userId, '[[@{/_resources/js/easyui/extIcons/vcard/vcard.png}]]');
+						str += "&nbsp;";
+						str += $.formatString('<a href="javascript:transDetailsHandler(\'{0}\')" title="查看账户明细"><img src="{1}"/></a>', row.userId, '[[@{/_resources/js/easyui/extIcons/table/table.png}]]');
+						
+						return str;
+					}
+				},*/
+				{
+					width : '60',
+					title : '渠道',
+					field : 'checkingChannel',
+					formatter: function(value,row,index){
+						if(value=='xpuz'){
+							return "偶尔";
+						}else if(value=='7s'){
+							return "想去";
+						}else if(value=='-1'){
+							return "未知";
+						}else{
+							return "";
+						}
+					}
+				}, {
+					width : '85',
+					title : '卖家',
+					field : 'phone'
+				}, {
+					width : '85',
+					title : '店铺',
+					field : 'shopName'
+				} ] ],
+				columns : [ [ {
+					width : '60',
+					title : '提现方式',
+					field : 'type',
+					formatter: function(value,row,index){
+						if(value=='1'){
+							return "银行卡";
+						}else if(value=='2'){
+							return "支付宝";
+						}else{
+							return "";
+						}
+					}
+				}, {
+					width : '80',
+					title : '提现渠道',
+					field : 'openingBank'
+				}, {
+					width : '80',
+					title : '账户',
+					field : 'accountName'
+				}, {
+					width : '150',
+					title : '账号',
+					field : 'accountNumber'
+				},
+				{
+					width : '50',
+					title : '状态',
+					field : 'status'
+				}, {
+					width : '60',
+					title : '申请金额',
+					align: 'right',
+					field : 'applyMoney'
+				},{
+					width : '60',
+					title : '核准金额',
+					align: 'right',
+					field : 'confirmMoney'
+				}, {
+					width : '70',
+					title : '备注',
+					field : 'opRemark'
+				},{
+					width : '150',
+					title : '提现说明',
+					field : 'remark',
+					formatter:function(value,row,index){
+						if(value!=null){
+							var d ="<span style='color:red;' >" + value +  "</span>";
+							return d;
+						}else{
+							return "";
+						}
+					}
+				},{
+					width : '70',
+					title : '锁定状态',
+					field : 'lock'
+				},{
+					width : '60',
+					title : '交易号',
+					field : 'applyNo'
+				},{
+					width : '60',
+					title : '批量付款号',
+					field : 'batchPayNo'
+				}, {
+					width : '110',
+					title : '创建时间', 
+					field : 'createdAt',
+					formatter: function(value,row,index){
+						if(value!=null){
+							var d = new Date(parseInt(value));
+					  		return d.format('yyyy-MM-dd hh:mm');
+						}else{
+							return "";
+						}
+					}
+				}, {
+					width : '110',
+					title : '更新时间',
+					field : 'updatedAt',
+					formatter: function(value,row,index){
+						if(value != null){
+							var d = new Date(parseInt(value));
+						    return d.format('yyyy-MM-dd hh:mm');
+						}else{
+							return "";
+						}
+					}
+				}  ] ],
+				toolbar : '#toolbar',
+				onSelect : onSelect,
+				onCheck : onSelect,
+				//onSelectAll : onSelectAll,
+				onCheckAll : onSelectAll,
+				onRowContextMenu : onRowContextMenu
+			});
+			
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+		});
+		
+		function onSelect(index,row){
+			if(row.status != 'NEW' && row.status != 'FAILED'){
+				grid.datagrid('unselectRow', index);
+				grid.datagrid('uncheckRow', index);
+			}
+		}
+		var toggle = true; 
+		function onSelectAll(rows){
+			if(toggle){
+				$.each(rows, function(index, row){
+					onSelect(index, row);
+				});
+				toggle = false;
+			}else{
+				$.each(rows, function(index, row){
+					grid.datagrid('unselectRow', index);
+					grid.datagrid('uncheckRow', index);
+				});
+				toggle = true;
+			}
+		}
+		
+		var contextRow;
+		function onRowContextMenu(e,index,row){
+			grid.datagrid('selectRow', index);
+			 e.preventDefault();
+			 contextRow = row;
+			 if (!rowMenu){
+			 	createRowMenu();
+			 }
+			 rowMenu.menu('show', {
+				 left:e.pageX,
+				 top:e.pageY
+			 });
+			 $(rowMenu).find('#phone .menu-text').html('卖家：'+contextRow.phone);
+			 $(rowMenu).find('#hrefShop').attr('href',  'queryShopByUser/'+contextRow.userId);
+			 
+			 if(contextRow.status == 'NEW'){
+				 rowMenu.menu('enableItem', $('#mChangeConfirmMoney')[0]);
+			 }else{
+				 rowMenu.menu('disableItem', $('#mChangeConfirmMoney')[0]);
+			 }
+			 
+			 if(contextRow.status == 'FAILED'){
+				 rowMenu.menu('enableItem', $('#mReSetOpStatus')[0]);
+			 }else{
+				 rowMenu.menu('disableItem', $('#mReSetOpStatus')[0]);
+			 }
+			 
+		}
+		
+		var rowMenu;
+		function createRowMenu(){
+			rowMenu = $('<div/>').appendTo('body');
+			rowMenu.menu();
+			
+		 rowMenu.menu('appendItem', { id: "phone", disabled : true });
+		 rowMenu.menu('appendItem', { separator: true });
+		 rowMenu.menu('appendItem', { 
+			 text: "查看该卖家账目明细", 
+			 iconCls: 'ext_table_multiple',
+			 onclick: function(){
+				 transDetailsHandler(contextRow.userId, contextRow.phone);
+			 } 
+		 });
+		 
+		 rowMenu.menu('appendItem', { separator: true });
+		 rowMenu.menu('appendItem', {
+			 id : 'mReSetOpStatus',
+			 text: "恢复为初始状态-再次打款(请慎重确认)",
+			 iconCls: 'icon-tip',
+			 onclick: function(){
+				reInitWithDraw();
+			 }
+		  });
+		 
+		 
+		 rowMenu.menu('appendItem', {
+			 text: "<a id='hrefShop' href='javascript:void(0)' target='_blank'>查看该卖家店铺</a>",
+			 iconCls: 'ext_picture'
+		  });
+		 
+		 rowMenu.menu('appendItem', { separator: true });
+		 rowMenu.menu('appendItem', {
+			 id : 'mChangeConfirmMoney',
+			 text: "编辑核准金额(申请金额和核准金额不一致时使用)",
+			 iconCls: 'icon-edit',
+			 onclick: function(){
+				 jsChangeConfirmMoney();
+			 }
+		  });	
+		}
+		
+		function reInitWithDraw(){
+		    var selRows = grid.datagrid('getSelections');		
+			if(selRows == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			var updated,withDrawIds="";
+			for(var i=0;i<selRows.length;i++){
+			  updated=selRows[i];
+			  if(updated.status!='FAILED'){
+				parent.$.messager.alert('提示','只能重置 FAILED 状态记录!','info');
+				return ;
+			  }
+			 if(i>0)
+			   withDrawIds+=","+updated.id;
+			 else 
+			  withDrawIds=updated.id;
+			}
+			
+			$.messager.confirm('请确认', '确认重置选中的记录为NEW状态', function(r){
+				if (r){
+					parent.$.messager.progress();
+					var params = {
+							ids: withDrawIds
+						};
+					$.getJSON('withdraw/reSetStatus', params, function(json) {
+						parent.$.messager.progress('close');
+						if(json.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg:json.msg
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('提示', json.msg,'error');
+						}
+					});
+				}
+			}); 
+		}
+		
+		function jsChangeConfirmMoney(){
+			
+			var updateds = grid.datagrid('getSelections');
+			if(updateds.length != 1 ){ 
+				parent.$.messager.alert('提示','只能选择1条要操作的记录，你选择了'+updateds.length+'条!','info');
+				return ;
+			}
+			
+			if(contextRow.status != 'NEW'){
+				$.messager.alert('提示','只能选择状态为NEW的提现','info');
+				return;
+			}
+				
+			$('#dvChangeConfirmMoney').dialog('open');
+			$('#dvChangeConfirmMoney #change_phone').html(contextRow.phone);
+			$('#dvChangeConfirmMoney #change_apply_money').html(contextRow.applyMoney);
+			$('#dvChangeConfirmMoney #changeWithdrawId').val(contextRow.id);
+			/*)
+			var dialog = commonDialog({
+			    title: updated.orderNo + '，卖家退款操作(模拟卖家退款)',
+			    width:400,
+			    height:200,
+			    content: $('#dvMockRefund').html()
+		    });*/
+		}
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false"
+	layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm" th:action="@{/withdraw/exportExcel}" method="GET">
+			<table>
+				<tr>
+					<td style="width: 60px; text-align: right;">卖家电话</td>
+					<td><input type="text" id="phone_kwd" name="phone_kwd"
+						placeholder="电话号码" style="width: 110px;" /></td>
+					<td style="width: 60px; text-align: right;">账户名</td>
+					<td><input type="text" id="seller_name_kwd"
+						name="seller_name_kwd" placeholder="姓名" style="width: 110px;" /></td>
+					<td style="width: 60px; text-align: right;">状态</td>
+					<td style="width: 80px;"><select name="withdraw_status_kwd">
+							<option value="">全部</option>
+							<option value="NEW">NEW</option>
+							<option value="FAILED">FAILED</option>
+							<option value="PENDING">PENDING</option>
+							<option value="SUCCESS">SUCCESS</option>
+							<option value="CLOSE">CLOSE</option>
+					</select></td>
+					<td style="width: 60px; text-align: right;">提现方式</td>
+					<td style="width: 70px;"><select name="type_kwd">
+							<option value="">全部</option>
+							<option value="1">银行卡</option>
+							<option value="2">支付宝</option>
+					</select></td>
+					<td style="width: 60px; text-align: right;">结算渠道</td>
+					<td style="width: 100px;"><select name="checkingChannel_kwd">
+							<option value="">全部</option>
+							<option value="7s">想去</option>
+							<option value="xpuz">偶尔</option>
+							<option value="-1">未知</option>
+					</select></td>					
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td style="width: 60px; text-align: right;">申请金额</td>
+					<td><select name='fee_operator'>
+							<option value="=">=</option>
+							<option value="gt">></option>
+							<option value="gt=">>=</option>
+							<option value="lt">&lt;</option>
+							<option value="lt=">&lt;=</option>
+					</select> <input type="text" name="minimum_fee" class="easyui-numberbox"
+						min="0" precision="2" style="width: 70px;" placeholder="提现金额" />
+					</td>
+					<td style="width: 60px; text-align: right;">创建时间</td>
+					<td><input id="startDateKwd" name="startDateKwd"
+						type="text" style="width: 90px;" class="easyui-datebox" />--<input
+						id="endDateKwd" name="endDateKwd" type="text" style="width: 90px;"
+						class="easyui-datebox" />
+					</td>
+					<td>打款时间</td>
+					<td>
+						<input id="pay1_date_kwd" name="pay1_date_kwd"
+						type="text" style="width: 90px;" class="easyui-datebox" />--<input
+						id="pay2_date_kwd" name="pay2_date_kwd" type="text" style="width: 90px;"
+						class="easyui-datebox" />
+					</td>
+					
+					<td style="width: 60px; text-align: right;">锁定状态</td>
+					<td style="width: 100px;"><select name="lock_kwd">
+							<option value="-1">全部</option>
+							<option value="1">锁定</option>
+							<option value="0">未锁定</option>
+					</select></td>					
+					
+					
+				</tr>
+				<tr>
+					<td style="text-align: right;">交易号</td>
+					<td><input type="text" id="apply_no_kwd" name="apply_no_kwd"
+						placeholder="交易号" style="width: 110px;" /></td>
+					<td style="text-align: right;">批量付款号</td>
+					<td><input type="text" id="batch_pay_no_kwd" name="batch_pay_no_kwd"
+						placeholder="批量付款号" style="width: 110px;" /></td>						
+					<td colspan="2">
+						<a href="javascript:void(0);" class="easyui-linkbutton"
+							data-options="iconCls:'icon-search'" onclick="jsQuery()">查询</a>
+						<!--
+						 <a
+							href="javascript:void(0);" class="easyui-linkbutton"
+							data-options="iconCls:'ext_page_excel'"
+							onclick="queryWithdrawApply4Excel()">导出Excel</a>
+					-->		 
+						<a href="#" class="easyui-menubutton" data-options="menu:'#mm_edit',iconCls:'icon-edit'">操作</a>
+						<div id="mm_edit" style="width: 100px;">
+						<div id="payHuman" data-options="iconCls:'ext_user'"
+							onclick='jsPayOffline()'>人工批量打款</div>
+						<div id="alipay" data-options="iconCls:'ext_alipay'"
+							onclick='jsPayAlipay()'>支付宝批量打款</div>
+						<div data-options="iconCls:'ext_cancel'" onclick='jsCancel()'>关闭选择的提现</div>
+						<div data-options="iconCls:'ext_lock'" onclick='jsLock()'>锁定选择的提现</div>
+						<div data-options="iconCls:'ext_unlock'" onclick='jsunLock()'>解锁选择的提现</div>
+						<div class="menu-sep"></div>
+						<div class="menu-sep"></div>
+						<div class="menu-sep"></div>
+						<div data-options="iconCls:'ext_page_excel'" onclick='queryWithdrawApply4Excel()'>导出Excel</div>
+						
+						<!-- 
+				 		-->
+						</div>
+					</td>						
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+
+	<div class="easyui-dialog" title="锁定提现" id="dvLock"
+		data-options="modal:true,closed:true,buttons:[{
+					text:'确定锁定该笔提现',
+					iconCls:'icon-save',
+					handler:function(){jsLockOk();}
+				}]"
+		style="width: 300px; height: 200px; padding: 30px 10px 10px 10px">
+		<select id="remark" class="easyui-combobox" name="remark"
+			style="width: 200px;">
+			<option value=""></option>
+			<option value="多次打款">多次打款</option>
+			<option value="账务不平">账务不平</option>
+			<option value="店铺关闭">店铺关闭</option>
+			<option value="测试数据">测试数据</option>
+		</select>
+		<div > </div>
+		<td style="text-align: left;">锁定解锁金额</td>
+		<div > </div>
+		<td>
+		<input class="easyui-numberbox" precision="2" name="amount" id="amount"></input>
+		</td>
+		<div style="color: red; margin-top: 10px;">
+			该操作只标注该笔提现的状态，<br />不会改变用户的账务信息和订单状态
+		</div>
+	</div>
+
+	<div class="easyui-dialog" title="锁定提现" id="dvunLock"
+		data-options="modal:true,closed:true,buttons:[{
+					text:'确定解锁该笔提现, 建议先和开发确认',
+					iconCls:'icon-save',
+					handler:function(){jsunLockOk();}
+				}]"
+		style="width: 300px; height: 200px; padding: 30px 10px 10px 10px">
+		<select id="ulremark" class="easyui-combobox" name="ulremark"
+			style="width: 200px;">
+			<option value=""></option>
+			<option value="账务不平">该用户提现金额已足够消账</option>
+			<option value="测试数据">测试数据</option>
+		</select>
+		<div style="color: red; margin-top: 10px;">
+			请确认该用户所有NEW状态的提现金额已大于等于备注待消账金额<br /> 所有NEW提现金额多出消账金额部分还需要打款给卖家
+		</div>
+	</div>
+
+
+	<div class="easyui-dialog" title="请输入关闭原因" id="dvCancel"
+		data-options="modal:true,closed:true,buttons:[{
+					text:'确定关闭该笔提现',
+					iconCls:'icon-save',
+					handler:function(){jsCancelOk();}
+				}]"
+		style="width: 300px; height: 200px; padding: 30px 10px 10px 10px">
+		<select id="opRemark" class="easyui-combobox" name="opRemark"
+			style="width: 200px;">
+			<option value=""></option>
+			<option value="店铺关闭">店铺关闭</option>
+			<option value="测试数据">测试数据</option>
+		</select>
+		<div style="color: red; margin-top: 10px;">
+			请注意：该操作只标注该笔提现的状态，<br />不会改变用户的账务信息和订单状态
+		</div>
+	</div>
+	<div id="dvChangeConfirmMoney" class="easyui-dialog" 
+	data-options="iconCls:'icon-save',closed:true,modal:true,width:400,height:200" 
+	title="编辑核准金额(申请金额和核准金额不一致时使用)">
+		<table style="width: 380px;">
+			<tr height="30px;">
+				<td style="width:80px;text-align: right;">卖家</td>
+				<td id="change_phone"></td>
+			</tr>
+			<tr height="30px;">
+				<td style="text-align: right;">申请金额</td>
+				<td id="change_apply_money"></td>
+			</tr>
+			<tr height="30px;">
+				<td style="text-align: right;">核准金额</td>
+				<td>
+				<input class="easyui-numberbox" precision="2" name="changeConfirmMoney" id="changeConfirmMoney"></input>
+				<input type="hidden" id="changeWithdrawId" name="changeWithdrawId" value="" />
+				</td>
+			</tr>
+			<tr height="60px;">
+				<td colspan="2" align="center">
+				<a href="javascript:void(0);" onclick="jsPayOfflineByChange()" class="easyui-linkbutton" data-options="iconCls:'ext_user'">人工打款</a>
+				<a href="javascript:void(0);" onclick="jsPayAlipayByChange()" class="easyui-linkbutton" data-options="iconCls:'ext_alipay'">支付宝打款</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

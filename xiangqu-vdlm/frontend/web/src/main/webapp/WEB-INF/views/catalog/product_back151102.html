@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8" />
+    <title data-th-text="${product.name}">商品名</title>
+</head>
+<body>
+<div data-layout-fragment="content">
+    <a class="imCaller" data-th-href="'/im/p/' + ${product.id}" data-th-if="${imUser}">
+        <em class="imSprite"></em>
+    </a>
+    <section data-th-object="${product}" class="lined">
+        <input type="hidden" id="product-id" data-th-value="${product.id}"/>
+        <div class="banner-max-height">
+            <img id="prod_img" data-th-alt="*{name}" data-vd-src="*{img}" class="full" />
+        </div>
+        <div class="pt25b30lr40">
+            <h1 id="prod_title" data-th-text="*{name}" class="fz28 font-dark-bold widthhuanh" />
+            <p class="mt20 clearfix">
+                <span id="price" data-price="" class="font-orange-bold ff-numb fl-l fz38" data-th-attr="tag=#{price}" data-vd-price="*{price}"></span>
+                <span id="market_price" class="font-dark-bold ff-numb fl-l fz26 linethrough pl20" data-th-attr="tag=#{price}" data-vd-price="*{marketPrice}" data-th-if="*{marketPrice != null and marketPrice > price}"></span><!-- 旧价格 -->
+                <i class="ico-danbao fl-l" data-th-if="${shop.danbao}"><img data-vd-src="/_resources/images/shop/danbao.png" alt=""/></i>
+                <!--
+                <span class="greight c93 fz24">运费:&yen;15.00</span>
+	                -->
+            </p>
+        </div>
+    </section>
+    <section data-th-object="${product}" class="lined">
+        <form id="addToCartForm" method="POST" action="/cart/buy">
+            <sku class="js-sku" data-th-each="sku:*{skus}" data-th-attr="data-amount=${sku.amount}, data-marketPrice=${sku.marketPrice},data-price=${sku.price},data-sku-id=${sku.id},data-spec1=${sku.spec1}, data-spec2=${sku.spec2}, data-spec3=${sku.spec3}, data-spec4=${sku.spec4}, data-spec5=${sku.spec5}" ></sku>
+            <input type="hidden" id="skuId" name="skuId" />
+            <div class="lined box pt10b5 font-dark" data-th-each="mapping,obj:*{skuMappings}" data-th-if="${obj.size gt 0}">
+                <div class="w100 fz30 ml30" data-th-text="${mapping.specName}"></div>
+                <div class="flex1 mr30 pro-sku-val" data-th-attr="mapping_id=${mapping.id}, mapping_key=${mapping.specKey}">
+                    <div class='button fz30 prodOption mb10 ff-numb' data-th-each="value:${mapping.mappingValues}" data-th-attr="numb=${obj.count}" data-th-text="${value}">
+                    </div>
+                </div>
+            </div>
+            <div class="lined box ptb20 font-dark">
+                <div class="w100 fz30 ml30">数量</div>
+                <div class="flex1 fz30 ff-numb">
+                    <span data-th-replace="fragments/numEditor(*{amount})"></span>
+                </div>
+                <div class="fz24 font-light num-em mr20" id="J-amount" data-amount="" data-th-utext="#{inventory.amount(*{amount})}"></div>
+            </div>
+            <div class="button-bar clearfix ptb20 addToCartAndBuyBtns">
+                <div data-th-remove="tag" data-th-if="${product.status.name() == 'ONSALE' and product.amount > 0}">
+                    <div class="fl-l"><a id="addtocart" class="button white bg-white btn-round font-orange fz24">加入购物车</a></div>
+                    <div class="fl-r"><a id="buy" class="button white bg-orange btn-round fz24 font-white">立即购买</a></div>
+                </div>
+                <div data-th-remove="tag" data-th-unless="${product.status.name() == 'ONSALE' and product.amount > 0}">
+                    <div class="fl-l">商品已下架</div>
+                </div>
+            </div>
+        </form>
+    </section>
+    
+    <section class="card bg-brown ptb30lr20">
+        <div class="pt35l30b30r35 bg-white p-infor">
+            <div class="box mb20">
+                <div class="flex2 mr20">
+                    <a data-th-href="'/shop/'+${shop.id}" valign="top" class="img85 img-bd3 mr10"><img data-vd-src="${shop.img[s025]}"  /></a>
+                </div>
+                <div class="pro-bdb flex10">
+                    <div class="box-no-center">
+                        <div class="flex3 pro-width">
+                            <a class="font-dark-bold fz28 widthhuanh" data-th-href="'/shop/'+${shop.id}" data-th-text="${shop.name}"></a>
+                        </div>
+                        <div class="flex2 shop-into">
+                            <a data-th-href="'/shop/'+${shop.id}" data-th-text="#{shop.enter}" class="fz20 font-light"></a>
+                            <i class="shop-ico">&nbsp;</i>
+                        </div>
+                    </div>
+                    <div class="k-weixin" data-th-unless="${#strings.isEmpty(shop.wechat)}">
+                        <i><img data-vd-src="/_resources/images/weixin_11.gif" alt="" /></i>
+                        <span data-th-text="${shop.wechat}" class="font-light"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="notice clearfix" data-th-if="${shop.bulletinAt ne null}">
+                <span class="fz20 font-dark flex1 widthhuanh" data-th-if="${shop.bulletin ne null}" data-th-text="${shop.bulletin}"></span>
+                <span class="fz20 font-light fl-r" data-th-text="${#dates.format(shop.bulletinAt,'MM-dd')}"></span>
+            </div>
+        </div>
+    </section>
+    <section class="lined">
+        <div data-th-each="fragment:${fragmentList}" data-th-if="${#lists.size(fragmentList) != 0}">
+            <div data-th-if="${fragment.showModel}">
+                <pre data-th-utext="${fragment.description}"></pre>
+            </div>
+            <img data-th-each="fragmentImage : ${fragment.imgs}" data-vd-src="${fragmentImage.imgUrl}" />
+            <div data-th-unless="${fragment.showModel}">
+                <pre data-th-utext="${fragment.description}"></pre>
+            </div>
+        </div>
+        
+        <div data-th-unless="${#lists.size(fragmentList) != 0}">
+            <img data-th-each="img : ${imgsList}" data-vd-src="${img}" />
+        </div>
+    </section>
+    
+    <section class="pro-about" data-th-unless="${#lists.isEmpty(relatedProds)}">
+        <div class="box pt40b36">
+            <h4 class="flex1 font-dark-bold fz28 ml30">相关商品</h4>
+            <a data-th-href="'/p/related/'+${shop.id}+'/'+${product.id}"  class="flex1 font-orange arrow fz24 mr30">
+                查看全部&nbsp;
+            </a>
+        </div>
+        <div class="pl10r30 clearfix">
+            <div class="pro-infor" data-th-each="related:${relatedProds}">
+                <div data-th-replace="fragments/productCard::card(prod=${related})"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div class="shop-start">
+            <img class="shop-start-img" data-vd-src="/_resources/images/shop-start.png" alt="" />
+            <a class="shop-start-btn button bg-orange btn-round fz24 font-white" href="http://www.kkkd.com">我要开店</a>
+        </div>
+    </section>
+    <section class="footer-bottom">
+        <ul class="foorer-nav box">
+            <li class="footer-item flex1 footer-line">
+                <a data-th-href="'/catalog/search?shopId='+${shop.id}">
+                    <i class="footer-ico">
+                        <img class="img-auto" data-vd-src="/_resources/images/footerico_22.png" alt="" />
+                    </i>
+                    <span class="footer-text fz26 font-light">店内搜索</span>
+                </a>
+            </li>
+            <li class="footer-item flex1">
+                <a data-th-href="'/cart?shopId='+${shop.id}">
+                    <i class="footer-ico">
+                        <img class="img-auto" data-vd-src="/_resources/images/footerico_19.png" alt="" />
+                    </i>
+                    <span class="footer-text fz26 font-light">购物车</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>
+
+<div data-layout-fragment="postScript">
+    <script type="text/javascript" data-th-src="@{/_resources/js/page/product.js?t=20150616}"></script>
+    <!--<script type="text/javascript" data-th-src="@{/_resources/js/page/sku3.js}"></script>-->
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/imgsize.js?t=201408080246}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if($(".pro-infor").length !== 0){
+                var imgObj= $(".js-img-size");
+                var imgWidth= $(".pro-infor");
+                imgSize(imgObj,imgWidth);
+            }
+            
+            $(".prodOption").click(function(ev){
+                $(".numInc").attr('th:atrrs',$(ev.target).attr('sku_amount'));
+            })
+        })
+    </script>
+</div>
+</body>
+</html>

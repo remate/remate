@@ -1,0 +1,45 @@
+<script type="text/html" id="J_tempCurrentAddress">
+    <input type="hidden" data-zoneid="{{zoneId}}"  id="addressId" name="addressId" value="{{addressId}}"/>
+    <h3>收货人：<em class="J_name name" >{{name}}</em> <span class="J_phone phone">{{phone}}</span></h3>
+    <div class="J_street street">
+        <span>收货地址：</span>
+        <em class="street-info">{{address}}</em>
+    </div>
+
+</script>
+
+<script type="text/html" id="J_tempAddressList">
+    {{each _data as value i}}
+    <li class="J_myAddressItem">
+        <div class="J_addressInfo address-info clearfix {{if value.isDefault}}active{{/if}} ">
+
+            <div class="info-l">
+                <h3>收货人：<em class="J_name name" data-name="{{value.consignee}}" >{{value.consignee}}</em> <span class="J_phone phone" data-phone="{{value.phone}}">{{value.phone}}</span></h3>
+                <div class="J_street street">
+                    <span>收货地址：</span>
+                    <span class="street-info">
+                       {{each value.zones as value i}}
+                        {{if i > 0}}
+                        <em class="pcd" data-id="{{value.id}}">{{value.name}}</em>
+                        {{/if}}
+                        {{/each}}
+                        <em class="st">{{value.street}}</em>
+                    </span>
+                </div>
+            </div>
+            <div class="J_showAddressList show-addresslist clearfix">
+                <i></i>
+            </div>
+        </div>
+        <div class="J_addRessShop address-shops" data-zoneid="{{value.zoneId}}"  data-zipcode="{{if value.zipcode}}{{value.zipcode}}{{/if}}"   data-addressid="{{value.id}}">
+            {{if value.isDefault}}
+            <span class="J_setDefaultAddress active set-def">[默认地址]</span>
+            {{else}}
+            <span class="J_setDefaultAddress set-def">设置默认地址</span>
+            {{/if}}
+            <span class="J_delAddress del-current">删除</span>
+            <span class="J_editAddress edit-current">编辑</span>
+        </div>
+    </li>
+    {{/each}}
+</script>

@@ -1,0 +1,6 @@
+<div data-th-fragment="num" class="numEditor">
+    <!--<input class="numed amount" type="hidden" name="amount" data-th-value="${amount eq null?1:amount}" />-->
+    <button type="button" edge="1" class="numDec va-m numMinus" style="padding:0;"></button>
+    <input class="numed amount va-m" name="amount" data-th-value="${amount eq null?1:amount}" />
+    <button type="button" data-th-attr="edge=${amount}" class="numInc va-m numPlus" style="padding:0;"></button>
+</div>

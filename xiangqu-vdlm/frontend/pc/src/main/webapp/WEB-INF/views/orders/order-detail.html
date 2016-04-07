@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8" />
+    <title>订单详情</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/order-detail.css}" />
+</head>
+
+<body>
+<ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='order')"></ul>
+<div data-layout-fragment="content">
+    <div class="order-detail">
+        <ol class="am-breadcrumb am-breadcrumb-slash">
+            <li class="am-active">当前位置：<a href="/sellerpc/orders/list">订单列表 &gt; </a>订单详情</li>
+        </ol>
+
+        <!-- pannel start -->
+        <div class="am-pannel order-detail-pannel am-padding-bottom">
+            <div class="order-detail-title">
+                订单信息
+            </div>
+            <div class="reciever am-cf">
+                <div class="pl-20">
+                    <p>
+                        <span>当前订单状态：</span>
+                        <div data-th-remove="tag" data-th-switch="${order.status.name()}">
+                            <div data-th-remove="tag" data-th-case="'SUBMITTED'">
+                                <label class="reciever-type">已提交订单，未付款</label>  
+                            </div>
+                            <div data-th-remove="tag" data-th-case="'PAID'">
+                                <label class="reciever-type">已付款，未发货</label>  
+                            </div>
+                            <div data-th-remove="tag" data-th-case="'SHIPPED'">
+                                <label class="reciever-type">已发货</label>  
+                            </div>
+                            <div data-th-remove="tag" data-th-case="'SUCCESS'">
+                                <label class="reciever-type">交易成功</label>  
+                            </div>
+                            <div data-th-remove="tag" data-th-case="'REFUNDING'">
+                                <label class="reciever-type">申请退款中</label>  
+                            </div>
+                            <div data-th-remove="tag" data-th-case="'CANCELLED'">
+                                <label class="reciever-type">订单已经取消</label>  
+                            </div>
+                            <div data-th-remove="tag" data-th-case="'CLOSED'">
+                                <label class="reciever-type">交易关闭</label>  
+                            </div>
+                        </div>
+                    </p>
+                    <p>
+                        <span>下单时间：</span> <span class="order-timeSure time-format" data-th-attr="data-time=${order.createdAt}" data-th-text="${#dates.format(order.createdAt, 'yyyy-MM-dd HH:mm:ss')}" data-th-if="${order.createdAt != null}"></span>
+                        <div data-th-remove="tag" data-th-if="${order.status.name() != 'SUBMITTED'}">
+                            <span class="ml-50">付款时间：</span> <span class="order-timePay time-format" data-th-attr="data-time=${order.paidAt}" data-th-text="${#dates.format(order.paidAt, 'yyyy-MM-dd HH:mm:ss')}" data-th-if="${order.paidAt != null}"></span>
+                        </div>
+                        <span class="ml-50">订单编号：</span><span class="order-num" data-th-text="${order.orderNo}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- pannel end -->
+
+         <!-- pannel start -->
+        <div class="am-pannel order-detail-pannel order-info am-padding-bottom">
+            <div class="order-detail-title">
+                物流信息
+            </div>
+            <p class="order-info-addtime"><span>发货方式：</span>快递</p>
+            <p class="order-info-trans"><span>物流公司:</span><span data-th-remove="tag" data-th-text="${order.logisticsCompany}"></span></p>
+            <p><span>运单号码：</span><span data-th-remove="tag" data-th-text="${order.logisticsOrderNo}"></span></p>
+            <p class="am-hide"><span>物流跟踪：</span>2015-05-28 16:15:47 卖家已发货 </p>
+        </div>
+        <!-- pannel end -->
+
+        <!-- pannel start -->
+        <div class="am-pannel order-detail-pannel am-padding-bottom">
+            <div class="order-detail-title">
+                收货人信息
+            </div>
+            <div class="reciever am-cf">
+                <b class="kkkd am-fl">&#xe601;</b>
+                <div class="am-fl">
+                    <h3>
+                        <span class="reciever-name" data-th-text="${order.orderAddress.consignee}"></span>
+                        <span class="reciever-tel" data-th-text="${order.OrderAddress.phone}"></span>
+                    </h3>
+                    <p><span class="reciever-chart">微信号：</span> <span data-th-remove="tag" data-th-text="${order.OrderAddress.weixinId}"></span></p>
+                    <p><span class="reciever-address">地&emsp;址：</span><span data-th-remove="tag" data-th-text="${order.addressDetails}"></span></p>
+                    <input type="hidden" name="zoneId" id="zoneId" data-th-value="${order.OrderAddress.zoneId}"/>
+                </div>
+                <div class="am-fr mr-15">
+                    <div data-th-remove="tag" data-th-switch="${order.status.name()}">
+                        <div data-th-remove="tag" data-th-case="'SUBMITTED'">
+                            <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs" id="J_addressEdit">修改</button>
+                        </div>
+                        <div data-th-remove="tag" data-th-case="'PAID'">
+                            <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs" id="J_addressEdit">修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pannel end -->
+        <!-- pannel start -->
+        <div class="am-pannel order-detail-pannel am-padding-bottom">
+            <div class="order-detail-title">
+                留言信息
+            </div>
+            <p class="message">
+                <span data-th-each="msg:${messages}">
+                    <span data-th-remove="tag" data-th-text="${msg.content+';'}"></span>
+                </span>
+            </p>
+        </div>
+        <!-- pannel end -->
+        <!-- pannel start -->
+        <div class="am-pannel">
+            <table class="am-table am-table-bordered am-table-hover am-table-radius column6" data-th-attr="data-logisticsfee=${order.logisticsFee},data-totalfee=${order.totalFee},data-orderno=${order.orderNo},data-discountfee=${order.discountFee},data-commissionfee=${order.commissionFee},data-orderid=${order.id},data-goodsfee=${order.goodsFee},data-paidfee=${order.paidFee}">
+                <thead>
+                    <tr>
+                        <th colspan="6">
+                            <div class="order-detail-title">
+                                商品信息
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th colspan="6"><p data-th-text="${'佣金：￥'+order.commissionFee}"></p></th>
+                    </tr>
+                </tfoot>
+                <tbody class="order-item-body">
+                    <tr data-th-each="orderItem,status:${order.orderItems}">
+                        <td class="col1">
+                            <a href="#" class="order-item-desc am-cf kd-pictext-td" data-th-attr="modal-productshow=${orderItem.productId}">
+                                <img data-th-src="${orderItem.productImgUrl}" class="kd-pictext-td-img" />
+                                <p data-th-text="${orderItem.productName}"></p>
+                            </a>
+                        </td>
+                        <td class="col2">
+                            <p class="am-color-gray">单价</p>
+                            <span vd:price="${orderItem.price}"></span>
+                        </td>
+                        <td class="col3">
+                            <p class="am-color-gray">型号</p>
+                            <span data-th-attr="data-skustr=${orderItem.skuStr}" data-th-text="${orderItem.skuStr}" class="ware-type"></span>
+                        </td>
+                        <td class="col4">
+                            <p class="am-color-gray">数量</p>
+                            <span data-th-text="${orderItem.amount}"></span>
+                        </td>
+                        <div data-th-remove="tag" data-th-if="${status.index==0}">
+                            <td data-th-attr="rowspan=${#lists.size(order.orderItems)}" class="col5">
+                                <p class="am-color-gray">实付款</p>
+                                <span vd:price="${order.paidFee != null ? order.paidFee : order.totalFee}" class="paidfee"></span>
+                                <p class="am-color-gray logisticsfee" data-th-text="${'（含运费:￥'+ order.logisticsFee+'）'}"></p>
+                                <p class="am-color-gray" data-th-text="${'（优惠券:￥'+ order.discountFee+'）'}"></p>
+                            </td>
+                            <td data-th-attr="rowspan=${#lists.size(order.orderItems)}" class="col6">
+                                <!-- 根据订单的当前状态渲染不同的操作按钮 -->
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='SUBMITTED'}">
+                                    <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-rateEdit">改价</button>
+                                    <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-btnCancel">取消订单</button>    
+                                </div>
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='PAID'}">
+                                    <button type="button" class="am-btn am-btn-black am-active am-center am-round am-btn-xs am-goodsSendPop">发货</button>  
+                                </div>
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='SHIPPED'}">
+                                    <a class="link-wait" href="javascript:void(0);">待收货</a>
+                                    <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-hide">查看物流</button> 
+                                </div>
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='SUCCESS'}">
+                                    <span class="am-color-gray">订单完成</span>
+                                </div>
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='REFUNDING'}">
+                                    <span class="am-color-gray">申请退款中</span>
+                                </div>
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='CANCELLED'}">
+                                    <span class="am-color-gray">订单已经取消</span>
+                                </div>
+                                <div data-th-remove="tag" data-th-if="${order.status.name()=='CLOSED'}">
+                                    <span class="am-color-gray">交易关闭</span>
+                                </div>
+                            </td>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pannel end -->
+        
+        <div class="am-pannel pannel-reply">
+            <div class="reply-item am-hide">
+                <div class="item-header am-cf">
+                    <img src="http://xaya.qiniudn.com/FvueMCwesrGxHGipCPjL1CvEH5r_?imageView2/2/w/480/q/95" class="pro-pic am-fl" alt=""/>
+                    <p class="pro-title">梦纯代购正品New Balance女鞋 NB女子跑步鞋 粉色运动鞋M997</p>
+                </div>
+                <div class="item-contents am-cf">
+                    <div class="pro-comment am-fl">
+                        <p>衣服穿着很漂亮，女朋友穿着很好看，以后还会买衣 服穿着很漂亮，女朋友穿着很好看衣服穿着很漂亮，女朋友穿着很好看，以后还会买衣<span class="pro-titme">2015-06-16 16:45:00</span></p>
+                    </div>
+                    <div class="pro-score am-fl am-cf">
+                        <p >买家评分 4.8</p>
+                        <div class="mod-score"></div>
+                    </div>
+                    <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-fr am-replay">回&nbsp;&nbsp;复</button> 
+                </div>
+                <div class="item-reply am-cf am-hide">
+                    <em class="reply-arrow">&#xe61e;</em>
+                    <span class="reply-tip">回复：</span>
+                    <div class="editArea am-fl" contentEditable = "true"></div>
+                    <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-fr am-submitReplay">提交回复</button>
+                </div>
+            </div>
+            <!-- reply-item end -->
+        </div>
+        <!-- pannel end -->
+
+
+        <div class="wrap-dialog">
+            <!-- 修改弹窗 begin -->
+            <div data-th-replace="fragments/order-addressModify"></div>
+            <!-- 改价弹窗 begin -->
+            <div data-th-replace="fragments/order-goodsSend"></div>  
+            <!-- 发货弹窗 begin -->
+            <div data-th-replace="fragments/order-rateModify"></div>
+        </div>
+        <!-- wrap-dialog end -->
+
+        <script type="text/template" class="dot-replyTemplate">
+        /*<![CDATA[*/
+        {{~it.data:item:index}}
+            <div class="reply-item" data-id="{{=item.id}}">
+                <div class="item-header am-cf">
+                    <img src="{{=item.productImgUrl}}" class="pro-pic am-fl" alt=""/>
+                    <p class="pro-title">{{=item.skuStr}}</p>
+                </div>
+                <div class="item-contents am-cf">
+                    <div class="pro-comment am-fl">
+                        <p>{{=item.content}}<span class="pro-titme">{{=item.commentAt}}</span></p>
+                    </div>
+                    <div class="pro-score am-fl am-cf">
+                        <p>买家评分 {{=item.productScore}}</p>
+                        <div class="mod-score" data-score="{{=item.productScore}}"></div>
+                    </div>
+                    <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-fr am-replay">回&nbsp;&nbsp;复</button> 
+                </div>
+                <div class="item-reply am-cf {{? !item.reply}}am-hide{{?}}">
+                    <em class="reply-arrow">&#xe61e;</em>
+                    <span class="reply-tip {{? item.reply}} am-hide {{?}}">回复：</span>
+                    <div class="editArea am-fl {{? item.reply}}edit-disabeld{{?}}" {{? !item.reply}}contentEditable = "true"{{?}}>{{? item.reply}}{{=item.reply}}{{?}}</div>
+                    {{? !item.reply}}
+                        <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-fr am-submitReplay ">提交回复</button>
+                    {{??}}
+                        <button type="button" class="am-btn am-btn-black am-center am-round am-btn-xs am-fr am-submitReplay am-replyed">删除回复</button>
+                    {{?}}
+                </div>
+            </div>
+            <!-- reply-item end -->
+        {{~}}
+        /*]]>*/
+        </script>
+    </div>
+    <!-- order-detail end -->
+</div>
+<!-- fragment-content end -->
+
+<div data-layout-fragment="postScript">
+    <script>
+    require(['base/all', 'base/order-detail']);
+    </script>
+</div>
+<!-- fragment-postScript end -->
+</body>
+</html>
+

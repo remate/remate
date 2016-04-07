@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+
+<head>
+    <meta charset="utf-8" />
+    <title>段落描述 - 想去商家版</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/set-desc.css}" />
+</head>
+
+<body>
+    <ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='settings')">
+    </ul>
+    <div data-layout-fragment="content">
+        <div class="setDesc">
+            <div class="am-kdbar am-kd-search am-pannel am-pannel-round">
+                <nav data-th-replace="fragments/settings-nav::settings_nav(step=4)"></nav>
+            </div>
+            <div class="am-pannel set-pannel am-pr">
+                <form class="am-form am-form-horizontal kd-form">
+                    <p class="set-title">段落描述设置</p>
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label am-label-switch">是否开启段落描述</label>
+                        <div class="am-fl">
+                            <input class="am-switch open-desc" type="checkbox" data-th-attr="checked= ${shop.fragmentStatus}" />
+                        </div>
+                    </div>
+                    <hr />
+                    <!--
+                    <p class="am-padding-bottom-sm">段落列表</p>
+                    <table class="am-table am-table-hover desc-table">
+                        <tbody class="desc-sort-box">
+                            <tr data-th-each="li,status :${list}" data-th-attr="data-id=${li.id},data-showmodel=${li.showModel}">
+                                <td class="kd-pictext-td desc-info am-pr">
+                                    <div class="imgsData">
+                                        <span data-th-each="img:${li.imgs}" data-th-if="${#lists.size(li.imgs) != 0}" data-th-attr="data-imgurl=${img.imgUrl},data-img=${img.img}" ></span>
+                                    </div>
+                                    <span class="kkkd desc-sort">&#xe615;</span>
+                                    <img data-th-src="${li.imgs[0].imgUrl}" class="kd-pictext-td-img" data-th-if="${#lists.size(li.imgs) != 0}" />
+                                    <p data-th-text="${li.name}" class="desc-name">中国优质一流
+                                    </p>
+                                    <i class="kd-table-line"></i>
+                                </td>
+                                <td class="desc-detail am-pr">
+                                    <span data-th-text="${li.description}" data-th-remove="tag"></span>
+                                    <i class="kd-table-line"></i>
+                                </td>
+                                <td class="table-op">
+                                    <a class="desc-modify" href="javascript:;">编辑</a>
+                                    <br />
+                                    <a class="desc-del" href="javascript:;">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="set-add"><a href="javascript:;" id="J-desc-add"><span class="kkkd">&#xe617;</span><span>添加新的段落描述</span></a></p>
+                     -->
+                    <div data-th-replace="fragments/settings-footer"></div>
+                </form>
+            </div>
+            <!-- 设置段落描述弹出框 -->
+            <div class="am-modal am-modal-confirm desc-pop" tabindex="-1" id="J-desc-pop">
+                <div class="kd-modal-dialog am-modal-dialog">
+                    <p class="kd-modal-title">段落设置</p>
+                    <div class="kd-modal-body">
+                        <form class="am-form am-form-horizontal kd-form" id="J-per-desc">
+                            <div class="am-form-group am-form-group-sm">
+                                <label for="J-desc-pop-name" class="am-fl am-form-label">段落名称</label>
+                                <div class="am-fl am-text-left">
+                                    <input type="text" id="J-desc-pop-name" class="desc-pop-name" name="desc-pop-name" placeholder="请输入段落名称" />
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label for="J-desc-pop-info" class="am-fl am-form-label">描述内容</label>
+                                <div class="am-fl am-text-left">
+                                    <textarea id="J-desc-pop-info" class="desc-pop-info" name="desc-pop-info" placeholder="段落描述内容">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label class="am-fl am-form-label">段落图片</label>
+                                <div class="am-fl desc-pop-imgs">
+                                    <div class="desc-pop-imgs-box">
+                                        <em class="desc-pop-add" id="J-desc-pop-add"></em>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label for="J-desc-pop-position" class="am-fl am-form-label">描述位置</label>
+                                <div class="am-fl">
+                                    <label class="am-radio-inline am-warning">
+                                        <input type="radio" name="desc-pop-position" class="kd-radio" />
+                                        <span>描述内容在图片前显示</span>
+                                    </label>
+                                    <label class="am-radio-inline am-warning">
+                                        <input type="radio" name="desc-pop-position" class="kd-radio" />
+                                        <span>描述内容在图片后显示</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer am-text-center">
+                                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- 设置段落描述弹出框 end -->
+        </div>
+        <script type="text/template" class="tpl-desc-img">
+            <span class="desc-pop-img">
+                <img src="{{=it.imgUrl}}" data-img="{{=it.img}}" />
+                <em class="desc-pop-img-del">&times;</em>
+            </span>
+        </script>
+        <script type="text/template" class="tpl-desc">
+        /*<![CDATA[*/
+            <tr data-id="{{=it.id}}" data-showmodel="{{=it.showModel == 1 ? 'true' : 'false'}}">
+                <td class="kd-pictext-td desc-info am-pr">
+                    <div class="imgsData">
+                        {{~it.imgList:img}}
+                        <span data-imgurl="{{=img.imgUrl}}" data-img="{{=img.img}}"></span>
+                        {{~}}
+                    </div>
+                    <span class="kkkd desc-sort">&#xe615;</span>
+                    {{? it.imgList.length}}
+                    <img src="{{=it.imgList[0].imgUrl}}" class="kd-pictext-td-img" />
+                    {{?}}
+                    <p class="desc-name">{{=it.name}}</p>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="desc-detail am-pr">
+                    {{=it.description}}
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="table-op">
+                    <a class="desc-modify" href="javascript:;">编辑</a>
+                    <br />
+                    <a class="desc-del" href="javascript:;">删除</a>
+                </td>
+            </tr>
+        /*]]>*/
+        </script>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        require(['base/all', 'base/set-desc']);
+        </script>
+    </div>
+</body>
+
+</html>

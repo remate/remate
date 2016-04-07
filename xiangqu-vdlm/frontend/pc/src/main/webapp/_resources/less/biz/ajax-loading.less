@@ -1,0 +1,49 @@
+.ajax-dimmer{
+    display: none;
+    z-index: 1100;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background:#000;
+    opacity:0;
+    filter:alpha(opacity=0);
+    transition:.6s;
+    &.active{
+        opacity:0.6;
+        filter:alpha(opacity=60);
+    }
+}
+//加载进度条
+.kd-modal-loading {
+    position: fixed;
+    display: none;
+    width: 280px!important;
+    height: 70px;
+    margin-left: -140px!important;
+    margin-top: -35px;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0;
+    filter:alpha(opacity=0);
+    transition:.6s;
+    &.active{
+        opacity: 1;
+        filter:alpha(opacity=1);
+    }
+}
+
+.kd-modal-loading .loadingbox {
+    background: #e6e6e6;
+    margin: 25px auto;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.kd-modal-loading .loading {
+    width: 1%;
+    height: 20px;
+    background: url(../images/loading.png);
+    border-radius: 10px;
+}

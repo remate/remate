@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>提交订单</title>
+</head>
+
+<body id="cart-body" class="as_page bg-grayed" >
+
+<div data-layout-fragment="content">
+<form id="order_submit_form"  data-th-action="@{/order/submit}" method="post">
+    <section>
+        <input type="hidden" id="shopId" name="shopId" data-th-value="${shopId}"/>
+        <input type="hidden" id="skuId" name="skuId" data-th-value="${skuId}"/>
+        <input type="hidden" data-th-each="item : ${cartItems}" name="skuIds" data-th-value="${item.sku.id}"/>
+        <input type="hidden" id="qty" name="qty" value="1" />
+        <input type="hidden" name="token" data-th-value="${session.token}" />
+        <h2 class="bg-grayed font-dark-bold cart-title plr30">向<span data-th-text="${shop.name}">Desmond</span>购买<span data-th-if="${#arrays.isEmpty(cartItems)}" data-th-text="(还未加入任何商品)"></span></h2>
+        <ul class="error" data-th-each="error : ${errors}">
+            <li data-th-text="${error}"></li>
+        </ul>
+        <ul class="order_list">
+            <li class="bg-white" data-th-each="cartItem : ${cartItems}">
+                <div class="box order-bar bdb">
+                    <div class="flex5 w80 order-bar-title mr84">
+                        <a class="font-dark-bold inlineb" data-th-href="${'/p/' + cartItem.productId}" data-th-text="${cartItem.product.name}" target="_blank"></a>
+                    </div>
+                    <span class="flex1 font-dark-bold font-dark-opacity cart-pro-del inlineb">
+                        <th:block data-th-if="${shopId != null}">                    
+                            <a class="item-del-btn right" data-th-attr="itemId=${cartItem.id}" data-th-text="#{Delete}"></a>
+                        </th:block>                   
+                    </span>
+                </div>
+                <div class="box ptb22 cartProduct">
+                    <div class="flex1">
+                        <a class="img180 bd" data-th-href="${'/p/' + cartItem.productId}" target="_blank">
+                            <img data-vd-src="${cartItem.product.img[s03]}"/>
+                        </a>
+                    </div>
+                    <div class="flex9 cartProduct-info width80">
+                        <div class="clearfix" data-th-attr="sku_id=${cartItem.sku.id}">
+                            <div class="fl-l">
+                                <p class="fz24 font-dark-bold font-dark-opacity pb26">数量</p>
+                                <div class="font-dark-bold fz30">
+                                    <div class="ff-numb" data-th-replace="fragments/numEditor::numEditor(stock=${cartItem.sku.amount}, amount=${cartItem.amount})"></div>
+                                </div>
+                            </div>
+                            <div class="fl-r cartProduct-info-type">
+                                <p class="fz24 font-dark-bold font-dark-opacity pb26">类型</p>
+                                <p class="pro-sku fz24 font-dark ff-numb" data-th-text="${cartItem.sku.spec }" ></p>
+                            </div>
+                        </div>
+                        <div class="cart-price bdt clearfix">
+                            <span class="fl-l fz24 font-dark-bold font-dark-opacity cart-pro-numb">价格：</span>
+                            <span class="fl-r cart-total-right font-dark-bold fz24 ff-numb cart-total-left" data-vd-price="${cartItem.sku.price}"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section id="j-address" data-th-if="${address != null}">
+    <input type="hidden" id="addressId" name="addressId" data-th-value="${address.id}"/>
+    <h2 class="bg-grayed cart-title plr40 font-dark-bold">收货地址</h2>
+            <ul class="order-custmer-infor fz24 font-dark plr30 addressbox">
+                <li class="bg-white order-custmer-item font-dark clearfix"><span>收件人:</span><span  data-th-text="${address.consignee}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>联系方式:</span><span class="ff-numb" data-th-text="${address.phone}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>微信号:</span><span class="" data-th-text="${address.weixinId}"></span></li>
+                <li class="bg-white order-custmer-item font-dark clearfix"><span>地址:</span><span class="" data-th-text="${address.details}"></span></li>
+                <a class="inlineblock talignr font-orange-bold address-modify" data-th-if="${skuId != null and skuId != ''}" data-th-href="${'/address/' + address.id + '/edit?skuId=' + skuId}">修改收货地址</a>
+                <a class="inlineblock talignr font-orange-bold address-modify" data-th-if="${shopId != null and shopId != ''}" data-th-href="${'/address/' + address.id + '/edit?shopId=' + shopId}">修改收货地址</a>
+            </ul>
+        </section>
+    <section class="bg-white" data-th-if="${address == null}">
+        <p class="bg-grayed cart-title plr40 font-dark-bold">收货地址</p>
+        <p class="bg-white cart-title plr40">收货人
+        <a data-th-href="${'/address/add?skuId=' + skuId}" data-th-if="${skuId != null and skuId != ''}" class="fl-r inlineb">新建收货地址 &gt;</a>
+        <a data-th-href="${'/address/add?shopId=' + shopId}" data-th-if="${shopId != null and shopId != ''}" class="fl-r inlineb">新建收货地址 &gt;</a>
+        </p>
+    </section>
+    <section class="bg-white">
+        <h2 class="bg-grayed cart-title plr40 font-dark-bold">合计</h2>
+        <ul class="pt50 cart-count">
+            <li class="box"><div class="flex1 font-dark-bold font-dark-opacity">合计</div><div id="goodsFee" class="flex1 cart-total-right ff-numb fz24" data-vd-price="${prices.goodsFee}"></div></li>
+            
+            <li class="mt20 box"><div class="flex1 font-dark-bold font-dark-opacity">运费</div><div id="logisticsFee" class="flex1 cart-total-right ff-numb fz24" data-vd-price="${prices.logisticsFee}"></div></li>
+            
+            <li class="mt20 box"><div class="flex1 font-dark-bold font-dark-opacity">优惠</div><div id="discountFee" class="flex1 cart-total-right ff-numb fz24" data-vd-price="${prices.discountFee}"></div></li>
+        </ul>
+        <div class="bdt cart-total-price mlr30 ">
+            <div class="fl-l fz28 font-dark-bold">应付总额</div>
+            <div id="totalFee" class="fl-r cart-total-right fz28 font-orange-bold ff-numb" data-vd-price="${prices.totalFee}"></div>
+        </div>
+    </section>
+    <section class="cart-message-wrap bg-white">
+        <textarea class="cart-textarea fz26 font-dark" name="remark" id="remark" cols="30" rows="6" placeholder="给卖家的备注留言"></textarea>
+    </section>
+    <section class="bg-grayed p30">
+        <a id="submitBtn" class="button bg-orange cart-checkout-btn fz30 font-white ptb23">提交订单</a>
+    </section>
+    </form>
+    <script>
+        (function(){
+            if(!document.querySelectorAll)return;
+            window.addEventListener('load',_fnSet,false);
+            window.addEventListener('resize',_fnSet,false);
+            function _fnSet(){
+                var _w = document.querySelectorAll('.cartProduct-info')[0].offsetWidth;
+                var _type = document.querySelectorAll('.cartProduct-info-type')[0];
+                if(_type.offsetWidth > _w-90){
+                   // _type.style.width = '-webkit-calc(100% - 100px)';
+                   _type.className += ' autoWidth';
+                }
+            }
+        })();
+    </script>
+
+</div>
+
+
+<script data-layout-fragment="postScript" type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/cart.js?v=0616}"></script>
+</body>
+</html>

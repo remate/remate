@@ -1,0 +1,1211 @@
+
+
+
+<!doctype html>
+                                    <html>
+<head>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta charset="gbk"/>
+ <meta name="format-detection" content="telephone=no, address=no">
+   <link rel="dns-prefetch" href="//detailskip.taobao.com">
+ <link rel="dns-prefetch" href="//g.alicdn.com">
+ <link rel="dns-prefetch" href="//gtms01.alicdn.com">
+ <link rel="dns-prefetch" href="//gtms02.alicdn.com">
+ <link rel="dns-prefetch" href="//gtms03.alicdn.com">
+ <link rel="dns-prefetch" href="//gtms04.alicdn.com">
+ <link rel="dns-prefetch" href="//gd1.alicdn.com">
+ <link rel="dns-prefetch" href="//gd2.alicdn.com">
+ <link rel="dns-prefetch" href="//gd3.alicdn.com">
+ <link rel="dns-prefetch" href="//gd4.alicdn.com">
+   <meta name="renderer" content="webkit">
+ <meta name="description" content="欢迎前来淘宝网T恤-女装类实力旺铺，选购2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品,想了解更多2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品，请进入薇薇的衣厨的薇薇的衣橱日韩女装实力旺铺，更多T恤-女装商品任你选购"/>
+ <meta name="keywords" content="淘宝,掏宝,网上购物,店铺, 2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品 T恤,女装." />
+ <meta name="data-spm" content="2013" />
+ <meta name="microscope-data" content="pageId=;prototypeId=2;siteId=4; shopId=72583851; userid=915628863;">
+ <title>2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品-淘宝网</title>
+   
+             
+     <link rel="stylesheet" href="//g.alicdn.com/tb/??global/3.4.4/global-min.css,item-detail/5.2.0/index-min.css"/>
+ 
+   <script>
+ function now(){ return +new Date}
+ g_config = {
+ startTime: now,
+ online:  true ,
+ prefetch:[],
+ beacon:{},   timing:[],   clock:[],   t:"20131018",  ver:"5.2.0",   st:"201404041900",
+ shopVer:2,
+ appId: 1 ,
+ itemId:"44661595237",
+ shopId:"72583851",
+ pageId:"44661595237",
+ assetsHost:"//assets.alicdn.com",
+ sellerNick:"薇薇的衣厨",
+ sellerId:"915628863",
+ shopName: "\u8587\u8587\u7684\u8863\u6A71\u65E5\u97E9\u5973\u88C5",
+ enable:true,  newDomain:true,  webp:true,  descWebP:false,   asyncStock:true,
+ sibFirst:true,   cdn:true,  m_ratio:20,
+ p:1.0,     type:"cex"
+   ,counterApi:"//count.taobao.com/counter3?inc=ICVT_7_44661595237&sign=1462e1a2b223f5bfd80683c494a474e6c151&keys=DFX_200_1_44661595237,ICVT_7_44661595237,ICCP_1_44661595237,SCCP_2_72583851"
+     ,rateCounterApi:"//count.taobao.com/counter3?keys=SM_368_sm-915628863,ICE_3_feedcount-44661595237,SM_368_dsr-915628863"
+       ,toolbar:{delay:30, startTime:1417363200000,endTime:1418399999000}     ,lazyload:'#J_DivItemDesc'   ,ap_mods: {poc: [0.001],exit: [0.005],jstracker: [0.0001]}
+ ,delayInsurance: false
+,tadComponetCdn: true
+   };
+
+       g_config.tadInfo = {"tad_second_area":[{"name":"掌柜推荐","type":4}],"tad_first_area":[{"name":"掌柜推荐","type":4}]};
+   
+     g_config.hasContract = true;
+ 
+   
+   
+       
+       
+ 
+       g_config.stepPay=null;
+   
+ 
+ g_config.dynamicScript = function(f,c){var e=document,d=e.createElement("script");d.src=f;if(c){for(var b in c){d[b]=c[b];}};e.getElementsByTagName("head")[0].appendChild(d)};
+     g_config.dynamicScript("https:" === location.protocol ? "//desc.alicdn.com/i3/440/610/44661595237/TB1fcsWHpXXXXcZXpXX8qtpFXXX.desc%7Cvar%5Edesc%3Bsign%5E6cbfb65fd3572624531d1f12ff4d8ef5%3Blang%5Egbk%3Bt%5E1433034377" :"//dsc.taobaocdn.com/i3/440/610/44661595237/TB1fcsWHpXXXXcZXpXX8qtpFXXX.desc%7Cvar%5Edesc%3Bsign%5E6cbfb65fd3572624531d1f12ff4d8ef5%3Blang%5Egbk%3Bt%5E1433034377")  
+   </script>
+
+ <link rel="shortcut icon" href="//www.taobao.com/favicon.ico" type="image/x-icon" />
+ <link rel="canonical" href="//item.taobao.com/item.htm?id=44661595237"/>
+
+ 
+</head>
+<body data-spm="1" class="tab-active-index-0 page-detail detached  " ><script>
+if(!g_config.vdata){g_config.vdata={};}
+g_config.vdata.viewer={"id":"", "ct":"1e0855e8e487c34d82bb022004da8c29", "tnik":unescape(unescape("xushixiang%5f2011"))};
+g_config.vdata.sys={"now":1433833679000};
+</script>
+<script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=item%5f50000671&userid=&at_isb=0&at_autype=5%5f72583851&aplus&yunid=&ee7347eea1ee3&trid=0a67c45114338336797851708e&asid=AQAAAADPkHZVgnG2bQAAAADPy6eEPKET4w==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+  
+  
+
+
+
+
+<script>g_config.vdata.sys.toggle={
+ "thumb": false,
+ "v":{"s1212v":"1"},
+ "p":1.0,
+ "dcP":"true",
+ "sl":3000
+ }</script>
+  
+
+      
+
+
+<script>
+(function(){
+      g_config.DyBase={iurl:"//item.taobao.com",purl:"//paimai.taobao.com",spurl:"//archer.taobao.com",durl:"//design.taobao.com",lgurl:"https://login.taobao.com/member/login.jhtml?redirectURL=http%3A%2F%2Flocal_jboss%2Fitem.htm%3Fid%3D44661595237%26mt%3D",
+surl:"//upload.taobao.com", shurl:"//shuo.taobao.com", murl:"http://meal.taobao.com" }; g_config.idata={
+ item:{
+ id:"44661595237",title:"2015\u6625\u88C5\u65B0\u6B3E \u4FEE\u8EAB\u663E\u7626\u77ED\u8896\u9488\u7EC7\u886B\u4E0A\u8863 \u6253\u5E95\u886B\u5F39\u529BT\u6064\u5973\u88C5\u6F6E\u54C1",
+ skuComponentFirst: 'true',
+  sellerNickGBK:'%DE%B1%DE%B1%B5%C4%D2%C2%B3%F8',
+ sellerNick:'薇薇的衣厨',
+ rcid:'16', cid:'50000671', virtQuantity:'2', holdQuantity:'0', edit:true, status:0,xjcc:false,
+desc:false,
+price:84.00,
+ bnow:true, prepay:true, dbst:1433034377000,tka:false,
+ chong:false, ju:false, iju: false, cu: false,  fcat:false, auto:"false", jbid:"",stepdata:{},
+  jmark:"",   quickAdd: 1,
+     initSizeJs:true,
+           sizeGroupName:"均码",
+       auctionImages:[
+   "//gd1.alicdn.com/bao/uploaded/i1/TB1ni7YHpXXXXXEXpXXXXXXXXXX_!!0-item_pic.jpg"
+   ,
+     "//gd3.alicdn.com/bao/uploaded/i3/915628863/TB2YxhScpXXXXbeXpXXXXXXXXXX_!!915628863.jpg"
+   ,
+     "//gd3.alicdn.com/bao/uploaded/i3/915628863/TB2oABVcpXXXXc7XXXXXXXXXXXX_!!915628863.jpg"
+   ,
+     "//gd3.alicdn.com/bao/uploaded/i3/915628863/TB2k54WcpXXXXcDXXXXXXXXXXXX_!!915628863.jpg"
+   ,
+     "//gd2.alicdn.com/bao/uploaded/i2/915628863/TB2WHx4cpXXXXX2XXXXXXXXXXXX_!!915628863.jpg"
+     ],
+   pic: "//gd1.alicdn.com/bao/uploaded/i1/TB1ni7YHpXXXXXEXpXXXXXXXXXX_!!0-item_pic.jpg",
+ 
+     enterprise:false,
+   disableAddToCart: false }, seller:{
+ id:915628863,
+ mode: 0,      tad:1,                    shopAge:2,
+  status:0
+}, shop:{
+ id:"72583851",
+ url: "//shop72583851.taobao.com/",
+ pid:"",
+ sid:"4",
+ xshop:true }     ,toggle:{
+ "addCartJump":10
+,"fangXinTaoMod":0
+,"domainDegradeMod":0
+ }
+ } })();
+</script>
+  <script>if(!g_config.vdata.sys.toggle){g_config.vdata.sys.toggle={
+ "thumb": false,
+ "v":{"s1212v":"1"},
+ "p":1.0,
+ "dcP":"true",
+ "sl":3000
+ }}</script>
+  
+
+
+
+
+<script>
+ (function(){var b="//detailskip.taobao.com/json/sib.htm?itemId=44661595237&sellerId=915628863&u=1&p=1&rcid=16&sts=504958978,1170940490149789708,216524625834705024,1157504273368548355&chnl=&price=8400&shopId=&vd=1&skil=false&pf=1&al=false&ap=1&ss=0&free=0&st=1&ct=1&prior=1",a="&ref="+encodeURIComponent(document.referrer.replace(/userid=%s/gi,""));if(b.length+a.length<2000){b+=a}g_config.dynamicScript(b,{onerror:function(){g_config.RequstPrior='falure'}})})();
+ 
+</script>
+     
+   <div id="J_SiteNav" class="site-nav">
+ <div id="J_SiteNavBd" class="site-nav-bd">
+ <ul id="J_SiteNavBdL" class="site-nav-bd-l"></ul>
+ <ul id="J_SiteNavBdR" class="site-nav-bd-r"></ul>
+ </div>
+ </div>
+           <!-- 2014新版页头 -->
+<div id="J_Header"></div>
+      <div id="page">
+ <div id="content" class="eshop tb-content " data-cat="J_Cat" >
+<p id="J_dcpg" class="design-page" style="display: none;"></p><div class="J_AsyncDC hidden" data-type="css"></div>
+  <div id="J_DcHead" class="J_AsyncDC tb-async-head tb-shop" data-type="head"></div>
+ <div id="bd" >
+ <div id="detail">
+ 
+    <input type="hidden" value="" name="tb_token" id="J_TokenField" >
+<div class="tb-detail-hd">
+ <div class="tb-crumbs">当前位置：    <a target="_blank" href="//list.taobao.com/itemlist/default.htm?cat=50102996&from=detail" title="女装">女装
+ </a>  <span class="tb-crumbs-sep">&gt;</span>    <a target="_blank" href="//list.taobao.com/itemlist/default.htm?cat=50103041&from=detail" title="T恤">T恤
+ </a>     <div class="tb-notice">诚邀您对新版详情页进行反馈， <a href="http://ur.taobao.com/survey/view.htm?id=1869" target="_blank">查看详情</a></div>
+
+
+ </div>
+</div>
+<div class="tb-detail-bd tb-clear">
+<div class="tb-summary tb-clear">
+ <div class="tb-item-info tb-clearfix">
+ <div class="tb-item-info-l">
+ <div class="tb-gallery">
+ <div class="tb-booth tb-pic tb-main-pic" data-spm="20140008">
+ <a href="javascript:;" rel="nofollow" data-spm-click="gostr=/tbdetail;locaid=d1" target="_blank">      <img id="J_ImgBooth" data-src="//gd1.alicdn.com/bao/uploaded/i1/TB1ni7YHpXXXXXEXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg"  data-hasZoom="700" />
+     </a>
+ <div class="zoom-icon hidden tb-iconfont" id="J_ZoomIcon">&#337;</div>
+</div>
+<ul id="J_UlThumb" class="tb-thumb tb-clearfix" data-spm="20140009">
+     <li class="tb-selected">
+     <div class="tb-pic tb-s50">
+ <a href="#" data-spm-click="gostr=/tbdetail;locaid=d1"><img data-src="//gd1.alicdn.com/bao/uploaded/i1/TB1ni7YHpXXXXXEXpXXXXXXXXXX_!!0-item_pic.jpg_50x50.jpg" /></a>
+ </div>
+   </li>
+   <li >
+     <div class="tb-pic tb-s50">
+ <a href="#" data-spm-click="gostr=/tbdetail;locaid=d2"><img data-src="//gd3.alicdn.com/imgextra/i3/915628863/TB2YxhScpXXXXbeXpXXXXXXXXXX_!!915628863.jpg_50x50.jpg" /></a>
+ </div>
+   </li>
+   <li >
+     <div class="tb-pic tb-s50">
+ <a href="#" data-spm-click="gostr=/tbdetail;locaid=d3"><img data-src="//gd3.alicdn.com/imgextra/i3/915628863/TB2oABVcpXXXXc7XXXXXXXXXXXX_!!915628863.jpg_50x50.jpg" /></a>
+ </div>
+   </li>
+   <li >
+     <div class="tb-pic tb-s50">
+ <a href="#" data-spm-click="gostr=/tbdetail;locaid=d4"><img data-src="//gd3.alicdn.com/imgextra/i3/915628863/TB2k54WcpXXXXcDXXXXXXXXXXXX_!!915628863.jpg_50x50.jpg" /></a>
+ </div>
+   </li>
+   <li >
+     <div class="tb-pic tb-s50">
+ <a href="#" data-spm-click="gostr=/tbdetail;locaid=d5"><img data-src="//gd2.alicdn.com/imgextra/i2/915628863/TB2WHx4cpXXXXX2XXXXXXXXXXXX_!!915628863.jpg_50x50.jpg" /></a>
+ </div>
+   </li>
+     </ul>
+<script>
+ (function(){if(this.WebP)return;this.WebP={},WebP._cb=function(e,t){this.isSupport=function(t){t(e)},t(e),(window.chrome||window.opera&&window.localStorage)&&window.localStorage.setItem("webpsupport",e)},WebP.isSupport=function(e){if(!e)return;if(!window.chrome&&!window.opera)return WebP._cb(!1,e);if(window.localStorage&&window.localStorage.getItem("webpsupport")!==null){var t=window.localStorage.getItem("webpsupport");WebP._cb(t==="true",e);return}var n=new Image;n.src="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA",n.onload=n.onerror=function(){WebP._cb(n.width===2&&n.height===2,e)}},WebP.run=function(e){this.isSupport(function(t){t&&e()})}})();
+ (function(e,f){var d,c=function(g){return document.getElementById(g)},a=function(g){var h=g.getAttribute("data-src");if(!h){return}if(d&&e){h+="_.webp";f=true}g.src=f?h.replace(/img0(\d)\.taobaocdn\.com/,"gd$1.alicdn.com"):h},b=function(h){if(h){for(var g=0;g<h.length;g++){a(h[g])}}};WebP.isSupport(function(g){d=g;a(c("J_ImgBooth"));b(c("J_UlThumb").getElementsByTagName("img"));if(d){g_config.beacon.webp=1}})})(true,true);
+</script>
+  </div>
+ <div id="J_Social" data-spm="20140010" class="tb-social tb-clearfix">
+ <ul>
+<li data-spm="d1" class="tb-social-fav">
+<a data-spm-click="gostr=/tbdetail;locaid=d2" class="J_TDialogTrigger"
+ href="//favorite.taobao.com/popup/add_collection.htm?id=44661595237&itemtype=1&scjjc=1"
+ data-closebtn="true"
+ data-height="260"
+ data-width="440"
+ data-spm-protocol=""
+ shortcut-key="c"
+ shortcut-label="收藏宝贝"
+ shortcut-effect="click">
+<i class="tb-icon"></i> 收藏宝贝<em class="J_FavCount"></em>
+</a>
+</li>
+ <li class="tb-social-split"></li>
+ <li class="tb-social-share">
+ <a data-spm-click="gostr=/tbdetail;locaid=d2" class="J_Share"
+ href="javascript:;"
+ data-init="false"
+ shortcut-key="f"
+ shortcut-label="分享宝贝"
+ shortcut-effect="click">
+ <i class="tb-icon"></i> 分享
+ </a>
+ </li>
+ <li class="tb-social-pk">
+ <a data-spm-click="gostr=/tbdetail;locaid=d4" class="J_TbPK"
+ href="javascript:;"
+ data-closebtn="true"
+ data-height="260"
+ data-width="440"
+ shortcut-key="d"
+ shortcut-label="加入对比"
+ shortcut-effect="click">
+ <i class="tb-icon"></i> 加入对比<em class="J_PK"></em>
+ </a>
+ </li>
+ </ul>
+</div>
+  </div>
+ <div class="tb-item-info-r">
+ <div class="tb-property tb-property-x">
+ <div class="tb-wrap">
+
+ <div id="J_Title"
+ class="tb-title"
+ shortcut-key="t"
+ shortcut-label="查看宝贝标题"
+ shortcut-effect="focus">
+ <h3 class="tb-main-title" data-title="2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品">
+     2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品
+   </h3>
+   <div id="J_TEditItem" class="tb-editor-menu"></div>
+ </div>
+
+ 
+ <ul class="tb-meta">
+  <li id="J_StrPriceModBox"
+ class="tb-detail-price tb-clearfix"
+ shortcut-key="p"
+ shortcut-label="查看价格"
+ shortcut-effect="focus">
+<span class="tb-property-type"> 价格</span>
+<div class="tb-property-cont">
+<strong id="J_StrPrice" ><em class="tb-rmb">&yen;</em><em class="tb-rmb-num">84.00</em></strong></div>
+</li>
+<li id="J_PromoPrice" class="tb-detail-price tb-clearfix tb-promo-price tb-hidden"><span class="tb-property-type">淘宝价</span>
+
+<div class="tb-property-cont">
+<div id="J_Promo" class="tb-promo-mod">
+<div id="J_PromoHd" class="tb-promo-hd tb-promo-item"></div>
+<div id="J_PromoBd" class="tb-promo-bd"></div>
+</div>
+</div>
+
+</li>
+
+
+
+<li class="tb-clearfix tb-hidden" id="J_OtherDiscount">
+ <div class="tb-other-discount">
+ <div id="J_RedGift" class="tb-red-gift"></div>
+ <div id="J_GoldCoin" class="tb-coin"></div>
+ </div>
+</li>
+
+    
+ <li id="J_Counter" class="tb-counter">
+ <span class="tb-property-type">销量</span>
+ <div class="tb-counter-bd">
+ <div class="tb-rate-counter">
+ <a id="J_ReviewTabTrigger" href="javascript:;">
+ <strong id="J_RateCounter">-</strong>
+ <span>累计评论</span>
+ </a>
+ </div>
+ <div class="tb-sell-counter">
+ <a href="javascript:;">
+ <strong id="J_SellCounter">-</strong>
+ <span>交易成功</span>
+ </a>
+ </div>
+ </div>
+ </li>
+ <li id="J_MorePromoSlider" class='tb-more-promo-slider tb-clearfix' style="display: none">
+ <ul id="J_MorePromoList"></ul>
+ <div class="post-script">以上价格可在付款时选择享用</div>
+ </li>
+ </ul>     <div id=“J_logistic” ></div>
+   
+    <div id="J_SepLine" class="sep-line"></div>
+          <div id="J_isku" data-spm="20140002"
+ class="tb-key tb-key-sku "
+ shortcut-key="i"
+ shortcut-label="挑选宝贝"
+ shortcut-effect="focus">
+<div class="tb-skin">
+ <dl class="J_Prop J_TMySizeProp tb-size tb-prop tb-clearfix      J_Prop_measurement  ">
+<dt class="tb-property-type">尺码</dt>
+<dd>
+<ul data-property="尺码" class="J_TSaleProp tb-clearfix">
+<li data-value="20509:28383"><a href="#"><span>均码</span></a><i>已选中</i></li>
+</ul></dd></dl>
+<span id="J_TMySize" class="size-btn" data-template-id="" data-value-type="1" data-value="50000671" data-value-rt="16">&#8250; 尺码助手</span>
+ <dl class="J_Prop tb-prop tb-clearfix   J_Prop_Color     ">
+<dt class="tb-property-type">主要颜色</dt>
+<dd>
+<ul data-property="主要颜色" class="J_TSaleProp tb-clearfix tb-img">
+<li data-value="1627207:28334"  >
+<a href="#" style="background:url(//gd2.alicdn.com/bao/uploaded/i2/915628863/TB2AY8QcpXXXXctXpXXXXXXXXXX_!!915628863.jpg_30x30.jpg) center no-repeat;">
+<span>灰色</span>
+</a>
+<i>已选中</i>
+</li>
+<li data-value="1627207:28320"  >
+<a href="#" style="background:url(//gd4.alicdn.com/bao/uploaded/i4/915628863/TB23L8WcpXXXXcRXXXXXXXXXXXX_!!915628863.jpg_30x30.jpg) center no-repeat;">
+<span>白色</span>
+</a>
+<i>已选中</i>
+</li>
+<li data-value="1627207:3232480"  >
+<a href="#" style="background:url(//gd2.alicdn.com/bao/uploaded/i2/915628863/TB2xDFUcpXXXXXyXpXXXXXXXXXX_!!915628863.jpg_30x30.jpg) center no-repeat;">
+<span>粉红色</span>
+</a>
+<i>已选中</i>
+</li>
+<li data-value="1627207:28341"  >
+<a href="#" style="background:url(//gd1.alicdn.com/bao/uploaded/i1/915628863/TB2JLRScpXXXXa8XpXXXXXXXXXX_!!915628863.jpg_30x30.jpg) center no-repeat;">
+<span>黑色</span>
+</a>
+<i>已选中</i>
+</li>
+</ul></dd></dl>
+
+
+
+<dl class="tb-amount tb-clearfix">
+
+<dt class="tb-property-type">数量</dt>
+<dd>
+<span class="tb-stock" id="J_Stock">
+ <a href="#" hidefocus class="tb-reduce J_Reduce tb-iconfont">&#411;</a><input id="J_IptAmount" type="text" class="tb-text" value="1"  maxlength="8" title="请输入购买量"/><a href="#" hidefocus class="tb-increase J_Increase tb-iconfont">&#410;</a>件
+ </span>
+<em>(库存<span id="J_SpanStock" class="tb-count">2</span>件)</em>
+</dd>
+</dl>
+<dl id="J_DlChoice" class="tb-choice tb-clearfix">
+<dt>请选择：</dt>
+<dd>
+<em>"尺码"</em><em>"主要颜色"</em></dd>
+</dl>
+<div class="tb-sure" id="J_SureSKU"><p class="tb-choice">请勾选您要的商品信息</p>
+<p class="tb-sure-continue"><a href="#" id="J_SureContinue">确定</a></p>
+<span class="close J_Close tb-iconfont">&#223;</span>
+</div>
+
+<div id="J_juValid" class="tb-action tb-clearfix ">
+<div class="tb-btn-buy"><a  href="#"
+ data-addFastBuy="true"
+ title="点击此按钮，到下一步确认购买信息"
+ class="J_LinkBuy"
+ data-spm-click="gostr=/tbdetail;locaid=d1"
+ shortcut-key="b"
+ shortcut-label="立即购买"
+ shortcut-effect="click">立即购买</a></div>
+<div class="tb-btn-add"><a href="#"
+ title="加入购物车"
+ class="J_LinkAdd"
+ data-spm-click="gostr=/tbdetail;locaid=d2"
+ shortcut-key="a"
+ shortcut-label="加入购物车"
+ shortcut-effect="click"><i class="tb-iconfont">&#365;</i>加入购物车</a></div>
+
+
+
+</div>
+
+</div></div>
+
+
+ 
+ 
+ <div class="tb-extra" id="J_tbExtra">
+   <dl id="J_ServiceIcon" class="tb-service-icon" data-spm="1000126">
+ <dt>承诺</dt>
+ <dd id="J_ServiceIconBd">
+   </dd>
+ </dl>
+      <dl data-spm="1000126">
+ <dt>支付</dt>
+ <dd>
+   <a href="https://huabei.alipay.com/moonlight/channel.htm?hbsrc=taobao-pcfixdpi80800" target="_blank" title="花呗" data-spm="">
+ <i class="tb-icon-hua-bei-pay"></i>
+ 花呗
+ </a>
+   <a href="http://www.taobao.com/go/act/sale/kadepay.php?spm=2013.1.1000126.9.ohEnsm&ad_id=&am_id=&cm_id=14001249574b437a411d&pm_id=" target="_blank" title="信用卡支付" data-spm="d9">
+ <i class="tb-icon-credit-card-payment"></i>
+ 信用卡支付
+ </a>
+   <a href="http://abc.alipay.com/cool/jfb.html" target="_blank" title="集分宝" data-spm="d19">
+ <i class="tb-icon-jifen"></i>
+ 集分宝
+ </a>
+   </dd>
+ </dl>
+   
+
+
+
+</div>
+
+    </div>
+ </div>  </div>
+</div>
+
+</div><div class="tb-sidebar tb-clear">
+   
+          
+
+
+
+
+
+
+
+    
+
+  
+                  
+
+  
+
+
+
+
+
+  <div data-spm="1000126" id="J_ShopInfo" class="tb-shop-info" data-creditScore="92031" data-creditFlag="cap" data-rateUrl="//rate.taobao.com/user-rate-1daecd3de13bed731bbe7b351af74be8.htm">
+ <a class="J_ShopInfoHeader tb-shop-info-bg" href="javascript:;" target="_blank"></a>
+ <div class="tb-shop-info-wrap">
+ <div class="tb-shop-info-hd">
+ <div class="tb-shop-name">
+ <dl>
+ <dd>
+ <strong>
+ <a href="//vivi2010.taobao.com" title="薇薇的衣橱日韩女装" target="_blank">
+ 薇薇的衣橱 <span class="shop-type" title="已通过淘字号认证">TB</span>日韩女装
+ </a>
+ </strong>
+ </dd>
+ </dl>
+ </div>
+   <div class="tb-shop-rank tb-rank-cap">
+ <dl>
+ <dt>信誉：</dt>
+ <dd>
+ <a href="//rate.taobao.com/user-rate-1daecd3de13bed731bbe7b351af74be8.htm" target="_blank">
+   <i></i>
+   <i></i>
+   <i></i>
+   </a>
+ </dd>
+ </dl>
+ </div>
+ 
+ <div class="tb-shop-seller">
+ <dl>
+ <dt>掌柜：</dt>
+ <dd>
+ <a class="tb-seller-name" href="//vivi2010.taobao.com" target="_blank" title="薇薇的衣厨">
+ 薇薇的衣厨
+ </a>
+ </dd>
+ </dl>
+ </div>
+ <div class="tb-shop-ww">
+ <dl>
+ <dt>联系：</dt>
+ <dd>
+ <span class="J_WangWang" data-nick="薇薇的衣厨" data-tnick="%E8%96%87%E8%96%87%E7%9A%84%E8%A1%A3%E5%BB%9A" data-encode="true"></span>
+ </dd>
+ </dl>
+ </div>
+   <div class="tb-shop-icon">
+ <dl>
+ <dt>资质：</dt>
+ <dd>
+   <a class="tb-icon tb-icon-alipay-persion-auth" href="//help.alipay.com/lab/210120-210321/0-210321.htm?spm=2013.1.1000126.12" target="_blank" title="支付宝个人认证2012-06-29" data-spm="d12"></a>
+     <a class="tb-seller-bail" href="http://www.taobao.com/go/act/special/index.php" target="_blank" title="已缴纳2000元保证金">
+ <span class="tb-icon tb-icon-bail"></span><span class="tb-seller-bail-text">2000<span class="tb-seller-bail-unit">元</span></span>
+ </a>
+   </dd>
+ </dl>
+ </div>
+   </div>
+ <div class="tb-shop-info-bd">
+   <div class="tb-shop-rate">
+ <dl>
+   <dt>描述</dt>
+   <dd class="tb-rate-lower">
+ <a href="//rate.taobao.com/user-rate-1daecd3de13bed731bbe7b351af74be8.htm" target="_blank" title="计算规则:(同行业平均分-店铺得分)/(同行业平均分-同行业店铺最低得分)">
+ 4.7
+ </a>
+ </dd>
+ </dl>
+   <dl>
+   <dt>服务</dt>
+   <dd class="tb-rate-equal">
+ <a href="//rate.taobao.com/user-rate-1daecd3de13bed731bbe7b351af74be8.htm" target="_blank" title="计算规则:(同行业平均分-店铺得分)/(同行业平均分-同行业店铺最低得分)">
+ 4.8
+ </a>
+ </dd>
+ </dl>
+ <dl>
+   <dt>物流</dt>
+   <dd class="tb-rate-higher">
+ <a href="//rate.taobao.com/user-rate-1daecd3de13bed731bbe7b351af74be8.htm" target="_blank" title="计算规则:(同行业平均分-店铺得分)/(同行业平均分-同行业店铺最低得分)">
+ 4.7
+ </a>
+ </dd>
+ </dl>
+   </div>
+   </div>
+   <div class="tb-shop-info-ft">
+ <a data-spm="d21" href="//vivi2010.taobao.com" target="_blank">进入店铺</a>
+ <a class="J_TDialogTrigger J_TokenSign"
+ data-spm="d22"
+ href="//favorite.taobao.com/popup/add_collection.htm?id=72583851&itemid=72583851&itemtype=0&ownerid=1daecd3de13bed731bbe7b351af74be8&scjjc=2"
+ data-info="param=SCCP_2_72583851&countUrl=//count.taobao.com/counter3&mecuryUrl=//favorite.taobao.com/collect_item_relation---72583851-0-.htm"
+ mercury:params="id=72583851&itemid=72583851&itemtype=0&ownerid=1daecd3de13bed731bbe7b351af74be8&scjjc=5"
+ data-closebtn="true"
+ data-width="440"
+ data-height="260">收藏店铺</a>
+ </div>
+   </div>
+ </div>
+   <div id="J_Pine" data-spm="20141001" class="tb-pine" data-sellerid="915628863" data-catid="50000671" data-rootid="16" data-itemid="44661595237"></div>
+   
+
+
+
+
+
+
+
+</div>
+</div><div id="J_PPayGuide"></div>
+        <div id="promote" class="tb-hidden" data-default="//tds.alicdn.com/json/promotionNew.htm?user_id=915628863&item_id=44661595237&mjs=1&meal=&v=1" data-combo="//detailskip.taobao.com/json/mealDetailNew.htm?item_id=44661595237" data-mjs="//detailskip.taobao.com/json/mjsDetailNew.htm?user_id=915628863"></div>
+ <div data-spm="3" id="tad_first_area"></div>
+
+   <form id="J_FrmBid" name="bidForm" action="//buy.taobao.com/auction/buy_now.jhtml" method="post">
+
+ <input type="hidden" value="" name="onekey" />
+<input type="hidden" value="" name="gmtCreate" />
+<input type="hidden" value="" name="checkCodeIds" />
+<input type="hidden" value="" name="secStrNoCCode" />
+ 
+<input type="hidden" value="" name="tb_token" id="J_frmTokenField" /><input id="J_ireferer" type="hidden" name="item_url_refer" value="" />
+ <input type="hidden" name="item_id" value="44661595237" /> 
+ <input type="hidden" name="item_id_num" value="44661595237" /> 
+ <input type="hidden" name="auction_type" value="b" />
+ <input type="hidden" name="from" value="item_detail" />   <input type="hidden" name="frm" value="" id="J_From" />      <input type="hidden" name="current_price" value= "84.00" />
+ <input type="hidden" name="activity" value="" />
+ <input type="hidden" name="auto_post1" value="" />
+ <input type="hidden" id="quantity" name="quantity" value="1"/>  <input type="hidden" id="skuId" name="skuId" value=""/>  <input type="hidden" id="skuInfo" name="skuInfo" value=""/>  <input type="hidden" id="J_TBuyerFrom" name="buyer_from" value=""/>
+ <input type="hidden" id="J_ChargeTypeId" name="chargeTypeId" value=""/>    </form>
+</div>
+    <div class="tb-tabbar-wrap tb-clearfix" data-spm="20140004" id="J_TabBarWrap">
+ <div class="tb-tabbar-mid-wrap tb-clearfix">
+   <div class="tb-shop-search">
+ <div class="search-panel">
+ <form target="_top" action="//shop72583851.taobao.com/search.htm" name="search //shop72583851.taobao.com/" id="J_TShopSearchForm" class="search-panel-focused">
+ <div class="search-button">
+ <button id="J_ShopSearchIcon" class="tb-iconfont" type="submit">&#337;</button>
+ </div>
+ <div class="search-panel-fields">
+ <input data-spm-click="gostr=/tbdetail;locaid=d6" id="q" name="q" aria-label="输本店" placeholder="搜本店" accesskey="s" autocomplete="off">
+ </div>
+ <input type="hidden" name="searcy_type" value="item" />
+ <input type="hidden" value="newHeader" name="s_from">
+ <input type="hidden" name="source">
+ <input type="hidden" name="ssid" value="s5-e" />
+ <input type="hidden" name="search" value="y" />
+ <input type="hidden" id="J_TSearchSPM" name="spm" value="a1z10.1.1996643285.d4916901">
+ <input type="hidden" name="initiative_id" value="">
+ </form>
+ </div>
+ </div>
+    <div class="tb-tabbar-inner-wrap">
+ <ul class="tb-tabbar clear" id="J_TabBar">
+ <li class="tb-first selected">
+ <a class="tb-tab-anchor"
+ href="javascript:void(0);"
+ hidefocus="true"
+ data-spm-click="gostr=/tbdetail;locaid=d1"
+ shortcut-key="g d"
+ shortcut-label="查看宝贝详情"
+ shortcut-effect="click"
+ data-index="0">
+ 宝贝详情
+ </a>
+
+ <div class="tb-selected-indicator"></div>
+ </li>
+ <li>
+ <a class="tb-tab-anchor"
+ href="javascript:void(0);"
+ hidefocus="true"
+ data-index="1"
+ data-spm-click="gostr=/tbdetail;locaid=d2"
+ shortcut-key="g c"
+ shortcut-label="查看累计评论"
+ shortcut-effect="click">
+ 累计评论
+ <em class="J_ReviewsCount">0</em>
+ </a>
+
+ <div class="tb-selected-indicator"></div>
+ </li>
+ <li class="tb-last">
+ <a class="tb-tab-anchor"
+ href="javascript:void(0);"
+ hidefocus="true"
+ data-spm-click="gostr=/tbdetail;locaid=d3"
+ shortcut-key="g r"
+ shortcut-label="查看成交记录"
+ shortcut-effect="click"
+ data-index="2">
+   成交记录
+   <em class="J_TDealCount">0</em>
+ </a>
+ <div class="tb-selected-indicator"></div>
+ </li>
+         <li id="J_ServiceTab">
+ <a class="tb-tab-anchor"
+ href="javascript:void(0);"
+ hidefocus="true"
+ data-spm-click="gostr=/tbdetail;locaid=d4"
+ shortcut-key="g z"
+ shortcut-label="查看专享服务"
+ shortcut-effect="click"
+ data-index="4"
+ >
+ 专享服务</a>
+ <div class="tb-selected-indicator"></div>
+ </li>
+   <li class="tb-shop-cart">
+ <a class="tb-tab-anchor" id="J_TabShopCart" href="javascript:void(0);"
+ data-spm-click="gostr=/tbdetail;locaid=d5"
+ data-index="3"><i class="tb-iconfont">&#x16e;</i> 加入购物车</a>
+ </li>
+ <li class="tb-ids-mod">
+ <a class="tb-tab-anchor" href="javascript:void(0);" style="cursor:default;">
+ 快速直达
+ </a>
+ </li>
+   </ul>
+ </div>
+     </div>
+</div>
+  <div class="layout grid-s5m0 tb-main-layout ">
+ <div class="col-main clearfix">
+ <div class="main-wrap J_TRegion" id="J_MainWrap">
+ <div class="sub-wrap" id="J_SubWrap">
+    <div id="attributes" class="attributes">
+  
+
+      
+
+<ul class="attributes-list">
+    <li title=" 短袖">袖长: 短袖</li><li title=" 修身">服装版型: 修身</li><li title=" 常规款">衣长: 常规款</li><li title=" 圆领">领型: 圆领</li><li title=" 常规">袖型: 常规</li><li title=" 51%(含)-70%(含)">成分含量: 51%(含)-70%(含)</li><li title=" 棉">面料: 棉</li><li title=" 18-24周岁">适用年龄: 18-24周岁</li><li title=" 通勤">风格: 通勤</li><li title=" 韩版">通勤: 韩版</li><li title=" 2015年春季">年份季节: 2015年春季</li><li title=" 白色 灰色 黑色 粉红色">主要颜色: 白色 灰色 黑色 粉红色</li><li title=" 均码">尺码: 均码</li>      </ul>
+
+
+
+
+
+      
+  
+
+
+</div>
+
+
+
+
+
+
+
+
+  
+
+      <div id="service" data-item-id="44661595237"></div>
+     <div id="tad_second_area" class="tad-stage" data-spm="4"></div>
+    <div id="description" class="tshop-psm ke-post J_DetailSection">      <div class="content" id="J_DivItemDesc">描述加载中</div> </div>   
+<div id="reviews"
+ data-reviewApi="//rate.taobao.com/detail_rate.htm?userNumId=915628863&auctionNumId=44661595237&showContent=1&currentPage=1&ismore=0&siteID=4"
+ data-reviewCountApi=""
+ data-listApi="//rate.taobao.com/feedRateList.htm?userNumId=915628863&auctionNumId=44661595237&siteID=4"
+ data-commonApi="//rate.taobao.com/detailCommon.htm?userNumId=915628863&auctionNumId=44661595237&siteID=4"
+ data-usefulApi="//rate.taobao.com/vote_useful.htm?userNumId=915628863&auctionNumId=44661595237">
+</div>
+ <div id="deal-record">
+       <div class="tb-public-panel">
+   <div id="J_showBuyerList">
+<div class="tb-clearfix msg msg-attention-shortcut tb-hidden J_TNoDealRecords"><p class="attention naked">暂时还没有买家购买此宝贝，最近30天成交记录为0。</p></div>
+<div id="J_showListIndicator" class="J_TAjaxIndicator"></div><button id="J_listBuyerOnView" type="button" class="J_TAjaxTrigger hidden J_TAjaxTriggerButton" data-api="//detailskip.taobao.com/json/show_buyer_list.htm?step=false&bid_page=1&page_size=15&item_type=b&ends=1434243977000&starts=1433639177000&item_id=44661595237&user_tag=504958978&old_quantity=3995&zhichong=true&sold_total_num=16&seller_num_id=915628863&dk=0&title=2015%B4%BA%D7%B0%D0%C2%BF%EE+%D0%DE%C9%ED%CF%D4%CA%DD%B6%CC%D0%E4%D5%EB%D6%AF%C9%C0%C9%CF%D2%C2+%B4%F2%B5%D7%C9%C0%B5%AF%C1%A6T%D0%F4%C5%AE%D7%B0%B3%B1%C6%B7&sbn=05d7676e038c942c3292dd3af7fe011b&isTKA=false&msc=1" >c</button>
+</div></div>
+</div>
+  
+     </div>
+ <div class="J_AsyncDC tb-custom-area tb-shop" data-type="main" id="J_AsyncDCMain"></div>
+ </div>
+ <div class="correlative-items J_TAjaxContainer" data-spm="20141002" id="detail-recommend-viewed" data-sellerid="915628863"
+ data-catid ="50000671" data-rootid="16" data-itemid="44661595237"></div>
+<div class="correlative-items J_TAjaxContainer" data-spm="20141003" id="detail-recommend-bought" data-sellerid="915628863"
+ data-catid ="50000671" data-rootid="16" data-itemid="44661595237"></div>
+<div class="J_AsyncDC" data-type="dr"></div>  </div>
+ <div class="J_AsyncDC tb-shop col-sub J_TRegion" data-type="side"></div>
+  </div>
+ </div>
+   <div id="ft" class="tb-shop J_AsyncDC" data-type="foot"></div>
+   <div id="copyright"></div>
+   <!--tbfooter--></div></div>
+  <style>
+  .footer_2014{
+    width: 1190px;
+    margin: 0 auto;
+  }
+  .w990 .footer_2014{
+    width: 990px;
+  }
+
+</style>
+<div class="footer_2014">
+<style>
+.footer{position:relative;margin:0 auto;padding:7px 0 9px;border-top:1px solid #ddd}.footer .footer-bd p,.footer .footer-hd p{padding-bottom:8px;overflow:hidden;*zoom:1}.footer .footer-bd a,.footer .footer-hd a{display:inline;float:left;margin:0 4px;white-space:nowrap;color:#6c6c6c}.footer .footer-bd a:hover,.footer .footer-hd a:hover{color:#f40;text-decoration:none}.footer .footer-bd b,.footer .footer-hd b{display:inline;float:left;margin:0 3px;font-weight:400;color:#ddd}.footer .footer-bd em,.footer .footer-bd span,.footer .footer-hd em,.footer .footer-hd span{display:inline;float:left;white-space:nowrap;color:#9c9c9c}.footer .footer-bd em,.footer .footer-hd em{margin-left:30px}.footer .footer-bd span,.footer .footer-hd span{margin:0 4px}.footer .footer-bd span a,.footer .footer-hd span a{float:none}.footer .footer-hd p{margin-bottom:8px;line-height:27px;border-bottom:1px solid #ddd}.footer .foot-ft{display:none}
+</style><div class="footer" data-spm="1997523009">
+  <div class="footer-hd">
+    <p>
+      <a href="http://www.alibabagroup.com/cn/global/home">阿里巴巴集团</a>
+      <b>|</b>
+      <a href="http://www.taobao.com">淘宝网</a>
+      <b>|</b>
+      <a href="http://www.tmall.com">天猫</a>
+      <b>|</b>
+      <a href="http://ju.taobao.com">聚划算</a>
+      <b>|</b>
+      <a href="http://www.aliexpress.com">全球速卖通</a>
+      <b>|</b>
+      <a href="http://www.alibaba.com/">阿里巴巴国际交易市场</a>
+      <b>|</b>
+      <a href="http://www.1688.com">1688</a>
+      <b>|</b>
+      <a href="http://www.alimama.com">阿里妈妈</a>
+      <b>|</b>
+      <a href="http://trip.taobao.com">阿里旅行 · 去啊</a>
+      <b>|</b>
+      <a href="http://www.aliyun.com">阿里云计算</a>
+      <b>|</b>
+      <a href="http://www.yunos.com">YunOS</a>
+      <b>|</b>
+      <a href="http://www.aliqin.cn/">阿里通信</a>
+      <b>|</b>
+      <a href="http://www.net.cn">万网</a>
+      <b>|</b>
+      <a href="http://www.autonavi.com/">高德</a>
+      <b>|</b>
+      <a href="http://www.uc.cn/">优视</a>
+      <b>|</b>
+      <a href="http://www.umeng.com/">友盟</a>
+      <br>
+      <a href="https://kanbox.com?ref=taobao">酷盘</a>
+      <b>|</b>
+      <a href="http://www.xiami.com">虾米</a>
+      <b>|</b>
+      <a href="http://www.ttpod.com/">天天动听</a>
+      <b>|</b>
+      <a href="http://www.laiwang.com/">来往</a>
+      <b>|</b>
+      <a href="http://www.dingtalk.com/?lwfrom=20150130160830727">钉钉</a>
+      <b>|</b>
+      <a href="https://11main.com/">11 Main</a>
+      <b>|</b>
+      <a href="https://www.alipay.com">支付宝</a>
+    </p>
+  </div>
+  <div class="footer-bd">
+    <p>
+      <a href="http://www.taobao.com/about">关于淘宝</a>
+      <a href="http://www.taobao.com/about/partners.php">合作伙伴</a>
+      <a href="http://pro.taobao.com">营销中心</a>
+      <a href="http://jubao.alibaba.com" >廉正举报</a>
+      <a href="http://service.taobao.com/support/main/service_route.htm">联系客服</a>
+      <a href="http://open.taobao.com">开放平台</a>
+      <a href="http://www.taobao.com/about/join.php">诚征英才</a>
+      <a href="http://www.taobao.com/about/contact.php">联系我们</a>
+      <a href="http://www.taobao.com/sitemap.php">网站地图</a>
+      <a href="http://www.taobao.com/go/chn/tb-fp/2014/law.php">法律声明</a>
+      <em>&copy; 2003-2015 Taobao.com 版权所有</em>
+    </p>
+    <p>
+      <span>网络文化经营许可证：<a href="http://gtms04.alicdn.com/tps/i4/T1ysdvXtNeXXcPpEkQ-972-636.jpg">文网文[2010]040号</a></span>
+      <b>|</b>
+      <span data-spm-protocol="i">增值电信业务经营许可证：<a href="http://zcainfo.miitbeian.gov.cn/state/outPortal/loginPortal.action">浙B2-20080224-1</a></span>
+      <b>|</b>
+      <span>信息网络传播视听节目许可证：1109364号</span>
+      <b>|</b>
+      <span> 互联网违法和不良信息举报电话:0571-81683755 blxx@list.alibaba-inc.com </span>
+    </p>
+  </div>
+  <div class="footer-ft">
+    
+            <a href="http://www.pingpinganan.gov.cn/" class="mod " >
+                <img width="36" alt="杭州网警" height="36" src="//gtms01.alicdn.com/tps/i1/T1FeW3XXNfXXXXXXXX-36-36.gif">
+              </a>
+            <a href="http://idinfo.zjaic.gov.cn/bscx.do?spm=1.7274553.1997523009.28.alN7ce&method=hddoc&id=33018400000067" class="mod mod-a" >
+              </a>
+            <a href="http://idinfo.zjaic.gov.cn/bscx.do?spm=1.7274553.1997523009.29.alN7ce&method=hddoc&id=33018400000067" class="mod mod-b" >
+              </a>
+            <a href="http://www.theclimategroup.org.cn/about/friend?spm=1.7274553.1997523009.30.alN7ce" class="mod mod-c" >
+              </a>
+            <a href="https://ss.knet.cn/verifyseal.dll?spm=1.7274553.1997523009.31.alN7ce&&sn=2010062300100001357&pa=20100701" class="mod mod-d" >
+              </a>
+            <a href="http://www.ppaaol.com/verifySite.do?spm=1.7274553.1997523009.32.alN7ce&id=1051" class="mod mod-e" >
+              </a>
+            <a href="http://www.12377.cn/" class="mod mod-f" >
+              </a>
+          
+  </div>
+</div></div>
+   
+ 
+<div id="LineZing" pagetype="2" shopid="72583851" tmplid="" itemid="44661595237"></div><div id="server-num">detail010178086129.n.et2</div>
+
+
+  
+<div id="J_cookieDomain" data-value='.taobao.com'></div><div id="J_itemViewed" catId="50000671" data-value='{"url":"//item.taobao.com/item.htm?id=44661595237","itemId":"44661595237","xid":"","pic":"i1/TB1ni7YHpXXXXXEXpXXXXXXXXXX_!!0-item_pic.jpg","price":"8400","itemIdStr":"44661595237","title":"2015春装新款 修身显瘦短袖针织衫上衣 打底衫弹力T恤女装潮品"}'></div><div id="J_showContract" data-value='{"1":"true","3":"false","2":"false","8":"false","7":"false","4":"false","5":"false","9":"false","J_TokenCatePathUrl":"//detailskip.taobao.com/json/show_indemnification.htm?catpath=16-50000671","J_TokenInvoice":"false","open_security_btn":"true"}'></div>
+
+<script>
+Hub={};
+Hub.config = {
+ config: {},
+ get: function (key) { if (key in this.config) { return this.config[key]; } return null; },
+ set: function (key, val) { this.config[key] = val;}
+};
+
+Hub.config.set('init',{
+ loader: ['#content', {
+ pipeHost: '//detailskip.taobao.com',
+ assetsHost: '//assets.alicdn.com',
+ htmlSuffix: '',
+ preloadColumnCls: ['.col-sub']
+ }]
+ });
+
+Hub.config.set('sku',{
+    
+   rstShopId:72583851,    rstItemId:44661595237,
+rstdk: 0 ,
+ rstShopcatlist:",524717819,1060692071,",
+ valLoginIndicator: "//buy.taobao.com/auction/buy.htm?from=itemDetail&x_id=&id=44661595237",
+ valFastBuyUrl: "//buy.taobao.com/auction/fastbuy/fast_buy.htm",  valItemId: "44661595237",
+ valImageInfo:{},
+   "valCartInfo":{"hotItemsUrl":"//detailskip.taobao.com/json/cart_recommend_items.htm?shop_id=72583851&seller_id_num=915628863","itemId" : "44661595237","dbNum" : "","cartUrl": "//cart.taobao.com/cart.htm"},  "apiRelateMarket": "//tui.taobao.com/recommend?appid=16&count=4&itemid=44661595237",
+ "apiAddCart" : "//cart.taobao.com/add_cart_item.htm?item_id=44661595237&bankfrom=",
+ "valVipRate":0,
+ "valPointRate" : "0",
+     "wholeSibUrl":"//detailskip.taobao.com/json/sib.htm?itemId=44661595237&sellerId=915628863&u=1&p=1&rcid=16&sts=504958978,1170940490149789708,216524625834705024,1157504273368548355&chnl=&price=8400&shopId=&vd=1&skil=false&pf=1&al=false&ap=1&ss=0&free=0&st=1&ct=1",        "apiItemViews": "//count.taobao.com/counter3?keys=ICVT_7_44661595237&inc=ICVT_7_44661595237&callback=page_viewcount&sign=44127e1a2b223f5bfd80683c494a474e6c151",  "apiItemReviews": "//count.taobao.com/counter3?keys=ICE_3_feedcount-44661595237",
+ "apiItemCollects": "//count.taobao.com/counter3?keys=ICCP_1_44661595237",
+ "apiBidCount": "//detailskip.taobao.com/json/show_bid_count.htm?itemNumId=44661595237&old_quantity=3995&date=1433639177000",
+       "valTimeLeft": "410300",
+  "valItemIdStr":"44661595237",
+ "valReviewsApi":"//rate.taobao.com/detail_rate.htm?userNumId=915628863&auctionNumId=44661595237&showContent=1&currentPage=1&ismore=0&siteID=4",
+ "reportApi": "//item.taobao.com/json/report_api.htm", "redirectUrl":  "//item.taobao.com/report_redirect_url.htm" , "valShowReviews": false ,
+ "valPostFee":{currCityDest:''},
+    "apiItemInfo":"//detailskip.taobao.com/json/ifq.htm?stm=1433639177000&id=44661595237&sid=915628863&sbn=05d7676e038c942c3292dd3af7fe011b&q=1&ex=0&exs=0&shid=&at=b&ct=1&t=1&reCode=2013.1.4.0",
+         coupon:{"couponApi":"//detailskip.taobao.com/json/activity.htm?itemId=44661595237&sellerId=915628863",
+ "couponWidgetDomain":"//assets.alicdn.com",
+ "cbUrl":"/cross.htm?type=weibo"},
+   "valItemInfo":
+{
+   "defSelected":
+   [],
+
+     "skuMap":
+ {
+     ";20509:28383;1627207:28334;":
+ {
+ "skuId" : "82181298755",
+ "oversold":
+     "false"
+ ,
+     "price" : "84.00",
+     "stock" :
+       "2"
+       }
+   ,
+     ";20509:28383;1627207:28320;":
+ {
+ "skuId" : "82181298756",
+ "oversold":
+     "false"
+ ,
+     "price" : "84.00",
+     "stock" :
+       "2"
+       }
+   ,
+     ";20509:28383;1627207:3232480;":
+ {
+ "skuId" : "82181298757",
+ "oversold":
+     "false"
+ ,
+     "price" : "84.00",
+     "stock" :
+       "2"
+       }
+   ,
+     ";20509:28383;1627207:28341;":
+ {
+ "skuId" : "82181298758",
+ "oversold":
+     "false"
+ ,
+     "price" : "84.00",
+     "stock" :
+       "2"
+       }
+       }
+     ,"propertyMemoMap": {
+  "1627207:28320": "\u767D\u8272" ,  "1627207:28334": "\u7070\u8272" ,  "1627207:28341": "\u9ED1\u8272" ,  "1627207:3232480": "\u7C89\u7EA2\u8272"    }
+   
+ }
+});
+
+Hub.config.set('async_sys', {
+ api: '//item.taobao.com/asyn.htm?g=sys&v=2'
+});
+
+   Hub.config.set('async_dc', {
+ newDc: true
+ ,api: '//hdc1.alicdn.com/asyn.htm?userId=915628863&pageId=&v=2014'
+ });
+ 
+Hub.config.set('support',{
+ url:'//osdsc.alicdn.com/designsystem/TB1gykeFVXXXXbLaXXXUxnn4FXX.groupmember|var^groupMember;sign^902fe06d66eb82ba5a93a542d99466f9;lang^gbk;t^1433813395000'
+});
+
+Hub.config.set('desc',{
+ dummy:false
+           ,apiImgInfo:"//otds.alicdn.com/json/item_imgs.htm?t=TB1.YZQHpXXXXbLXVXXXXXXXXXX&sid=915628863&id=44661595237&s=404894a39bb3626654ee4efdaca09340&v=2&m=1"      ,similarItems: {
+ api: "//tds.alicdn.com/recommended_same_type_items.htm?v=1",
+   rstShopId:72583851,    rstItemId:44661595237,
+ rstdk: 0 ,
+ rstShopcatlist: ",524717819,1060692071,"
+ }
+     })
+
+  
+  
+  
+ Hub.config.set('isv',{
+ nickName: '%E8%96%87%E8%96%87%E7%9A%84%E8%A1%A3%E5%8E%A8',
+ userId: '915628863',
+ shopId: '72583851',
+ itemId: '',
+ itemNumId: 44661595237,
+ shopStats: '',
+ validatorUrl: '//store.taobao.com/tadget/shop_stats.htm',
+ templateName: '',
+ templateId: ''
+});
+
+  
+  
+ 
+    Hub.config.set('cart_text',{text:""});
+ 
+  
+  
+ 
+ 
+  
+       Hub.config.set("greeting", {tms:"/go/rgn/relationrecommend/detail_all_recommend.php?v=new"});
+ </script>
+
+<script>
+;(function () {
+    var isDaily = !!~location.hostname.indexOf('daily');
+    var DAILY_ASSETS_HOST = '//g-assets.daily.taobao.net/';
+    var PUBLISH_ASSETS_HOST = '//g.alicdn.com/';
+    var DAILY = 'daily', PRE = 'pre', PUB = 'pub';
+    var env = location.host.indexOf(DAILY) > -1 ? DAILY : (location.host.indexOf(PRE) > -1 ? PRE : PUB);
+    if(location.href.indexOf('env=' + PUB) > -1) env = PUB;
+    var unb = 0, result = /tracknick=([^;]+)/.exec(document.cookie);
+    if(result) unb = unescape(unescape(result[1])).charCodeAt();
+    Components = [];
+    function getBase(path) {
+        if (typeof path === 'object') {
+            path = path[env] || path[PUB];
+        }
+        var host = isDaily ? DAILY_ASSETS_HOST : PUBLISH_ASSETS_HOST;
+        return host + path;
+    }
+    function getAlias(path) {
+        if (typeof path === 'object') {
+            path = path[env] || path[PUB];
+        }
+        return path;
+    }
+    Config = {
+        packages: {
+            tbc: {
+                base: getBase('tbc/'),
+                ignorePackageNameInUri: true
+            },
+            tb: {
+                base: getBase('tb/'),
+                ignorePackageNameInUri: true
+            },
+            kg: {
+                base: getBase('kg/'),
+                ignorePackageNameInUri: true
+            },
+            cm: {
+                base: getBase('cm/'),
+                ignorePackageNameInUri: true
+            },
+            oneclick: {
+                base: getBase({pub: 'tb/oneclick/0.2.0/', pre: 'tb/oneclick/0.2.0/'}),
+                ignorePackageNameInUri: true
+            },
+            'sd/data_sufei': {
+                base: getBase({ pub: 'sd/data_sufei/1.1.3/sufei', pre: 'sd/data_sufei/1.3.3/sufei',daily:'sd/data_sufei/1.3.3/sufei'}),
+                ignorePackageNameInUri: true
+            }
+        },
+        modules: {
+            datalazyload: {
+                alias: ['kg/datalazyload/2.0.0/']
+            },
+            'gallery/datalazyload/1.0.1/': {
+                alias: ['kg/datalazyload/2.0.0/']
+            },
+            'gallery/datalazyload/1.0/': {
+                alias: ['kg/datalazyload/2.0.0/']
+            },
+            switchable: {
+                alias: ['kg/switchable/2.0.0/']
+            },
+            imagezoom: {
+                alias: ['kg/imagezoom/2.0.0/']
+            },
+            kscroll: {
+                alias: ['gallery/kscroll/1.1/']
+            },
+            rainlib: {
+                alias: ['gallery/rainlib/1.0/']
+            },
+            log: {
+                alias: ['tbc/log/']
+            },
+            sku: {
+               alias: [getAlias({
+                    pre: 'tbc/sku/1.0.7/',
+                    pub: 'tbc/sku/1.0.7/'
+                })]
+            },
+            tbar: {
+                alias: [getAlias({
+                    pre: 'tbc/tbar/0.3.3/',
+                    pub: 'tbc/tbar/0.3.3/'
+                })]
+            },
+            doctor: {
+                alias: ['tbc/doctor/0.2.0/']
+            },
+            shortcuts: {
+                alias: ['tbc/shortcuts/0.1.0/']
+            },
+            slide: {
+                alias: ['kg/slide/2.0.2/']
+            },
+            seckill: {
+                alias: [getAlias({
+                    pub: 'tb/item-seckill/0.0.21/',
+                    pre: 'tb/item-seckill/0.0.4/',
+					daily: 'tb/item-seckill/0.0.4/'
+                })]
+            },
+            'item-detail/index': {
+                requires: [
+                    'core',
+                    'overlay',
+                    'xtemplate',
+                    'imagezoom',
+                    'switchable',
+                    'datalazyload',
+                    'sku',
+//'header',
+                    'tbar',
+                    'log'
+                ]
+            },
+            'address-detail/wlroute': {
+                requires: ["node", "io", "xtemplate", "overlay", "event", "address-detail/wlroute.css"]
+            },
+			'records':{
+				alias: ['tb/item-records/0.0.1/']
+			}
+        }
+    };
+
+
+Config.packages["pledge"]={base:getBase({"pub":"tb\/contract\/2.6.0\/pages\/pledge\/","pre":"tb\/contract\/2.6.0\/pages\/pledge\/","daily":"tb\/contract\/2.6.0\/pages\/pledge\/"}),debug:false,ignorePackageNameInUri:true};
+Config.packages["cbase"]={base:getBase({"pub":"cm\/base\/0.5.8\/","pre":"cm\/base\/0.5.8\/","daily":"cm\/base\/0.5.8\/"}),debug:false,ignorePackageNameInUri:true};
+Config.packages["address-detail"]={base:getBase({"pub":"ccc\/address-detail\/1.0.7\/","pre":"ccc\/address-detail\/1.0.8\/","daily":"ccc\/address-detail\/1.0.7\/"}),debug:true,ignorePackageNameInUri:true};
+Config.modules["rate"]={alias:[getAlias({"pub":"tbc\/rate\/0.0.11\/","pre":"tbc\/rate\/0.1.0\/","daily":"tbc\/rate\/0.1.0\/"})]};
+Config.modules["carProfile"]={alias:[getAlias({"pub":"tbc\/car-profile\/0.0.8\/","pre":"tbc\/car-profile\/0.0.8\/","daily":"tbc\/car-profile\/0.0.4\/"})]};
+Config.packages["installment"]={base:getBase({"pub":"tb\/installment\/1.0.3\/","pre":"tb\/installment\/1.0.3\/","daily":"tb\/installment\/1.0.3\/"}),debug:false,ignorePackageNameInUri:true};
+Config.modules["header"]={alias:[getAlias({"pub":"tbc\/header\/1.3.1\/","pre":"tbc\/header\/1.4.7\/"})],requires:["header/index.css"]};Config.modules["item-seller"]={alias:[getAlias({"pub":"tb\/item-seller\/0.0.4\/","pre":"tb\/item-seller\/0.0.4\/","daily":"tb\/item-seller\/0.0.4\/"})]};Config.modules["favorite"]={alias:[getAlias({"pub":"tbc\/favorite\/1.0.8\/","pre":"tbc\/favorite\/1.0.14\/","daily":"tbc\/favorite\/1.0.14\/"})]};
+Config.packages["charity"]={base:getBase({"pub":"tb\/charity\/1.0.2\/","pre":"tb\/charity\/1.0.2\/","daily":"tb\/charity\/1.0.2\/"}),debug:false,ignorePackageNameInUri:true};
+Config.packages["recommend"]={base:getBase({"pub":"tb\/relationrecommendplug\/1.4.6\/","pre":"tb\/relationrecommendplug\/1.4.6\/","daily":"tb\/relationrecommendplug\/1.4.6\/"}),debug:false,ignorePackageNameInUri:false};
+Config.packages["wangpu"]={base:getBase({"pre":"shop\/wangpu\/1.2.4\/","daily":"shop\/wangpu\/1.2.2\/"}),debug:false,ignorePackageNameInUri:true};           
+
+Components.push({"name":"detail","pub":"item-detail\/index","load":"main"});Components.push({"name":"pine","pub":"recommend\/detail\/page_pine_module\/page_pine_module","init":"new Component({height: KISSY.one('.tb-detail-bd', '#detail').height() - KISSY.one('#J_ShopInfo').height() })","precondition":"document.getElementById(\"J_ShopInfo\") && !g_config.idata.item.enterprise","load":"core","retry":"1"});
+Components.push({"name":"viewed","pub":"recommend\/detail\/viewed_bought_module\/viewed_bought_module","init":"new Component()","precondition":"document.getElementById('detail-recommend-viewed')","load":"lazy","trigger":"scroll:#detail-recommend-viewed","retry":"1"});
+Components.push({"name":"offline","pub":"recommend\/detail\/offline_module\/offline_module","init":"new Component()","precondition":"g_config.online == false","retry":"1"});
+Components.push({"name":"contract","pub":"pledge\/init","precondition":"g_config.hasContract","load":"lazy","trigger":"click:#J_ServiceTab"});
+Components.push({"name":"charity","pub":"\/\/g.alicdn.com\/tb\/charity\/1.0.2\/deps.js","pre":"\/\/g.alicdn.com\/tb\/charity\/1.0.2\/deps.js","daily":"\/\/g.alicdn.com\/tb\/charity\/1.0.2\/deps.js","init":"KISSY.use('charity\/components\/detailModule\/index', function (S, Charity) { Charity.initView('#J_PublicWelfare', {itemId: g_config.itemId}); })","precondition":"g_config.hasCharity"});
+Components.push({"name":"tad","pub":"\/\/g.alicdn.com\/tb\/item-recommend\/0.2.0\/config.js","pre":"\/\/g.alicdn.com\/tb\/item-recommend\/0.2.0\/config.js","daily":"\/\/g.alicdn.com\/tb\/item-recommend\/0.1.26\/config.js","init":"KISSY.use('item-recommend\/p\/tad\/', function(S, Tad){ new Tad({ data: g_config.tadInfo }); });","precondition":"g_config.tadInfo","retry":"1"});
+Components.push({"name":"paimai","pub":"\/\/g.alicdn.com\/tb\/pmp\/1.6.9\/config.js","init":"XCake.config({ name:'pmp', base:'\/\/g.alicdn.com\/tb\/pmp\/1.6.9' }); KISSY.use('pmp\/c\/sku\/index');","precondition":"g_config.idata.item.auction","retry":"1"});
+Components.push({"name":"size","pub":"\/\/g.alicdn.com\/tb\/mysize\/0.1.1\/config.js","pre":"\/\/g.alicdn.com\/tb\/mysize\/0.1.1\/config.js","init":"XCake_MySize.config({ name: 'mysize', base: '\/\/g.alicdn.com\/tb\/mysize\/0.1.1\/', combine: true }); KISSY.use('mysize\/c\/showsize\/', function(S, ShowSize){ var itemData = g_config.idata.item; var valItemInfo = Hub.config.get('sku').valItemInfo; ShowSize( g_config.itemId , g_config.sellerId , valItemInfo && valItemInfo.propertyMemoMap , '.J_Prop_measurement', itemData.footType , '.tb-foot-type' , itemData.sizeGroupName , itemData.isShowSizeTemplate , itemData.sizeTempId ); });","precondition":"g_config.idata.item.initSizeJs","retry":"1"});
+Components.push({"name":"qualification","pub":"cm\/qualified\/0.1.2\/app-detail\/tb-detail","pre":"cm\/qualified\/0.1.2\/app-detail\/tb-detail","init":"Component.init(g_config.itemQualification);","precondition":"g_config.itemQualification","retry":"1"});
+Components.push({"name":"pointman","pub":"\/\/g.alicdn.com\/secdev\/pointman\/js\/index.js#app=taobao","precondition":"!window.attachEvent && Math.random() < 0.011","load":"lazy","trigger":"time:1000"});
+Components.push({"name":"caro2o","pub":"cbase\/p\/o2o-service\/tb-detail","precondition":"g_config.supportO2OService","load":"main"});
+Components.push({"name":"pureService","pub":"cbase\/p\/pure-service\/tb-detail","pre":"cbase\/p\/pure-service\/tb-detail","daily":"cbase\/p\/pure-service\/tb-detail","init":"Component.init({itemId : g_config.itemId,serviceData : g_config.Electronic,sellerId:g_config.sellerId});","precondition":"g_config.Electronic"});
+Components.push({"name":"lifemap","pub":"\/\/g.alicdn.com\/tb\/life\/2.0.0\/config.js","pre":"\/\/g.alicdn.com\/tb\/life\/2.0.0\/config.js","daily":"\/\/g.alicdn.com\/tb\/life\/2.0.2\/config.js","init":"KISSY.use('life\/p\/service-range-for-detail\/',function(S,serviceRangeForDetail){serviceRangeForDetail.init({itemId:g_config.itemId,el:'#J_IframeForLife'});});","precondition":"g_config.idata.item.isLifeServiceItem"});
+Components.push({"name":"steporder","pub":"cbase\/p\/o2o-steporder\/tb-detail","pre":"cbase\/p\/o2o-steporder\/tb-detail","daily":"cbase\/p\/o2o-steporder\/tb-detail","init":"Component.init({itemId : g_config.itemId , StepOrder : g_config.StepOrder   });","precondition":"g_config.StepOrder"});
+Components.push({"name":"freeBookingCar","pub":"\/\/g.alicdn.com\/tb\/usedcar-booking\/0.0.1\/config.js","pre":"\/\/g.alicdn.com\/tb\/usedcar-booking\/0.0.1\/config.js","daily":"\/\/g.alicdn.com\/tb\/usedcar-booking\/0.0.1\/config.js","init":"USEDCARBOOKING_XCake.config({name: 'usedcar-booking',base: '\/\/g.alicdn.com\/tb\/usedcar-booking\/0.0.1\/',combine: true});KISSY.use('usedcar-booking\/p\/popup-booking\/', function(S, PopupBooking){ PopupBooking.init(); });","precondition":"g_config.freeBookingCar"});
+Components.push({"name":"presale","pub":"tbc\/presale\/0.0.2\/detail","pre":"tbc\/presale\/0.0.2\/detail","daily":"tbc\/presale\/0.0.2\/detail","init":"Component.init('#J_TbcPresale', g_config.stepPay);","precondition":"g_config.stepPay"});
+})();
+</script>
+
+<script charset="utf-8" src="//g.alicdn.com/??kissy/k/1.4.14/seed-min.js,tb/global/3.4.4/global-min.js,tb/item-detail/5.2.0/platform-min.js">
+</script>
+
+<script>
+   try{TB.Global.writeLoginInfo({"memberServer": "//member1.taobao.com", "outmemServer" : "", "loginServer": "https://login.taobao.com", redirectUrl:"", logoutUrl : ""},true);}catch(e){};
+</script>
+<script>
+g_config.endTime = now();
+</script>
+
+
+  </body>
+</html>

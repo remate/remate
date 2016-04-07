@@ -1,0 +1,155 @@
+<!doctype html>
+<!--[if lte IE 7 ]><html class="no-js ie lte7 lte8 lte9 javascript"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8 lte8 lte9 javascript"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9 lte9 javascript"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js javascript">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title data-layout-title-pattern="$DECORATOR_TITLE-$CONTENT_TITLE">想去商家版</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" data-th-href="@{/_resources/assets/css/amazeui.css}" />
+    <link rel="stylesheet" data-th-href="@{/_resources/css/admin.css?v=3}" />
+    <!--[if lte IE 9]>
+    <script src="/sellerpc/_resources/js/third/html5shiv.min.js"></script>
+    <script src="/sellerpc/_resources/assets/js/polyfill/rem.min.js"></script>
+    <script src="/sellerpc/_resources/assets/js/polyfill/respond.min.js"></script>
+    <script src="http://a.static.amazeui.org/assets/2.x/js/amazeui.legacy.js"></script>
+    <script>
+        if( !window.console ){
+            window.console = {
+                log : function(){}
+            }
+        }
+    </script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- header start -->
+    <header class="am-topbar admin-header am-padding-right-sm">
+        <div class="am-topbar-brand">
+            <strong class="kkkd">&#xe611;</strong>
+        </div>
+        <!--[if gte IE 8]><!-->
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
+                <li class="am-margin-right-sm"><span class="user-name" data-th-text="${user.loginname}"></span>
+                    <a class="user-logout" id="J_logout" href="javascript:;">退出</a></li>
+                <li>
+                    <button data-href='/sellerpc/products/product' type="button" class="admin-header-publish am-btn am-btn-gray am-round am-btn-xs">发布商品</button>
+                </li>
+                <li>
+                    <button data-href='/sellerpc/taobao-move' type="button" class="admin-header-move am-btn am-btn-gray am-round am-btn-xs">淘宝搬家</button>
+                </li>
+            </ul>
+        </div>
+        <!--<![endif]-->
+    </header>
+    <!-- header end -->
+    <!-- main start -->
+    <section class="am-center am-cf admin-main">
+        <!--[if lt IE 8]>
+        <div class="wrap-version-hint" style="width: 650px;text-align: center;">
+            <p>
+                <img src="/sellerpc/_resources/images/icon-ie7.png" style="display: block;" alt=""/>
+                您的浏览器版本过低,请在IE8及以上版本访问,或更换浏览器。
+            </p>
+        </div>
+        <![endif]-->
+        <!--[if gte IE 8]><!-->
+        <div class="sidebar am-padding-bottom am-fl">
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">
+                    <img vd:src="${shop.img}" />
+                </div>
+                <p class="sidebar-user-nick" data-th-text="${shop.name}"></p>
+            </div>
+            <ul class="am-nav" data-layout-fragment="siderBar">
+            </ul>
+        </div>
+        <article class="admin-main-container am-padding-bottom am-fr" data-layout-fragment="content">
+        </article>
+        <!--<![endif]-->
+    </section>
+    <!-- main end -->
+    <div class="ajax-dimmer"></div>
+    <div class="am-modal am-modal-loading am-modal-no-btn kd-modal-loading" tabindex="-1" id="J-kd-modal-loading">
+        <div class="loadingbox">
+            <div class="loading"></div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert KD-alert" tabindex="-1" id="J-KD-alert">
+        <div class="am-modal-dialog kd-modal-dialog">
+            <p class="kd-modal-title">提示</p>
+            <div class="am-modal-body" id="J-KD-alert-msg">
+            </div>
+            <div class="am-modal-footer am-text-center">
+                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert KD-confirm" tabindex="-1" id="J-KD-confirm">
+        <div class="am-modal-dialog kd-modal-dialog">
+            <p class="kd-modal-title">提示</p>
+            <div class="am-modal-body" id="J-KD-confirm-msg">
+            </div>
+            <div class="am-modal-footer am-text-center">
+                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal KD-product-show" tabindex="-1" id="J-KD-product-show">
+        <div class="product-show-tip am-text-center">
+            商品详情
+        </div>
+        <div class="product-show-main am-cf">
+            <span class="product-show-close">关闭</span>
+            <div class="product-show-imgs am-fl">
+                <div class="sliderBox am-cf">
+
+                </div>
+                <div class="sliderIndex am-text-center">
+                </div>
+            </div>
+            <div class="product-show-info am-fl">
+                <p class="product-show-name">预售</p>
+                <p class="product-price">¥<span></span></p>
+                <p class="product-code-tip">扫描二维码预览商品</p>
+                <div class="product-code"></div>
+                <p class="product-share-tip">分享商品</p>
+                <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style_32x32">
+                    <a class="jiathis_button_qzone"></a>
+                    <a class="jiathis_button_tqq"></a>
+                    <a class="jiathis_button_tsina"></a>
+                    <a class="jiathis_button_douban"></a>
+                    <a class="jiathis_button_email"></a>
+                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-th-src="@{/_resources/js/third/require.js}"></script>
+    <script data-th-src="@{/_resources/js/config.js?v=5}"></script>
+    <script data-th-inline="text">
+    // http://localhost:8888
+    /*<![CDATA[*/
+        //window.host = (location.href.indexOf('http://localhost') + 1) ? ('http://localhost:8888/v2') : '/v2';
+        //window.host = 'http://' + location.hostname + ':8888/v2';
+        //window.host = 'http://dev.www.xiangqutest.com/v2';
+        window.host = '/v2';
+        shopId = '[[${shop.id}]]';
+    /*]]>*/
+    </script>
+    <script data-layout-fragment="postScript"></script>
+
+</body>
+
+</html>

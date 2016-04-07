@@ -1,0 +1,84 @@
+
+
+@import 'variable';
+.setPost {
+    font-size: 12px;
+    .post-table {
+        border-bottom: 1px solid @borderColor;
+        margin-bottom: 0;
+    }
+    .post-table td {
+        height: 100px;
+    }
+    .post-table .post-name {
+        width: 312px/2;
+        text-indent: 44px/2;
+    }
+    .post-table .post-area {
+        width: 1128px/2;
+        padding-left: 52px/2;
+    }
+    .post-table .post-area span {
+        float: left;
+        padding-right: 24px;
+    }
+    //验证的信息
+    .am-alert {
+        float: left;
+    }
+    //弹出框
+    .kd-modal-dialog .kd-form {
+        padding: 0;
+    }
+    .kd-modal-dialog .modal-post {
+        width: 140px;
+    }
+    .kd-modal-dialog .am-form-group {
+        margin-bottom: 6px;
+    }
+    .kd-modal-dialog .modal-areas dl {
+        margin: 0 0 10px 0;
+    }
+    .kd-modal-dialog .modal-areas dt {
+        width: 108px/2;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .kd-modal-dialog .modal-areas dd {
+        width: 400px;
+        margin-bottom: -10px;
+    }
+    .kd-modal-dialog .modal-areas dd span {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 13px;
+        border: 1px solid @borderColor;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: .3s;
+        &:hover, &.active {
+            color: @orange;
+            border-color: @orange;
+        }
+        &.disabled {
+            border: none;
+            cursor: not-allowed;
+        }
+    }
+    .kd-modal-dialog .modal-footer {
+        height: 40px;
+        margin-top: 25px;
+    }
+    .am-form .form-mark {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 40px;
+        color: #f64f50;
+        font-weight: bold;
+    }
+}
+

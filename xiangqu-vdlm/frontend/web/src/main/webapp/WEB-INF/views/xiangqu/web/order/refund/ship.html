@@ -1,0 +1,79 @@
+<html data-layout-decorator="/layout/mainPageXQPC">
+
+<head>
+    <title>退款处理 - 想去</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/refund.css?v=1}" />
+</head>
+
+<body class="refund refundRequest">
+    <div data-layout-fragment="content">
+        <span data-th-replace="fragments/pc_refund_step::pc_refund_step(step=3,style=1)">第几步以及几个步骤</span>
+        <div class="refund_box">
+            <div class="refund_title">
+                <em></em>
+                <div class="txt">申请服务:</div>
+                退货及退款
+                <div class="txt nowState">退款状态：退款处理中</div>
+            </div>
+            <div class="clearfix">
+                <div class="order-l">
+                    <form action="/xiangqu/web/order/refund/ship" id="order_refund_sorm" method="post" data-th-attr="data-status=${orderRefund.status}">
+                        <input type="hidden" id="id" name="id" data-th-value="${orderRefund.id}" />
+                        <input type="hidden" id="orderId" name="orderId" data-th-value="${orderRefund.orderId}" />
+                        <section class="refundRequest-main">
+                            <div class="refundRequest-pannel">
+                                <div class="clearfix refundRequest-bar mt16">
+                                    <label class="control-label fl-l">快递公司&nbsp;:&nbsp;</label>
+                                    <select class="form-control refundRequest-right fl-l" name="logisticsCompany" id="logisticsCompany">
+                                        <option value="">选择物流公司</option>
+                                        <option data-th-each="logisticsCompany : ${logisticsCompanys}" data-th-value="${logisticsCompany.company}" data-th-text="${logisticsCompany.companyName}"></option>
+                                        <option value="other">自定义</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearfix refundRequest-bar mt24 otherCompanyBar">
+                                <label class="control-label fl-l">公司名称&nbsp;:&nbsp;</label>
+                                <input class="form-control refundRequest-right refundRequest-ipt fl-l" id="otherCompany" name="otherCompany" placeholder="请输入物流公司名称" />
+                            </div>
+                            <div class="clearfix refundRequest-pannel mt24">
+                                <div class="refundRequest-bar">
+                                    <label class="control-label fl-l">运单编号&nbsp;:&nbsp;</label>
+                                    <input class="form-control refundRequest-right refundRequest-ipt fl-l" id="logisticsNo" name="logisticsNo" placeholder="请输入运单编号" jNeed="1" />
+                                </div>
+                            </div>
+                        </section>
+                        <section class="refund-bottom">
+                            <input type="button" id="cart_btn_submit" class="cart_btn cart_btn_ship" data-th-attr="data-uri=${xiangquWebSite}" value="提交申请" />
+                            <a href="javascript:;" class="cart_btn_cancel">取消并返回</a>
+                        </section>
+                    </form>
+                </div>
+                <div class="order-r">
+                    <h4 class="order-r-title">退货收货信息</h4>
+                    <ul class="order-r-infor">
+                        <li class="order-r-infor-item clearfix">
+                            <span class="order-r-infor-name fl-l">收&ensp;货&ensp;人:</span>
+                            <span class="order-r-infor-text fl-l" data-th-text="${orderRefund.returnName}"></span>
+                        </li>
+                        <li class="order-r-infor-item clearfix">
+                            <span class="order-r-infor-name fl-l">电&nbsp;&nbsp;话:&nbsp;</span>
+                            <span class="order-r-infor-text fl-l" data-th-text="${orderRefund.returnPhone}"></span>
+                        </li>
+                        <li class="order-r-infor-item clearfix">
+                            <span class="order-r-infor-name fl-l">收货地址:</span>
+                            <span class="order-r-infor-text fl-l" data-th-text="${orderRefund.returnAddress}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <span data-th-replace="fragments/pc_refund_introduce">介绍部分</span>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        jsArr.push('/resources/dist/kdweb/0.0.1/js/page/ship.js');
+        </script>
+    </div>
+</body>
+
+</html>

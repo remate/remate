@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>购物车 - 想去</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="/_resources/css/xiangqu/base.css?v=1.1" />
+    <link rel="stylesheet" type="text/css" href="/_resources/css/xiangqu/cart.css?v=1.2" />
+</head>
+
+<body class="cart bg_gray">
+    <section class="cartPannel cartItem" data-th-each="entry : ${cartItemMap}">
+        <div class="salerInfo clearfix">
+            <div class="fl-l" data-th-inline="text">分享人：<a class="shop-owner" data-th-href="${'/shop/' + entry.key.id}" target="_blank" >[[${entry.key.name}]]</a></div>
+            <div class="operation fl-r">
+                <div class="done js-editor none">完成</div>
+                <i class="todo js-info"></i>
+            </div>
+        </div>
+        <!-- item start -->
+        <div class="cartProduct clearfix" data-th-each="item : ${entry.value}">
+            <div class="cartImg fl-l">
+                <a class="js-hrefs" data-th-href="${'xiangqu://www.xiangqu.com/product/detail?id=' + item.product.id}" data-th-attr="data-href=${item.product.id}" target="_blank" >
+                    <img data-vd-src="${item.product.img[s03]}" />
+                </a>
+                <span></span>
+            </div>
+            <div class="cartInfo fl-l js-info">
+                <div class="productName"><a class="js-hrefs" data-th-href="${'xiangqu://www.xiangqu.com/product/detail?id=' + item.product.id}"  data-th-text="${item.product.name}" data-th-attr="data-href=${item.product.id}" target="_blank"></a></div>
+                <div class="productSku">规格尺寸:<span class="font-light fz14" data-th-text="${item.sku.spec}" ></span></div>
+                <div class="productNum">数量:<span data-th-text="${item.amount}"></span></div>
+            </div>
+            <div class="cartPriceArea fl-r">
+                <div class="cartPriceNum"><span data-vd-price="${item.sku.price}"></span></div>
+                <div class="cartDelete js-editor none">删除</div>
+            </div>
+            <div class="changeType fl-l none js-editor">
+                <div class="changeNum" data-th-attr="data-sku-id=${item.sku.id},data-inventory=${item.sku.amount},data-item-id=${item.id}">
+                    <div data-th-replace="fragments/numEditor::numEditor(stock=${item.sku.amount}, amount=${item.amount})"></div>
+                </div>
+            </div>
+        </div>
+        <!-- item end -->
+        <!--  
+        <div class="amountBar clearfix">
+            <div class="amountBarNum">共<span>2</span>件商品</div>
+            <div class="amountPrice">合计：&yen;<span>198.00</span></div>
+        </div>
+        -->
+    </section>
+    <section class="cartPannel cartTotal pos-r">
+        合计：<span class="cart-red"><b data-vd-price="${prices.totalFee}"></b></span><span>（不包含邮费）</span>
+        <div class="cartPay pos-a">结算</div>
+    </section>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/appframework.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/plugins/tool.js?v=2"></script>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/vd_base.js?t=20141126"></script>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/xiangqu/cart.js?t=5"></script>
+</body>
+</html>

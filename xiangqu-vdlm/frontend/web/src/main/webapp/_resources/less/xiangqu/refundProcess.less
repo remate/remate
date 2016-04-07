@@ -1,0 +1,101 @@
+@import "skin";
+.refundProcess {
+    .refundMsg {
+        margin-top: 12px;
+        .refundMsg-time {
+            font-size: 10px;
+            color: #ccc;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            margin-bottom: 2px;
+            font-family: Helvetica;
+        }
+        .refundMsg-main {
+            padding: 5px 12px 11px;
+            border: 1px solid #e7e7e7;
+            border-radius: 10px;
+            background-clip:padding-box;
+            position: relative;
+            min-height: 35px;
+            clear: both;
+            max-width:85%;
+            .refundMsg-title, .refundMsg-bottom {
+                height: 35px;
+                line-height: 35px;
+            }
+            .refundMsg-title {
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                margin-bottom: 8px;
+                font-size: 14px;
+            }
+            .refundMsg-bottom {
+                border-top-style: solid;
+                border-top-width: 1px;
+                margin: 8px 0 -6px;
+                font-size: 12px;
+            }
+            & > div {
+                font-size: 12px;
+                line-height: 18px;
+                div {
+                    &:nth-of-type(1) {
+                        float: left;
+                        width: 60px;
+                    }
+                    &:nth-of-type(2) {
+                        margin-left: 60px;
+                    }
+                }
+            }
+            &:after {
+                display: block;
+                position: absolute;
+                content: "";
+                .spriteImg();
+                width: 8px;
+                height: 12px;
+                top: 16px;
+            }
+        }
+        &.refundMsg_1 {
+            .refundMsg-main {
+                background-color: #333;
+                margin-left: 40px;
+                margin-right: 12px;
+                color: #fff;
+                float: right;
+                &:after {
+                    background-position: 0 -13px;
+                    right: -8px;
+                }
+            }
+            .refundMsg-title {
+                border-bottom-color: #fff;
+            }
+            .refundMsg-bottom {
+                border-top-color: #fff;
+            }
+        }
+        &.refundMsg_2 {
+            .refundMsg-main {
+                background-color: #fff;
+                margin-left: 12px;
+                margin-right: 40px;
+                color: #333;
+                float: left;
+                &:after {
+                    background-position: 0 -52px/2;
+                    left: -8px;
+                }
+            }
+            .refundMsg-title {
+                border-bottom-color: #f0f0f0;
+            }
+            .refundMsg-bottom {
+                border-top-color: #f0f0f0;
+            }
+        }
+    }
+}

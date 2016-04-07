@@ -1,0 +1,91 @@
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+    <title>退款处理</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+     <link rel="stylesheet" type="text/css" href="/_resources/css/xiangqu/refund.css?v=1.2" />
+</head>
+
+<body class="refund refundRequest">
+<div data-layout-fragment="content">
+<form action="${/order/refund/request}" id="order_refund_sorm" method="post">
+<input type="hidden" id="orderId" name="orderId" data-th-value="${order.id}"/>
+<input type="hidden" id="id" name="id" data-th-value="${orderRefund==null?'':orderRefund.id}"/>
+    <section class="refundRequest-main">
+        <!--  已发货申请退款  -->
+        <div class="refundRequest-pannel" data-th-if="${order.status.name().equals('SHIPPED')}">
+            <div class="refundRequest-bar refundRequest-hasArrow">
+                <span>申请服务</span>
+                <select class="refundRequest-right" name="buyerRequire" id="buyerRequire">
+                	<option value="">请选择申请服务</option>
+                    <option value="1" data-th-attr="selected=${1 eq (orderRefund==null?-1:orderRefund.buyerRequire)}">仅退款</option>
+                    <option value="2" data-th-attr="selected=${2 eq (orderRefund==null?-1:orderRefund.buyerRequire)}">退款并退货</option>
+                </select>
+            </div>
+        </div>
+        <div data-th-if="${!order.status.name().equals('SHIPPED')}">
+        	<input type="hidden" id="buyerRequire" name="buyerRequire" value="1"/>
+        	<input type="hidden" id="buyerReceived" name="buyerReceived" value="0"/>
+        </div>
+        <div class="refundRequest-pannel" data-th-if="${order.status.name().equals('SHIPPED')}">
+            <div class="refundRequest-bar refundRequest-hasArrow">
+                <span>是否收到货</span>
+                <select class="refundRequest-right" name="buyerReceived" id="buyerReceived">
+                	<option value="">请选择是否收到货</option>
+                    <option value="1"  data-th-attr="selected=${1 eq (orderRefund==null?-1:orderRefund.buyerReceived)}">已收到货</option>
+                    <option value="0"  data-th-attr="selected=${0 eq (orderRefund==null?-1:orderRefund.buyerReceived)}">未收到货</option>
+                </select>
+            </div>
+        </div>
+        <div class="refundRequest-pannel">
+            <div class="refundRequest-bar refundRequest-hasArrow">
+                <span>退款原因</span>
+                <select class="refundRequest-right" name="refundReason" id="refundReason">
+                	<option value="">请选择退款原因</option>
+                    <option data-th-each="reason : ${refundReasons}" data-th-attr="selected=${reason.key eq (orderRefund==null?'':orderRefund.refundReason)}" data-th-value="${reason.key}" data-th-text="${reason.value}"></option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="refundRequest-pannel" data-th-if="${orderRefund==null}">
+            <div class="refundRequest-bar refundRequest-hasArrow">
+                <span>退款方式</span>
+                <select class="refundRequest-right" name="refundStyle" id="refundStyle" >
+                	<!-- <option value="">请选择退款方式</option> -->
+                    <option value="0" >全额退款</option>
+                    <option value="1" >部分退款</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="refundRequest-pannel">
+            <div class="refundRequest-bar">
+                <span>退款金额</span>
+                <input data-th-if="${orderRefund==null}" readonly="readonly" class="refundRequest-right refundRequest-ipt" data-th-value="${orderRefund==null?order.refundableFee:orderRefund.refundFee}" name="refundFee" id="refundFee" data-th-attr="j-placeholder='最多退'+${order.refundableFee}" />
+                <input data-th-if="${orderRefund!=null}"  class="refundRequest-right refundRequest-ipt" data-th-value="${orderRefund==null?order.refundableFee:orderRefund.refundFee}" name="refundFee" id="refundFee" data-th-attr="j-placeholder='最多退'+${order.refundableFee}" />
+            </div>
+        </div>
+        <p class="refundRequest-title">退款说明</p>
+        <div class="refundRequest-pannel">
+            <textarea class="refundRequest-text" placeholder="请填写退款说明" data-th-text="${orderRefund==null?'':orderRefund.refundMemo}" name="refundMemo" id="refundMemo"></textarea>
+        </div>
+       <input type="hidden" id="refundmax" name="refundmax" data-th-value="${order.refundableFee}" disabled="disabled"/>
+    </section>
+    <section class="refund-bottom">
+    	<div data-th-if="${orderRefund==null}">
+        <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_request">提交申请</a>
+        </div>
+		<div data-th-if="${orderRefund!=null}">
+        <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_request">修改申请</a>
+        <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_cancel">取消申请</a>
+        </div>        
+
+    </section>
+	</form>
+</div>
+<div data-layout-fragment="postScript">
+    <script type="text/javascript" data-th-src="@{/_resources/js/page/orderRefund.js?v=8}"></script>
+    </div>
+</body>
+</html>

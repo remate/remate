@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQPC">
+
+<head>
+    <title>退款进度</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/refund.css?v=1}" />
+</head>
+
+<body class="as_page">
+<div data-layout-fragment="content" class="contain">
+    <div class="refund_box">
+        <div class="refund_title refund_italics">
+            <em></em>
+            请选择你要申请的服务类型
+        </div>
+        <div name="buyerRequire" id="buyerRequire" class="buyerRequire clearfix">
+            <form action="/xiangqu/web/order/refund/">
+                <input type="hidden" id="orderId" name="orderId" data-th-value="${order.id}"/>
+                <div class="tuikuan tuikuanbtn tuikuanbtnico" ><i></i>仅退款</div>
+                <div data-th-if="${order.status.name().equals('SHIPPED')}">
+                    <div class="tuihuotuikuan tuikuanbtn"><i></i>退货及退款</div>
+                </div>
+                <div data-th-if="${order.status.name().equals('PAID')}">
+                    <div class="tuihuotuikuan tuikuanbtn tuikuanbtndisable"><i></i>退货及退款</div>
+                </div>
+            </form>
+        </div>
+        <div class="order-infor">
+            <div class="order-infor-title">订单信息</div>
+            <div class="order-infor-body clearfix" data-th-each="item,index : ${order.orderItems}">
+                <div class="order-infor-image fl-l"><img data-th-src="${item.productImgUrl}" alt=""/></div>
+                <div class="order-infors fl-l" >
+                    <div class="order-infor-name order-infor-t" data-th-text="${item.productName}"></div>
+                    <div class="order-infor-color order-infor-t" data-th-text="${item.skuStr}"></div>
+                    <div class="order-infor-color order-infor-t">
+                        <span class="order-infor-text-left">单价&nbsp;:&nbsp;</span>
+                        <span class="order-infor-text-right"><em data-vd-price="${item.price}"></em> *<em data-th-text="${item.amount}"></em>(数量)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-infor">
+            <div class="order-infor-text">
+                <span class="order-infor-text-left">订单编号&nbsp;:&nbsp;</span>
+                <span class="order-infor-text-right" data-th-text="${order.orderNo}"></span>
+            </div>
+            <div class="order-infor-text">
+                <span class="order-infor-text-left">邮&nbsp;&nbsp;费&nbsp;:&nbsp;</span>
+                <span class="order-infor-text-right"><em data-vd-price="${order.logisticsFee != null} ? ${order.logisticsFee} : 0"></em></span>
+            </div>
+        </div>
+    </div>
+    <span data-th-replace="fragments/pc_refund_introduce">介绍部分</span>
+
+</div>
+<div data-layout-fragment="postScript">
+    <script>
+        //        jsArr.push('/resources/dist/kdweb/0.0.1/js/page/refund-debug.js');
+        jsArr.push('/resources/dist/kdweb/0.0.1/js/page/refund.js');
+    </script>
+</div>
+</body>
+
+</html>

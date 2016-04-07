@@ -1,0 +1,156 @@
+
+<section class="J_myAddressLists J_home my-address-lists clearfix">
+    <div class="J_noAddress no-address clearfix">
+        <div class="address-tip">
+            <i></i>
+            <span>请填写收货地址</span>
+            <span class="new-address-btn"></span>
+        </div>
+    </div>
+
+    <div class="J_haveAddress have-address clearfix">
+        <div class="address-info clearfix">
+
+            <div class="J_currentAddress info-l">
+
+            </div>
+            <div class="J_showAddressList show-addresslist clearfix">
+                <i></i>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="J_productLists J_home product-lists-box" data-th-each="entry:${cartItemMap}" data-th-attr="data-shop-id=${entry.key.id}">
+    <div class="saler-info clearfix">
+        <i></i>
+        <a href="javascript:;" data-th-inline="text" >[[${entry.key.name}]]</a>
+    </div>
+
+    <div class="J_productItems product-items">
+        <ul>
+            <li class="product-item clearfix" >
+                <div class="product-item-body clearfix" data-th-each="cartItem : ${entry.value}" data-th-attr="data-skuid=${cartItem.sku.id},data-amount=${cartItem.amount},data-cartid=${cartItem.id}">
+                    <div class="item-img">
+                        <a data-th-href="${'xianqu://www.xiangqu.com/product/detail?id=' + cartItem.productId}"
+                           data-th-attr="data-href=${cartItem.productId}" class="js-hrefs J_proHref">
+                            <img data-vd-src="${cartItem.product.img[{w:300}]}" alt="" />
+                        </a>
+                    </div>
+                    <div class="item-info clearfix">
+                        <h2 class="product-name">
+                            <a data-th-href="${'xiangqu://www.xiangqu.com/product/detail?id=' + cartItem.productId}" data-th-text="${cartItem.product.name}" data-th-attr="data-href=${cartItem.productId}" class="js-hrefs J_proHref"></a>
+                        </h2>
+                        <p class="product-sku">
+                            <span data-th-text="${cartItem.sku.spec}"></span>
+                        </p>
+
+                        <p class="product-price">
+                            <span class="price" data-vd-price="${cartItem.sku.price}"></span>
+                            <span class="num" data-th-text="'x' + ${cartItem.amount}"></span>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="item-shop-youfei clearfix">
+                    <span class="fl-l">运费</span>
+                    <div class="fl-r">
+                        <span class="J_youfei" data-vd-price="${prices.pricesMap.get(entry.key.id).logisticsFee}"></span>
+                    </div>
+                    <div class="fl-r tips">运费问题请直接联系卖家</div>
+
+                </div>
+                <div class="J_applyNow item-amount clearfix">
+                    <span class="fl-l">数量</span>
+                    <div class="fl-r">
+                        <div class="J_funAmount update-amount">
+                            <span class="J_jian jian"></span>
+                            <span class="J_currNum amount" data-th-text="${cartItem.amount}"></span>
+                            <span class="J_add jia" data-th-attr="data-amount=${cartItem.currentSkuAmount}" ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-box ">
+                    <div class="message-input">
+                        <input class="J_msg msg-input" placeholder="请填写您的留言信息(选填)" type="text" data-th-name="${'remarks[' + entry.key.id + ']'}" />
+                    </div>
+                </div>
+                <div class="J_amountPrice amount-total-price" >
+                    <span class="J_price price" data-vd-price="${prices.pricesMap.get(entry.key.id).totalFee}"></span>
+                    <span>合计：</span>
+                    <span class="product-num">
+                        共<em data-th-text="${cartShopItemArraySize.get(entry.key.id)}"></em>件商品
+                    </span>
+                </div>
+            </li>
+        </ul>
+
+
+
+    </div>
+
+</section>
+
+<section class="J_couponCheckBox J_home coupon-check-box clearfix">
+    <div  class="J_couponYH coupon-yh-box clearfix">
+        <div class="J_couponBtnBox coupon-title">
+            <span class="text fl-l">优惠</span>
+            <span class="right-act fl-r"></span>
+            <div class="coupon-num fl-r">
+                <span>您有<em >0</em>张优惠券</span>
+
+            </div>
+        </div>
+        <div class="J_totalCoupon total-coupon">
+            <ul>
+                <li data-th-each="coupons:${defaultCoupon}"
+                    data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected}"
+                    data-th-text="${coupons.activity.title}+'('+ ${coupons.discount} +'元)'"></li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="J_payStyle J_home pay-style-box clearfix">
+
+    <span data-th-replace="xiangqu/wap/module/paymentSelect">选择支付方式</span>
+
+
+</section>
+
+
+<!--收货地址管理 start-->
+
+<section class="J_myAddressBoxShop my-address-box-shop">
+    <span class="J_tcMyAddress tc-my-address-box" data-th-replace="xiangqu/wap/module/xiadantc">下单相关弹层</span>
+</section>
+
+<!--收货地址管理 end-->
+
+<!--弹层start-->
+<section class="J_tc tc-layout">
+    <!--<span class="J_tcMyAddress tc-my-address-box" data-th-replace="xiangqu/wap/module/xiadantc">下单相关弹层</span>-->
+
+    <div class="J_tcOpacity tc-opacity"></div>
+
+    <div class="J_tips tc-tips">
+        <div class="tc-tips-body">
+            <div class="tc-tips-text">确定要删除该地址吗？</div>
+            <div class="J_tcTipsBtn tc-tips-btn">
+                <span class="J_cancel cancel">取消</span>
+                <span  class="J_sure sure">确定</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<span data-th-replace="xiangqu/wap/module/temp"></span>
+
+
+

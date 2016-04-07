@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html layout:decorator="/layout/mainPage">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta charset="utf-8" />
+    <title>step2</title>
+</head>
+<body class="as_page">
+    <div layout:fragment="content" class="mt44">
+        <section>
+            <ul class="step-list bd-shb box fz24">
+                <li class="step-list-item flex1">
+                        <span class="step-ico">
+                            <img src="../../../_resources/images/shop/done.png" alt=""/>
+                        </span>
+                    <span class="step-text font-dark">获取验证码</span>
+                </li>
+                <li class="step-list-item flex1">
+                        <span class="step-ico">
+                            <img src="../../../_resources/images/shop/step2-sel.png" alt=""/>
+                        </span>
+                    <span class="step-text font-light">店铺验证</span>
+                </li>
+                <li class="step-list-item flex1">
+                        <span class="step-ico">
+                            <img src="../../../_resources/images/shop/step3.png" alt=""/>
+                        </span>
+                    <span class="step-text font-light">开始搬家</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <div class="step-password">
+                <div class="fz30 font-dark">输入已添加验证码的商品：</div>
+                <input type="hidden" id="J-rnd" name="rnd" th:value="${rnd}"/>
+                <input type="hidden" id="J-href1" th:value="@{/shop/step2check}"/>
+                <input type="hidden" id="J-href2" th:value="@{/shop/step3}"/>
+                <input id="J-itemId" class="step-input fz30 font-light mt30" placeholder="商品ID" type="number"/>
+                <p class="pt40"><img src="../../../_resources/images/shop/step2-intro.png" alt="" /></p>
+            </div>
+        </section>
+        <section class="bg-grayed p30 box-sht">
+            <a id="J-moveProduct-step2" class="button bg-orange cart-checkout-btn fz30 font-white ptb30" href="javascript:void(0)">验证</a>
+        </section>
+    </div>
+	<div layout:fragment="postScript">
+	    <script type="text/javascript" charset="utf-8" th:src="@{/_resources/js/page/shop.js}"></script>
+	</div>
+</body>
+</html>

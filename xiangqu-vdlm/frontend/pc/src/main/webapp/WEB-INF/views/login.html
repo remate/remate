@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>登录－想去商家版</title>
+    <!-- <link href='http://www.youziku.com/webfont/CSS/57fa1d0f7851a06dc420583e2fe02f2f' rel='stylesheet' type='text/css' /> -->
+    <link rel="stylesheet" data-th-href="@{/_resources/css/login.css?v=20150722}" />
+</head>
+<body>
+    <div class="layer-img"></div>
+    <div class="layer-bg"></div>
+    <div class="layer-main">
+        <div class="content">
+            <h1 class="title">做快乐梦想家— 想去商家版</h1>
+            <div class="subtitle">便捷的发布流程，个性化的店铺装修，全面的分享功能，这就是我们。一个简单的、便捷的开店工具。<a href="javascript:;" class="code-caller"><span class="qr-code">扫描二维码下载APP</span>
+                    <div class="code-box clearfix">
+                        <em class="arrow"></em>
+                        <dl class="code-img fl ios">
+                            <dt></dt>
+                            <dd>ios</dd>
+                        </dl>
+                        <dl class="code-img fl android">
+                            <dt></dt>
+                            <dd>android</dd>
+                        </dl>
+                    </div>
+                </a>
+            </div>
+
+            <div class="wrap">
+                <form>
+                    <div class="username-wrap">
+                        <input type="text" class="ipt username" placeholder="请输入手机号" autofocus="autofocus" maxlength="11" autocomplete="off" />
+                    </div>
+
+                    <div class="login-part">
+                        <input type="password" class="ipt password" placeholder="请输入密码" maxlength="50" />
+                        <a href="javascript:;" class="btn login">登&nbsp;录</a>
+                        <div class="clearfix">
+                            <div class="tip-info fl">还没有账号？<a href="javascript:;" class="tip-doing">点击这里</a></div>
+                            <div class="forget-wrap fr">
+                                <a href="javascript:;" class="forget">忘记密码?</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="common-part">
+                        <div class="clearfix">
+                            <input type="text" class="ipt captcha fl" placeholder="填写验证码" maxlength="6" autocomplete="off" />
+                            <a href="javascript:;" class="btn send btn-disabled fl">发送验证码</a>
+                        </div>
+                        <input type="password" class="ipt new-password" placeholder="请输入新密码" maxlength="50" />
+                        <input type="password" class="ipt re-password" placeholder="请重复密码" maxlength="50" />
+                    </div>
+
+                    <div class="forget-part">
+                        <a href="javascript:;" class="btn modify">修改密码</a>
+                        <div class="tip-info">想起密码了？<a href="javascript:;" class="tip-doing">点击这里</a></div>
+                    </div>
+
+                    <div class="reg-part" >
+                        <div class="copyright">
+                            <label><input type="checkbox" class="checkbox" />我已同意并阅读</label>
+                            <a href="javascript:;" class="copyright-caller">
+                                <span class="kkkd-copyright">《想去商家版服务协议》</span>
+                                <div class="copyright-box">
+                                    <em class="arrow"></em>
+                                    <iframe class="copyright-txt" src="http://www.kkkd.com/about/copyright.html" frameborder="no" border="0"></iframe>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;" class="btn reg">注&nbsp;册</a>
+                        <div class="tip-info">已经有账号？<a href="javascript:;" class="tip-doing">点击这里</a></div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="model-dimmer"></div>
+            <div class="model-alert">
+                <div class="model-title"></div>
+                <div class="model-body"></div>
+                <div class="model-footer">
+                    <a href="javascript:;" class="model-button"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script data-th-src="@{/_resources/js/third/jquery.1.11.1.min.js}"></script>
+    <script data-th-src="@{/_resources/js/third/md5.js}"></script>
+    <script data-th-src="@{/_resources/js/third/jquery.cookie.js}"></script>
+    <script data-th-src="@{/_resources/js/third/jquery.placeholder.js}"></script>
+    <script data-th-src="@{/_resources/js/third/jquery.numeric.min.js}"></script>
+    <script data-th-src="@{/_resources/js/third/icheck.min.js}"></script>
+    <script data-th-src="@{/_resources/js/plugins/qrcode/jquery.qrcode.js}"></script>
+    <script data-th-src="@{/_resources/js/dist/login.js?v=2}"></script>
+    <!-- <script data-th-src="@{/_resources/js/page/login.js}"></script> -->
+
+    <script>
+    // http://localhost:8888
+    /*<![CDATA[*/
+        //window.host = (location.href.indexOf('http://localhost') + 1) ? ('http://localhost:8888/v2') : '/v2';
+        // window.host = 'http://' + location.hostname + ':8888/v2';
+        window.host = '/v2';
+    /*]]>*/
+    </script>
+</body>
+</html>

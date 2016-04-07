@@ -1,0 +1,50 @@
+  
+.pagination a ,.pagination .ellipse{
+    text-decoration: none;
+	color: #bcbfc1;
+    font-size: 12px;
+}
+.pagination .ellipse{
+    margin: 0 14px;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 0;
+    margin: 0 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.pagination .current {
+    text-decoration: underline;
+    color: #2d3242;
+    font-size: 12px;
+    cursor: not-allowed;
+}
+
+.pagination .prev, .pagination .next{
+    font-family: "kkkd";
+    text-decoration: none;
+	color:#bcbfc1;
+    font-size: 16px;
+    line-height: 30px;
+}
+.pagination .gotoLabel{
+    color:#bcbfc1;
+    font-size: 12px;
+    margin-left: 14px;
+}
+.pagination .gotoIpt{
+    position: relative;
+    top:-2px;
+    color:#2d3242;
+    font-size: 12px;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 1000px;
+    border:1px solid #bcbfc1;
+}
+

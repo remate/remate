@@ -1,0 +1,39 @@
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>地址管理</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+<div class="pos-r" data-layout-fragment="content" >
+    <section>
+        <div class="cart-address">
+            <form id="post_form" data-th-action="${'/address/save'}" method="post">
+                <input type="hidden" id="id" name="id" data-th-if="${address != null}" data-th-value="${address.id}"/>
+                <input type="hidden" id="backUrl" name="backUrl" data-th-value="${backUrl}"/>
+                <input type="hidden" id="zoneId" name="zoneId"/>
+                <input class="mb30i db" id="consignee" name="consignee" type="text" placeholder="收货人姓名" required="required" data-th-value="${address != null ? address.consignee : ''}"/>
+                <input class="mb30i db" id="phone" name="phone" type="text" placeholder="手机号码" required="required" data-th-value="${address != null ? address.phone : ''}"/>
+                <p class="mb30i phone-msg hiddle">请输入正确的手机号码!</p>
+                <select class="mb30i db" id="province" name="province">
+                    <option value="0">--省份--</option>
+                    <option data-th-each="provinceItem : ${provinceList}" data-th-value="${provinceItem.id}" data-th-text="${provinceItem.name}" data-th-attr="selected=${province != null and provinceItem.id eq province.id}"></option>
+                </select>
+                <select class="mb30i db" id="city" name="city">
+                    <option value="0">--城市--</option>
+                    <option data-th-each="cityItem : ${cityList}" data-th-value="${cityItem.id}" data-th-text="${cityItem.name}" data-th-attr="selected=${cityItem.id eq city.id}"></option>
+                </select>
+                <select class="mb30i db" id="district" name="district">
+                    <option value="0">--地区--</option>
+                    <option data-th-each="districtItem : ${districtList}" data-th-value="${districtItem.id}" data-th-text="${districtItem.name}" data-th-attr="selected=${districtItem.id eq district.id}"></option>
+                </select>
+                <textarea class="mb30i db" id="street" name="street" rows="2" placeholder="详细地址" required="required" data-th-text="${address != null ? address.street : ''}"></textarea>
+                <input class="mb30i db" id="weixinId" name="weixinId" type="text" placeholder="微信号" data-th-value="${address != null ? address.weixinId : ''}"/>
+            </form>
+            <div id="submitBtn" class="addressBtn">保存收货地址</div>
+        </div>
+    </section>
+</div>
+<script data-layout-fragment="postScript" type="text/javascript" data-th-src="@{/_resources/js/page/address.js}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+@import 'variable';
+.classify {
+    .classify-items {
+        height: 40px;
+        margin-bottom: 13px;
+    }
+    .classify-items .classify-item {
+        float: left;
+        margin-right: 15px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 24px;
+        font-size: 12px;
+        border-radius: 3px;
+        background-color: #fff;
+        color: #7c7c7f;
+        transition: .6s;
+    }
+    .classify-items .classify-item.active,
+    .classify-items .classify-item:hover {
+        text-decoration: none;
+        background-color: #f64f50;
+        color: #fff;
+    }
+    .classify-item-add {
+        height: 40px;
+        line-height: 40px;
+        font-size: 50px;
+        color: #e3e4e8;
+        cursor: pointer;
+    }
+    .classify-item-add:hover{
+        color:@gray;
+    }
+    .classify-list{
+        border: none;
+        font-size: 12px;
+    }
+    .classify-list thead th{
+        height: 60px;
+        line-height: 60px;
+        padding: 0 0 0 27px;
+        border-bottom: 2px solid #93999e;
+    }
+    .classify-list thead .classify-list-name{
+        padding-right: 13px;
+    }
+    .classify-list thead .classify-list-num{
+        color:@orange;
+        padding: 0 5px;
+    }
+}

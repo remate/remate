@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title data-th-text="${message.title}"></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <style>
+        div, h2, h6{margin: 10px 0;line-height:22px;}
+    </style>
+    
+</head>
+<body>
+		<h2 data-th-text="${message.title}"></h2>
+		<h6>发布时间：<span data-th-text="${#dates.format(message.createdAt, 'yyyy-MM-dd HH:mm')}"></span></h6>
+		<p data-th-utext="${message.content}"></p>
+</body>
+</html>

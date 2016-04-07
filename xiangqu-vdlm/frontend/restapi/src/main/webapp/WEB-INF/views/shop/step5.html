@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html layout:decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8" />
+    <title>step5</title>
+    <style>
+        .fl{
+            float: left;
+        }
+        .clearfix::after{
+            content:"";
+            display: block;
+            clear:both;
+        }
+        .move-pop{
+            display: none;
+            background-color: rgba(0,0,0,.4);
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+        .move-pop-main{
+            width: 290px;
+            height: 290px;
+            background-color: #fff;
+            position: absolute;
+            top:50%;
+            margin-top: -145px;
+            left: 50%;
+            margin-left: -145px;
+        }
+        .move-pop-title{
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: normal;
+            color:#546979;
+        }
+        .move-item{
+            box-sizing:border-box;
+            -webkit-box-sizing:border-box;
+            text-align: left;
+            padding: 0 16px;
+        }
+        .move-item input[type="radio"]{
+            width: 0;
+            height: 0;
+            opacity: 0;
+            margin: 0;
+            float: left;
+        }
+        .move-item input[type="radio"] + .icon{
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            background-image: url(/v2/_resources/images/radio_icons.png);
+            background-repeat: no-repeat;
+            background-size: 19px 38px;
+            background-position: 0 -19px;
+        }
+        .move-item input[type="radio"]:checked + .icon{
+            background-position: 0 0;
+        }
+        .move-item .infos{
+            margin-left: 10px;
+            width: 200px;
+        }
+        .move-item-title{
+            font-size: 14px;
+            color:#546979;
+            line-height: 20px;
+        }
+        .move-item-info{
+            margin: 5px 0 10px;
+            line-height: 20px;
+            color:#a0acb5;
+            font-size: 12px;
+        }
+        .move-footer{
+            margin-top: 23px;
+            height: 30px;
+        }
+        .move-footer a{
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            width: 125px;
+            text-align: center;
+            color:#fff;
+            border-radius: 3px;
+            margin: 0 3px;
+            background-clip:padding-box;
+        }
+        .move-footer .no{
+            background-color: #51636c;
+        }
+        .move-footer .ok{
+            background-color: #e83c28;
+        }
+        .label {
+            display: block;
+        }
+    </style>
+</head>
+<body class="as_page">
+    <div layout:fragment="content" class="centered pt75b40">
+        <img src="../../../_resources/images/shop/move-again.png" alt=""/>
+        <div class="pt40 fz42 font-dark">再次搬家</div>
+        <p class="pt20 fz24 font-light widthhuanh w50">您已经进行过搬家点击开始搬家将店铺新增商品搬过来</p>
+        <p class="pt40 step-success-btn">
+                <input type="hidden" id="J-shopUrl" name="shopUrl" th:value="${shopUrl}"/>
+                <input type="hidden" id="J-href1" th:value="@{/shop/step4}"/>
+                <input type="hidden" id="J-href2" th:value="@{/shop/step5}"/>
+            <a class="button bg-orange cart-checkout-btn fz29 font-white ptb30"  id="moveAgbtn"  href="javascript:void(0)">开始搬家</a>
+        </p>
+        <div class="move-pop">
+            <div class="move-pop-main">
+                <h3 class="move-pop-title">
+                    搬家方式
+                </h3>
+                <div class="move-item">
+                    <label class="label clearfix">
+                        <div class="fl radiobox">
+                            <input type="radio" checked="checked" name="move-type" value="0" />
+                            <em class="icon"></em>
+                        </div>
+                        <div class="fl infos">
+                            <p class="move-item-title">新增商品</p>
+                            <p class="move-item-info">搬家过程中仅新增商品，不对店铺内已存在商品做修改</p>
+                        </div>
+                    </label>
+
+                    <label class="label clearfix">
+                        <div class="fl radiobox">
+                            <input type="radio" name="move-type" value="1" />
+                            <em class="icon"></em>
+                        </div>
+                        <div class="fl infos">
+                            <p class="move-item-title">更新全部商品</p>
+                            <p class="move-item-info">即新增商品，也会对店铺中已存在的商品进行同步</p>
+                        </div>
+                    </label>
+                </div>
+                <div class="move-footer">
+                    <a href="javascript:;" class="no">取消</a><a href="javascript:;" class="ok">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div layout:fragment="postScript">
+            <script type="text/javascript" charset="utf-8" th:src="@{/_resources/js/page/shop.js?v=2}"></script>
+        </div>
+</body>
+</html>

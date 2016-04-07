@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+
+<head>
+    <meta charset="utf-8" />
+    <title>淘宝搬家 - 想去商家版</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/taobao-move.css}" />
+</head>
+
+<body>
+    <ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='')">
+    </ul>
+    <div data-layout-fragment="content">
+        <div class="move am-pannel">
+            <p class="move-title">淘宝搬家</p>
+            <div class="move-bar am-cf am-pr am-text-center">
+                <div class="move-line-bg am-pa"></div>
+                <div class="move-line-now am-pa"></div>
+                <div class="move-bar-step move-bar-step-1 am-fl">1</div>
+                <div class="move-bar-step move-bar-step-2">2</div>
+                <div class="move-bar-step move-bar-step-3">3</div>
+            </div>
+            <ul class="move-status am-cf am-text-center">
+                <li class="am-fl">生成序列号</li>
+                <li class="am-inline-block">确认店铺</li>
+                <li class="am-fr">开始搬家</li>
+            </ul>
+            <hr />
+            <!-- 步骤1 -->
+            <form class="am-form am-form-horizontal kd-form am-text-center move-step1 move-step">
+                <div class="am-form-group am-form-group-sm am-inline-block">
+                    <label for="code" class="am-fl am-form-label label-auto">搬家验证码</label>
+                    <div class="am-fl">
+                        <input type="text" id="code" name="code" placeholder="请复制验证码" readonly="readonly" />
+                    </div>
+                    <div class="am-fl">
+                        <button type="button" class="copycode am-btn am-btn-comfirm am-btn-comfirm-yes" data-clipboard-target="code">复制验证码</button>
+                    </div>
+                </div>
+                <p class="move-step-state">请登录淘宝的卖家中心，将验证码加入任意一个商品的标题中，也可以发布一个新的商品，在商品标题中填写该验证码</p>
+                <p class="move-step-imgtip">如下图
+                    <br />
+                    <span class="kkkd">&#xe61b;</span>
+                </p>
+                <img data-th-src="@{/_resources/images/move-step1.jpg}" class="move-step-img" width="374" height="287" />
+                <button type="button" class="move-next am-btn am-btn-comfirm am-btn-comfirm-yes">下一步</button>
+            </form>
+            <!-- 步骤1 end -->
+            <!-- 步骤2 -->
+            <form class="am-form am-form-horizontal kd-form am-text-center move-step2 move-step">
+                <div class="am-form-group am-form-group-sm am-inline-block">
+                    <label for="productid" class="am-fl am-form-label label-auto">输入已添加验证码的商品ID</label>
+                    <div class="am-fl">
+                        <input type="text" id="productid" name="productid" placeholder="请输入" />
+                    </div>
+                </div>
+                <p class="move-step-state">打开你输入验证码后的宝贝链接，在地址栏中复制宝贝的ID信息，输入后进行验证</p>
+                <p class="move-step-imgtip">如下图
+                    <br />
+                    <span class="kkkd">&#xe61b;</span>
+                </p>
+                <img data-th-src="@{/_resources/images/move-step2.jpg}" class="move-step-img" width="374" height="196" />
+                <button type="button" class="move-next am-btn am-btn-comfirm am-btn-comfirm-yes">验证</button>
+            </form>
+            <!-- 步骤2 end -->
+            <!-- 步骤3 doing -->
+            <div class="move-step move-step3 move-step3-doing">
+                <p class="kkkd car">&#xe604;</p>
+                <p class="am-text-center">等待搬家中~预计24小时内完成
+                    <br /> 注：已搬家的商品编辑或删除后，再次搬家不可恢复
+                </p>
+            </div>
+            <!-- 步骤3 doing end -->
+            <!-- 步骤3 done -->
+            <div class="move-step move-step3 move-step3-done">
+                <p class="kkkd car">&#xe604;</p>
+                <p class="am-text-center am-padding-bottom">您已进行过搬家，点击开始搬家将您店铺新商品搬过来。</p>
+                <button type="button" class="move-next am-btn am-btn-comfirm am-btn-comfirm-yes">开始搬家</button>
+            </div>
+            <!-- 步骤3 done end -->
+            <!-- 再次搬家选项弹出层 --> 
+            <div class="am-modal am-modal-confirm move-pop" tabindex="-1" id="J-move-pop">
+                <div class="kd-modal-dialog am-modal-dialog">
+                    <p class="kd-modal-title">再次搬家</p>
+                    <hr />
+                    <div class="kd-modal-body am-text-left">
+                        <div class="move-pop-item">
+                            <p class="move-pop-item-title">
+                                <label><input type="radio" class="kd-radio" checked="checked" name="move-type" value="0" /> <span>新增商品</span></label>
+                            </p>
+                            <p class="move-pop-item-text">搬家过程中仅新增商品，不对店铺内已存在商品做修改</p>
+                        </div>
+                        <div class="move-pop-item">
+                            <p class="move-pop-item-title">
+                                <label><input type="radio" class="kd-radio" name="move-type" value="1" /> <span>更新全部商品</span></label>
+                            </p>
+                            <p class="move-pop-item-text">即新增商品，也会对店铺中已存在的商品进行同步</p>
+                        </div>
+                    </div>
+                    <div class="kd-modal-footer am-text-center">
+                        <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                        <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 再次搬家选项弹出层 end -->
+        </div>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        require(['base/all', 'base/taobao-move']);
+        </script>
+    </div>
+</body>
+
+</html>

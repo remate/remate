@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQPC">
+
+<head>
+    <title>退款进度</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/refund.css?v=1}" />
+</head>
+
+<body class="as_page refund_bg">
+    <div data-layout-fragment="content" class="contain" data-th-attr="data-value=${orderRefund.buyerRequire}">
+        <span data-th-replace="fragments/pc_refund_step::pc_refund_step(step=3,style=2)">第几步以及几个步骤</span>
+        <div class="refund_box refund_result refund_fail"   data-th-if="${orderRefund.status.name() == 'REJECT_RETURN' || orderRefund.status.name() == 'REJECT_REFUND'}" data-th-attr="style='display:block;'">
+            <p class="refund_fail_info">卖家拒绝退款申请，平台已介入解决</p>
+            <img data-th-src="@{/resources/images/refund_fail.png}" />
+            <div class="refund_btn_group">
+                <!-- 
+                	<a href="#" class="refund_btn refund_btn1 fl">重新申请</a>
+                <a href="#" class="refund_btn refund_btn2 fr">向平台申诉</a>
+                
+                 -->
+            </div> 
+        </div>
+        <div class="refund_box refund_result refund_success" data-th-if="${orderRefund.status.name() == 'SUCCESS' || orderRefund.status.name() == 'CLOSE' || orderRefund.status.name() == 'COMPLETE' || orderRefund.status.name() == 'RETURN_DONE' ||orderRefund.status.name() == 'END' }" data-th-attr="style='display:block;'">
+            退款完成
+        </div>            
+
+        <span data-th-replace="fragments/pc_refund_introduce">介绍部分</span>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        // jsArr.push('/resources/dist/kdweb/0.0.1/js/page/confirm-debug.js');
+        //        jsArr.push('/resources/js/page/confirm.js?v=1.1');
+        function setClass(){
+            var theType = document.getElementsByClassName("contain")[0].getAttribute("data-value");
+            if(theType == 2){
+            	document.getElementsByClassName("refund_style2")[0].setAttribute("class","refund_step refund_style1");
+            	document.getElementsByClassName("refund_step3")[0].setAttribute("class","refund_step4");
+            	//for IE
+            	if(document.getElementsByClassName("refund_style1")[0])
+            	{}
+            	else{
+            		document.getElementsByClassName("refund_style2")[0].setAttribute("className","refund_step refund_style1");
+            		document.getElementsByClassName("refund_step3")[0].setAttribute("className","refund_step4");
+            	}
+            }
+        }
+        setClass();
+        </script>
+    </div>
+</body>
+
+</html>

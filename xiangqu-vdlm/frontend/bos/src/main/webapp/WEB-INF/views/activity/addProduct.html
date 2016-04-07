@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/layout/mainPage">
+<head>
+<title>运营消息</title>
+<script th:inline="text">
+	/*<![CDATA[*/
+	$(function() {
+		$('#btnSubmit').bind('click', function() {
+        	if($('#id').val() == ''){
+        		alert('ID不能为空！');
+        		return false;
+        	}
+        	if($('#startTime').val() == ''){
+        		alert('开始时间不能为空！');
+        		return false;
+        	}
+        	if($('#endTime').val() == ''){
+        		alert('结束时间不能为空！');
+        		return false;
+        	}
+        	if($('#excTable').val() == ''){
+        		alert('表格不能为空!');
+        		return false;
+        	}
+			
+			$.messager.confirm('确认', '确认上传商品?', function(r) {
+				if (r) {
+					$('#btnSubmit').linkbutton('disable');
+					$.messager.progress({
+						text : '发送中...'
+					});
+					$('#form1').submit();
+				}
+			});
+		});
+	});
+	/*]]>*/
+</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 5px;">
+		<form id="form1" method="post" enctype="multipart/form-data" action="" th:action="'activity/products/addByAdmin?'+${_csrf.parameterName}+'='+${_csrf.token}">
+			<table>
+				<tr>
+					<td>活动ID</td>
+					<td><input id="id" name="id" type="text" style="width: 300px;"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td>商品表格</td>
+					<td><input id="excTable" name="excTable" type="file" /></td>
+				</tr>
+				<tr>
+					<td>商品优惠开始时间</td>
+					<td><input id="startTime" name="startTime" type="datetime-local"
+						style="width: 300px;" required="required" /></td>
+				</tr>
+				<tr>
+					<td>商品优惠结束时间</td>
+					<td><input id="endTime" name="endTime" type="datetime-local"
+						style="width: 300px;" required="required" /></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td colspan="4" align="center"><br /> <a id="btnSubmit"	 class="easyui-linkbutton" >确认添加商品</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

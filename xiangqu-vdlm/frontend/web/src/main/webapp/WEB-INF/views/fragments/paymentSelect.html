@@ -1,0 +1,68 @@
+          <h2 class="bg-grayed cart-title plr30">选择支付方式</h2>
+          <div class="content paymentMethod">
+               <input type="hidden" id="payType" name="payType" value=""/>
+		    	<input type="hidden" id="payAgreementId" name="payAgreementId" value=""/>
+                <section data-th-each="userAgreeBank : ${userAgreeBanks}">
+                <ul class="plr30 bdb">
+                   <li class="clearfix bdb paymentMethod-item" data-th-onclick="'javascript:selectPayType(this, \'UMPAY\', \'' +${userAgreeBank.aggreeId} + '\');'">
+                        <div class="fl-l paymentMethod-item-img mt10"><img data-th-src="${userAgreeBank.bankImg}"/></div>
+                        <div class="fl-l paymentMethod-item-info mt20 mt2020"  >
+                               <div class="fz26 font-dark-bold" data-th-text="${userAgreeBank.bankName}">招商银行</div>
+                               <div class="fz18 font-light pt10" >尾号<span  data-th-text="${userAgreeBank.accountNum}">9999</span>信用卡</div>
+                           </div>
+						<p  class="fl-r width5 talignr mr5 mt5">
+                           <img class="imgCheck size50" src="/_resources/images/pay/c_00.png"></img> 
+                           </p>
+                    </li>
+                 </ul>
+                 </section>   
+                <ul class="plr30">
+              <!--  <li class=" clearfix bdb paymentMethod-item" id="weixinMethod" onclick="selectPayType(this, 'WEIXIN', '')">
+                           <div class="fl-l paymentMethod-item-img  mt10 "><img src="/_resources/images/pay/pay_06.jpg"/></div>
+                           <div class="fl-l mt20 paymentMethod-item-info mt2020">
+                               <div class="fz26 font-dark-bold">微信支付</div>
+                               <div class="fz18 font-light pt10">推荐开通微信支付用户使用</div>
+                           </div>
+                           <p  class="fl-r width5 talignr mr5 mt5">
+                           <img class="imgCheck size50" src="/_resources/images/pay/c_00.png"></img>
+                           </p>
+                 </li>-->
+                 <li class=" clearfix bdb paymentMethod-item" onclick="selectPayType(this, 'UMPAY', '')">
+                           <div class="fl-l paymentMethod-item-img mt10"><img  src="/_resources/images/pay/pay_09.jpg"/></div>
+                           <div class="fl-l paymentMethod-item-info mt20 mt2020" >
+                               <div class="fz26 font-dark-bold" >银行卡支付</div>
+                               <div class="fz18 font-light pt10" >支持信用卡、储蓄卡无需开通网银</div>
+                           </div>
+                           <p  class="fl-r width5 talignr mr5 mt5">
+                           <img class="imgCheck size50" src="/_resources/images/pay/c_00.png"></img> 
+                           </p>
+                 </li>
+                 <li class=" clearfix bdb paymentMethod-item" id="aliPayMethod" onclick="selectPayType(this, 'ALIPAY', '')">
+                           <div class="fl-l paymentMethod-item-img mt10"><img class="img-w85h53" src="/_resources/images/pay/pay_12.jpg"/></div>
+                           <div class="fl-l paymentMethod-item-info mt20 mt2020" >
+                               <div class="fz26 font-dark-bold" >支付宝</div>
+                               <div class="fz18 font-light pt10" >推荐支付宝用户使用</div>
+                           </div>
+                           <p  class="fl-r width5 talignr mr5 mt5">
+                           <img class="imgCheck size50" src="/_resources/images/pay/c_00.png"></img> 
+                           </p>
+                 </li>
+                </ul>
+          </div>
+<script type="text/javascript">
+  var selectPayType = function(liObj, payType, agreementId){
+	  setPayType($(liObj).find('.imgCheck')[0], payType, agreementId);
+  }
+
+  var setPayType = function(imgObj, payType, agreementId){
+	$(".imgCheck").each(function(i){
+		  this.src = "/_resources/images/pay/c_00.png";
+	});
+	 
+	$(imgObj).attr('src', '/_resources/images/pay/c_01.png');
+    $("#payType").val(payType);
+    $("#payAgreementId").val(agreementId);
+  };
+  //请注意 cart.js引用了 class checkImg
+  
+</script>

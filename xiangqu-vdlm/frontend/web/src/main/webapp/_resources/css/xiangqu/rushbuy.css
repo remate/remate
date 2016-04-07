@@ -1,0 +1,62 @@
+.phonenumber{
+	height:38px!important;
+	width:280px!important;
+	margin:22px auto;
+	border-radius:0px!important;
+	display:block;
+	margin-bottom:15px!important;
+	font-size:15px!important;
+}
+.identifyingcode{
+	height:38px!important;
+	width:157px!important;
+	border-radius:0px!important;
+	font-size:15px!important;
+}
+.getcodebtn{
+	display:inline-block;
+	height:38px;
+	width:123px;
+	background:#000;
+	color:#fff;
+	line-height:36px;
+	text-align:center;
+	font-size:15px!important;
+	margin-bottom:20px!important;
+	border-radius:0 5px 5px 0 ;
+}
+.bg-white{
+	border:1px solid #fff;
+}
+.inputbox{
+	width:280px;
+	margin:0 auto;
+}
+.getagain{
+	display:inline-block;
+	height:38px;
+	width:123px;
+	background:#000;
+	color:#fff;
+	line-height:36px;
+	text-align:center;
+	border:0px;
+	margin:20px 0 0 203px;
+	float:right;
+	font-size:15px!important;
+	border-radius:0 5px 5px 0 ;
+	display:none;
+}
+.postcodebtn{
+	width:200px;
+	height:38px;
+	border-radius:5px;
+	text-align:center;
+	background-color:#000;
+	color:#fff;
+	font-size:18px!important;
+	margin: 0 auto;
+	display: block;
+	margin-top: 290px;
+	border:1px solid #000;
+}

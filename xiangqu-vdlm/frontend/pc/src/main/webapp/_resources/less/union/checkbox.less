@@ -1,0 +1,79 @@
+
+
+/* 开店主题复选框 */
+
+.am-checkbox.am-warning .am-ucheck-checkbox:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-radio.am-warning .am-ucheck-checkbox:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-checkbox-inline.am-warning .am-ucheck-checkbox:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-radio-inline.am-warning .am-ucheck-checkbox:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-checkbox.am-warning .am-ucheck-radio:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-radio.am-warning .am-ucheck-radio:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-checkbox-inline.am-warning .am-ucheck-radio:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons,
+.am-radio-inline.am-warning .am-ucheck-radio:hover:not( .am-nohover):not(:disabled) + .am-ucheck-icons {
+    color: @orange;
+}
+
+.am-checkbox.am-warning .am-ucheck-checkbox:checked + .am-ucheck-icons,
+.am-radio.am-warning .am-ucheck-checkbox:checked + .am-ucheck-icons,
+.am-checkbox-inline.am-warning .am-ucheck-checkbox:checked + .am-ucheck-icons,
+.am-radio-inline.am-warning .am-ucheck-checkbox:checked + .am-ucheck-icons,
+.am-checkbox.am-warning .am-ucheck-radio:checked + .am-ucheck-icons,
+.am-radio.am-warning .am-ucheck-radio:checked + .am-ucheck-icons,
+.am-checkbox-inline.am-warning .am-ucheck-radio:checked + .am-ucheck-icons,
+.am-radio-inline.am-warning .am-ucheck-radio:checked + .am-ucheck-icons {
+    color: @orange;
+}
+/* 开店主题复选框 end */
+
+
+/* 基于icheck的 */
+.i-input,.icheckbox,.iradiobox{
+    background-image: url(@icheck);
+    background-repeat: no-repeat;
+}
+.icheckbox {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+    vertical-align: middle;
+    margin: 0 9px;
+    padding: 0;
+    background-position:  0 -19px;
+    width: 18px;
+    height: 18px;
+    border: none;
+    cursor: pointer;
+    &.checked{
+        background-position: 0 0;
+    }
+    &.hover{
+        background-color: none;
+    }
+    &.disabled{
+        background-position: 0 -39px;
+    }
+}
+.iradiobox {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    background-position:  -26px -20px;
+    width: 19px;
+    height: 19px;
+    border: none;
+    cursor: pointer;
+    &.checked{
+        background-position: -26px 0;
+    }
+    &.hover{
+        background-color: none;
+    }
+    &.disabled{
+        background-position: -26px -42px;
+    }
+}
+.kd-checkbox,.kd-radio{
+    display: none;
+}
+

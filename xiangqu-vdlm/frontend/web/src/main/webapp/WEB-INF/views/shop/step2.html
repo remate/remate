@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+	<meta charset="utf-8" />
+    <title>step2</title>
+</head>
+<body class="as_page">
+    <div data-layout-fragment="content">
+        <section>
+            <ul class="step-list bd-shb box fz24">
+                <li class="step-list-item flex1">
+                        <span class="step-ico">
+                            <img data-vd-src="/_resources/images/shop/done.png" alt=""/>
+                        </span>
+                    <span class="step-text font-dark">获取验证码</span>
+                </li>
+                <li class="step-list-item flex1">
+                        <span class="step-ico">
+                            <img data-vd-src="/_resources/images/shop/step2-sel.png" alt=""/>
+                        </span>
+                    <span class="step-text font-light">店铺验证</span>
+                </li>
+                <li class="step-list-item flex1">
+                        <span class="step-ico">
+                            <img data-vd-src="/_resources/images/shop/step3.png" alt=""/>
+                        </span>
+                    <span class="step-text font-light">开始搬家</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <div class="step-password">
+                <div class="fz30 font-dark">输入已添加验证码的商品ID：</div>
+                <input class="step-input fz30 font-light mt30" placeholder="商品ID" type=""/>
+                <p class="pt40"><img data-vd-src="/_resources/images/shop/step2-intro.png" alt="" /></p>
+            </div>
+        </section>
+        <section class="bg-grayed p30 box-sht">
+            <a id="loading" class="button bg-orange cart-checkout-btn fz30 font-white ptb30">验证</a>
+        </section>
+        <section>
+            <div class="layer" style="display:none;" id="js-layer"></div>
+            <div class="pro-erweima"  style="display:none;" id="js-body">
+                <img data-vd-src="/_resources/images/loading.gif" class="layer-img" alt=""/>
+                <p class="layer-text">稍安勿躁，已经很努力在验证了哦……</p>
+            </div>
+        </section>
+
+    </div>
+
+    <div data-layout-fragment="postScript">
+        <script type="text/javascript" data-th-src="@{/_resources/js/plugins/pop.js}"></script>
+        <script type="text/javascript">
+            window.onload=function(){
+                 layer({obj:'js-body',objlayer:'js-layer',eventbth:'loading'});
+             }
+
+        </script>
+    </div>
+</body>
+</html>

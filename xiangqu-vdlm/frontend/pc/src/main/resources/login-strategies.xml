@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<login-strategies>
+	<domains>
+	    <domain name="kkkd.xiangqu.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="xiangqu.kkkd.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="kkkd.xiangqutest.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="xiangqu.kkkdtest.com" type="customized-ref" strategy="xiangquLogin" />
+	    <domain name="www.kkkdtest.com" type="customized-ref" strategy="kkkdLogin" />
+	    <domain name="10.8.100.39" type="customized-ref" strategy="kkkdLogin" />
+	    <!-- add weimao ip in 拦截器 by xbw -->
+	    <domain name="10.8.100.189" type="customized-ref" strategy="kkkdLogin" />
+	    <!--  <domain name="10.8.1.71" type="customized-ref" strategy="kkkdLogin" />-->
+	    <domain name="www.kkkd.com" type="customized-ref" strategy="kkkdLogin" />
+	    <domain name="localhost" type="customized-ref" strategy="kkkdLogin" />
+	    <domain name="kkkd.ixiaopu.com" type="customized-ref" strategy="kkkdLogin" />
+	    <domain name="pre.kkkd.xiangqu.com" type="customized-ref" strategy="xiangquLogin" />
+    </domains>
+</login-strategies>

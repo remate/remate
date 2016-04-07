@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>消息管理</title>
+
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+		var jsQuery = function() {
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		
+		var jsCreate = function(id) {
+			var szUrl = 'msg/toSend';
+			var dialog = commonDialog({
+				title : '发送系统消息',
+				width : 600,
+				height: 350,
+				content : '<iframe frameborder="0" src="' + szUrl + '" style="width:100%;height:100%;"></iframe>'
+			});
+		};
+		
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'msg/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				nowrap:false,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				frozenColumns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '100',
+					title : '标题',
+					field : 'title'
+				} ] ],
+				columns : [ [ {
+					width : '350',
+					title : '内容',
+					field : 'content'
+				},
+				{
+					width : '50',
+					title : '状态',
+					field : 'status'
+				}
+				, {
+					width : '130',
+					title : '创建时间', 
+					field : 'createdAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm:ss');
+					}
+				}, {
+					width : '130',
+					title : '更新时间',
+					field : 'updatedAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm:ss');
+					}
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+		});
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm">
+		<table>
+			<tr>
+				<td style="width: 60px; text-align: right;">消息状态</td>
+				<td>
+					<select name="status">
+						<option value="">全部</option>
+						<option value="VALID">VALID</option>
+						<option value="BLOCKED">BLOCKED</option>
+					</select>
+				</td>
+				<td style="width: 70px; text-align: right;">
+				<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+				onclick="jsQuery()">查询</a></td>
+				<td><div class="datagrid-btn-separator"></div></td>
+				<td>
+				<a href="#" onclick="jsCreate()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增发送消息</a>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		<!-- 
+		 <thead>
+			<tr>
+			<th data-options="field:'code'">Code</th>
+			<th data-options="field:'name'">Name</th>
+			<th data-options="field:'price'">Price</th>
+			</tr>
+			</thead>
+		-->
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* 表格的居中线 */
+
+.kd-table-line {
+    position: absolute;
+    height: 66px;
+    top: 17px;
+    right: 0;
+    width: 0;
+    border-right: 1px solid @borderColor;
+}
+/*表格最后一格操作链接公共样式*/
+
+.table-op {
+    font-size: 0;
+    text-align: center;
+}
+
+.table-op a {
+    font-size: 12px;
+    line-height: 25px;
+}
+.table-op a:hover{
+    text-decoration: underline;
+}
+/* 表格图文混排那一格的样式 */
+
+.kd-pictext-td {
+    font-size: 0;
+}
+
+.kd-pictext-td > * {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.kd-pictext-td .kd-pictext-td-img {
+    width: 64px;
+    height: 64px;
+    border:1px solid @borderColor;
+}
+
+.kd-pictext-td p {
+    line-height: 16px;
+    font-size: 12px;
+    padding-left: 16px;
+}
+/* 覆盖原来表格hover时的颜色 */
+
+.am-table-hover > tbody > tr:hover > td,
+.am-table-hover > tbody > tr:hover > th {
+    background-color: #fafbfc;
+}
+/* 覆盖表格的垂直居中模式 */
+
+.am-table > thead > tr > th,
+.am-table > tbody > tr > th,
+.am-table > tfoot > tr > th,
+.am-table > thead > tr > td,
+.am-table > tbody > tr > td,
+.am-table > tfoot > tr > td {
+    vertical-align: middle;
+    font-weight: normal;
+}
+/* 表格边框颜色 */
+
+.am-table > thead > tr > th,
+.am-table > tbody > tr > th,
+.am-table > tfoot > tr > th,
+.am-table > thead > tr > td,
+.am-table > tbody > tr > td,
+.am-table > tfoot > tr > td {
+    border-top-color: @borderColor;
+}
+
+.am-table-bordered > thead > tr > th,
+.am-table-bordered > tbody > tr > th,
+.am-table-bordered > tfoot > tr > th,
+.am-table-bordered > thead > tr > td,
+.am-table-bordered > tbody > tr > td,
+.am-table-bordered > tfoot > tr > td {
+    border-left-color: @borderColor;
+}
+/* 表格背景色  */
+
+.am-table-white {
+    background-color: #fff;
+}
+/* 表格居中格式 */
+
+.am-table-center td {
+    text-align: center;
+}
+/* 快店区块的样式 */
+
+/* 表格无边框 */
+.am-table-border0{
+    tr.trbg,tr:hover{
+        background-color: #fafbfc;
+    }
+    td{
+        border:0 !important;
+    }
+}
+
+/* 表格排序按钮 begin */
+.am-table-sort{
+    overflow: hidden;
+}
+.am-table-sort em{
+    font-family: 'kkkd';
+    font-style: normal;
+}

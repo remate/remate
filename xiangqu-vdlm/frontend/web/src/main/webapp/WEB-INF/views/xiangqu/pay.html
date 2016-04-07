@@ -1,0 +1,219 @@
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+    <title>确认订单</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/cart.css?v=1.2}" />
+</head>
+<body>
+<div class="pos-r cart cartShow" data-layout-fragment="content">
+<!-- <div style="height:140px;width:100%;z-index:9999;position:absolute;top:0;left:0;"></div> -->
+    <form id="order_pay_form" method="post" action="/order/pay">
+        <input type="hidden" id="orderId" name="orderId" data-th-value="${order.id}"/>
+        <input type="hidden" id="addressId" name="addressId" data-th-if="${order.orderAddress != null}" data-th-value="${order.orderAddress.id}"/>
+        
+        <section class="cartPannel cartAddress pos-r" data-th-if="${order.orderAddress != null}">
+            <div class="cartUser pos-r">
+                <span data-th-text="${order.orderAddress.consignee}">明日香</span>
+            </div>
+            <p data-th-text="${order.addressDetails}">杭州市西湖区天目山路59号杀菌SD卡分分</p>
+            <p data-th-text="${order.orderAddress.phone}">159238890-2</p>
+            <p>微信：<span>367397298392</span></p>
+            <div class="bird pos-a"></div>
+        </section>
+        
+        <section class="cartPannel cartItem">
+            <div class="salerInfo clearfix">
+                <div class="fl-l">
+                    分享人：小小手工串
+                </div>
+            </div>
+            <!-- item start -->
+            <div class="cartProduct clearfix">
+                <div class="cartImg fl-l">
+                    <span></span>
+                    <img src="http://placehold.it/64x64" alt="" />
+                </div>
+                <div class="cartInfo fl-l js-info">
+                    <div class="productName">杭州王星记9寸全棕黑纸色礼品扇子高档手绘...</div>
+                    <div class="productSku">颜色类型:<span>水水水水水水水水是的是的是的</span></div>
+                    <div class="productNum">数量:<span>1</span></div>
+                </div>
+                <div class="cartPriceArea fl-r">
+                    <div class="cartPriceNum">&yen;<span>198</span></div>
+                </div>
+            </div>
+            <!-- item end -->
+            <!-- item start -->
+            <div class="cartProduct clearfix">
+                <div class="cartImg fl-l">
+                    <span></span>
+                    <img src="http://placehold.it/64x64" alt="" />
+                </div>
+                <div class="cartInfo fl-l js-info">
+                    <div class="productName">杭州王星记9寸全棕黑纸色礼品扇子高档手绘...</div>
+                    <div class="productSku">颜色类型:<span>水水水水水水水水是的是的是的</span></div>
+                    <div class="productNum">数量:<span>1</span></div>
+                </div>
+                <div class="cartPriceArea fl-r">
+                    <div class="cartPriceNum">&yen;<span>198</span></div>
+                </div>
+            </div>
+            <!-- item end -->
+            <div class="cartTransport clearfix">
+                <div class="fl-l">运费</div>
+                <div class="fl-r">&yen;<span>6.00</span></div>
+            </div>
+            <div class="cartMessage-show clearfix">
+                <div class="state pos-r">给卖家留言：<span>大家撒到了撒到啦睡觉啦放假啊师傅卡是疯狂还是咖啡看撒很疯狂撒回复卡上开发好看撒很疯狂很撒开放和萨客服很好</span></div>
+            </div>
+            <div class="amountBar clearfix">
+                <div class="amountBarNum">共<span>1</span>件商品</div>
+                <div class="amountPrice">合计：&yen;<span>198.00</span></div>
+            </div>
+        </section>
+        <section class="cartPannel cartFavour">
+            <div class="cartFavour-row">选择优惠方式</div>
+            <a class="cartFavour-link pos-r"  data-th-href="${'/coupon/' + order.id}">
+                <i class="pos-a"></i>
+                <ul>
+                    <li>首单减5元</li>
+                    <li>首单减5元</li>
+                    <li>首单减5元</li>
+                </ul>
+            </a>
+        </section>
+        <section>
+            <div class="mt152 bdb ">
+                <span data-th-replace="fragments/paymentSelect">选择支付方式</span>
+            </div>
+        </section>
+        
+        <section class="cartPannel cartTotal pos-r">
+            合计：<span class="cart-red">&yen;<b>198.00</b></span><span>（包含邮费￥12.00）</span>
+            <div class="cartPay pos-a" id="submitBtn">确认</div>
+        </section>
+
+
+        <!-- <section id="j-address" data-th-if="${order.orderAddress != null}">
+            <a class="clearfix address pt19">
+                <div class="fl-l address-infor">
+                    <div class="clearfix">
+                        <div class="fl-l address-name" data-th-text="${order.orderAddress.consignee}"></div>
+                        <div class="fl-r address-tel" data-th-text="${order.orderAddress.phone}"></div>
+                    </div>
+                    <div class="address-add">
+                        <span class="address-detail" data-th-text="${order.addressDetails}"></span>
+                    </div>
+                </div>
+            </a>
+        </section> 
+         <section class="mt152">
+            <h2 class="cart-title">订单信息</h2>
+            <ul class="pt0lr30">
+            
+                <li class="pb10 clearfix bdb" data-th-each="orderItem : ${order.orderItems}">
+                    <div class="fl-l cart-next-img ml5">
+                        <a data-th-href="${'/p/' + orderItem.productId}" target="_blank">
+                            <img data-vd-src="${orderItem.productImg[s03]}" width="100%"/>
+                        </a>
+                    </div>
+                    <div class="fl-l cart-next-infor cart-next-infor-new">
+                        <a class="pro-title height30" target="_blank" style="white-space: pre-wrap;" data-th-href="${'/p/' + orderItem.productId}" data-th-text="${orderItem.productName}"></a>
+                        <div class="order-infor clearfix order-infor-new">
+                                <span class="">型号:</span>
+                                <span class="pro-right" data-th-text="${orderItem.skuStr}"></span>
+                        </div>
+						<div class="pro-price">
+                            <div class="fl-l">
+                             <span class="">单价:</span>
+                             <span class="pro-right" data-th-attr="tag=#{price}" data-vd-price="${orderItem.price}"></span>
+                             <span class="ml60">数量:</span>
+                             <span data-th-text="${orderItem.amount}"></span>
+                             </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section data-th-if="${order.remark != ''}">
+                <div class="ptb12lr30 bdb">
+                    <h3 class="color36 ml5 fz11">告诉卖家的话~</h3>
+                    <p class="mt10 color888 ml5 fz11" data-th-text="${order.remark}">我们小县城快递很暴力，请包装好一点。</p>
+                </div>
+        </section>
+        <section>
+            
+            <div class="pt12lr30 bdb">
+            <ul>
+                <li class=" clearfix ml5 line1em">
+                    <div class="fl-l total-left fz11">邮费:</div>
+                    <div class="fl-r total-right fz48" data-th-attr="tag=#{price}" data-vd-price="${order.logisticsFee}"></div>
+                </li>
+
+                <li class="mt12 clearfix ml5 line1em">
+                    <div class="fl-l total-left fz11">合计:</div>
+                    <div class="fl-r total-right fz48" data-th-attr="tag=#{price}" data-vd-price="${order.totalFee+order.discountFee}"></div>
+
+                </li>
+                <li class="mt12 clearfix ml5 line1em">
+                    <div class="fl-l total-left fz11">应付总额:</div>
+                    <div class="fl-r total-right fz48"  data-th-attr="tag=#{price}" data-vd-price="${order.totalFee+order.discountFee}"></div>
+
+                </li>
+            </ul>
+            </div>
+        </section>
+        <section>
+            <div class="ptb12lr30 bdb pr30">
+            <ul >
+                <li class="mt5 clearfix ml5">
+                    <a data-th-href="${'/coupon/' + order.id}" style="display: block;width: 100%;height: 100%;">
+                        <div class="fl-l total-left fz11">抵用券/优惠码:</div>
+                        <div class="fl-r total-right fz48" >
+                        <img class="fl-r mrf10 height12" src="/_resources/images/arrow2.png" width="9" alt="arrow" />
+                        <span class="fl-r total-right fz48" data-th-attr="tag=#{price}" data-vd-price="${order.discountFee}"></span>
+                        <span class="fl-r" style="padding-left: 10px;">去选择您的优惠</span>
+    	        		</div>
+                    </a>
+                </li>
+
+                <li class="mt5 clearfix ml5">
+                    <div class="fl-l total-left fz11">还需支付:</div>
+                    <div class="fl-r total-right fz48 font-red" data-th-attr="tag=#{price}" data-vd-price="${order.totalFee}"></div>
+                </li>
+            </ul>
+            </div>
+        </section>
+        <section>
+            <div class="mt152 bdb ">
+                <span data-th-replace="fragments/paymentSelect">选择支付方式</span>
+            </div>
+        </section>
+            
+        <section>
+            <div class=" p30">
+                <a id="payBtn" type="button" class="line25emheigh45 cart-checkout-btn cart-checkout-btn-new">确认订单</a>
+            </div>
+        </section>
+        -->
+    </form>
+</div>
+<div data-layout-fragment="postScript">
+<script type="text/javascript" data-th-src="@{/_resources/js/page/pay.js}"></script>
+<script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/paymentSelect.js?t=201408141750}"></script>
+<script data-th-inline="text">
+/*<![CDATA[*/
+        if(!iswap()){
+            //$("#aliPayMethod").remove();
+        }
+        else{
+        	$("#weixinMethod").remove();
+        }
+    /*]]>*/
+    </script>
+</div>
+</body>
+</html>

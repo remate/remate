@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQPC">
+<head>
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/cart.css}" />
+</head>
+
+<body class="as_page">
+<div data-layout-fragment="content" class="contain">
+    <h3 class="h3-title clearfix"><i class="fl-l"></i><span class="fl-l fz30">购物车</span></h3>
+
+    <div class="cart_no" data-th-classappend="${cartItemMap.size() > 0 ? 'fn-hide' : ''}"></div>
+    <form id="id-cart" action="" data-th-classappend="${cartItemMap.size() == 0 ? 'fn-hide' : ''}">
+    <ul class="cart-operation clearfix">
+        <li class="fl-l fz20 td1">
+            <label class="allSelect clearfix fz20 fl-l f1">
+                <span data-th-replace="xiangqu/module/select"></span>
+                <span class=" fl-l">全选</span>
+            </label>
+        </li>
+        <li class="fl-l font-light fz18 td2" colspan="2">商品信息</li>
+        <li class="fl-l font-light fz18 td3">数量</li>
+        <li class="fl-l font-light fz18 td5">金额(元)</li>
+        <li class="fl-l font-light fz18 td6">操作</li>
+    </ul>
+    <div data-th-each="entry : ${cartItemMap}">
+        <table class="table table-center table-able">
+            <thead>
+                <tr>
+                    <th colspan="4">
+                        <label class="clearfix shopSelect fz20 fl-l f1">
+                            <span data-th-replace="xiangqu/module/select"></span>
+                            <span class=" fl-l" data-th-inline="text">分享人:[[${entry.key.name}]]<!-- <a class="shop-owner" data-th-href="${'/shop/' + entry.key.id}" target="_blank"></a> --></span>
+                        </label>
+                    </th>
+                    <!--
+                    <th colspan="4" class="shop-vip">
+                        <span class="bd-dotted bd-red">店铺优惠:满200s</span>
+                    </th>
+                    -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-th-each="item : ${entry.value}" data-th-attr="data-sku-id=${item.sku.id},data-inventory=${item.sku.amount}" data-old-numb="1">
+                    <td class="td0">
+                        <span data-th-replace="xiangqu/module/select"></span>
+                    </td>
+                    <td class="td1">
+                        <a class="pro-link" data-th-href="${xiangquWebSite + '/dtl/' + item.product.id + '.html'}"  target="_blank">
+                            <img data-vd-src="${item.product.img[s03]}"/>
+                        </a>
+                    </td>
+                    <td class="td2 fz16"><a class="font-gray" data-th-href="${xiangquWebSite + '/dtl/' + item.product.id + '.html'}"  data-th-text="${item.product.name}" target="_blank"></a></td>
+                    <td class="td3">
+                        <div class="sku">
+                            <p class="font-light fz14" data-th-text="${item.sku.spec}" ></p>
+                        </div>
+                    </td>
+                    <td class="td4">
+                        <span data-th-replace="xiangqu/module/num(amount=${item.amount})"></span>
+                    </td>
+                    <td class="font-dark td5 fz18" data-vd-price="${item.sku.price}"></td>
+                    <td data-th-attr="data-item-id=${item.id}" class="font-dark td6 fz16">删除</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer font-dark clearfix">
+        <label class="allSelect clearfix fz20 fl-l f1">
+            <span data-th-replace="xiangqu/module/select"></span>
+            <span class=" fl-l">全选</span>
+        </label>
+        <span class="fz20 del fl-l f2">删除</span>
+        <span class="lh-normal fz20 fl-l f3">已选商品 <em id="J-numb" class="font-red ff-numb fz24">0</em>件</span>
+        <span class="lh-normal footer-total fz20 fl-l">合计&nbsp;&nbsp;(不计含运费)&nbsp;&nbsp; :&nbsp;&nbsp;
+            <em class="font-red ff-numb fz30">&yen;<i id="J-price" class="totalprice">0.00</i></em>
+        </span>
+        <i class="footer-right"></i>
+    </div>
+        <div class="footer-btn clearfix"><input id="order-btn" type="submit" value="购物车结算"/></div>
+    </form>
+</div>
+<div data-layout-fragment="postScript">
+    <script>
+        jsArr.push('/resources/dist/kdweb/0.0.1/js/page/cart.js');
+        //jsArr.push('/resources/js/page/cart.js');
+    </script>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>订单详情</title>
+</head>
+
+<body class="as_page">
+<div data-layout-fragment="content">
+    <a class="imCaller" data-th-href="'/im/order/' + ${order.id}" data-th-if="${imUser}">
+        <em class="imSprite"></em>
+    </a>
+    <section>
+        <p class="bdt fz26 font-dark order-title plr30">
+                     订单类型：<span data-th-text="#{'order.type.' + ${order.type}}"></span>
+        </p>
+        <p class="bdt fz26 font-dark order-title plr30">
+                     订单状态：<span data-th-text="#{'order.status.' + ${order.status}}"></span>
+        </p>
+		<p class="bdt fz26 font-dark order-title plr30" data-th-unless="${order.status.name().equals('SUBMITTED')}">
+                     支付方式：<span data-th-if="${order.payType != null}" data-th-text="#{'order.payType.' + ${order.payType}}"></span>
+        </p>
+                        
+        <h2 class="bg-grayed cart-title font-dark plr30">收货人信息</h2>
+            <ul data-th-if="${authed}" class="order-custmer-infor fz24 font-dark plr30 addressbox">
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>收件人:</span><span class="w80" data-th-text="${order.orderAddress.consignee}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>联系方式:</span><span class="ff-numb w80" data-th-text="${order.orderAddress.phone}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>微信号:</span><span class="w80" data-th-text="${order.orderAddress.weixinId}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>地址:</span><span class="w80" data-th-text="${order.addressDetails}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix" data-th-if="${!#strings.isEmpty(order.logisticsCompany)}"> <span data-th-text="${order.logisticsCompany}"></span><i class="fl-l">:</i><span data-th-text="${order.logisticsOrderNo}"></span></li>
+            </ul>
+            <ul data-th-unless="${authed}" class="order-custmer-infor fz24 font-dark plr30 addressbox">
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>收件人:</span><span class="w80" data-th-text="${order.orderAddress.consignee}"></span></li>
+                <li class="bg-white order-custmer-item  font-dark clearfix"><span>联系方式:</span><span class="ff-numb" data-th-text="${#strings.substring(order.orderAddress.phone, 0, 7)}"></span><span>....</span></li>
+                <li class="bg-white order-custmer-item pt10"><a class="fz24 font-dark arrow arrow-right adb pt10" data-th-href="${'/order/' + order.id + '/verify'}">填写联系方式后四位，查看完整收货人信息</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2 class="bg-grayed cart-title font-dark plr30">订单</h2>
+            <ul class="bg-white plr30">
+                <li class="ptb30 box bdb" data-th-each="orderItem : ${order.orderItems}">
+                    <div class="flex4">
+                        <a class="cart-next-img" data-th-href="${'/p/' + orderItem.productId}" target="_blank">
+                            <img class="img-s1" data-vd-src="${orderItem.productImg[s03]}" width="100%"/>
+                        </a>
+                    </div>
+                    <div class="flex10 w7huanh">
+                        <a class="fz24 font-dark-bold order-pro-title" data-th-href="${'/p/' + orderItem.productId}" data-th-text="${orderItem.productName}" target="_blank"></a>
+                        <p class="font-dark-bold mt20" data-th-text="${orderItem.skuStr}" ></p>
+                        <ul class="order-infor mt30">
+                            <li class="fl-l">
+                                <p class="font-light">数量</p><p class="font-dark-bold mt15 ff-numb" data-th-text="${orderItem.amount}"></p>
+                            </li>
+                            <li class="fl-l">
+                                <p class="font-light">价格</p><p class="font-dark-bold price-grey mt15 ff-numb"  data-th-attr="tag=#{price}" data-vd-price="${orderItem.price}"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        <div class="pt15b25lr30 bdt">
+            <p class="fz24 font-dark">给卖家的备注留言</p>
+            <p class="fz24 font-light pt15" data-th-text="${order.remark}"></p>
+        </div>
+    </section>
+
+    <!--是否有订单的合计-->
+    <section>
+        <h2 class="bg-grayed cart-title font-dar-bold plr30">合计</h2>
+        <ul class="plr30">
+            <li class="mt40 box font-light">
+                <div class="flex1 fz24">合计</div>
+                <div id="goodsFee" class="flex1 cart-total-right ff-numb" data-th-attr="tag=#{price}" data-vd-price="${order.goodsFee}"></div>
+            </li>
+            <li class="mt40 box font-light">
+                <div class="flex1 fz24">运费</div>
+                <div id="logisticsFee" class="flex1 cart-total-right ff-numb" data-th-attr="tag=#{price}" data-vd-price="${order.logisticsFee != null} ? ${order.logisticsFee} : 0"></div>
+            </li>
+            <li class="mt40 box font-light">
+                <div class="flex1 fz24">优惠</div>
+                <div id="logisticsFee" class="flex1 cart-total-right ff-numb" data-th-attr="tag=#{price}" data-vd-price="${order.discountFee != null} ? ${order.discountFee} : 0"></div>
+            </li>
+            <li class="mt40 box total-price font-orange-bold">
+                <div class="flex1 fz30">应付总额</div>
+                <div id="totalFee" class="flex1 fz34 cart-total-right ff-numb" data-th-attr="tag=#{price}" data-vd-price="${order.totalFee}"></div>
+                <!--<span id="totalFee" class="flex1 fz34 cart-total-right ff-numb" data-th-attr="tag=#{price}" data-th-text="*{order.totalFee}"></span>-->
+            </li>
+        </ul>
+    </section>
+    <!--<section>-->
+    <!--<ul class="white">-->
+    <!--<li class="mt40 box" data-th-if="${order.status.name().equals('SUBMITTED')}"><a data-th-href="${'/order/' + order.id + '/pay'}" class="button red right">付款</a></li>-->
+    <!--<li class="mt40 box"><span class="left">订单类型</span><span class="right" data-th-text="#{'order.type.'+${order.type}}"></span></li>-->
+    <!--<li class="mt40 box"><span class="left">支付方式</span><span class="right" data-th-text="#{'order.payType.'+${order.payType}}"></span></li>-->
+    <!--<li class="mt40 box"><span class="left">状态</span><span class="right" data-th-text="#{'order.status.'+${order.status}}"></span></li>-->
+    <!--<li class="mt40 box"><span class="left">订单金额</span><span id="price" class="price taged right" data-th-attr="tag=#{price}" data-vd-price="*{order.totalFee}"></span>-->
+    <!--</li>-->
+    <!--</ul>-->
+
+        <!--</section>-->
+        <!--<section>-->
+            <!--<h2 class="title grayed content">收件人信息</h2>-->
+            <!--<ul class="content">-->
+                <!--<li class="mt40 box"><span class="left">收件人</span><span class="right" data-th-text="${order.orderAddress.consignee + ' ' + order.orderAddress.phone}"></span></li>-->
+                <!--<li class="mt40 box"><span class="left">微信号</span><span class="right" data-th-text="${order.orderAddress.weixinId}"></span></li>-->
+                <!--<li class="mt40 box"><span class="left">收货地址</span><span class="right" data-th-text="${order.addressDetails}"></span></li>-->
+                <!--<li class="mt40 box"><span class="left">备注</span><span class="right" data-th-text="${order.remark}"></span></li>-->
+            <!--</ul>-->
+        <!--</section>-->
+        <section>
+            <h2 class="bg-grayed cart-title plr30">订单信息</h2>
+            <ul class="plr30 text-left">
+                <li class="box"><span class="flex1 fz24 font-light-bold">订单编号:</span><span class="flex1 text-right ff-numb" data-th-text="${order.orderNo}"></span></li>
+                <li class="box"><span class="flex1 fz24 font-light-bold">下单时间:</span><span class="flex1 text-right ff-numb" data-th-text="${order.createdAt != null} ? ${#dates.format(order.createdAt, 'yyyy-MM-dd HH:mm')}"></span></li>
+                <li class="box" data-th-if="${order.paidAt != null}"><span class="flex1 fz24 font-light-bold">付款时间:</span><span class="flex1 text-right ff-numb" data-th-text="${order.paidAt != null} ? ${#dates.format(order.paidAt, 'yyyy-MM-dd HH:mm')}"></span></li>
+                <li class="box" data-th-if="${order.shippedAt != null}"><span class="flex1 fz24 font-light-bold">发货时间:</span><span class="flex1 text-right ff-numb" data-th-text="${order.shippedAt != null} ? ${#dates.format(order.shippedAt, 'yyyy-MM-dd HH:mm')}"></span></li>
+                <!--  
+                <li class="box"><span class="flex1 fz24 font-light-bold">物流公司:</span><span class="flex1 text-right ff-numb" data-th-text="${order.logisticsCompany}"></span></li>
+                <li class="box"><span class="flex1 fz24 font-light-bold">物流编号:</span><span class="flex1 text-right ff-numb" data-th-text="${order.LogisticsOrderNo}"></span></li>
+                -->
+                <!--<li class="box"><span class="flex1 fz24 font-light-bold">订单备注:</span><span class="flex1 text-right ff-numb" data-th-text="${order.remark}"></span></li>-->
+            </ul>
+        </section>
+        <input type="hidden" id="orderStatus" data-th-value="${order.status.name()}" />
+        <form id="order_submit_form" data-th-action="@{/order/pay}" method="post" data-th-if="${order.status.name().equals('SUBMITTED')}">
+	        <section>
+	        	<input type="hidden" id="orderId" name="orderId" data-th-value="${order.id}"/>
+		    	<span data-th-replace="fragments/paymentSelect">支付方式</span>
+			</section>
+	
+		    <section class="bg-grayed p30">
+		        <a id="checkout-btn" type="button" class="button bg-orange cart-checkout-btn fz30 font-white ptb30" onclick="checkAndSubmit()">继续付款</a>
+		    </section>
+	    </form>
+	    </div>
+    <div data-layout-fragment="postScript">
+<script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/paymentSelect.js?t=201408141750}"></script>    
+	    <script data-th-inline="text">
+	    /*<![CDATA[*/
+			var channel = '[[${paymentItem.paymentChannel}]]';
+		    var mode = '[[${paymentItem.paymentMode}]]';
+		    var agreementId = '[[${paymentItem.agreementId}]]';
+		    var bankCode = '[[${paymentItem.bankCode}]]';
+		    var bankName = '[[${paymentItem.bankName}]]';
+		    $(".checkboxImg").removeClass("checked");
+		    if(channel=='PLATFORM'){
+		    	//平台途径
+		    	if(agreementId==""||agreementId=="null"){
+		    		if(mode=='ALIPAY'){
+		    			$("#payType").val("ALIPAY");
+		    			$("#payAgreementId").val("");
+		    			$("#bankCode").val("");
+			    		$("#cardType").val("");
+			    		$("#bankName").val("");
+			    		$("#checkboxImg_ALIPAY").addClass("checked");
+		    		}
+		    	}else{
+		    		//协议支付
+		    		$("#payType").val("UMPAY");
+		    		$("#payAgreementId").val(agreementId);
+		    		$("#bankCode").val("");
+		    		$("#cardType").val("");
+		    		$("#bankName").val("");
+		    		$("#checkboxImg_"+agreementId).addClass("checked");
+		    	}
+		    }else if(channel=='CREDITCARD'){
+		    	//选中银行
+		    	$("#payType").val("UMPAY");
+	    		$("#payAgreementId").val("");
+	    		$("#bankCode").val(bankCode);
+	    		$("#cardType").val("CREDITCARD");
+	    		$("#bankName").val(bankName);
+	    		$("#creditCardBank").html(bankName);
+				$("#creditCardType").html(channel);
+	    		$("#checkboxImg_creditCard").addClass("checked");
+		    }else if(channel=='DEBITCARD'){
+		    	//选中银行
+		    	$("#payType").val("UMPAY");
+	    		$("#payAgreementId").val("");
+	    		$("#bankCode").val(bankCode);
+	    		$("#cardType").val("DEBITCARD");
+	    		$("#bankName").val(bankName);
+	    		$("#creditCardBank").html(bankName);
+				$("#creditCardType").html(channel);
+	    		$("#checkboxImg_debitCard").addClass("checked");
+		    }
+	    	
+            var checkAndSubmit = function(){
+            	var type = $("#payType").val();
+            	if(type==""){
+					alert("请选择一类付款方式");
+					return;
+				}
+            	$("#order_submit_form")[0].submit();
+            };
+            
+    		var payTypeVal = $("#payType").val();
+    		if(!iswap()){
+    			/*
+    			$("#aliPayMethod").remove();
+    			if(payTypeVal=="ALIPAY"){
+    				$("#payType").val("");
+    			}*/
+    		}
+    		else{
+    			$("#weixinMethod").remove();
+    			if(payTypeVal=="TENPAY"){
+    				$("#payType").val("");
+    			}
+    		}
+            /*]]>*/
+	    </script>
+	</div>
+
+</body>
+</html>

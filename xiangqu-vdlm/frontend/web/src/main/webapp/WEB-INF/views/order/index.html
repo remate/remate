@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>我的订单</title>
+</head>
+
+<body class="as_page">
+    <div data-layout-fragment="content">
+        <section>
+            <ul>
+                <li class="grid" data-th-each="order : ${orders}">
+                    <div class="box">
+                        <div class="flex1">
+                            <a data-th-href="${'/xiangqu/web/order/' + order.id}" target="_blank">
+                                <span data-th-text="${order.orderNo}"></span>
+                            </a>
+                        </div>
+                        <div class="flex1">
+                            <span data-th-text="${#dates.format(order.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span data-th-text="${order.totalFee}"></span>
+                            <span data-th-text="#{'order.status.'+${order.status}}"></span>
+                            <a data-th-href="${'/order/' + order.id + '/pay'}" data-th-if="${order.status.name() == 'SUBMITTED'}">支付</a>
+                            <a data-th-href="${'/order/' + order.id + '/cancel'}" data-th-if="${order.status.name() == 'SUBMITTED'}">取消</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

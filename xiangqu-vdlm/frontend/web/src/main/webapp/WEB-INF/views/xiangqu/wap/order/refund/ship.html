@@ -1,0 +1,55 @@
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+    <title>退款处理 - 想去</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+     <link rel="stylesheet" type="text/css" href="/_resources/css/xiangqu/refund.css?v=1.1" />
+</head>
+
+<body class="refund refundRequest">
+<div data-layout-fragment="content">
+<form action="${order/refund/ship/18ydg}" id="order_refund_sorm" method="post">
+<input type="hidden" id="id" name="id" data-th-value="${orderRefund.id}"/>
+<input type="hidden" id="orderId" name="orderId" data-th-value="${orderRefund.orderId}"/>
+
+
+    <section class="refundRequest-main">
+        <div class="refundRequest-pannel">
+            <div class="refundRequest-bar refundRequest-hasArrow">
+                <span>物流公司</span>
+                <select class="refundRequest-right" name="logisticsCompany" id="logisticsCompany">
+                    <option value="">选择物流公司</option>
+                    <option data-th-each="logisticsCompany : ${logisticsCompanys}" data-th-value="${logisticsCompany.company}" data-th-text="${logisticsCompany.companyName}"></option>
+                    <option value="other">自定义</option>
+                </select>
+            </div>
+            <div class="refundRequest-bar none otherCompanyBar">
+                <span>公司名称</span>
+                <input class="refundRequest-right refundRequest-ipt" id="otherCompany"   data-th-attr="j-placeholder='请输入物流公司名称'"/>
+            </div>
+        </div>
+        <p class="refundRequest-title">未经卖家同意，请勿使用到付或者平邮</p>
+        <div class="refundRequest-pannel">
+            <div class="refundRequest-bar">
+                <span>运单编号</span>
+                <input class="refundRequest-right refundRequest-ipt" id="logisticsNo" name="logisticsNo" placeholder="请输入运单编号" jNeed="1"/>
+            </div>
+        </div>
+        <p class="refundRequest-title">退款说明</p>
+        <div class="refundRequest-pannel">
+            <textarea class="refundRequest-text" placeholder="请填写退款说明" id="logisticsMemo" name="logisticsMemo" jNeed="1"></textarea>
+        </div>
+
+    </section>
+    <section class="refund-bottom">
+        <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_ship">提交申请</a>
+        <a href="javascript:;" class="cart_btn cart_btn_1 cart_btn_cancel">取消申请</a>
+    </section>
+	</form>
+</div>
+<div data-layout-fragment="postScript">
+    <script type="text/javascript" data-th-src="@{/_resources/js/page/orderRefund.js?v=6}"></script>
+</div>
+</body>
+</html>

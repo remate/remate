@@ -1,0 +1,41 @@
+/**
+ * Created by ziyu on 2016/1/20.
+ */
+@charset "UTF-8";
+
+$icon-address:'/_resources/images/xiangqu/cartSprite.png';
+$icon-shop:'/_resources/images/xiangqu/w_share_user.png';
+
+$icon-closeTc:'/_resources/images/xiangqu/closeAddressTc.png';
+$icon-checkedAddress:'/_resources/images/xiangqu/checked_address.png';
+$icon-check_default:'/_resources/images/xiangqu/check_default.png';
+$icon-checked_default:'/_resources/images/xiangqu/checked_default.png';
+$icon-select:'/_resources/images/xiangqu/select_icon.png';
+
+$fontFace:Helvetica;
+$designWidth:640;
+
+
+@function px2rem($px) {
+  @return $px/2 + px;
+}
+@function px2($px) {
+  @return $px/2 + px;
+}
+
+.clearfix {
+  *zoom: 1
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table
+}
+
+.clearfix:after {
+  clear: both
+}
+
+em{
+  font-style: normal;
+}

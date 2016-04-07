@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageNoTitle">
+<head>
+    <title>支付中断</title>
+    
+</head>
+
+<body id="cart-body" class="as_page">
+    <div data-layout-fragment="content" style="text-align:center">
+	    <input type="hidden" name="orderId" data-th-value="${order.id}"/>
+        <p class="bigger">订单支付已中断</p>
+        <a href="/order/">3秒钟后，页面自动转回订单页面</a>
+    </div>
+    <script data-layout-fragment="postScript">
+    $(document).ready(function() {
+        setTimeout(function() {
+            var orderId = $('input[name=orderId]').val();
+            location.href = "/order/" + orderId;
+        }, 3000);       
+    });
+    </script>
+</body>
+</html>

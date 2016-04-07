@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.uldivaq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>运营消息</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+	 	jsGetCouponType = function(value) {
+	 		switch(value) {
+   				case "REDUCTION":
+   					return "优惠减免";
+   				case "CODE":
+   					return "优惠码";
+   				default:
+   					alert("couponType-未知错误");
+	 		}
+	 	}
+
+	 	jsGetDefaultSelect = function(value) {
+	 		if (value) {
+	 			return "默认使用";
+	 		} else {
+	 			return "手选";
+	 		}
+	 	}
+
+	 	jsGetValid = function(value) {
+	 		if (value) {
+	 			return "可用";
+	 		} else {
+	 			return "禁用";
+	 		}
+	 	}
+
+	 	jsGetGrantRule = function(value) {
+			switch(value) {
+				case "SINGLE":
+					return "单张";
+				case "MULTIPLE":
+					return "可多张";
+				case "DEVICE_SINGLE":
+					return "每个设备单张";
+				default:
+					return "";
+			}
+	 	}
+
+	 	jsGetAutoGrant = function(value) {
+	 		if (value) {
+	 			return "自动发放";
+	 		} else {
+	 			return "点击领取";
+	 		}
+	 	}
+
+	 	jsGetPlatForm = function (value) {
+	 		switch(value) {
+			    case "MOBILE":
+					return "移动端";
+				case "ANDROID":
+					return "android客户端";
+				case "IOS":
+					return "iphone客户端";
+				case "PCWEB":
+					return "PC网页";
+				case "MWEB":
+					return "H5页面";
+				default:
+					return "无限制";
+	 		}
+	 	}
+
+	 	jsGetChannel = function(value, channels) {
+	 		if (value == null || value == undefined || value == "")
+	 			return "无限制";
+	 		return channels[value];
+	 	}
+
+	    $(function(){
+	        $('#btnSubmit').bind('click', function(){
+	        	$.messager.confirm('确认', '确认要更新红包?', function(r){
+	        		if (r){
+						$('#btnSubmit').linkbutton('disable');
+						$.messager.progress({text:'创建中...'});
+						$('#frmCouponActivity').submit();;
+	        		}
+	        	});
+	        });
+
+
+	       	$.getJSON("optionInfo/list", function(result){
+	       		var value = document.getElementById("couponType").getAttribute("tValue");
+	       		$("#couponType").prepend("<option value='" + value + "'>" + jsGetCouponType(value) + "</option>");
+	       		for (var i = 0, size = result.couponTypes.length; i < size; i++) {
+	       			var value = result.couponTypes[i];
+	       			$("#couponType").append("<option value='" + value +  "'>" + jsGetCouponType(value) + "</option>");
+	       		}
+	       		
+	       		value = document.getElementById("defaultSelect").getAttribute("tValue");
+	       		if (value == 'false')
+	       			value = 0;
+	       		if (value == 'true')
+	       			value = 1;
+	       		$("#defaultSelect").prepend("<option value='" + value + "'>" + jsGetDefaultSelect(value) + "</option>");
+	       		$("#defaultSelect").append("<option value='" + 0 + "'>" + jsGetDefaultSelect(0) + "</option>");
+	       		$("#defaultSelect").append("<option value='" + 1 + "'>" + jsGetDefaultSelect(1) + "</option>");
+	       		
+	       		value = document.getElementById("valid").getAttribute("tValue");
+	       		if (value == 'false')
+	       			value = 0;
+	       		if (value == 'true')
+	       			value = 1;
+	       		$("#valid").prepend("<option value='" + value + "'>" + jsGetValid(value) + "</option>");
+	       		$("#valid").append("<option value='" + 0 + "'>" + jsGetValid(0) + "</option>");
+	       		$("#valid").append("<option value='" + 1 + "'>" + jsGetValid(1) + "</option>");
+
+	       		value = document.getElementById("grantRule").getAttribute("tValue");
+	       		$("#grantRule").prepend("<option value='" + value + "'>" + jsGetGrantRule(value) + "</option>");
+	       		for (var i = 0, size = result.grantRules.length; i < size; i++) {
+	       			$("#grantRule").append("<option value='" + result.grantRules[i] + "'>" + jsGetGrantRule(result.grantRules[i]) + "</option>");
+	       		}
+
+	       		value = document.getElementById("autoGrant").getAttribute("tValue");
+	       		if (value == 'false')
+	       			value = 0;
+	       		if (value == 'true')
+	       			value = 1;
+	       		$("#autoGrant").prepend("<option value='" + value + "'>" + jsGetAutoGrant(value) + "</option>");
+	       		$("#autoGrant").append("<option value='" + 0 + "'>" + jsGetAutoGrant(0) + "</option>");
+	       		$("#autoGrant").append("<option value='" + 1 + "'>" + jsGetAutoGrant(1) + "</option>");
+
+	       		value = document.getElementById("platform").getAttribute("tValue");
+	       		if (value == null) value = '';
+	       		$("#platform").prepend("<option value='" + value + "'>" + jsGetPlatForm(value) + "</option>");
+	       		$("#platform").append("<option value=''>无限制</option>");
+	       		for (var value in result.channels) {
+	       			$("#channel").append("<option value='" + value + "'>" + result.channels[value] + "</option>");
+	       		}
+
+	       		value = document.getElementById("channel").getAttribute("tValue");
+	       		if (value == null) value = '';
+	       		$("#channel").prepend("<option value='" + value + "'>" + jsGetChannel(value, result.channels) + "</option>");
+	       		for (var i = 0, size = result.platforms.length; i < size; i++) {
+	       			var value = result.platforms[i];
+	       			$("#platform").append("<option value='" + value + "'>" + jsGetPlatForm(value) + "</option>");
+	       		}
+	       		$("#channel").append("<option value=''>无限制</option>");
+	       	});
+	      });
+	    /*]]>*/
+	</script>
+
+	<style type="text/css">
+		.colName {
+			width:180px;
+			float:left;
+			display: block;
+			text-align: right;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 5px;">   
+	    <form id="frmCouponActivity" th:action="@{doEditCouponActivity}" method="post">
+	    	<input type="hidden" id="id" name="id" data-th-attr="value=${couponActivity.id}"/>
+			<div style="margin-bottom:5px;">
+				<label class="colName">活动Code</label>
+				<input id="actCode" name="actCode" style="width: 300px;" data-th-attr="value=${couponActivity.actCode}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">标题</label>
+				<input id="title" name="title" style="width:300px;" data-th-attr="value=${couponActivity.title}" />
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">Type</label>
+				<select id="couponType" name="couponType" data-th-attr="tValue=${couponActivity.couponType}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">默认使用</label>
+				<select id="defaultSelect" name="defaultSelect" data-th-attr="tValue=${couponActivity.defaultSelect}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">是否被禁用</label>
+				<select id="valid" name="valid" data-th-attr="tValue=${couponActivity.valid}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">最低消费额度(￥)</label>
+				<input id="minPrice" name="minPrice" style="width:300px" data-th-attr="value=${couponActivity.minPrice}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">优惠减免(￥)</label>
+				<input id="discount" name="discount" style="width:300px" data-th-attr="value=${couponActivity.discount}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">发放规则</label>
+				<select id="grantRule" name="grantRule" data-th-attr="tValue=${couponActivity.grantRule}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">自动发放</label>
+				<select id="autoGrant" name="autoGrant" data-th-attr="tValue=${couponActivity.autoGrant}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">有效开始时间</label>
+				<input id="validFromText" name="validFromText" placeholder="格式:2016-01-01 14:12:24" data-th-attr="value=${validFromText}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">失效时间</label>
+				<input id="validToText" name="validToText" placeholder="格式:2016-01-02 14:12:24" data-th-attr="value=${validToText}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">互斥类型</label>
+				<input id="unType" name="unType" style="width:300px" placeholder="可多个以'#'分开,例(2#3)" data-th-attr="value=${unType}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">互斥ID</label>
+				<input id="unId" name="unId" style="width:300px" placeholder="可多个以'#'分开,例(12#13)" data-th-attr="value=${unId}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">该红包类型单次使用上限</label>
+				<input id="typeMax" name="typeMax" style="width:300px" data-th-attr="value=${typeMax}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">该红包单次使用上限</label>
+				<input id="idMax" name="idMAx" style="width:300px" data-th-attr="value=${idMax}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">使用限制</label>
+				<select id="platform" name="platform" data-th-attr="tValue=${couponActivity.platform}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">所属类型</label>
+				<input id="typeId" name="typeId" style="width:300px" placeholder="填数字或不填(1-现金券;2-邀请码;3\6\7-满减红包)" data-th-attr="value=${couponActivity.typeId}" />
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">渠道</label>
+				<select id="channel" name="channel" data-th-attr="tValue=${couponActivity.channel}"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">有效时间</label>
+				<input id="timeLimitStr" name="timeLimitStr" style="width:300px" placeholder="单位(小时)" data-th-attr="value=${timeLimit}" />
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">发放上限</label>
+				<input id="grantMax" name="grantMax" style="width:300px" data-th-attr="value=${couponActivity.grantMax}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">单个用户领取上限</label>
+				<input id="singleGrantMax" name="singleGrantMax" style="width:300px" data-th-attr="value=${couponActivity.singleGrantMax}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">用户单次使用上限</label>
+				<input id="singleUseMax" name="singleUseMax" style="width:300px" data-th-attr="value=${couponActivity.singleUseMax}"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">详细</label>
+    			<textarea id="details" name="details" style="width:300px;height:60px" data-th-attr="value=${couponActivity.details}">
+				</textarea>
+			</div>
+			<div style="margin-left:450px;">
+				<a id="btnSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确认更新红包</a>
+			</div>
+	     </form>
+    </div>
+</body>   
+</html>

@@ -1,0 +1,15 @@
+﻿[name]
+prop = name
+tag = input
+attrs-name = name
+attrs-value = TPL_username
+;取值
+extract-attr = name
+
+[password]
+prop = password
+tag = input
+attrs-name = name
+attrs-value = TPL_password
+;取值
+extract-attr = name

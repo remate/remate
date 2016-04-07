@@ -1,0 +1,149 @@
+.color1 .intro .shop-name,.color1 .location-address,.color1 .location-deliver{
+    color: #fff;
+    /*color: #bbc89a;*/
+}
+.color2 .intro .shop-name,.color2 .location-address,.color2 .location-deliver{
+    color: #f6f6f6;
+    /*color: #505557;*/
+}
+.color3 .intro .shop-name,.color3 .location-address,.color3 .location-deliver{
+    color: #eee;
+    /*color: #fff;*/
+}
+.color4 .intro .shop-name,.color4 .location-address,.color4 .location-deliver{
+    color: #ccc;
+}
+.color5 .intro .shop-name,.color5 .location-address,.color5 .location-deliver{
+    color: #888;
+}
+.color6 .intro .shop-name,.color6 .location-address,.color6 .location-deliver{
+    color: #666;
+}
+.color7 .intro .shop-name,.color7 .location-address,.color7 .location-deliver{
+    color: #444;
+}
+.color8 .intro .shop-name,.color8 .location-address,.color8 .location-deliver{
+    color: #222;
+}
+.color9 .intro .shop-name,.color9 .location-address,.color9 .location-deliver{
+    color: #030303;
+}
+.color10 .intro .shop-name,.color10 .location-address,.color10 .location-deliver{
+    color: #505557;
+}
+.color11 .intro .shop-name,.color11 .location-address,.color11 .location-deliver{
+    color: #bbc89a;
+}
+
+.color1 .location-sep{
+    border-left: 1px solid #fff;
+}
+.color2 .location-sep{
+    border-left: 1px solid #f6f6f6;
+}
+.color3 .location-sep{
+    border-left: 1px solid #eee;
+}
+.color4 .location-sep{
+    border-left: 1px solid #ccc;
+}
+.color5 .location-sep{
+    border-left: 1px solid #888;
+}
+.color6 .location-sep{
+    border-left: 1px solid #666;
+}
+.color7 .location-sep{
+    border-left: 1px solid #444;
+}
+.color8 .location-sep{
+    border-left: 1px solid #222;
+}
+.color9 .location-sep{
+    border-left: 1px solid #030303;
+}
+.color10 .location-sep{
+    border-left: 1px solid #505557;
+}
+.color11 .location-sep{
+    border-left: 1px solid #bbc89a;
+}
+
+
+.color1 .location-icon{
+    background-position: 0px -1px;
+}
+.color2 .location-icon{
+    background-position: -9px -1px;
+}
+.color3 .location-icon{
+    background-position: -19px -1px;
+}
+.color4 .location-icon{
+    background-position: -29px -1px;
+}
+.color5 .location-icon{
+    background-position: -39px -1px;
+}
+.color6 .location-icon{
+    background-position: -49px -1px;
+}
+.color7 .location-icon{
+    background-position: -59px -1px;
+}
+.color8 .location-icon{
+    background-position: -69px -1px;
+}
+.color9 .location-icon{
+    background-position: -79px -1px;
+}
+.color10 .location-icon{
+    background-position: -89px -1px;
+}
+.color11 .location-icon{
+    background-position: -99px -1px;
+}
+
+.ff1 .shop-name{
+    font-family: '\5fae\8f6f\96c5\9ed1',"Microsoft YaHei";
+}
+.ff2 .shop-name{
+    font-family: '\5b8b\4f53',sans-serif;
+}
+.ff3 .shop-name{
+    font-family: '&#x6977;&#x4F53;','KaiTi','69774F53';
+}
+
+.user-photo-canvas .user-photo{
+    width: 72px;
+    height: 72px;
+    border:2px solid #fff;
+    box-shadow:#e3ddd6 1px 1px 3px;
+    overflow: hidden;
+}
+
+
+/* 方形 */
+.imagestyle1 .images-bdra,.imagestyle1 .images-bdra img{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    －o-border-radius: 0;
+    border-radius: 0;
+}
+
+/* 圆角 */
+.imagestyle2 .images-bdra{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    －o-border-radius: 50%;
+    border-radius: 50%;
+}
+.imagestyle2 .images-bdra,.imagestyle2 .images-bdra img{
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    －o-border-radius: 100px;
+    border-radius: 100px;
+}
+.pro-about .pro-infor{
+    padding-left: 7px;
+}

@@ -1,0 +1,9 @@
+{
+  "code": 200,
+  "data": {
+    "phone": "18888880082",
+    "isShowPicCode": false
+  },
+  "msg": null,
+  "success": true
+}

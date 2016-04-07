@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8"/>
+    <title>选择支付银行</title>
+    <style type="text/css">
+		#menu {
+		font-size: 12px;
+		font-weight: bolder;
+            margin-bottom: 1em;
+		}
+		#menu li{
+            list-style-image: none;
+            list-style-type: none;
+            text-align: center;
+            border-bottom: 1px #ddd solid;
+        }
+        #menu li a{
+            color: #333;
+            margin: 0px;
+            padding-top: 18px;
+            padding-bottom: 12px;
+            padding-left: 50px;
+            display: block;
+            padding-right: 50px;
+            font-size: 1.2em;
+		}
+        #menu .tab-active{
+            border-bottom: 3px solid orangered
+        }
+        #menu .tab-active a{
+            color: orange;
+        }
+        .pt10{
+            padding-top: 0.8em;
+        }
+        .img{
+        	width:40em;
+        }
+	</style>
+</head>
+
+<body class="as_page">
+	<div data-layout-fragment="content" class="mt44 relative">
+		<form id="order_submit_form"  data-th-action="@{/paybank/submit}" method="post">
+	    	<input type="hidden" name="tradeNo" data-th-value="${tradeNo}"/>
+	    	<input type="hidden" name="subject" data-th-value="${subject}"/>
+	    	<input type="hidden" name="tradeUrl" data-th-value="${tradeUrl}"/>
+	    	<input type="hidden" name="totalFee" data-th-value="${totalFee}"/>
+	    	<input type="hidden" id="bankCode" name="bankCode" value=""/>
+	    	<input type="hidden" id="cardType" name="cardType" value=""/>
+	    	<section>
+			<ul class="box" id="menu">
+				<li id="creditCardLi" class="flex1 tab-active" onclick="showTab('creditCardTab')">
+			    	<a href="#">信用卡</a>
+				</li>
+				<li id="debitCardLi" class="flex1" onclick="showTab('debitCardTab')">
+			    	<a href="#">储蓄卡</a>
+				</li>
+			</ul>
+			</section>
+			
+	    	<div id="creditCardHotTab" style="display:block;">
+			    <section data-th-each="creditCardBanks : ${creditCardBanks}">
+			    	<div id="creditHot" data-th-if="${creditCardBanks.keyName.equals('hot')}">
+			    		<table>
+			    		<div data-th-each="bean,stat:${creditCardBanks.valueList}">
+			    			<tr data-th-if="${stat.index%2 == 0}">
+			    				<div data-th-if="${stat.size - stat.index==1}">
+			    					<td>
+					    				<li class="box pt10" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" onclick="setRadioCredit(this)">
+						                	<div class="flex1"><img class="flex1" data-th-src="${bean.img}"/></div>
+						                	<p class="flex1">
+						                       <input type="hidden" data-th-id="'credit_'+${creditCardBanks.keyName}+'_'+${stat.index}" data-th-value="${bean.bankCode}+'_'+${bean.cardType}"/>
+						                    </p>
+						                </li>
+					    			</td>
+			    				</div>
+			    				<div data-th-if="${stat.size - stat.index>1}">
+			    					<div data-th-each="bank,stats:${creditCardBanks.valueList.subList(stat.index,stat.index+2)}">
+				    					<td>
+						    				<li class="box pt10" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index+stats.index}" onclick="setRadioCredit(this)">
+							                	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+							                	<p class="flex1">
+							                       <input type="hidden" data-th-id="'credit_'+${creditCardBanks.keyName}+'_'+${stat.index+stats.index}" data-th-value="${bank.bankCode}+'_'+${bank.cardType}"/>
+							                    </p>
+							                </li>
+						    			</td>
+				    				</div>
+			    				</div>
+				    		</tr>
+			    		</div>
+			    	</table>
+			    	</div>
+			    </section>
+	    	</div>
+	    	
+	    	<div id="creditCardAllTab" style="display:none">
+			    <section data-th-each="creditCardBanks : ${creditCardBanks}">
+			    	<div id="creditNotHot" data-th-if="${!creditCardBanks.keyName.equals('hot')}">
+			    		<h2 class="plr20" style="Padding-left:20px" data-th-text="${creditCardBanks.keyName}"></h2>
+			    		<table>
+			    		<div data-th-each="bean,stat:${creditCardBanks.valueList}">
+			    			<tr data-th-if="${stat.index%2 == 0}">
+			    				<div data-th-if="${stat.size - stat.index==1}">
+			    					<td>
+					    				<li class="box pt10" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" onclick="setRadioCredit(this)">
+						                	<div class="flex1"><img class="flex1" data-th-src="${bean.img}"/></div>
+						                	<p class="flex1">
+						                       <input type="hidden" data-th-id="'credit_'+${creditCardBanks.keyName}+'_'+${stat.index}" data-th-value="${bean.bankCode}+'_'+${bean.cardType}"/>
+						                    </p>
+						                </li>
+					    			</td>
+			    				</div>
+			    				<div data-th-if="${stat.size - stat.index>1}">
+			    					<div data-th-each="bank,stats:${creditCardBanks.valueList.subList(stat.index,stat.index+2)}">
+				    					<td>
+						    				<li class="box pt10" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index+stats.index}" onclick="setRadioCredit(this)">
+							                	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+							                	<p class="flex1">
+							                       <input type="hidden" data-th-id="'credit_'+${creditCardBanks.keyName}+'_'+${stat.index+stats.index}" data-th-value="${bank.bankCode}+'_'+${bank.cardType}"/>
+							                    </p>
+							                </li>
+						    			</td>
+				    				</div>
+			    				</div>
+				    		</tr>
+			    		</div>
+			    	</table>
+			    	</div>
+			    
+			    
+			    <!-- 
+			    	<div id="creditHot" data-th-if="${!creditCardBanks.keyName.equals('hot')}">
+			    		<h2 class="plr20" data-th-text="${creditCardBanks.keyName}"></h2>
+			    		<ul class="bg-white plr20" data-th-each="bank,stat:${creditCardBanks.valueList}">
+			            	<li class="box pt10" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" onclick="setRadioCredit(this)">
+			                	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+			                	<p class="flex1">
+		                           <input type="hidden" data-th-id="'credit_'+${creditCardBanks.keyName}+'_'+${stat.index}" data-th-value="${bank.bankCode}+'_'+${bank.cardType}"/>
+		                        </p>
+			                </li>
+			            </ul>
+			    	</div>
+			    	 -->
+			    </section>
+	    	</div>
+	    	
+		    <div id="debitCardTab" style="display:none">
+			    <section data-th-each="debitCardBanks : ${debitCardBanks}">
+			    	<div id="debitHot" data-th-if="${debitCardBanks.keyName.equals('hot')}">
+			    	<table>
+			    		<div data-th-each="bean,stat:${debitCardBanks.valueList}">
+			    			<tr data-th-if="${stat.index%2 == 0}">
+				    			<div data-th-if="${stat.size - stat.index==1}">
+			    					<td>
+					    				<li class="box pt10" data-th-id="${debitCardBanks.keyName}+'_'+${stat.index}" onclick="setRadioDebit(this)">
+						                	<div class="flex1"><img class="flex1" data-th-src="${bean.img}"/></div>
+						                	<p class="flex1">
+						                       <input type="hidden" data-th-id="'debit_'+${debitCardBanks.keyName}+'_'+${stat.index}" data-th-value="${bean.bankCode}+'_'+${bean.cardType}"/>
+						                    </p>
+						                </li>
+					    			</td>
+			    				</div>
+			    				<div data-th-if="${stat.size - stat.index>1}">
+			    					<div data-th-each="bank,stats:${debitCardBanks.valueList.subList(stat.index,stat.index+2)}">
+				    					<td>
+						    				<li class="box pt10" data-th-id="${debitCardBanks.keyName}+'_'+${stat.index+stats.index}" onclick="setRadioDebit(this)">
+							                	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+							                	<p class="flex1">
+							                       <input type="hidden" data-th-id="'debit_'+${debitCardBanks.keyName}+'_'+${stat.index+stats.index}" data-th-value="${bank.bankCode}+'_'+${bank.cardType}"/>
+							                    </p>
+							                </li>
+						    			</td>
+				    				</div>
+			    				</div>
+			    			
+			    			
+			    			<!-- 
+			    				<div data-th-each="bank,stats:${debitCardBanks.valueList.subList(stat.index,stat.index+2)}">
+				    			<td>
+				    				<li class="box pt10" data-th-id="${debitCardBanks.keyName}+'_'+${stat.index+stats.index}" onclick="setRadioDebit(this)">
+					                	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+					                	<p class="flex1">
+					                       <input type="hidden" data-th-id="'debit_'+${debitCardBanks.keyName}+'_'+${stat.index+stats.index}" data-th-value="${bank.bankCode}+'_'+${bank.cardType}"/>
+					                    </p>
+					                </li>
+				    			</td>
+				    			</div>
+				    		 -->	
+				    			
+				    		</tr>
+			    		</div>
+			    	</table>
+			    	</div>
+			    </section>
+		    </div>
+		    <div class="p30" id="showAllBtn" style="display:block">
+		    	<input class="button bg-orange cart-checkout-btn fz30 font-white ptb30" type="button" value="显示所有银行" onclick="showAll()"/>
+		    </div>
+		</form>
+    </div>
+    <div data-layout-fragment="postScript">
+	    <script type="text/javascript" charset="utf-8" data-th-inline="text">
+			
+			var setRadioCredit = function(obj){
+				var id = $(obj).attr("ID");
+				var str = $("#credit_"+id).val();
+				if(str==""){
+					alert("请选择一类付款方式");
+					return;
+				}
+				var strArray = str.split("_");
+				$("#bankCode").val(strArray[0]);
+				$("#cardType").val(strArray[1]);
+				$("#order_submit_form")[0].submit();
+			};
+			
+			var setRadioDebit = function(obj){
+				var id = $(obj).attr("ID");
+				var str = $("#debit_"+id).val();
+				if(str==""){
+					alert("请选择一类付款方式");
+					return;
+				}
+				var strArray = str.split("_");
+				$("#bankCode").val(strArray[0]);
+				$("#cardType").val(strArray[1]);
+				$("#order_submit_form")[0].submit();
+			};
+			
+			var showTab = function(type){
+                $("#menu").children().removeClass('tab-active');
+				if(type=="creditCardTab"){
+					$("#creditCardHotTab").css('display','block');
+					$("#creditCardAllTab").css('display','none');
+					$("#creditCardLi").addClass('tab-active');
+					$("#debitCardTab").css('display','none');
+					$("#showAllBtn").css('display','block');
+				}else if(type=="debitCardTab"){
+					$("#creditCardHotTab").css('display','none');
+					$("#creditCardAllTab").css('display','none');
+                    $("#debitCardLi").addClass('tab-active');
+					$("#debitCardTab").css('display','block');
+					$("#showAllBtn").css('display','none');
+				}
+			}
+			
+			var showAll = function(){
+				$("#creditCardHotTab").css('display','none');
+				$("#creditCardAllTab").css('display','block');
+				$("#showAllBtn").css('display','none');
+			}
+	    </script>
+	</div>
+	
+</body>   
+</html>

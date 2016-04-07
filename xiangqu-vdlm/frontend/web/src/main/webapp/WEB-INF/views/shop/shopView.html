@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title data-th-text="${shop.name}">商品名</title>
+    <!-- 测试店铺首页css -->
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/shopView.css?t=201411210244}" />
+</head>
+
+<!--<body>-->
+<body data-th-class="${styles}">
+<div data-layout-fragment="content" class="bgcolor">
+    <div>
+        <section class="info-section">
+            <div class="shop-intro-canvas">
+                <img class="shop-intro-bg img-mohu" data-vd-src="${banner}" data-th-if="${banner != null}"/>
+                <div class="info-wrap clearfix">
+                    <div class="user-photo-canvas">
+                        <div class="user-photo images-bdra">
+                            <img id="shop_img" data-vd-src="${shop.img[s025]}" />
+
+                        </div>
+                        <div class="user-level">
+                            <!--
+                            <span class="secure"></span>
+                            -->
+                            <span class="diamond" data-th-if="${shop.danbao}"></span>
+                            <!--
+                            <span class="crown"></span>
+                            -->
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <div class="shop-name" data-th-text="${shop.name}"></div>
+                        <div class="location-info">
+                            <div class="location-icon" data-th-if="${city != null}"></div>
+                            <span class="location-address" data-th-if="${city != null}" data-th-text="${province.name + city.name}"></span>
+                            <span class="location-sep"></span>
+                            <span class="location-deliver" data-th-if="${shop.freeZone != null and !shop.freeZone.equals('')}" data-th-text="${shop.freeZone + '包邮'}"></span>
+                        </div>
+                        <div class="function-canvas">
+                            <span class="btn-wechat"></span>
+                            <span id="btn-share" class="btn-share" style="display: none;"></span>
+                            <span class="btn-notice"></span>
+                        </div>
+                        <div class="wechat-tip">
+
+                            <div class="tip-bg"></div>
+                            <span class="wechat-id" data-th-if="${shop.wechat != null}" data-th-text="${shop.wechat}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shop-notice" data-th-text="${shop.bulletin}">
+            </div>
+
+        </section>
+        <section class="shop-zinex">
+            <div class="shop-tab">
+                <div class="shop-tab-wrap">
+                    <div id="btn-category"></div>
+					<span class="tab-wrap">
+						<span class="recommand sel" index="01" data-th-attr="data-numb=${recommendCount}">推荐</span>
+						<span class="hot" index="02" >热卖</span>
+						<span class="all" index="03" data-th-attr="data-numb=${allCount}">全部</span>
+						<div class="tab-sel"></div>
+					</span>
+                    <span class="tab-category"></span>
+                </div>
+            </div>
+        </section>
+        <section id="allGoods">
+            <!--From Xiaoqiong-->
+            <div class=" pt75b40 goodsList">
+                <div class="clearfix pro-imglist" id="pro-all">
+                    <div class="pro-infor" data-th-each="prod:${prodsRecommended}">
+                        <div data-th-replace="fragments/productCard::card(prod=${prod})"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="category">
+            <div class="category-canvas">
+                <div class="category-title clearfix">
+                    <div class="category-all fl-l">所有分类</div>
+                    <div id="btn-category-close" class="btn-category-close fl-r"></div>
+                </div>
+                <div class="category-home">首页</div>
+                <ul class="category-list">
+                    <li data-th-each="cat:${categories}" data-th-attr="data-cateid=${cat.id},data-numb=${cat.productCount}"><a data-th-text="${cat.name}"></a></li>
+                </ul>
+            </div>
+        </section>
+        <section class="b-share">
+            <ul>
+                <li></li>
+            </ul>
+        </section>
+        <section>
+            <div data-th-text="${shop.id}" id="shopID" style="display:none;" ></div>
+        </section>
+    </div>
+    <!--
+    <section class="mt90">
+        <div class="shop-start">
+            <img class="shop-start-img" alt="" data-vd-src="/_resources/images/shop-start.png"/>
+            <a class="shop-start-btn button bg-orange btn-round fz24 font-white" href="http://www.kkkd.com">我要开店</a>
+        </div>
+    </section>
+    -->
+    <section class="footer-bottom">
+        <ul class="foorer-nav box">
+            <li class="footer-item flex1 footer-line">
+            <!--
+                <a href="/catalog/search?shopId=bia1">
+             -->
+                <a data-th-href="'/catalog/search?shopId='+${shop.id}">
+                    <i class="footer-ico">
+                        <img class="img-auto" alt="" data-vd-src="/_resources/images/footerico_22.png"/>
+                    </i>
+                    <span class="footer-text fz26 font-light">店内搜索</span>
+                </a>
+            </li>
+            <!--
+            <li class="footer-item flex1">
+            
+                <a href="/cart?shopId=bia1">
+             
+                <a data-th-href="'/cart?shopId='+${shop.id}">
+                    <i class="footer-ico">
+                        <img class="img-auto" alt="" data-vd-src="/_resources/images/footerico_19.png"/>
+                    </i>
+                    <span class="footer-text fz26 font-light">购物车</span>
+                </a>
+            </li>
+            -->
+        </ul>
+    </section>
+</div>
+<div data-layout-fragment="postScript">
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/plugins/af.css3animate.js}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/shopView.js?t=201411271050210}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/shop.js?t=20141014}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/imgcenter.js?t=20141118}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/appframework-extend.js?t=20141118}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/wookmark.js?t=2014112411}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/shop_style.js?t=201411271123}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-inline="javascript">
+         $(document).ready(function(){
+             /* shopStyle({
+              'imgstyle':'bigimg'
+              });*/
+             /*weixin share start*/
+             var desc = $('#shop_bulletin').text();
+             var shopDesc;
+
+             if(typeof(desc) !=="object"){
+                 shopDesc = desc;
+             }else{
+                 shopDesc =$('#shop_desc').text();
+             }
+
+             $.wxShare($('#shop_name').text(), shopDesc, $('#shop_img')[0].src, location.href);
+
+             var url = '/statistics?shopId=' + [[${shop.id}]];
+             $.get(url, function() {});
+             /*weixinshare end*/
+         })
+
+    </script>
+</div>
+</body>
+</html>
+

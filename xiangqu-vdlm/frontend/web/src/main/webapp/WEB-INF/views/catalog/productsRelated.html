@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8" />
+    <title data-th-text="#{product.related}">相关商品</title>
+    <style>
+	.pro-infor{
+	    padding-left: 7px;
+	    padding-right: 7px;
+	}
+	.img-outer{
+		width: 100%;
+		-webkit-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+    </style>
+</head>
+<body class="as_page">
+
+<ul data-layout-fragment="content" class="content">
+    <section data-th-unless="${#lists.isEmpty(relatedProds)}">
+        <div class="pro-infor" data-th-each="related:${relatedProds}"><div data-th-replace="fragments/productCard::card(prod=${related})"></div></div>
+    </section>
+</ul>
+</body>
+</html>

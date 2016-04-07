@@ -1,0 +1,15 @@
+/**
+ * Created by ziyu on 2016/2/24.
+ */
+@charset "UTF-8";
+$icon-cartBack:'/_resources/images/cart/cart-back.png';
+$icon-cartlogis:'/_resources/images/cart/logistics-bg.png';
+$icon-share_user:'/_resources/images/xiangqu/w_share_user.png';
+$icon-tel:'/_resources/images/cart/tel.png';
+$icon-close:'/_resources/images/xiangqu/closeAddressTc.png';
+
+$bdColor:#e0e0e0;
+@mixin bdmt{
+  border-bottom:1px solid $bdColor;
+  margin-bottom:px2rem(20);
+}

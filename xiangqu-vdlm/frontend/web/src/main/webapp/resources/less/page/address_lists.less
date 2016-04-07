@@ -1,0 +1,534 @@
+/**
+ * Created by ziyu on 2016/1/6.
+ */
+.address-lists{
+  margin:0;
+  padding:20px 0;
+
+  .address-box{
+    ul{
+      display: inline;
+
+      li{
+        float: left;
+        width:235px;
+        height:101px;
+        margin-right:10px;
+        padding:10px;
+        border:2px solid #ccc;
+        position: relative;
+        z-index: 9;
+        margin-bottom:14px;
+        &.hideitem{
+          display: none;
+        }
+        h3{
+          &.name{
+            border-bottom:1px solid #ccc;
+            padding-bottom:5px;
+            margin-bottom:5px;
+            font-size: 12px;
+          }
+        }
+        .address{
+          span,em{
+            display: inline;
+            font-size:12px;
+          }
+        }
+        &.default{
+
+          .default-address{
+            display: block;
+          }
+
+        }
+        &.active{
+          border-color:#000;
+          .bird{
+            display: block;
+          }
+
+        }
+
+        .default-address{
+          display: none;
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding:0 5px;
+          cursor: pointer;
+          background: #e5e5e5;
+          color: #000;
+          font-size: 12px;
+          &:hover{
+            color: #d8b53a;
+          }
+        }
+        .edit-address{
+          position: absolute;
+          bottom: 3px;
+          right:5px;
+          z-index: 11;
+          display: none;
+          color: #000;
+          float: right;
+          cursor: pointer;
+          font-size: 12px;
+          &:hover{
+            color: #d8b53a;
+          }
+        }
+
+        &:hover{
+          border-color:#666;
+          cursor: pointer;
+          .default-address{
+            display: block;
+
+          }
+          .edit-address{
+            display: block;
+          }
+        }
+        .bird{
+          background: url("../../images/order/bird.png");
+          background-repeat: no-repeat;
+          position: absolute;
+          right: 30px;
+          bottom: -17px;
+          z-index: 11111;
+          width: 45px;
+          height: 35px;
+          display: none;
+        }
+        
+      }
+    }
+    .add-new-address{
+      float: left;
+      cursor: pointer;
+      text-align: center;
+      width: 235px;
+      height: 101px;
+      margin-right: 10px;
+      padding: 10px;
+      border: 2px dashed #ccc;
+      position: relative;
+      z-index: 9;
+      margin-bottom: 14px;
+      background: url("../../images/order/add_new_address.png") no-repeat center center;
+    }
+
+  }
+
+  .show-more-address{
+    color: #ddc061;
+    font-size:12px;
+    cursor:pointer;
+    display: none;
+  }
+}
+
+//edit
+.edit-address-box{
+  display: none;
+  position: fixed;
+  top:13%;
+  left:50%;
+  width:490px;
+  height:350px;
+  margin-left: -245px;
+  border:1px solid #aeadad;
+  background: #fff;
+  box-shadow: 1px 2px 3px #ccc;
+  z-index: 99999;
+  overflow: hidden;
+  border:1px solid #eee;
+  .edit-title{
+    background: #000;
+    height:30px;
+    padding:0 10px;
+    color: #fff;
+    h3{
+      float: left;
+      width:70%;
+      line-height: 30px;
+      font-size:14px;
+    }
+    span{
+      float: right;
+      width:11px;
+      background: url("../../images/order/edit_close.jpg") no-repeat right center;
+      cursor: pointer;
+      height: 30px;
+
+
+    }
+
+  }
+  input,textarea,select{
+    &:focus {outline: none;}
+  }
+  .content-box{
+    padding:10px;
+
+    ul{
+      li{
+        padding-bottom:10px;
+
+        .lable-form{
+          float: left;
+          width:90px;
+          height:26px;
+          text-align: right;
+          font-size:12px;
+          line-height: 26px;
+          padding-right:5px;
+          i{
+            display: inline-block;
+            width:7px;
+            color: #f63c40;
+            font-style: normal;
+          }
+        }
+
+        .group-input{
+          input{
+            width:208px;
+            height: 26px;
+            border:1px solid #ccc;
+            padding:2px 4px;
+            line-height: 26px;
+            font-size: 12px;
+
+          }
+          select{
+            height: 26px;
+            border-color: #ccc;
+            max-width:116px;
+          }
+          textarea{
+            border-color: #ccc;
+            width:355px;
+            height:70px;
+            background: #f5f5f5;
+            padding:2px 4px;
+            font-size: 12px;
+          }
+          &.default{
+            input{
+              display: inline;
+              width: 13px;
+              height:13px;
+              float: left;
+            }
+            label{
+              font-size:12px;
+              padding-left:3px;
+            }
+          }
+        }
+
+      }
+    }
+    .save-setting{
+      padding-left:90px;
+      a{
+        display: inline-block;
+        width:78px;
+        height:26px;
+        border:1px solid #ccc;
+        line-height: 26px;
+        text-align: center;
+        font-size: 14px;
+        color: #000;
+        &.save{
+          float: left;
+          background: #e5e5e5;
+
+        }
+
+      }
+    }
+  }
+
+}
+
+
+
+//老页面样式重写
+.h3-title{
+  font-size:14px;
+  font-weight:bold;
+}
+.cart-h4{
+  margin-top: 5px;
+  margin-bottom:15px;
+  font-size:14px;
+  font-weight: bold;
+}
+.cart-total-price{
+  font-size: 12px;
+  padding-right: 30px;
+  span{
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+.cart-operation{
+  margin: 0;
+  font-size:12px;
+  li{
+    width:25%;
+    text-align: center;
+    &.td2{
+      width:33%;
+    }
+    &.td3{
+      width: 17%;
+      padding: 0;
+    }
+    &.td4{
+      width:24%;
+    }
+    &.td6{
+      padding:0;
+    }
+  }
+}
+.table-center {
+  thead{
+    border-bottom:2px solid #ccc;
+    .share-name{
+      background: url(../../images/order/share_user.gif) no-repeat left center;
+      padding-left:23px;
+    }
+  }
+  border:none;
+  tbody{
+    border:none;
+  }
+  tbody tr {
+    .td1{
+      width:11%;
+    }
+    .td2{
+      width: 25%;
+      padding: 0;
+    }
+    .td3{
+      padding: 0;
+      width: 21%;
+      text-align: center;
+      font-family: '\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+    }
+    .td4{
+      padding: 0;
+      width:11%;
+      font-family: '\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+    }
+    .td5{
+      padding: 0;
+      width: 15%;
+      font-family: '\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+    }
+    .td7{
+      padding: 0;
+      width: 17%;
+      font-family: '\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+    }
+    .pro-link{
+      width: 76px;
+      height: 76px;
+      overflow: hidden;
+
+      img{
+        width: 76px;
+        height: 76px;
+      }
+    }
+  }
+}
+
+.item{
+  .footer{
+    background: #e9e9e9;
+    border:none;
+    height: 40px;
+    margin-top:10px;
+    .cart-message{
+      .cart-message-name{
+        font-size: 12px;
+        line-height: 40px;
+        padding-top:0;
+      }
+      textarea,.cart-message-text{
+        border:1px solid #ccc;
+        outline:none;
+        width:250px;
+        height: 21px;
+        padding: 0 3px;
+        line-height: 21px;
+        overflow: hidden;
+        margin-top: 10px;
+        margin-left: 5px;
+        font-size: 12px;
+
+      }
+    }
+    .footer-youfei{
+      font-size: 12px;
+      bottom: 10px;
+      .footer-youfei-price{
+        font-size: 14px;
+      }
+    }
+    .footer-total{
+      font-size: 12px;
+      bottom:10px;
+      .ff-numb{
+        font-size: 14px;
+        i{
+          font-family: '\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.moni-checkbox{
+  background: url("../../images/order/checkbox.png");
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+.moni-checkbox-active{
+  background: url('../../images/order/checkboxed.png');
+}
+.cart-vip{
+  .cart-vip-select{
+    span{
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}
+.fz12{
+  font-size: 12px;
+  font-weight: normal;
+}
+.cart-pay-img, .cart-pay-img img{
+  width: 36px;
+  height: 36px;
+}
+.radio{
+  margin-top: 0;
+  margin-bottom: 0;
+  .cart-pay-choose[type=radio]{
+    margin-top: 12px;
+  }
+  .cart-pay-infor{
+    margin-top: 0;
+  }
+}
+.cart-pay-list{
+  margin-top: 0;
+}
+.cart-vip-list{
+  border:1px solid #ccc;
+  li{
+    padding:17px 18px 14px 18px;
+    border:none;
+    border-bottom:1px solid #f0f0f0;
+    line-height: 0;
+    overflow: hidden;
+    &:hover{
+      background: #f0f0f0;
+    }
+    &:last-child{
+      border:none;
+    }
+    label{
+      padding:0;
+      display: inline;
+    }
+    .cart-vip-name{
+      font-size: 14px;
+      padding-left:10px;
+      float: left;
+      line-height: 20px;
+      
+    }
+    .cart-vip-input{
+      margin-top: 4px;
+      width: 12px;
+      height: 12px;
+      float: left;
+    }
+    .act-time{
+      float: right;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+}
+//address-obj
+.cart-price{
+  height: auto;
+}
+.footer-btn{
+  margin-top: 0;
+  #order-btn{
+    border: none;
+    border-radius:0;
+    width:180px;
+    height:50px;
+    background: #000;
+    color: #fff;
+    box-shadow:none;
+    font-size:18px;
+    line-height: 50px;
+    font-weight:600;
+    font-family: '\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+  }
+}
+.cart-price-container{
+  float: right;
+  position: relative;
+  height: auto;
+  border:1px solid #ccc;
+  border-radius:0;
+  line-height:normal;
+  padding:17px 27px;
+  text-align: right;
+  .cart-price-i{
+    background: url("../../images/order/bird.png") no-repeat;
+    position: absolute;
+    top: -19px;
+    left: 34px;
+    right:inherit;
+    height: 35px;
+    width:48px;
+  }
+  .cart-price-numb{
+    font-family:'\5fae\8f6f\96c5\9ed1', "Microsoft YaHei", sans-serif;
+    padding-left:0;
+    font-weight: bold;
+  }
+  .cart-price-name{
+    font-weight: 600;
+  }
+  .fz12{
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+}
+.address-obj{
+  clear: both;
+  line-height:20px;
+  em{
+    font-size: 12px;
+  }
+}

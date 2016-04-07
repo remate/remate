@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>新手工搬家</title>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    	$(function(){
+    		$('#type').change(function(){ 
+    			$("#tabBody tr").empty();
+    			var type = $("#type").find("option:selected").attr('data-type');
+    			 $('#'+type).show().siblings('.shop-item').hide()
+	    	});
+    	});
+    	
+	    function jsMoveShop() {
+        	$("#tabBody tr").empty();
+        	if($('#shop_kdShopUrl').val() == '') {
+        	alert('快店店铺地址不能为空');
+        		return;
+        	}
+        	if($('#tbShopUrl').val() == '') {
+        		alert('淘宝店铺地址不能为空');
+        		return;
+        	}
+        	if(confirm("确认下输入的快店地址和淘宝店铺地址是否可访问\n" +
+        					"快店地址格式如:http://www.kkkd.com/shop/xxxxx\n" +
+        					"淘宝地址格式如:http://shopyyyyy.taobao.com")) {
+        		var params = {
+        			'kdShopUrl' : $('#shop_kdShopUrl').val(),
+        			'tbShopUrl' : $('#tbShopUrl').val()
+        		};
+        		$.getJSON('move/shop', params, function(data) {
+        			if(data.msg != null && data.rc == 1) {
+        				alert(data.msg);
+        			} else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+	    function jsMoveItem() {
+        	$("#tabBody tr").empty();
+        	if($('#item_kdShopUrl').val() == '') {
+        		alert('快店店铺地址不能为空');
+        		return;
+        	}
+        	if($('#item_itemId').val() == '') {
+        		alert('淘宝宝贝不能为空');
+        		return;
+        	}
+        	if($('#item_shopType').val() == '') {
+        		alert('请确认宝贝是淘宝还是天猫商品');
+        		return;
+        	}
+        	if(confirm("确认输入的快店地址和淘宝商品id是否有误")) {
+        		var params = {
+        			'kdShopUrl' : $('#item_kdShopUrl').val(),
+        			'itemId' : $('#item_itemId').val(),
+        			'shopType' : $('#item_shopType').val()
+        		};
+        		$.getJSON('move/item', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+	    function jsMoveDesc() {
+        	$("#tabBody tr").empty();
+        	if($('#desc_kdShopUrl').val() == '') {
+        	alert('快店店铺地址不能为空');
+        		return;
+        	}
+        	if($('#desc_itemId').val() == '') {
+        		alert('淘宝宝贝不能为空');
+        		return;
+        	}
+        	if($('#desc_shopType').val() == '') {
+        		alert('请确认宝贝是淘宝还是天猫商品');
+        		return;
+        	}
+        	if(confirm("确认输入的快店地址和淘宝商品id是否有误")) {
+        		var params = {
+        			'kdShopUrl' : $('#desc_kdShopUrl').val(),
+        			'itemId' : $('#desc_itemId').val(),
+        			'shopType' : $('#desc_shopType').val()
+        		};
+        		$.getJSON('move/item/desc', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+	    function jsMoveGroupImg() {
+        	$("#tabBody tr").empty();
+        	if($('#img_kdShopUrl').val() == '') {
+        	alert('快店店铺地址不能为空');
+        		return;
+        	}
+        	if($('#img_itemId').val() == '') {
+        		alert('淘宝宝贝不能为空');
+        		return;
+        	}
+        	if($('#img_shopType').val() == '') {
+        		alert('请确认宝贝是淘宝还是天猫商品');
+        		return;
+        	}
+        	if(confirm("确认输入的快店地址和淘宝商品id是否有误")) {
+        		var params = {
+        			'kdShopUrl' : $('#img_kdShopUrl').val(),
+        			'itemId' : $('#img_itemId').val(),
+        			'shopType' : $('#img_shopType').val()
+        		};
+        		$.getJSON('move/item/groupImg', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+	    function jsMoveSku() {
+        	$("#tabBody tr").empty();
+        	
+        	alert('暂未实现此功能');
+        		return;
+        	
+        	if($('#sku_kdShopUrl').val() == '') {
+        	alert('快店店铺地址不能为空');
+        		return;
+        	}
+        	if($('#itemId').val() == '') {
+        		alert('淘宝宝贝不能为空');
+        		return;
+        	}
+        	if($('#shopType').val() == '') {
+        		alert('请确认宝贝是淘宝还是天猫商品');
+        		return;
+        	}
+        	if(confirm("确认输入的快店地址和淘宝商品id是否有误")) { 
+        		var params = {
+        			'kdShopUrl' : $('#sku_kdShopUrl').val(),
+        			'itemId' : $('#itemId').val(),
+        			'shopType' : $('#shopType').val()
+        		};
+        		$.getJSON('move/item/sku', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+	    function jsMoveSync() {
+        	$("#tabBody tr").empty();
+        	if($('#sync_kdShopUrl').val() == '') {
+        	alert('快店店铺地址不能为空');
+        		return;
+        	}
+        	if($('#sync_itemId').val() == '') {
+        		alert('淘宝宝贝不能为空');
+        		return;
+        	}
+        	if($('#sync_type').val() == '') {
+        		alert('请确认要同步的类型');
+        		return;
+        	}
+        	if(confirm("确认输入的快店地址和淘宝商品id是否有误")) {
+   		 		var params = {
+        			'kdShopUrl' : $('#sync_kdShopUrl').val(),
+        			'itemId' : $('#sync_itemId').val(),
+        			'type' : $('#sync_type').val()
+        		};
+        		$.getJSON('move/item/sync', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+    /*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 20px;">
+		选择搬家类型：
+		<select name="type" id="type">
+			<option value="1" data-type="shop">店铺</option>
+			<option value="2" data-type="item">商品</option>
+			<option value="3" data-type="desc">详情</option>
+			<option value="4" data-type="groupImg">主图</option>
+			<option value="5" data-type="sku">sku</option>
+			<option value="6" data-type="sync">同步</option>
+		</select>
+	</div>
+	<div class="shop-item"  id="shop" style="margin: 20px;">	    
+	    <div>
+	    	快店地址：
+	    	<input type="text" name="kdShopUrl" id="shop_kdShopUrl" style="width:240px;"/>
+	    	淘宝店铺地址：
+	    	<input type="text" name="tbShopUrl" id="tbShopUrl" style="width:240px;"/>
+	    	<input id="shopBtn" type="button" value="确定" onclick="jsMoveShop();" />
+	    </div>
+    </div>
+    <div class="shop-item"  id="item" style="margin: 20px; display:none;">	    
+	    <div>
+	    	快店地址：
+	    	<input type="text" name="kdShopUrl" id="item_kdShopUrl" style="width:240px;"/>
+	    	淘宝宝贝ID：
+	    	<input type="text" name="itemId" id="item_itemId" style="width:100px;"/>
+			<select name="shopType" id="item_shopType">
+				<option value="1">淘宝</option>
+				<option value="2">天猫</option>
+			</select>	    	
+	    	<input id="itemBtn" type="button" value="确定" onclick="jsMoveItem();" />
+	    </div>
+    </div>
+    <div class="shop-item"  id="desc" style="margin: 20px; display:none;">	    
+	    <div>
+	    	快店地址：
+	    	<input type="text" name="kdShopUrl" id="desc_kdShopUrl" style="width:240px;"/>
+	    	淘宝宝贝ID：
+	    	<input type="text" name="itemId" id="desc_itemId" style="width:100px;"/>
+			<select name="shopType" id="desc_shopType">
+				<option value="1">淘宝</option>
+				<option value="2">天猫</option>
+			</select>	    	
+	    	<input id="descBtn" type="button" value="确定" onclick="jsMoveDesc();" />
+	    </div>
+    </div>
+    <div class="shop-item"  id="groupImg" style="margin: 20px; display:none;">	    
+	    <div>
+	    	快店地址：
+	    	<input type="text" name="kdShopUrl" id="img_kdShopUrl" style="width:240px;"/>
+	    	淘宝宝贝ID：
+	    	<input type="text" name="itemId" id="img_itemId" style="width:100px;"/>
+			<select name="shopType" id="img_shopType">
+				<option value="1">淘宝</option>
+				<option value="2">天猫</option>
+			</select>	    	
+	    	<input id="groupImgBtn" type="button" value="确定" onclick="jsMoveGroupImg();" />
+	    </div>
+    </div>
+    <div class="shop-item"  id="sku" style="margin: 20px; display:none;">	    
+	    <div>
+	    	快店地址：
+	    	<input type="text" name="kdShopUrl" id="sku_kdShopUrl" style="width:240px;"/>
+	    	淘宝宝贝ID：
+	    	<input type="text" name="itemId" id="sku_itemId" style="width:100px;"/>
+			<select name="shopType" id="sku_shopType">
+				<option value="1">淘宝</option>
+				<option value="2">天猫</option>
+			</select>	    	
+	    	<input id="skuBtn" type="button" value="确定" onclick="jsMoveSku();" />
+	    </div>
+    </div>
+    <div class="shop-item"  id="sync" style="margin: 20px; display:none;">	    
+	    <div>
+	    	快店地址：
+	    	<input type="text" name="kdShopUrl" id="sync_kdShopUrl" style="width:240px;"/>
+	    	淘宝宝贝ID：
+	    	<input type="text" name="itemId" id="sync_itemId" style="width:100px;"/>
+			<select name="type" id="sync_type">
+				<option value="1">商品</option>
+				<option value="2">详情</option>
+				<option value="3">主图</option>
+				<option value="4">sku</option>
+			</select>	    	
+	    	<input id="syncBtn" type="button" value="确定" onclick="jsMoveSync();" />
+	    </div>
+    </div>
+    
+    <div style="margin: 20px;">
+		<table id="tab" border="1">
+			<tr><td style="width:30px;">&nbsp;</td><td style="width:100px;">StatusCode</td><td style="width:300px;">Info</td></tr>
+			<tbody id="tabBody">
+			</tbody>
+		</table>
+	</div>	
+</body>   
+</html>

@@ -1,0 +1,49 @@
+/*  header部分  */
+
+.admin-header {
+    width:100%;
+    background-color: #2d3242;
+    overflow: hidden;
+}
+
+.admin-header .am-topbar-brand strong {
+    font-size: 125px;
+    line-height: 55px;
+    height: 50px;
+    color: @orange;
+    font-weight: normal;
+    padding-left: 22px;
+    overflow: hidden;
+}
+
+.admin-header .user-name {
+    line-height: 50px;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.admin-header .user-logout {
+    display: inline-block;
+    color: @header-link;
+    font-size: 12px;
+    &:hover {
+        color: #fff;
+    }
+}
+
+.admin-header .am-nav button {
+    margin-top: 7px;
+}
+/* 重写顶部导航按钮hover时的效果 */
+
+@media only screen and (min-width: 641px) {
+    .am-topbar-nav > li > a:after {
+        display: none;
+    }
+    .am-topbar-nav > li > a:hover:after {
+        opacity: 0;
+        border-bottom-color: transparent;
+    }
+}
+/* header end */

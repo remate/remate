@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>运营消息</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+	    $(function(){
+	        $('#btnSubmit').bind('click', function(){
+	        	if($('#title').val() == ''){
+	        		alert('标题不能为空！');
+	        		return false;
+	        	}
+	        	
+	        	if($('#content').val() == ''){
+	        		alert('内容不能为空！');
+	        		return false;
+	        	}
+	        	$.messager.confirm('确认', '确认要发送消息吗?', function(r){
+	        		if (r){
+						$('#btnSubmit').linkbutton('disable');
+						$.messager.progress({text:'发送中...'});
+						$('#frmMessage').submit();
+	        		}
+	        	});
+	        });
+	      });
+	    /*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 5px;">   
+	    <form id="frmMessage" th:action="@{send}" method="post">
+	    	<table>
+	    		<tr>
+	    			<td>标题</td>
+	    			<td>
+	    				<input id="title" name="title" type="text" style="width: 300px;" th:value="${message.title}" required="required"/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>内容</td>
+	    			<td>
+	    				<textarea id="content" name="content" style="width:500px;height:120px;" th:text="${message.content}" required="required"></textarea>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>url</td>
+	    			<td>
+	    				<input id="url" name="url" type="text" style="width: 300px;" th:value="${message.url}"/>
+	    			</td>
+	    		</tr>
+	    	</table>
+	    	<table>
+   				<tr>
+   					<!-- <td style="width: 60px; text-align: left;">平台</td>   -->
+   					<td>终端平台</td>
+    				<td>
+	    				<select id="plantForm" name="plantForm" >
+						<option value="ALL">全部</option>
+						<option value="ANDROID">ANDORID</option>
+						<option value="IOS">IOS</option>
+						</select>
+	    			</td>
+   					<!-- <td style="width: 60px; text-align: left;">类型</td>   -->
+   					<td>消息类型</td>
+    				<td>
+	    				<select id="pushType" name="pushType">
+						<option value="operation">普通运营消息</option>
+						<option value="promotion">活动促销消息</option>
+						</select>
+	    			</td>
+   					<td>应用平台</td>
+    				<td>
+	    				<select id="appName" name="appName">
+						<option value="kkkd">快快开店</option>
+						<option value="xiangqu">想去</option>
+						</select>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td colspan="4" align="center"><br/>
+		                <div th:text="${success}"></div><div th:text="${errors}"></div>
+	    				<a id="btnSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确认发送消息</a>
+	    			</td>
+	    		</tr>	
+    		</table>
+	     </form>
+    </div>
+</body>   
+</html>

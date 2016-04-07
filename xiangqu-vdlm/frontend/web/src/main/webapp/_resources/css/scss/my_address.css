@@ -1,0 +1,1072 @@
+/**
+ * Created by ziyu on 2016/1/19.
+ */
+/**
+ * Created by ziyu on 2016/1/20.
+ */
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+em {
+  font-style: normal;
+}
+
+html, body {
+  -webkit-text-size-adjust: none;
+}
+
+.state-show, body {
+  background: #f0f0f0;
+}
+
+.state-show .J_home {
+  overflow: hidden;
+}
+
+.my-address-lists {
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+}
+
+.my-address-lists .no-address {
+  display: none;
+  padding: 0 12px;
+  height: 50px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.my-address-lists .no-address .address-tip {
+  padding-top: 17px;
+  overflow: hidden;
+  height: 17px;
+}
+
+.my-address-lists .no-address .address-tip i {
+  background: url("/_resources/images/xiangqu/address_icon.png") no-repeat;
+  background-position: 0  0;
+  background-size: contain;
+  width: 17px;
+  height: 17px;
+  margin-right: 6px;
+  display: block;
+  float: left;
+}
+
+.my-address-lists .no-address .address-tip span {
+  float: left;
+  height: 12.5px;
+  line-height: 17px;
+  font-size: 14px;
+}
+
+.my-address-lists .no-address .address-tip span.new-address-btn {
+  width: 7px;
+  height: 13px;
+  margin-top: 2px;
+  background: url("/_resources/images/xiangqu/right-icon.gif") no-repeat;
+  background-position: 0 0;
+  display: block;
+  float: right;
+  background-size: cover;
+}
+
+.my-address-lists .have-address {
+  display: none;
+  padding: 7.5px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.my-address-lists .have-address .address-info {
+  position: relative;
+  z-index: 10;
+}
+
+.my-address-lists .have-address .address-info .info-l {
+  float: left;
+  width: 89%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.my-address-lists .have-address .address-info .info-l .tips {
+  display: block;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.my-address-lists .have-address .address-info .info-l h3 {
+  font-size: 14px;
+  color: #000;
+  text-align: left;
+  line-height: 15px;
+  padding-top: 2.5px;
+  padding-bottom: 6px;
+}
+
+.my-address-lists .have-address .address-info .info-l h3 em {
+  font-style: normal;
+}
+
+.my-address-lists .have-address .address-info .info-l h3 .phone {
+  float: right;
+}
+
+.my-address-lists .have-address .address-info .info-l .street {
+  padding-top: 0;
+  color: #ababab;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+}
+
+.my-address-lists .have-address .address-info .show-addresslist {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 7px;
+  height: 12.5px;
+  margin-top: -6.5px;
+}
+
+.my-address-lists .have-address .address-info .show-addresslist i {
+  display: block;
+  width: 7px;
+  height: 12.5px;
+  background: url("/_resources/images/xiangqu/right-icon.gif") no-repeat;
+  background-position: 0 0;
+  display: block;
+  background-size: cover;
+}
+
+.product-lists-box {
+  padding: 0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.product-lists-box .saler-info {
+  padding: 0 12px;
+  height: 25px;
+  padding-top: 10px;
+}
+
+.product-lists-box .saler-info i {
+  background: url("/_resources/images/xiangqu/w_share_user.png") no-repeat;
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+  overflow: hidden;
+  display: block;
+  float: left;
+  background-size: contain;
+}
+
+.product-lists-box .saler-info a {
+  font-size: 14px;
+  line-height: 16.5px;
+  font-weight: 400;
+  color: #2e2e2e;
+  float: left;
+}
+
+.product-lists-box .product-items ul li.product-item {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body {
+  position: relative;
+  background: #f5f5f5;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+  min-height: 94px;
+  overflow: hidden;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body:last-child {
+  margin: 0;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-img {
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  width: 92px;
+  height: 92px;
+  text-align: center;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-img a {
+  display: table-cell;
+  width: 91.5px;
+  height: 91.5px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-img a img {
+  max-width: 91.5px;
+  vertical-align: middle;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info {
+  margin-left: 105px;
+  overflow: hidden;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info .product-name {
+  line-height: 14px;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info .product-name a {
+  display: inline;
+  font-size: 13px;
+  color: #000;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info .product-sku {
+  padding-top: 7.5px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ababab;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info .product-price {
+  display: block;
+  padding-top: 5px;
+  font-size: 15px;
+  height: 22px;
+  overflow: hidden;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info .product-price .price {
+  float: left;
+}
+
+.product-lists-box .product-items ul li.product-item .product-item-body .item-info .product-price .num {
+  float: right;
+}
+
+.item-shop-youfei {
+  height: 44px;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 44px;
+  margin: 0 12px;
+  font-size: 14px;
+}
+
+.item-shop-youfei .tips {
+  font-size: 12px;
+  text-align: right;
+  color: #ccc;
+  padding-right: 7.5px;
+}
+
+.item-amount {
+  display: none;
+  height: 44px;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 44px;
+  margin: 0 12px;
+  font-size: 14px;
+}
+
+.item-amount .update-amount {
+  text-align: right;
+  font-size: 0;
+  padding-top: 6.5px;
+}
+
+.item-amount .update-amount span {
+  display: inline-block;
+  background: #f5f5f5;
+  text-align: center;
+  font-size: 0;
+  line-height: 0;
+  height: 30px;
+  float: left;
+  overflow: hidden;
+}
+
+.item-amount .update-amount span.jian {
+  width: 33px;
+  -moz-border-radius-topleft: 1.5px;
+  -moz-border-radius-bottomleft: 1.5px;
+  font-weight: bold;
+  background: url("/_resources/images/xiangqu/jian_32.png") #f5f5f5 no-repeat center center;
+  background-size: 12px;
+}
+
+.item-amount .update-amount span.amount {
+  margin: 0 2px;
+  width: 38.5px;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.item-amount .update-amount span.jia {
+  width: 33px;
+  -moz-border-radius-topright: 1.5px;
+  -moz-border-radius-bottomright: 1.5px;
+  font-weight: bold;
+  background: url("/_resources/images/xiangqu/jia_32.png") #f5f5f5 no-repeat center center;
+  background-size: 12px;
+}
+
+.message-box {
+  height: 44px;
+  width: 295px;
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.message-box div.message-input {
+  overflow: hidden;
+}
+
+.message-box div.message-input input {
+  float: left;
+  display: block;
+  width: 300px;
+  height: 18px;
+  margin-top: 13px;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.message-box input {
+  border: none;
+  font-size: 15px;
+  height: 18px;
+  line-height: 16px;
+  padding: 0;
+  outline: none;
+}
+
+.amount-total-price {
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  margin: 0 12px;
+  font-size: 14px;
+  height: 45px;
+  line-height: 45px;
+}
+
+.amount-total-price span {
+  display: inline;
+  float: right;
+}
+
+.amount-total-price span.product-num {
+  padding-right: 12px;
+}
+
+.amount-total-price span.price {
+  color: #e70000;
+}
+
+.coupon-check-box {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 12px;
+  background: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.coupon-check-box .coupon-title {
+  height: 42.5px;
+  line-height: 42.5px;
+}
+
+.coupon-check-box .coupon-title .text {
+  color: #bebebe;
+}
+
+.coupon-check-box .coupon-title .right-act {
+  display: block;
+  width: 7px;
+  height: 13px;
+  margin-top: 15px;
+  background: url("/_resources/images/xiangqu/right-icon.gif") no-repeat;
+  background-position: 0 0;
+  display: block;
+  background-size: cover;
+}
+
+.coupon-check-box .coupon-title .coupon-num {
+  padding-right: 5px;
+}
+
+.coupon-check-box .total-coupon ul li {
+  height: 42px;
+  line-height: 42px;
+  font-size: 14px;
+  border-top: 1px solid #e5e5e5;
+  color: #000;
+}
+
+.pay-style-box {
+  background: #fff;
+  padding: 10px 12px 47px 12px;
+}
+
+.pay-style-box .cart-titles {
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item.weixin {
+  display: none;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item:first-child {
+  padding-top: 0;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .payment-method-item-img {
+  float: left;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .payment-method-item-img span {
+  display: table-cell;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .payment-method-item-img span img {
+  vertical-align: middle;
+  max-width: 32px;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .payment-method-item-info {
+  float: left;
+  padding-left: 7.5px;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .payment-method-item-info .font-dark-bold {
+  font-size: 14px;
+  line-height: 13px;
+  font-weight: normal;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .payment-method-item-info .font-light {
+  font-size: 13px;
+  padding-top: 5px;
+  line-height: 16px;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .check-status {
+  float: right;
+  width: 18px;
+  height: 18px;
+  margin-top: 7px;
+}
+
+.pay-style-box .payment-method .pay-check-body li.payment-method-item .check-status .img-check {
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cart-total {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 47px;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  overflow: hidden;
+}
+
+.cart-total .sub-box {
+  position: relative;
+  z-index: 10;
+}
+
+.cart-total .price-total {
+  float: left;
+  padding: 0 12px;
+  font-size: 12px;
+  line-height: 47px;
+}
+
+.cart-total .price-total .js-totalFee {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.cart-total .price-total .postage {
+  font-size: 10px;
+}
+
+.cart-total .price-total .postage b {
+  font-weight: normal;
+}
+
+.cart-total .pay-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 110px;
+  height: 47.5px;
+  background: #2e2e2e;
+  color: #fff;
+  font-size: 15px;
+  line-height: 47px;
+  text-align: center;
+}
+
+.cart-total .pay-btn.disabled span {
+  opacity: 0.3;
+}
+
+/**
+ * Created by ziyu on 2016/1/22.
+ */
+.tc-layout {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  display: none;
+  overflow: hidden;
+}
+
+.tc-opacity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.47);
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.tc-my-address-box {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 432px;
+  z-index: 1002;
+}
+
+.tc-address-manage-box {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  background: #fff;
+  z-index: 2000;
+}
+
+.tc-tips {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1003;
+  background: rgba(51, 51, 51, 0.47);
+  overflow: hidden;
+}
+
+.tc-tips .tc-tips-body {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1500;
+  width: 224px;
+  height: 100px;
+  margin-top: -100px;
+  margin-left: -112px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.tc-tips .tc-tips-body .tc-tips-text {
+  font-size: 13px;
+  text-align: center;
+  height: 60px;
+  width: 224px;
+  display: table-cell;
+  vertical-align: middle;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tc-tips .tc-tips-body .tc-tips-btn {
+  height: 40px;
+}
+
+.tc-tips .tc-tips-body .tc-tips-btn span {
+  width: 111.5px;
+  float: left;
+  font-size: 15px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.tc-tips .tc-tips-body .tc-tips-btn span.sure {
+  border-bottom-right-radius: 5px;
+  border-left: 1px solid #e5e5e5;
+}
+
+.tc-cont-title {
+  height: 40px;
+  padding: 0;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+.tc-cont-title span {
+  display: block;
+}
+
+.tc-cont-title .title {
+  float: left;
+  font-size: 14px;
+  line-height: 40px;
+  padding-left: 12px;
+}
+
+.tc-cont-title .close-addresslist {
+  float: right;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  padding-right: 12px;
+  overflow: hidden;
+}
+
+.tc-cont-title .close-addresslist i {
+  float: right;
+  display: block;
+  width: 19px;
+  height: 19px;
+  margin-top: 10.5px;
+  background: url("/_resources/images/xiangqu/closeAddressTc.png") no-repeat center center;
+  background-size: contain;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+.tc-cont-body {
+  background: #f0f0f0;
+}
+
+.tc-cont-body .last-children-zw {
+  height: 46.5px;
+  overflow: hidden;
+}
+
+.tc-cont-body ul li {
+  margin-bottom: 10px;
+  padding: 12px 12px 0 12px;
+  background: #fff;
+}
+
+.tc-cont-body ul li:last-child {
+  margin-bottom: 0;
+}
+
+.tc-cont-body ul li .address-info {
+  position: relative;
+  z-index: 10;
+}
+
+.tc-cont-body ul li .address-info .info-l {
+  float: left;
+  width: 89%;
+  overflow: hidden;
+}
+
+.tc-cont-body ul li .address-info .info-l h3 {
+  font-size: 14px;
+  color: #000;
+}
+
+.tc-cont-body ul li .address-info .info-l h3 em {
+  font-style: normal;
+}
+
+.tc-cont-body ul li .address-info .info-l h3 .phone {
+  float: right;
+}
+
+.tc-cont-body ul li .address-info .info-l .street {
+  padding-top: 2.5px;
+  padding-bottom: 12px;
+  color: #ababab;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.tc-cont-body ul li .address-info .info-l .street span.street-info {
+  font-size: 0;
+}
+
+.tc-cont-body ul li .address-info .info-l .street span.street-info em {
+  font-size: 13px;
+}
+
+.tc-cont-body ul li .address-info .show-addresslist {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 17px;
+  height: 17px;
+  margin-top: -14.5px;
+}
+
+.tc-cont-body ul li .address-info .show-addresslist i {
+  display: none;
+  width: 17px;
+  height: 17px;
+  background: url("/_resources/images/xiangqu/checked_address.png") no-repeat;
+  background-position: 0 0;
+  background-size: contain;
+}
+
+.tc-cont-body ul li .address-info.active .show-addresslist i {
+  display: block;
+}
+
+.tc-cont-body ul li .address-shops {
+  height: 35px;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0;
+}
+
+.tc-cont-body ul li .address-shops span {
+  display: inline-block;
+  float: left;
+  font-size: 13px;
+  line-height: 35px;
+}
+
+.tc-cont-body ul li .address-shops span.edit-current {
+  padding: 0 12px;
+  float: right;
+}
+
+.tc-cont-body ul li .address-shops span.del-current {
+  float: right;
+  padding: 0 15px;
+}
+
+.tc-cont-body ul li .address-shops span.active {
+  color: #ff0000;
+}
+
+.tc-address-btn {
+  background: #2e2e2e;
+  text-align: center;
+  height: 46.5px;
+  line-height: 46.5px;
+  font-size: 17px;
+  overflow: hidden;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1003;
+}
+
+.edit-address-btn {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9998;
+  background: #2e2e2e;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.edit-address-btn span {
+  display: block;
+  width: 100%;
+  height: 46.5px;
+  line-height: 46.5px;
+  text-align: center;
+  font-size: 17px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/**
+ * Created by ziyu on 2016/1/23.
+ */
+.tc-address-manage-box .tc-cont-body {
+  background: #fff;
+}
+
+.form-base-info ul li {
+  padding: 7.5px 12px;
+  margin: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.form-base-info ul li input {
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border-color: #fff;
+  background: #fff;
+}
+
+.street-box {
+  padding: 12px;
+  background: #fff;
+}
+
+.street-box textarea {
+  font-size: 14px;
+  line-height: 20px;
+  width: 100%;
+  height: 65px;
+  border-color: #fff;
+  outline: none;
+}
+
+.set-default {
+  height: 18px;
+  padding: 12px;
+  background: #f0f0f0;
+  overflow: hidden;
+  margin-bottom: 46.5px;
+}
+
+.set-default .check-default {
+  width: 130px;
+}
+
+.set-default .check-default .icon-check-default {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("/_resources/images/xiangqu/check_default.png") no-repeat;
+  background-size: contain;
+  float: left;
+}
+
+.set-default .check-default .default-label {
+  font-size: 12px;
+  padding-left: 5px;
+  line-height: 18px;
+}
+
+.set-default .check-default.active .icon-check-default {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("/_resources/images/xiangqu/checked_default.png") no-repeat;
+  background-size: contain;
+  float: left;
+}
+
+.pdc-box .tc-city-box .city-item {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 5px 12px;
+  position: relative;
+  z-index: 2001;
+}
+
+.pdc-box .tc-city-box .city-item select {
+  width: 100%;
+  height: 30px;
+  font-size: 14px;
+  line-height: 25px;
+  border: none;
+  outline: none;
+}
+
+.pdc-box .tc-city-box .city-item i {
+  display: block;
+  width: 6px;
+  height: 13px;
+  overflow: hidden;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  margin-top: -6.5px;
+  background: url("/_resources/images/xiangqu/select_icon.png") no-repeat;
+  background-position: right center;
+  background-size: contain;
+}
+
+.my-address-box-shop {
+  display: none;
+}
+
+.my-address-box-shop .tc-my-address-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.my-address-box-shop .tc-address-manage-box .tc-cont-body {
+  margin-bottom: 0;
+}
+
+.my-address-box-shop .tc-my-coupon-box {
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  display: none;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul {
+  padding: 0 12px 46.5px 12px;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .discont {
+  width: 30%;
+  height: 60px;
+  float: left;
+  border-right: 1px dashed #ccc;
+  text-align: center;
+  overflow: hidden;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .discont span {
+  font-size: 25px;
+  line-height: 60px;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .discont em {
+  font-size: 30px;
+  line-height: 60px;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .coupon-info {
+  float: left;
+  width: 65%;
+  padding-left: 12px;
+  position: relative;
+  z-index: 30;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .coupon-info .title {
+  font-size: 13px;
+  line-height: 14px;
+  max-height: 30px;
+  overflow: hidden;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .coupon-info .min-price {
+  padding: 2.5px 0;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .coupon-info .min-price, .my-address-box-shop .tc-my-coupon-box ul li .coupon-info .valid-from {
+  font-size: 11px;
+  color: #858585;
+  line-height: 14px;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li .coupon-info .platfrom {
+  display: inline-block;
+  width: auto;
+  position: absolute;
+  padding: 0 2.5px;
+  right: -14px;
+  top: 0;
+  height: 15px;
+  font-size: 9px;
+  background: #ff9292;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.active {
+  background: #2e2e2e;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.active .discont {
+  color: #fff;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.active .coupon-info {
+  color: #fff;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.active .coupon-info .min-price, .my-address-box-shop .tc-my-coupon-box ul li.active .coupon-info .valid-from {
+  color: #fff;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.disabled {
+  background: #e2e2e2;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.disabled .discont {
+  color: #939393;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.disabled .coupon-info {
+  color: #939393;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.disabled .coupon-info .min-price, .my-address-box-shop .tc-my-coupon-box ul li.disabled .coupon-info .valid-from {
+  color: #939393;
+}
+
+.my-address-box-shop .tc-my-coupon-box ul li.disabled .platfrom {
+  background: #939393;
+  color: #fff;
+}

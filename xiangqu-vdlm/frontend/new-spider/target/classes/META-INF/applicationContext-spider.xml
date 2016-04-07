@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true" default-autowire="byName">
+	
+<!-- 	<context:component-scan base-package="com.vdlm"/> -->
+<!-- 	<context:property-placeholder /> -->
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<!-- 设置上传文件的最大尺寸为8MB -->
+			<value>16777216</value>
+		</property>
+	</bean>
+
+	<bean id="ipPools" class="com.vdlm.spider.http.IpPools"
+		init-method="init" destroy-method="destroy" lazy-init="false">
+		<property name="memcachedClient" ref="memcachedClient" />
+	</bean>
+		
+	<!--
+	<bean id="CookieConf" class="com.vdlm.spider.http.CookieConf"
+		init-method="init" destroy-method="destroy" lazy-init="false" />
+   -->
+   
+	<bean id="cookieStoreProvider" class="com.vdlm.spider.http.CookieStoreProvider" />
+		  
+<!-- 	<bean id="httpClientProvider" class="com.vdlm.spider.http.RLHttpClientProvider" -->
+<!-- 		init-method="init" destroy-method="destroy" lazy-init="false">    -->
+<!-- 		<property name="ipPools" ref="ipPools" /> -->
+<!-- 		<property name="cookieStoreProvider" ref="cookieStoreProvider" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="httpClientProvider" class="com.vdlm.spider.http.HttpClientProvider"
+		init-method="init" destroy-method="destroy" lazy-init="false">   
+		<property name="ipPools" ref="ipPools" />
+		<property name="cookieStoreProvider" ref="cookieStoreProvider" />
+	</bean>
+
+<!-- 	<bean id="smsMessageTaskQueue" class="com.vdlm.spider.queue.TaskQueue" -->
+<!-- 		init-method="init" destroy-method="destroy" lazy-init="false"> -->
+<!-- 		<property name="path"> -->
+<!-- 			<value><![CDATA[/ouer/data/fqueue/SmsMessageTask]]></value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="pushMessageTaskQueue" class="com.vdlm.spider.queue.TaskQueue" -->
+<!-- 		init-method="init" destroy-method="destroy" lazy-init="false"> -->
+<!-- 		<property name="path"> -->
+<!-- 			<value><![CDATA[/ouer/data/fqueue/PushMessageTask]]></value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+
+
+<!-- 	<bean class="com.vdlm.spider.task.CheckMessageTask" init-method="init" -->
+<!-- 		destroy-method="destroy" lazy-init="false"> -->
+<!-- 		<property name="fixedDelay" value="30000" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean class="com.vdlm.spider.task.NotifySmsMessageTask" -->
+<!-- 		init-method="init" destroy-method="destroy" lazy-init="false"> -->
+<!-- 		<property name="corePoolSize" value="2" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean class="com.vdlm.spider.task.NotifyPushMessageTask" -->
+<!-- 		init-method="init" destroy-method="destroy" lazy-init="false"> -->
+<!-- 		<property name="corePoolSize" value="2" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean name="memcachedClient" -->
+<!-- 		class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean" -->
+<!-- 		destroy-method="shutdown" lazy-init="false"> -->
+<!-- 		<property name="servers"> -->
+<!-- 			<value>${spider.memcached.servers}</value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean class="com.vdlm.spider.cache.ItemCounters" lazy-init="false"> -->
+<!-- 		<property name="memcachedClient" ref="memcachedClient" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean class="com.vdlm.spider.cache.UrlCounters" lazy-init="false"> -->
+<!-- 		<property name="memcachedClient" ref="memcachedClient" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="spiderDataSource" class="com.alibaba.druid.pool.DruidDataSource" -->
+<!-- 		init-method="init" destroy-method="close" lazy-init="true"> -->
+<!-- 		<property name="url"> -->
+<!-- 			<value><![CDATA[${spider.jdbc.url}]]></value> -->
+<!-- 		</property> -->
+<!-- 		<property name="username" value="${spider.jdbc.username}" /> -->
+<!-- 		<property name="password" value="${spider.jdbc.password}" /> -->
+<!-- 		<property name="maxActive" value="${spider.jdbc.maxActive}" /> -->
+<!-- 		<property name="initialSize" value="1" /> -->
+<!-- 		<property name="maxWait" value="30000" /> -->
+<!-- 		<property name="minIdle" value="1" /> -->
+<!-- 		<property name="timeBetweenEvictionRunsMillis" value="30000" /> -->
+<!-- 		<property name="minEvictableIdleTimeMillis" value="300000" /> -->
+<!-- 		<property name="validationQuery" value="SELECT 'x'" /> -->
+<!-- 		<property name="testWhileIdle" value="true" /> -->
+<!-- 		<property name="testOnBorrow" value="false" /> -->
+<!-- 		<property name="testOnReturn" value="false" /> -->
+<!-- 		<property name="removeAbandoned" value="true" /> -->
+<!-- 		<property name="removeAbandonedTimeout" value="600" /> -->
+<!-- 		<property name="logAbandoned" value="true" /> -->
+<!-- 		<property name="filters" value="stat,config" /> -->
+<!-- 		<property name="connectionProperties" value="config.decrypt=true" /> -->
+<!-- 	</bean> -->
+
+	<bean id="fineGrainTaskProcessor" class="com.vdlm.spider.task.FineGrainTaskProcessor">
+		<property name="taskPoolConfig" value="taskpools.properties" />
+		<property name="taskType" value="DEFAULT" />
+		<property name="shopQueue" ref="shopQueue" />
+		<property name="itemListQueue" ref="itemListQueue" />
+		<property name="itemQueue" ref="itemQueue" />
+		<property name="skuQueue" ref="skuQueue" />
+		<property name="descQueue" ref="descQueue" />
+		<property name="imgQueue" ref="imgQueue" />
+		<property name="wItemQueue" ref="wItemQueue" />
+		<property name="wDescQueue" ref="wDescQueue" />
+	</bean>
+	
+	<bean id="mFineGrainTaskProcessor" class="com.vdlm.spider.task.FineGrainTaskProcessor">
+		<property name="taskPoolConfig" value="m_taskpools.properties" />
+		<property name="taskType" value="MANUALLY" />
+		<property name="shopQueue" ref="mShopQueue" />
+		<property name="itemListQueue" ref="mItemListQueue" />
+		<property name="itemQueue" ref="mItemQueue" />
+		<property name="skuQueue" ref="mSkuQueue" />
+		<property name="descQueue" ref="mDescQueue" />
+		<property name="imgQueue" ref="mImgQueue" />
+		<property name="wItemQueue" ref="mWItemQueue" />
+		<property name="wDescQueue" ref="mWDescQueue" />
+	</bean>
+
+<!-- 	<bean id="spiderDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">   -->
+<!-- 		<property name="minPoolSize" value="${jdbc.minPoolSize}" /> -->
+<!-- 		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" /> -->
+<!-- 		<property name="acquireIncrement" value="${jdbc.acquireIncrement}" /> -->
+<!-- 		<property name="idleConnectionTestPeriod" value="18000" /> -->
+<!-- 		<property name="maxIdleTime" value="25000" /> -->
+<!-- 		<property name="maxStatementsPerConnection" value="10" /> -->
+<!-- 		<property name="maxStatements" value="400" /> -->
+<!-- 		<property name="numHelperThreads" value="5" /> -->
+<!-- 		<property name="preferredTestQuery" value="SELECT @@SQL_MODE" /> -->
+<!-- 		<property name="testConnectionOnCheckin" value="true" /> -->
+<!-- 		<property name="testConnectionOnCheckout" value="false" /> -->
+<!-- 		<property name="driverClass" value="${jdbc.driverClassName}" /> -->
+<!-- 		<property name="jdbcUrl" value="${spider.jdbc.url}" /> -->
+<!-- 		<property name="user" value="${spider.jdbc.username}" /> -->
+<!-- 		<property name="password"> -->
+<!-- 			<value><![CDATA[${spider.jdbc.password}]]></value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<bean id="spiderDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close" lazy-init="true">
+		<property name="url">
+			<value><![CDATA[${spider.jdbc.url}]]></value>
+		</property>
+		<property name="username" value="${spider.jdbc.username}" />
+		<property name="password" value="${spider.jdbc.password}" />
+		<property name="maxActive" value="${spider.jdbc.maxActive}" />
+		<property name="initialSize" value="1" />
+		<property name="maxWait" value="30000" />
+		<property name="minIdle" value="1" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="600" />
+		<property name="logAbandoned" value="true" />
+		<property name="filters" value="stat,config" />
+		<property name="connectionProperties" value="config.decrypt=true" />
+	</bean>
+
+	<bean id="xiangquDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close" lazy-init="true">
+		<property name="url">
+			<value><![CDATA[${xiangqu.jdbc.url}]]></value>
+		</property>
+		<property name="username" value="${xiangqu.jdbc.username}" />
+		<property name="password" value="${xiangqu.jdbc.password}" />
+		<property name="maxActive" value="${xiangqu.jdbc.maxActive}" />
+		<property name="initialSize" value="1" />
+		<property name="maxWait" value="30000" />
+		<property name="minIdle" value="1" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="600" />
+		<property name="logAbandoned" value="true" />
+		<property name="filters" value="stat,config" />
+		<property name="connectionProperties" value="config.decrypt=true" />
+	</bean>
+	
+	<!-- jmx -->
+	<bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean" />
+	
+	<bean id="basisExporter" class="org.springframework.jmx.export.MBeanExporter"
+		lazy-init="false">
+		<property name="beans">
+			<map>
+				<entry key="net.sourceforge.mx4j:name=httpAdaptor" value-ref="httpAdaptor" />
+				<entry key="spider:name=AppInfo" value-ref="appInfo" />
+				<entry key="spider:name=JVMMemory" value-ref="jvmMemory" />
+				<entry key="spider:name=TransactionStatisticer"
+					value-ref="transactionStatisticer" />
+				<entry key="spider:name=ThreadStatisticer" value-ref="threadStatisticer" />
+				<entry key="spider:name=ClassLoadingStatisticer"
+					value-ref="classLoadingStatisticer" />
+				<entry key="spider:name=GCStatisticer" value-ref="gcStatisticer" />
+				<entry key="spider:name=OS" value-ref="OS" />
+				<entry key="spider:name=Runtime" value-ref="runtime" />
+				
+				<entry key="spider:name=ItemTaskStrategy" value-ref="itemTaskStrategy" />
+				<entry key="spider:name=TaskProcessor" value-ref="fineGrainTaskProcessor" />
+				<entry key="spider:name=MTaskProcessor" value-ref="mFineGrainTaskProcessor" />
+				<entry key="spider:name=PTaskProcessor" value-ref="partialTaskProcessor" />
+			</map>
+		</property>
+		<property name="server" ref="mbeanServer" />
+		<property name="assembler">
+			<bean
+				class="org.springframework.jmx.export.assembler.SimpleReflectiveMBeanInfoAssembler" />
+		</property>
+	</bean>
+
+	<bean id="httpAdaptor" class="mx4j.tools.adaptor.http.HttpAdaptor">
+		<property name="processor">
+			<bean id="xsltProcessor" class="mx4j.tools.adaptor.http.XSLTProcessor" />
+		</property>
+		<property name="port" value="${mx4j.http.adaptor.port}" />
+		<property name="host" value="${mx4j.http.adaptor.host}" />
+		<property name="authenticationMethod" value="${mx4j.authentication.method}" />
+	</bean>
+
+	<bean id="mx4jService" class="com.vdlm.common.jmx.MBeanHttpAdaptor"
+		lazy-init="false" init-method="start" destroy-method="stop">
+		<constructor-arg index="0" ref="httpAdaptor"/>    
+    	<constructor-arg index="1" value="${mx4j.authentication.username}"/>
+    	<constructor-arg index="2" value="${login.password}"/>
+	</bean>
+	
+<!-- 	<bean id="rateLimiterProvider" class="com.vdlm.limiter.RateLimiterProvider"></bean> -->
+	
+<!-- 	<bean id="periodicalUpdater" class="com.vdlm.limiter.HourBasedRateLimiter" -->
+<!-- 		lazy-init="false" init-method="initRate"> -->
+<!-- 	</bean> -->
+	
+	<bean id="periodicalUpdaterJob" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<bean
+				class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+				<property name="targetObject" ref="periodicalUpdater" />
+				<property name="targetMethod" value="update" />
+			</bean>
+		</property>
+		<property name="startDelay" value="${update.limiter.job.start.delay}" />
+		<property name="cronExpression" value="${update.limiter.job.cron.expression}" />
+	</bean>
+	
+<!-- 	<bean id="objectConverter" class="com.vdlm.common.protocol.GsonObjectConverter" lazy-init="false"></bean> -->
+</beans>

@@ -1,0 +1,186 @@
+<html data-layout-decorator="/layout/mainPageXQKDWapXiadan">
+<head>
+    <title>确认订单</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+
+    <!--<link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/cart.css?v=1.3}"/>-->
+    <link rel="stylesheet" href="/_resources/css/xiangqu/base.css"/>
+    <!--<link rel="stylesheet" href="/_resources/css/xiangqu/xd_cart.css"/>-->
+    <link rel="stylesheet" href="/_resources/css/scss/my_address.css" />
+</head>
+<body>
+<div class="bg_gray pt1 cart cartShow" data-layout-fragment="content">
+
+
+    <div class="state-show">
+        <form id="order_submit_form" action="/xiangqu/wap/order/submit" method="post" onsubmit="return checkFrom()">
+            <!--优惠券选择 start-->
+            <!--<section class="j_frame_detail">-->
+                <!--<iframe src="" frameborder="0" data-th-src="'/coupon?price=' + ${prices.goodsFee}"></iframe>-->
+            <!--</section>-->
+            <!--优惠券选择 end-->
+            <input type="hidden" name="token" data-th-value="${session.token}"/>
+            <input type="hidden" id="qty" name="qty" value="1"/>
+            <input type="hidden" id="shopId" name="shopId" data-th-value="${shopId}"/>
+            <input type="hidden" id="tuid" name="tuid" data-th-value="${tuid == null ? '' : tuid}"/>
+            <input type="hidden" data-th-each="item : ${cartItems}" name="skuIds" data-th-value="${item.sku.id}"/>
+
+            <!-- 新的收货地址 start -->
+            <section class="J_myAddressLists my-address-lists" data-th-replace="xiangqu/wap/module/my_address">
+                新的收货地址
+            </section>
+            <!-- 新的收货地址 end -->
+
+
+
+
+            <section class="J_home cart-total">
+                <div class="sub-box">
+                    <div class="price-total">
+                        合计：<span class="cart-red">
+                    <b class="js-totalFee" data-th-attr="tag=#{price},data-price=${prices.totalFee},data-goodsFee=${prices.goodsFee}"   data-vd-price="${prices.totalFee}"></b>
+                        </span>
+                        <span class="postage">（含邮费<b  data-th-attr="tag=#{price}" data-vd-price="${prices.logisticsFee}"></b>）
+                        </span>
+                    </div>
+                    <div class="cartPay pay-btn" data-th-attr="data-openurl=${openUrl}" id="payBtn"><span>确认订单</span></div>
+                </div>
+            </section>
+
+            <!-- test-coupons
+                <div data-th-each="coupons:${defaultCoupon}" data-th-if="${#lists.size(defaultCoupon) != 0}">
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.title}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.id}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.discount}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.couponType.name()}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.activity.actCode}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.extCouponId}"/>
+                    <input type="hidden" name="coupons" data-th-value="${coupons.selected}"/>
+                </div>
+            -->
+        </form>
+    </div>
+
+</div>
+<div data-layout-fragment="postScript">
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/plugins/tool.js?v=2"></script>
+    <script type="text/javascript" data-th-src="@{/_resources/js/page/cart.js?v=5}"></script>
+    <script type="text/javascript" data-th-src="@{/_resources/js/xiangqu/cart_pay.js?v=17}"></script>
+    <script type="text/javascript" charset="utf-8"
+            data-th-src="@{/_resources/js/page/paymentSelect.js?t=201408141750}"></script>
+
+
+
+    <script src="/_resources/js/jquery-2.2.0.min.js"></script>
+    <script src="/_resources/js/template.js"></script>
+    <script src="/_resources/js/xiangqu/my_address.js"></script>
+
+    <script src="/_resources/js/xiangqu/my_coupon.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="/_resources/js/xiangqu/wx_order.js"></script>
+
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        $(function(){
+
+
+
+
+            $('body').on('click','#payBtn', function (e) {
+                if (!checkFrom()) {
+                    return;
+                }
+                var _isWeixin = $(this).attr('data-pay');
+
+                if (!$('#payBtn').is('.disabled')) {
+                    $('#payBtn').addClass('disabled').attr('disabled', 'disabled');
+                    if(_isWeixin){
+
+                        getWeixinData(function(rs){
+//                            console.log(rs);
+                            if(rs.code == 200){
+                                _weixinLoginInfo = rs.data;
+                                callPay();
+
+                            }
+
+                        });
+
+                    }else{
+                        setTimeout(function () {
+                            $('#order_submit_form')[0].submit();
+                        }, 30);
+                    }
+
+
+//                    var J_productItem = $('body').find('.product-item-body');
+//                    var url = '';
+//                    if(J_productItem.length > 1){
+//                        url = 'http://m.xiangqu.com'
+//                    }else{
+//                        var _productId = J_productItem.eq(0).find('.J_proHref').attr('data-href');
+//                        url = 'http://dev.www.xiangqu.com:8080/dtl/' + _productId + '.html';
+////                        url = 'http://dev.www.xiangqu.com:8080/product/detail/2209389.html';
+//                    }
+                    var url = $(this).attr('data-openurl');
+
+                    //setState(url,true);
+
+                }
+
+
+
+
+            });
+
+
+
+            function checkFrom() {
+                if ($('#addressId').length == 0 || $('#addressId').val() == '') {
+                    alert('亲，地址不能为空，请添加地址！');
+                    return false;
+                }
+                if ($('#payType').val() == '' || $('img[src="/_resources/images/pay/c_01.png"]').length == 0) {
+                    document.body.scrollTop = $('body').height();
+                    alert("请选择一种付款方式");
+                    return false;
+                }
+                return true;
+            }
+
+//        if (!iswap()) {
+//            //$("#aliPayMethod").remove();
+//        }
+//        else {
+//            //$("#weixinMethod").remove();
+//        }
+        });
+
+//        window.addEventListener("popstate", function(e) {
+//
+//            // Update Content
+//            setState(location.pathname, false);
+//
+//        });
+
+//       function setState(url,addEntry){
+//           $.get(url).done(function(){
+//               if(addEntry == true){
+//                   var stateData = {
+//                       "location":url
+//                   };
+//                   history.replaceState(stateData,null,url);
+//               }
+//           })
+//       }
+
+
+
+        /*]]>*/
+    </script>
+
+</div>
+</body>
+</html>

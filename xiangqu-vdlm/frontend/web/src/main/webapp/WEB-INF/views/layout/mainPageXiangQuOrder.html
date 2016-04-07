@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title data-layout-title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">想去</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/icons.css}" />
+	<link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/vd_base.css?t=20140812}" />
+	<link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/core.css?t=20140801}" />
+	<link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/shop.css?t=201408130646}" />
+    <!--
+	<link rel="stylesheet" type="text/css" data-vd-href="/_resources/css/af.ui.min.css" />
+    -->
+</head>
+<body>
+<div id="afui">
+	<div id="header" data-layout-fragment="header"></div>
+	<div id="content">
+	 	<div id="nav" data-layout-fragment="nav">
+			<!-- <h1>Static content for prototyping purposes only</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+	    </div>
+	    <div id="main" data-layout-fragment="content">
+			<!-- <h1>Static content for prototyping purposes only</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+	    </div>
+	</div>
+	<div data-layout-fragment="footer" data-th-remove="tag"></div>
+	<script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/appframework.min.js}"></script>
+	<script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/vd_base.js}"></script>
+	<script data-layout-fragment="postScript"></script>
+	<script>
+	// <![CDATA[
+		if (!((window.DocumentTouch && document instanceof DocumentTouch)
+				|| 'ontouchstart' in window)) {
+			var script = document.createElement("script");
+			script.src = "/_resources/js/af.desktopBrowsers.js";
+			var tag = $("head").append(script);
+			//$.os.desktop=true;
+		}
+	// ]]>
+	</script>
+</div>
+</body>
+</html>

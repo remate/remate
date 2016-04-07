@@ -1,0 +1,246 @@
+<html data-layout-decorator="/layout/mainPageXQKD">
+
+<head>
+    <title>订单详情</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/cart.css?v=1.2}" />
+    <style>
+    body.callIframe {
+        height: 100%;
+        overflow: hidden;
+    }
+    body.callIframe section {
+        opacity: 0;
+    }
+    pre{
+        line-height: 16px;
+        margin-top: 3px;
+    }
+    body .j_frame_detail {
+        opacity: 1!important;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        z-index: 100000;
+        background: #fff;
+        display: none;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+    }
+    .j_frame_detail iframe {
+        border: none;
+        overflow: auto;
+    }
+    </style>
+</head>
+
+<body class="cart cartOrder bg_gray">
+    <div data-layout-fragment="content">
+        <input type="hidden"  class="j-orderId" data-th-value="${order.id}" />
+        <section class="j_frame_detail">
+        <!-- 
+            <iframe src="" frameborder="0" data-th-src="'/coupon?price=' + ${order.goodsFee}"></iframe>
+         -->
+            <iframe src="" frameborder="0" data-th-src="@{'/coupon'(price=${order.goodsFee},orderNo=${order.orderNo})}"></iframe>
+        </section>
+        <!-- 
+        <a data-th-href="@{'/address/add'(shopId=${shopId},skuId=${skuId})}">
+         -->
+        
+        <form id="order_submit_form" data-th-action="@{/order/pay}" method="post">
+            <section class="cartPannel cartStatus" data-th-text="#{'order.status.' + ${order.status}}">
+            </section>
+            <section class="cartPannel cartAddress pos-r" data-th-if="${authed}">
+                <div class="cartUser pos-r">
+                    <span data-th-text="${order.orderAddress.consignee}">王大远</span>
+                </div>
+                <p data-th-text="${order.addressDetails}">浙江省杭州市西湖区天目山路145号玉泉大厦8楼</p>
+                <p data-th-text="${order.orderAddress.phone}">18324488888</p>
+                <div class="bird pos-a"></div>
+            </section>
+            <section class="cartPannel cartAddress pos-r" data-th-unless="${authed}">
+                <div class="cartUser pos-r">
+                    <span data-th-text="${order.orderAddress.consignee}">王大远</span>
+                </div>
+                <p ><span data-th-text="${#strings.substring(order.orderAddress.phone, 0, 7)}"></span>....</p>
+                <p data-th-href="${'/order/' + order.id + '/verify'}" class="font-dark arrow arrow-right adb" onclick="location.href = this.getAttribute('href')">填写联系方式后四位，查看完整收货人信息</p>
+                <div class="bird pos-a"></div>
+            </section>
+            <section class="cartPannel cartItem">
+                <div class="salerInfo clearfix">
+                    <div class="fl-l">
+                        分享人：<span data-th-text="${order.shopName}"></span>
+                    </div>
+                </div>
+                <!-- item start -->
+                <div class="cartProduct clearfix" data-th-each="orderItem : ${order.orderItems}">
+                    <div class="cartImg fl-l" >
+                        <a data-th-href="${'xiangqu://www.xiangqu.com/product/detail?id=' + orderItem.productId}" data-th-attr="data-href=${orderItem.productId}" class="js-hrefs" target="_blank">
+                            <img data-vd-src="${orderItem.productImg[s03]}" />
+                        </a>
+                        <span></span>
+                    </div>
+                    <div class="cartInfo fl-l js-info">
+                        <div class="productName" ><a data-th-href="${'xiangqu://www.xiangqu.com/product/detail?id=' + orderItem.productId}" data-th-attr="data-href=${orderItem.productId}" class="js-hrefs" data-th-text="${orderItem.productName}">杭州王星记9寸全棕黑纸色礼品扇子高档手绘...</a></div>
+                        <div class="productSku">颜色类型:<span data-th-text="${orderItem.skuStr}">水水水水水水水水是的是的是的</span>
+                        </div>
+                        <div class="productNum">数量:<span data-th-text="${orderItem.amount}">1</span>
+                        </div>
+                    </div>
+                    <div class="cartPriceArea fl-r">
+                        <div class="cartPriceNum"><span data-vd-price="${orderItem.price}">198</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- item end -->
+                <div class="cartTransport clearfix">
+                    <div class="fl-l">邮费</div>
+                    <div class="fl-r"><span data-th-attr="tag=#{price}" data-vd-price="${order.logisticsFee != null} ? ${order.logisticsFee} : 0">6.00</span>
+                    </div>
+                </div>
+                <div class="cartMessage-show clearfix">
+                    <div class="state pos-r">给卖家留言：
+                        <span data-th-if="${order.remark != ''}"  data-th-text="${order.remark}"></span>
+                        <span data-th-if="${order.remark == ''}">没什么想跟卖家讲~</span>
+                    </div>
+                </div>
+                <div class="amountBar clearfix">
+                    <div class="amountPrice">合计：<span class="js-totalFee" data-th-attr="tag=#{price},data-price=${order.totalFee},data-goodsFee=${order.goodsFee}" data-vd-price="${order.totalFee}">198.00</span>
+                    </div>
+                </div>
+            </section>
+            <section class="cartPannel cartFavour" data-th-if="${order.status.name().equals('SUBMITTED')}">
+                <a class="cartFavour-row pos-r js-callframe" href="#youhui">选择优惠方式 <i class="pos-a"></i></a>
+                <div class="cartFavour-link pos-r" data="d">
+                    <ul>
+                        <li data-th-each="coupons:${defaultCoupon}" data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected}" data-th-text="${coupons.activity.title}+'('+ ${coupons.discount} +'元)'"></li>
+                    </ul>
+                </div>
+            </section>
+
+            <input type="hidden" id="orderStatus" data-th-value="${order.status.name()}" />
+            <div data-th-if="${order.status.name().equals('SUBMITTED')}">
+                <section>
+                    <input type="hidden" id="orderId" name="orderId" data-th-value="${order.id}" />
+                    <span data-th-replace="fragments/paymentSelect">支付方式</span>
+                </section>
+                <!--  <section class="bg-grayed p30 ">
+                    <a id="checkout-btn" type="button" class="button bg-orange cart-checkout-btn fz30 font-white ptb30" onclick="checkAndSubmit()"></a>
+                </section> -->
+            </div>
+
+            <section class="cartPannel cartOperate">
+            	<div data-th-if="${order.status.name().equals('PAID') || order.status.name().equals('SHIPPED')}">
+                <a data-th-href="${'/order/refund/toRequest?orderId=' + order.id}" class="cart_btn cart_btn_2" style="display:none">退款申请</a>
+                </div>
+                <div data-th-if="${order.status.name().equals('REFUNDING')}">
+                <a data-th-href="${'/order/refund/' + order.id}" class="cart_btn cart_btn_2" style="display:none">退款申请中</a>
+                </div>
+                <div data-th-if="${order.status.name().equals('SUBMITTED')}">
+                <a href="javascript:;" class="cart_btn cart_btn_1 j-cancle">取消订单</a>
+                <a href="javascript:;" class="cart_btn cart_btn_1" onclick="checkAndSubmit()">付款</a>
+                </div>
+            </section>
+
+            <section class="cartPannel cartOrderStatus">
+                <div class="cartOrderBar">订单信息</div>
+                <p>订单类型：<span data-th-text="#{'order.type.' + ${order.type}}"></span></p>
+                <p>订单编号：<span data-th-text="${order.orderNo}"></span></p>
+                <p>下单时间：<span data-th-text="${#dates.format(order.createdAt, 'yyyy-MM-dd')}"></span></p>
+            </section>
+        </form>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script type="text/javascript" charset="utf-8" src="/_resources/js/plugins/tool.js?v=2"></script>
+        <script type="text/javascript" data-th-src="@{/_resources/js/xiangqu/cart_pay.js?v=17}"></script>
+        <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/paymentSelect.js?t=201408141750}"></script>
+        <script data-th-inline="text">
+        /*<![CDATA[*/
+        var channel = '[[${paymentItem.paymentChannel}]]';
+        var mode = '[[${paymentItem.paymentMode.name()}]]';
+        var agreementId = '[[${paymentItem.agreementId}]]';
+        var bankCode = '[[${paymentItem.bankCode}]]';
+        var bankName = '[[${paymentItem.bankName}]]';
+
+        $(".checkboxImg").removeClass("checked");
+        if (channel == 'PLATFORM') {
+            //平台途径
+            if (agreementId == "" || agreementId == "null") {
+                if (mode == 'ALIPAY') {
+                    $("#payType").val("ALIPAY");
+                    $("#payAgreementId").val("");
+                    $("#bankCode").val("");
+                    $("#cardType").val("");
+                    $("#bankName").val("");
+                    $("#checkboxImg_ALIPAY").addClass("checked");
+                }
+            } else {
+                //协议支付
+                $("#payType").val("UMPAY");
+                $("#payAgreementId").val(agreementId);
+                $("#bankCode").val("");
+                $("#cardType").val("");
+                $("#bankName").val("");
+                $("#checkboxImg_" + agreementId).addClass("checked");
+            }
+        } else if (channel == 'CREDITCARD') {
+            //选中银行
+            $("#payType").val("UMPAY");
+            $("#payAgreementId").val("");
+            $("#bankCode").val(bankCode);
+            $("#cardType").val("CREDITCARD");
+            $("#bankName").val(bankName);
+            $("#creditCardBank").html(bankName);
+            $("#creditCardType").html(channel);
+            $("#checkboxImg_creditCard").addClass("checked");
+        } else if (channel == 'DEBITCARD') {
+            //选中银行
+            $("#payType").val("UMPAY");
+            $("#payAgreementId").val("");
+            $("#bankCode").val(bankCode);
+            $("#cardType").val("DEBITCARD");
+            $("#bankName").val(bankName);
+            $("#creditCardBank").html(bankName);
+            $("#creditCardType").html(channel);
+            $("#checkboxImg_debitCard").addClass("checked");
+        }
+
+        var checkAndSubmit = function() {
+            var type = $("#payType").val();
+            if (type == "" || $('img[src="/_resources/images/pay/c_01.png"]').length == 0) {
+                alert("请选择一类付款方式");
+                return;
+            }
+
+            $("#order_submit_form")[0].submit();
+        };
+
+        var payTypeVal = $("#payType").val();
+        if (!iswap()) {
+        	/*
+            $("#aliPayMethod").remove();
+            if (payTypeVal == "ALIPAY") {
+                $("#payType").val("");
+            }*/
+        } else {
+            $("#weixinMethod").remove();
+            if (payTypeVal == "TENPAY") {
+                $("#payType").val("");
+            }
+        }
+
+        $('.j-cancle').on('click',function(){
+            if(!$(this).hasClass('disabel')){
+                $(this).addClass('disabel');
+                location.href ='/order/' + $('.j-orderId').val() + '/cancel';
+            }
+        });
+
+        /*]]>*/
+        </script>
+    </div>
+</body>
+
+</html>

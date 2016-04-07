@@ -1,0 +1,545 @@
+/*reset*/
+audio,canvas,progress,video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+section{
+	display: block;
+}
+audio:not ([controls] ) {
+    display: none;
+    height: 0;
+}
+/* 1.鍘婚櫎android a/button/input鏍囩琚偣鍑绘椂浜х敓鐨勮竟妗�2.鍘婚櫎ios a鏍囩琚偣鍑绘椂浜х敓鐨勫崐閫忔槑鐏拌壊鑳屾櫙 */
+a,button,input{
+    -webkit-tap-highlight-color:rgba(255,0,0,0)
+};
+
+[hidden],template {
+    display: none;
+}
+body,ul,li,ol,p,h1,h2,h3,h6{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+
+}
+
+ul,li,ol{
+    list-style: none;
+}
+a {
+    background: transparent;
+    text-decoration: none;
+    color:#9a9a9a;
+}
+
+.relative{
+    position: relative;
+}
+
+.centered {
+    text-align: center;
+
+}
+a, button, input {
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+}
+img {
+    width: auto\9;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+/*reset end*/
+
+/*box-flex*/
+.box{
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari銆丱pera 浠ュ強 Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+    width: 100%;
+}
+.flex1{
+    -moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+}
+.flex2{
+    -moz-box-flex:2;
+    -webkit-box-flex:2;
+    box-flex:2;
+}
+.flex8{
+    -moz-box-flex:8;
+    -webkit-box-flex:8;
+    box-flex:8;
+}
+body{
+    font-size: 62.5%;
+}
+.header{ position: relative;margin: 0 auto; overflow: hidden;width: 100%;height: 50px; line-height: 50px; text-align: center; background: #fff;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); font-size: 40px;}
+.header .logo{ margin-top: 7.5px; display: block;}
+.header .back{ position: absolute; left: 0; top:0; width: 22px; height: 25px; overflow: hidden; text-indent: -99em; background: url(../../../_resources/images/xiangqu/widget.png) no-repeat -6px -2px;}
+.header .back:active{ background: url(../images/widget.png) #ccc no-repeat -6px -2px;}
+
+/*鎯冲幓璇︽儏椤�/
+.cart-title{
+    padding: 20px 15px 10px 15px;
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    line-height: auto;
+    font-family:'\5fae\8f6f\96c5\9ed1',"Microsoft YaHei";
+}
+.mb40{
+    margin-bottom: 20px;
+}
+.ptb20{
+    padding:10px 0;
+}
+.cart-next-img{
+    display: block;
+    width: 60px;
+    height:60px;
+    overflow: hidden;
+}
+.cart-next-infor,.pro-title{
+    /*Firefox*/
+    width: -moz-calc(100% - 70px);
+    /*chrome safari*/
+    width: -webkit-calc(100% - 70px);
+    /*Standard */
+    width:calc(100% - 70px);
+    font-family:'\5fae\8f6f\96c5\9ed1',"Microsoft YaHei";
+}
+.cart-next-infor{
+    line-height: normal;
+    margin-left: 10px;
+}
+.ml20{
+    margin-left: 10px;
+}
+.pro-title{
+    display: inline-block;
+    font-size: 11px;
+    color: #888;
+    overflow: hidden;
+    white-space:nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow:ellipsis;
+}
+.pro-title:hover,.pro-title:active{
+    color: #555;
+}
+
+.clearfix {
+    *zoom: 1
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table
+}
+
+.clearfix:after {
+    clear: both
+}
+.fl-l{
+    display: inline-block;
+    float: left;
+}
+.fl-r{
+    display: inline-block;
+    float: right;
+}
+.pt40lr30{
+    padding: 20px 15px 0 15px;
+}
+.ptb40lr30{
+    padding: 20px 15px;
+}
+.pb40{
+    padding-bottom: 20px;
+}
+.bdt, .bdb, .bdl, .bdr, .bd, .bdtb {
+    border-color: #f0eeea;
+    border-style: solid;
+}
+.bdb {
+    border-width: 0 0 1px 0;
+}
+.w80{
+    width: 70%;
+}
+.order-infor,.pro-price{
+    font-size: 12px;
+    color: #888;
+    line-height: 13px;
+
+}
+.order-infor{
+    padding-top: 12.5px;
+}
+.pro-price{
+    padding-top: 10px;
+}
+.pro-right{
+    padding-left: 5px;
+    display: inline-block;
+    color: #000;
+    font-family: helveticaneue;
+    width: -moz-calc(100% - 150px);
+    width: -webkit-calc(100% - 150px);
+    width: calc(100% - 150px);
+    vertical-align: top;
+}
+section{
+    margin: 0;
+    padding: 0;
+}
+.plr30{
+    padding: 0 15px;
+}
+.mt25{
+    margin-top:12.5px;
+}
+.mt30{
+    margin-top : 15px;
+}
+.total-left,.total-right{
+    font-size: 12px;
+    color: #888;
+    font-family:'\5fae\8f6f\96c5\9ed1',"Microsoft YaHei";
+}
+.total-right{
+    padding-left: 5px;
+    color: #000;
+}
+.numEditor {
+    text-align: left;
+    display: inline-block;
+    border: 1px solid #aaa5a0;
+    vertical-align: middle;
+}
+.numEditor .numPlus {
+    background: url("/../_resources/images/productNewIcon03.png") center no-repeat;
+}
+.numEditor .numMinus {
+    background: url("/../_resources/images/productNewIcon02.png") center no-repeat;
+}
+.numEditor button, .numEditor .numed {
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-family: helveticaneue;
+    float: left;
+    border: 0;
+    margin: 0;
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+    vertical-align: middle;
+    background-color: transparent;
+}
+.numEditor .numed {
+    border-style: solid;
+    border-color: #aaa5a0;
+    border-width: 0 1px;
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 15px;
+    font-weight: bold;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: sans-serif;
+}
+.va-m{
+    line-height: 35px;
+    height: 35px;
+    vertical-align: middle;
+}
+.font-red{
+    color: #e3205e;
+    font-weight: bold;
+}
+.total-right span{
+    font-weight: normal;
+}
+.cart-textarea{
+    border: 1px solid #eee;
+    background-color: #fafbfb;
+    color: #000;
+    padding: 10px;
+    font-size: 11px;
+    line-height: 11px;
+    width: 90%;
+    height: 30px;
+
+}
+.pl30{
+	padding:5px 0 0 15px;
+}
+.pay-card{
+	padding-top:5px;
+}
+
+.width10{
+    width:20%;
+}
+.width60{
+    width:60%;
+}
+.width5{
+    width:10%;
+}
+.pay-infor{
+    /*Firefox*/
+    width:-moz-calc(100% - 220px);
+    /*chrome safari*/
+    width:-webkit-calc(100% - 220px);
+    /*Standard */
+    width:calc(100% - 220px);
+    padding:0 20px;
+}
+
+.radioInput{
+	margin-top:12px;
+	display:none;
+}
+.pay-img{
+    width: 50px;
+    height: 35px;
+    overflow: hidden;
+    margin-left: 15px;
+}
+.pay-item{
+    width: 100%;
+    display: table;
+    padding:15px 0;
+}
+.pay-select{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    padding-right: 15px;
+}
+.cart-checkout-btn{
+    display: block;
+    width: 200px;
+    height: 40px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px; 
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height:40px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #000;
+    margin: 30px auto 20px;
+}
+.pt20{
+    padding-top: 10px;
+}
+.ml40{
+    margin-left:55px;
+}
+.fz26{
+    font-size: 13px;
+}
+.fz18{
+    font-size: 9px;
+    color: #888;
+}
+.address{
+    display: table;
+    width: 100%;
+    padding: 15px 0;
+    color: #fff;
+    background-color: #545454;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.address-add{
+    font-size: 11px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+.address-detail{
+    table-layout:fixed; 
+    word-break : break-all; 
+    word-wrap : break-word ;
+    line-height: 12px;
+}
+.address-ico{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+.address-tel{
+    display: block;
+    text-align: right;
+}
+.address-infor{
+    margin: 0 25px 0 15px;
+}
+
+
+
+/*layer*/
+.pos-r{
+    position: relative;
+}
+.detail-page {
+    position: relative;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    filter: alpha(opacity = 60);
+    -moz-opacity: 0.6;
+    -khtml-opacity: 0.6;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    z-index: 9000;
+}
+
+.pro-erweima {
+    position: absolute;
+    width: 380px;
+    height: 646px;
+    top: 10%;
+    left: 50%;
+    margin: 0 0 0 -190px;
+    z-index: 9001;
+}
+
+.layer-close {
+    width: 20px;
+    height:20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.hiddle {
+    overflow: hidden;
+}
+/*add address*/
+select, textarea, input[type="text"], input[type=search], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"], .input-group {
+    /* width: 100%; */
+    height: 20px;
+    padding: 5px;
+    margin-bottom: 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: normal;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+.mb20 {
+    margin-bottom: 1em!important;
+}
+.db {
+    display: block;
+    width: 100%;
+}
+.hiddle {
+    display: none;
+}
+.phone-msg {
+    color: #f36825;
+    font-size: 1em;
+}
+select{
+    -webkit-appearance: listbox;
+}
+.address-submit{
+    position: absolute;
+    top: 25px;
+    right: 5px;
+}
+.cart-address{
+    padding: 0 15px;
+}
+.cart-address form{
+    padding: 15px;
+}
+.cart-address input,.cart-address select,.cart-address textarea{
+    border: 1px solid #eee;
+    background-color: #fafbfb;
+    font-size: 12px;
+    color: #888;
+    padding: 10px;
+    height: 39px;
+    vertical-align: middle;
+}
+
+.cart-address .address-submit{
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    height: auto;
+    top: 11px;
+    cursor: pointer;
+}
+
+.width60 .font-dark-bold{
+    margin-bottom: 5px;
+}
+#showAllBtn{
+    padding-top: 10px;
+}
+.cart-checkout-btn{
+   -webkit-appearance: listitem;
+   -moz-appearance:    button;
+   appearance:         listitem;
+}
+
+.checkImg {display:inline-block;width:10px;height:10px;width:20px\9;height:40px\9;background:url("/../_resources/images/radio_unchecked.png") no-repeat;background-size:100% 100%;}
+.checkImg.checked {background:url("/../_resources/images/radio_checked.png") no-repeat;background-size:100% 100%;}
+/*鏀粯椤甸潰鐨剅adio绉诲埌椤甸潰澶栭儴*/
+.frioc{
+	display:inline-block;
+	font-family:sans-serif;
+	font-size:14px;
+	padding-right:0;
+	margin-right:-10px;
+	color:black;
+}
+.iconew{
+	padding-right: 0px!important;
+}
+.trnew{
+	margin-right:-8px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html layout:decorator="/layout/mainPage">
+<head>
+    <title th:text="${title}"></title>
+</head>
+
+<body id="cart-body" class="as_page">
+    <header class="box header bg-white font-orange-bold" layout:fragment="header">
+        <a id="backButton" class="flex1 back-button arrow-before fz30" th:text="#{Back}">Back</a>
+    </header>
+    <div class="container">
+	    <div th:replace="fragments/alert :: alert (type='danger', message=${errorMessage})">Error: Error</div>
+	    <div th:include="fragments/footer">&copy; 2013 The Static Templates</div>
+    </div>
+    <div>
+    	当前用户：[<strong><span sec:authentication="name">Bob</span></strong>]
+    </div>
+    <div layout:fragment="content" class="mt44" style="text-align:center">
+        <div class="notfound-404" style="margin:20px 0;"></div>
+        <p class="bigger" th:text="${title}"></p>
+        <p th:text="${message}"></p>
+        <p><a href="signin">重新登录</a></p>
+    </div>
+</body>
+</html>

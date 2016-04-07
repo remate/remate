@@ -1,0 +1,42 @@
+<!-- 改价弹窗 begin -->
+<div class="am-modal am-modal-confirm J_rateEditPop" tabindex="-1">
+    <div class="kd-modal-dialog am-modal-dialog">
+        <p class="kd-modal-title">改价</p>
+        <div class="kd-modal-body">
+            <form class="am-form am-form-horizontal kd-form" name="form-rate" id="J_formRate">
+                <div class="am-form-group-sm am-cf">
+                    <label for="J-modal-post" class="am-fl am-form-label l40">邮&nbsp;&nbsp;&nbsp;&nbsp;费 </label>
+                    <div class="am-fl">
+                        <input type="text" name="post" id="J_post" class="modal-post" placeholder="请输入邮费金额"/>
+                    </div>
+                    <label class="am-fl am-form-label am-text-center post-union l40">元</label>
+                </div>
+                <div class="am-form-group-sm  am-cf">
+                    <label for="J-modal-post" class="am-fl am-form-label l40">商品价 </label>
+                    <div class="am-fl">
+                        <input type="text" name="rate" id="J_rate" class="modal-post" placeholder="请输入总价" />
+                    </div>
+                    <label class="am-fl am-form-label am-text-center post-union l40">元</label>
+                </div>
+                <div class="am-form-group-sm am-cf">
+                    <label for="J-modal-post" class="am-fl am-form-label">优惠：</label>
+                    <label class="am-fl am-form-label am-text-center post-union" id="J_discount">￥</label>
+                </div>
+                <div class="am-form-group-sm am-cf">
+                    <label for="J-modal-post" class="am-fl am-form-label">佣金：</label>
+                    <label class="am-fl am-form-label am-text-center post-union" id="J_commission"></label>
+                </div>
+                <div class="am-form-group-sm am-cf mb-20">
+                    <label for="J-modal-post" class="am-fl am-form-label">实收金额：</label>
+                    <label class="am-fl am-form-label am-text-center post-union" id="J_realTotal">￥</label>
+                </div>
+                <input type="hidden" name="orderId" id="J_orderId" value=""/>
+                <div class="modal-footer am-text-center mlr--10">
+                    <button type="submit" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                    <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 改价弹窗 end -->

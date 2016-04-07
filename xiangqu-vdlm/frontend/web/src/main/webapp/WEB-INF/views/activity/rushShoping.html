@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <title>手机号码验证</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+    <META HTTP-EQUIV="expires" CONTENT="0"/>
+    <meta charset="utf-8" />
+	<script type="text/javascript" charset="utf-8" src="/_resources/js/appframework.js"></script>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/rushbuy.css?v=1.2}" />
+	<style>
+		.getcodebtn,.getagain,.postcodebtn{background:#f36825!important;}
+		.postcodebtn{border:#f36825;}
+	</style>
+</head>
+
+<body class="bg-grayed">
+	<section data-layout-fragment="content">
+		<div class="bg-white">
+			<div class="inputbox">
+				<input id="phone" type="text" class="phonenumber" value="手机号码" />
+        		<input type="text" class="identifyingcode" value="验证码" /><span class="getcodebtn">获取验证码</span>
+			<button type="button" class="getagain">重新获取(59s)</button>
+			</div>
+		</div>
+		<button type="button" class="postcodebtn">提交</button>
+	</section>
+<div data-layout-fragment="postScript">
+	<script>
+	$("#phone").bind('blur',function(){
+        var regu =/^[1][3-8][0-9]{9}$/;
+        var re = new RegExp(regu);
+        var phoneobj = $("#phone").val();
+        $(".phone-msg").css("display","none");
+        if (re.test(phoneobj)) {
+        	
+        }else{
+        	$("#phone").val("您填写的手机号不正确");
+        }
+    });
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+/**
+ * Created by ziyu on 2016/1/26.
+ */
+/**
+ * Created by ziyu on 2016/1/20.
+ */
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+em {
+  font-style: normal;
+}
+
+html, body {
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.wap-order-layout {
+  width: 329px;
+  height: 344px;
+  margin: 56px auto 100px auto;
+  background: url("/_resources/images/xiangqu/order_success.png") no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.wap-other-btn-box {
+  padding: 0 54px 40px 54px;
+  font-size: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wap-other-btn-box a {
+  display: inline-block;
+  width: 230px;
+  height: 96px;
+  font-size: 40px;
+  line-height: 96px;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+  text-decoration: none;
+  color: #000;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+
+.wap-other-btn-box a:hover, .wap-other-btn-box a:active, .wap-other-btn-box a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+.wap-other-btn-box a:first-child {
+  float: left;
+}
+
+.wap-other-btn-box a:last-child {
+  float: right;
+}
+
+.wap-success-down-box {
+  background: url("/_resources/images/xiangqu/wap_success_down_bg.png") no-repeat;
+  width: 100%;
+  padding: 34px 0;
+  background-size: cover;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.wap-success-down-box a {
+  display: inline-block;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+
+.wap-success-down-box .wap-log {
+  margin-left: 24px;
+  float: left;
+  width: 268px;
+}
+
+.wap-success-down-box .wap-log img {
+  width: 100%;
+}
+
+.wap-success-down-box .hasapp {
+  margin-right: 24px;
+  width: 272px;
+  float: right;
+  margin-top: 14px;
+}
+
+.wap-success-down-box .hasapp img {
+  width: 100%;
+}
+
+.wap-fave {
+  background: url("/_resources/images/xiangqu/wap_fave.png") no-repeat;
+  height: 86px;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.wap-success-act {
+  width: 100%;
+  padding-bottom: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.wap-success-act img {
+  width: 100%;
+}

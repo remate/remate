@@ -1,0 +1,358 @@
+@import "./cart.less";
+@import "./../module/num.less";
+@import "./../module/addressEditor.less";
+@import "./../module/select.less";
+@import "./../module/cardBank.less";
+
+.temp-numb{
+  color: #c20000;
+  font-family: sans-serif;
+}
+.form-control,.address-input,.address-textarea{
+  font-size: 20px;
+  color: #909090;
+}
+.form-control{
+  height: auto;
+}
+.address-textarea{
+  resize: none;
+}
+
+.cart-vip{
+  margin: 18px 0 12px;
+}
+.cart-vip-list{
+  display: none;
+  font-size: 18px;
+  border: 1px solid #c3c3c3;
+  border-width: 1px 0 0 1px;
+  margin-top: 18px;
+}
+.table{
+  margin-bottom: 0;
+}
+.table>thead>tr>th{
+  padding: 0 0 3px 0;
+}
+.table-center tbody tr .td2{
+  width: 20%;
+  padding-left: 24px;
+}
+.table-center tbody tr .td3{
+  font-family:  sans-serif;
+  padding-left: 80px;
+  width: 18%;
+}
+.table-center tbody tr .td4 {
+  width: 19%;
+  text-align: center;
+  padding-left: 10px;
+}
+.table-center tbody tr .td4 .numEditor{
+  margin-left: 18px; 
+}
+.cart-vip-item{
+  border: 1px solid #c3c3c3;
+  border-width:  0 1px 1px 0;
+  padding: 18px 37px 18px 12px;
+  margin: 0;
+}
+.cart-input{
+  margin: 0 20px 0 36px;
+}
+.cart-vip-em{
+  padding: 0 5px;
+}
+
+.cart-vip3-list{
+  display: none;
+}
+.cart-vip3-list label{
+  display: block;
+  margin-top: 10px;
+  vertical-align: middle;
+
+}
+.cart-vip3-item{
+  padding-left: 20px;
+}
+.cart-error-red{
+  color: #ee4e4e;
+}
+
+.cart-vip-btn{
+  border: 1px solid #d8b53a;
+  color: #d8b53a;
+  padding: 1px 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px; 
+  border-radius: 3px; 
+}
+.cart-vip-btn:hover,.cart-vip-btn:active{
+  color: #d8b53a;
+}
+.cart-vip-name{
+  padding-left: 15px;
+}
+.cart-vip-text{
+  padding-left: 24px;
+}
+.cart-vip-red{
+  color: #9b0000;
+}
+.cart-total-price{
+  display: block;
+  text-align: right;
+  font-size: 24px;
+  padding-right: 40px;
+}
+.cart-total-price span{
+  color: #ae0000;
+}
+.cart-h4{
+  font-size: 20px;
+  margin-top: 66px;
+}
+.table-center tbody tr .td1{
+  padding: 28px 0 28px 16px;
+}
+.cart-operation{
+  margin: 16px 0 20px 0;
+}
+.cart-operation li{
+  text-align: center;
+}
+.cart-operation .td1{
+  width: 38%;
+}
+.cart-operation .td2 {
+  width: 12%;
+}
+.cart-operation .td3 { 
+  width: 22%;
+  padding-left: 10px;
+}
+.table-center tbody tr .td5{
+  font-family: sans-serif;
+  width: 18%;
+  text-align: center;
+}
+.confirm-sku{
+  color: #9f9f9f;
+  font-size: 12px;
+  padding: 10px 10px 0 0;
+  table-layout:fixed;
+  word-break : break-all;
+  word-wrap : break-word ;
+}
+.footer-youfei{
+  position: absolute;
+  right: 310px;
+  bottom: 4px;
+}
+.cart-yhq{
+  text-align: right;
+  font-size: 16px;
+}
+
+.cart-operation .td4 {
+  width: 16%;
+}
+.table-center tbody tr .td7{
+  text-align: center;
+  padding: 0 10px;
+  font-family: sans-serif;
+
+}
+.cart-operation .td6{
+  padding: 0 0 0 42px;
+}
+.cart-yhq-numb{
+  color: #b70000;
+  font-family: sans-serif;
+}
+.cart-yhq-type{
+  padding-left: 8px;
+}
+.pro-link, .pro-link img{
+  width: 120px;
+  height: 120px;
+}
+.footer{
+  margin: 36px 0 20px;
+}
+.cart-message{
+  color: #181818;
+}
+.cart-message-text{
+  width: 274px;
+  margin-left: 18px;
+  padding: 6px 5px 0 5px;
+  resize: none;
+  border: none;
+}
+.cart-message-name{
+  padding: 6px 0 0 20px;
+}
+.shop-owner{
+  color: #000;
+}
+.shop-owner:hover{
+  color: #333;
+}
+.form-fouce{
+  border: 2px dotted #d8b53a;
+  padding: 2px;
+}
+.footer-total{
+  position: absolute;
+  right: 28px;
+  bottom: 4px;
+  padding: 0;
+  margin: 0;
+}
+.cart-pay .cart-h4{
+  margin-top: 30px;
+}
+.cart-pay-infor span{
+  display: block;
+}
+.cart-pay-numb{
+  margin:12px 0 0 20px;
+}
+.cart-pay-img{
+  margin-left: 5px;
+}
+.cart-pay-img,.cart-pay-img img{
+  width: 51px;
+  height: 51px;
+}
+.cart-pay-infor{
+  margin: 5px 0 0 10px;
+}
+.cart-pay-list{
+  margin-top: 10px;
+  margin-left: -42px;
+}
+.cart-pay-name{
+  line-height: normal;
+}
+.radio .cart-pay-choose[type=radio]{
+  display: inline-block;
+  float: left;
+  position: static;
+  margin-top: 18px;
+}
+.cart-pay-item{
+  margin-left: 64px;
+  _width: 230px;
+  _margin-left: 32px;
+  width: 255px;
+}
+.cart-pay-cord{
+  font-size: 12px;
+  color: #fff;
+  background-color: #728ecd;
+  padding: 3px;
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px;
+  margin: 12px 0 0 12px;
+}
+.disabled{
+  color: #888;
+}
+.fn-hiddle{
+  display: none;
+}
+.cart-price{
+  position: relative;
+  height: 135px;
+  margin-top: 64px;
+}
+.cart-price-i{
+  display: block;
+  position: absolute;
+  width: 214px;
+  height: 67px;
+  top: -28px;
+  right: -4px;
+  background: url("../../images/confirm_11.png") no-repeat;
+}
+.cart-price-numb{
+  .temp-numb;
+  font-weight: normal;
+  padding-left: 17px;
+}
+.cart-price-numb #totalFee{
+  padding-left: 5px;
+}
+.cart-price-container{
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 360px;
+  border: 4px solid #000;
+  height: 135px;
+  line-height: 135px;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-border-radius: 15px; 
+  -moz-border-radius: 15px; 
+  border-radius: 15px; 
+}
+.footer-btn{
+  margin-top: 76px;
+}
+.footer-btn #order-btn{
+  display: block;
+//  background:url("../../images/jiesuanbtn.png") no-repeat;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+  border: 4px solid #000;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius:15px;
+  /*box  x阴影  y阴影  10羽化  阴影颜色  */
+  box-shadow: 5px 5px 0 black ;
+  width: 204px;
+  height: 74px;
+  text-decoration: inherit;
+  color: #000;
+  line-height: 72px;
+  vertical-align: middle;
+  text-align: center;
+  float: right;
+}
+
+.card-bg-orange{
+  background-color: #edaa4e;
+}
+
+.cart-card-item{
+  display: inline-block;
+  width: 130px;
+  height: 56px;
+  margin: 10px 0 0 10px;
+}
+.tab-content .tab-pane {
+  display: none;
+  visibility: hidden;
+}
+.tab-content .active {
+  display: block;
+  visibility: visible;
+}
+.card-bank-list.clearfix{
+  _background: #fff !important;
+}
+#creditNotHot .card-bank-item,.card-bank-item {
+  color: #333 !important;
+}
+.card-content-xinyongka,.tab-pane{
+  _background: #fff;
+}
+
+

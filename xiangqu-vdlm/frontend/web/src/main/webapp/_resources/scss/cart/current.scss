@@ -1,0 +1,22 @@
+/**
+ * Created by ziyu on 2016/2/19.
+ */
+@charset "UTF-8";
+$fontFace:Helvetica;
+
+@function px2rem($px) {
+  @return $px/2 + px;
+}
+
+$icon-cartBack:'/_resources/images/cart/cart-back.png';
+$cart-shop-home:'/_resources/images/xiangqu/w_share_user.png';
+$cart-check:'/_resources/images/cart/car-pro-check.png';
+$cart-checked:'/_resources/images/cart/car-pro-checked.png';
+$cart-jian:'/_resources/images/cart/jian.png';
+$cart-jia:'/_resources/images/cart/jia.png';
+$cart-del:'/_resources/images/cart/del.png';
+$bdColor:#e0e0e0;
+@mixin bdmt{
+  border-bottom:1px solid $bdColor;
+  margin-bottom:px2rem(20);
+}

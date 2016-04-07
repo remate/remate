@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+    <meta charset="utf-8" />
+    <title data-th-text="${product.name}">商品名</title>
+    <style>
+
+        .sku_disabled{
+            border: 1px dotted #dedede;
+            color: #888;
+        }
+        .pro-sku-val .sku_disabled:visited,.pro-sku-val .sku_disabled:hover,.pro-sku-val .sku_disabled:active{
+            color: #888;
+            border: 1px dotted #dedede;
+        }
+    </style>
+</head>
+<body>
+<div data-layout-fragment="content">
+    <section data-th-object="${product}" class="lined">
+        <div class="banner-max-height">
+            <img id="prod_img" data-th-alt="*{name}" data-vd-src="*{img}" class="full" />
+        </div>
+        <div class="pt25b30lr40">
+            <h1 id="prod_title" data-th-text="*{name}" class="fz28 font-dark-bold widthhuanh" style=""></h1>
+            <p class="mt30 clearfix">
+                <span id="price" data-price="" class="font-red-bold ff-numb fl-l fz38" data-th-attr="tag=#{price}" data-vd-price="*{price}"></span>
+                <i class="ico-danbao fl-l" data-th-if="${shop.danbao}"><img class="imgmax" data-vd-src="/_resources/images/shop/danbao.png" alt=""/></i>
+                <!--
+                <span class="greight c93 fz24">运费:&yen;15.00</span>
+	                -->
+            </p>
+        </div>
+    </section>
+    <section data-th-object="${product}" class="lined">
+        <form id="addToCartForm" method="POST" action="/cart/buy">
+            <input type="hidden" id="sellerId" name="sellerId" value="shop.ownerId"/>
+            <input type="hidden" id="productId" name="productId" data-th-value="${product.id}"/>
+            <input type="hidden" id="skuId" name="skuId" data-th-value="${product.skus.size() eq 1? product.skus[0].id:''}" />
+            <!--  <div class="lined box ptb30lr40">
+                 <div class="w100 fz30">请选择</div>
+                 <div class="arrow adown k-width9 fz30">型号/数量/款式</div>
+             </div> -->
+            <sku class="js-sku" data-th-each="sku:*{skus}" data-th-attr="data-amount=${sku.amount}, data-price=${sku.price},data-sku-id=${sku.id}, data-spec1=${sku.spec1}, data-spec2=${sku.spec2}, data-spec3=${sku.spec3}, data-spec4=${sku.spec4}, data-spec5=${sku.spec5}" ></sku>
+            <input type="hidden" id="skuId" name="skuId" />
+            <div class="lined box pt10b5 font-dark" data-th-each="mapping,obj:*{skuMappings}" data-th-if="${obj.size gt 0}">
+                <div class="w100 fz30 ml30" data-th-text="${mapping.specName}"></div>
+                <div class="flex1 mr30 pro-sku-val" data-th-attr="mapping_id=${mapping.id}, mapping_key=${mapping.specKey}">
+                    <div class='button fz30 prodOption mb10 ff-numb' data-th-each="value:${mapping.mappingValues}" data-th-attr="numb=${obj.count}" data-th-text="${value}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div data-th-if="*{skus.size() gt 1}" class="lined box ptb20 font-dark">
+                <div class="w100 fz30 ml30">型号</div>
+                <div class="flex1 mr30  xq-button">
+                    <div class="button fz30 prodOption mb10 ff-numb" data-th-each="sku:*{skus}" data-th-if="${sku.amount > 0}" data-th-text="${sku.spec}" data-th-attr="sku_id=${sku.id},sku_amount=${sku.amount},sku_price=${#numbers.formatDecimal(sku.price,1,'COMMA',2,'POINT')}"></div>
+                </div>
+            </div> -->
+            <div class="lined box ptb20 font-dark">
+
+                <div class="fz24 font-light num-em mr20" data-amount="" id="J-amount" data-th-utext="#{inventory.amount(*{amount})}" style="margin-left: -65%;"></div>
+            </div>
+
+        </form>
+    </section>
+    <section class="lined">
+        <img class="full" data-th-each="descImg:${product.imgs}" data-vd-src="${descImg.img}" />
+        <div class="fz26"><p id="prod_desc" class="pro-main-infor ptb30lr40 widthhuanh" data-th-text="${product.description}"></p></div>
+        <div data-th-if="${fragmentStatus}">
+        	<section data-th-each="fragment:${fragmentList}">
+	        	<div class="fz26" data-th-if="${fragment.showModel}">
+	        		<p id="prod_desc" class="pro-main-infor ptb30lr40 widthhuanh" data-th-text="${fragment.description}"></p>
+	        	</div>
+	        	<img class="full" data-th-each="fragmentImage : ${fragment.imgs}" data-vd-src="${fragmentImage.imgUrl}" />
+	        	<div class="fz26" data-th-unless="${fragment.showModel}">
+	        		<p id="prod_desc" class="pro-main-infor ptb30lr40 widthhuanh" data-th-text="${fragment.description}"></p>
+	        	</div>
+        	</section>
+        </div>
+    </section>
+</div>
+
+<div data-layout-fragment="postScript">
+    <script type="text/javascript" data-th-src="@{/_resources/js/page/product.js}"></script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/imgsize.js?t=201408080246}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if($(".pro-infor").length !== 0){
+                var imgObj= $(".js-img-size");
+                var imgWidth= $(".pro-infor");
+                imgSize(imgObj,imgWidth);
+            }
+        })
+
+
+    </script>
+    <script>
+//        $.wxShare($('#prod_title').text(), $('#prod_desc').text(), $('#prod_img')[0].src, location.href);
+        $(document).ready(function(){
+            $(".prodOption").click(function(ev){
+                $(".numInc").attr('th:atrrs',$(ev.target).attr('sku_amount'));
+            })
+        })
+    </script>
+</div>
+</body>
+</html>

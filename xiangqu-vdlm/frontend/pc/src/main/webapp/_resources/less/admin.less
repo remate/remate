@@ -1,0 +1,204 @@
+@import 'variable';
+@font-face {
+  font-family: 'kkkd';
+  src: url('//at.alicdn.com/t/font_1436867082_5687013.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1436867082_5687013.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1436867082_5687013.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1436867082_5687013.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1436867082_5687013.svg#kkkd') format('svg'); /* iOS 4.1- */
+}
+  
+
+.kkkd {
+    font-family: 'kkkd';   
+}
+
+::selection {
+    color: #fff;
+    background-color: @orange;
+}
+
+body {
+    min-width: 1100px;
+    font-size: 1.2rem;
+    color: @black;
+    background-color: #f6f7f8; 
+}
+li{
+    list-style: none;
+}
+body,
+input,
+textarea,
+select,
+button {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: auto;
+}
+textarea{
+    overflow: auto;
+    resize:none;
+}
+
+/* 自定义公共样式 begin */
+.pl-20{
+    padding-left: 20px;
+}
+.pad-0{
+    padding: 0 !important;
+}
+.mr-15{
+    margin-right: 15px;
+}
+.ml-20{
+    margin-left: 20px;
+}
+.ml-50{
+    margin-left: 50px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.mlr--10{
+    margin: 0 -10px !important;
+}
+.tn-l{
+    text-align: left !important;
+}
+.tn-c{
+    text-align: center !important;
+}
+.tn-r{
+    text-align: right !important;
+}
+
+/* 重写文字效果 end */
+
+a {
+    color: #3f76b4;
+    &:hover {
+        color: #0e90d2;
+    }
+}
+
+:focus {
+    outline: none;
+}
+/* 定位 */
+
+.am-pa {
+    position: absolute;
+}
+
+.am-pr {
+    position: relative;
+}
+
+.am-pf {
+    position: fixed;
+}
+/**/
+
+/* rewrite checkbox */
+label.am-checkbox {
+    display: inline-block;
+    margin: 0;
+    text-indent: 0;
+    cursor:pointer;
+    .am-warning input[type="checkbox"]{
+        margin: 0;
+    }
+    span.am-ucheck-icons i.am-icon-unchecked{
+        color: #a4a9ae;
+    }
+}
+.am-checkbox{
+    min-width: 36px;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 0;
+    margin-left: 0;
+    overflow: hidden;
+}
+.icheckbox input{
+    float: none;
+    margin-left: 0;
+}
+/* rewrite checkbox end */
+
+/* IE version begin */
+body{
+    *width:100%;
+    *overflow:hidden;
+}
+.wrap-version-hint{
+    width: 560px;
+    height: 490px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -220px 0 0 -280px;
+    _position: static;
+    _margin:0 auto;
+    p{
+        text-align: center;
+        text-align: center;
+        font-size: 24px;
+        color: #000;
+        img{
+            margin-bottom: 20px;
+        }
+    }
+}
+
+/* 评论星星 begin */
+.mod-score em{
+    font-family: "kkkd";
+    font-style: normal;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    &.solid{
+        color: #f9b700;
+    }
+    &.empty{
+        color: #e9e9e9;
+    }
+}
+
+dt + dd {
+    margin-top: 0;
+}
+/********************* union module **************************/
+
+@import "union/button";
+@import "union/checkbox";
+@import "union/select";
+@import "union/font";
+@import "union/form";
+@import "union/modal";
+@import "union/pannel";
+@import "union/table";
+@import "union/icon";
+@import "union/chosen";
+/********************* union module end**************************/
+
+/********************* biz module **************************/
+/**
+ * 下面把一些公用的业务模块css引入的公共文件里
+ * 业务模块less统一放在biz(bussiness)下面
+ */
+
+@import "biz/kd-header";
+@import "biz/kd-main";
+@import "biz/kd-sidebar";
+@import "biz/kd-search";
+@import "biz/kd-bar";
+@import "biz/kd-set";
+@import "biz/kd-product-show";
+@import "biz/desc-pop";
+@import "biz/desc-table";
+@import "biz/order-table";
+@import "biz/product-table";
+@import "biz/ajax-loading";
+/********************* biz module end **************************/

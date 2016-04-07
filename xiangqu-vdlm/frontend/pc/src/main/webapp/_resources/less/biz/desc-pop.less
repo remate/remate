@@ -1,0 +1,86 @@
+//ie8 下做hack处理
+.ie8 {
+    .desc-pop .am-radio-inline input {
+        position: relative;
+        top: 4px;
+    }
+}
+
+.desc-detail p {
+    display: inline-block;
+}
+
+.desc-pop {
+    width: 490px;
+    margin-left: -490px/2;
+}
+
+.desc-pop .desc-pop-name,
+.desc-pop .desc-pop-info,
+.desc-pop .desc-pop-imgs {
+    width: 360px; 
+}
+
+.desc-pop .desc-pop-info {
+    height: 80px;
+    overflow: auto;
+    resize: none;
+}
+
+.desc-pop-imgs {
+    width: 360px;
+    overflow: hidden;
+}
+
+.desc-pop-imgs-box {
+    width: 370px;
+    margin-bottom: -10px;
+}
+
+.desc-pop-imgs .desc-pop-img {
+    position: relative;
+    z-index: @zindex-desc-pop-img;
+    float: left;
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.desc-pop-imgs img {
+    width: 64px;
+    height: 64px;
+    border: 1px solid @borderColor;
+}
+
+.desc-pop-imgs .desc-pop-img .desc-pop-img-del {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    background-color: @orange;
+    cursor: pointer;
+}
+
+.desc-pop-imgs .desc-pop-add {
+    margin-right: 10px;
+    float: left;
+    width: 64px;
+    height: 64px;
+    background: url(@sprite);
+    cursor: pointer;
+}
+
+.desc-pop .am-ucheck-icons {
+    top: 9px;
+}
+
+.desc-pop .am-radio-inline {
+    line-height: 25px;
+    font-size: 12px;
+}

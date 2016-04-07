@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>小助手管理</title>
+	
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+	    var jsQuery = function() {
+			var params =  $.serializeObject($('#Form'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		
+	 	var jsInsert = function(){
+	 		$('#dvForm').dialog('open');
+	 		$('#hidOpt').val('Insert');
+	 		$('#id').val('');
+	 		
+	 		$('#title').val('');
+	 		$('#intro').val('');
+	 		$('#url').val('');
+	 		$('#icon').val('');
+	 		$("input[name='file']").val('');
+	 		$('#td_opt').show();
+	 		$('#td_show').hide();
+	 	}
+	 	var jsUpdate = function(){
+	 		var row = grid.datagrid('getSelected');
+			if(row == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+	 		$('#dvForm').dialog('open');
+	 		$('#hidOpt').val('Update');
+	 		$('#id').val(row.id);
+	 		
+	 		$('#title').val(row.title);
+	 		$('#intro').val(row.intro);
+	 		$('#url').val(row.url);
+	 		$('#icon').val(row.iconKey);
+	 		$("input[name='file']").val('');
+	 		$('#td_opt').hide();
+	 		$('#td_show').show();
+	 	}
+	 	var jsSubmit = function(){
+	 		if($.trim($('#title').val()) == ''){
+        		alert('标题不能为空！');
+        		return;
+        	}
+	 		
+	 		if($.trim($('#intro').val()) == ''){
+        		alert('说明不能为空！');
+        		return;
+        	}
+	 		
+	 		var filepath = $("input[name='file']").val();
+	        var extStart = filepath.lastIndexOf(".");
+	        var ext = filepath.substring(extStart,filepath.length).toUpperCase();
+	        if(ext != "" && ext != ".BMP" && ext != ".PNG" && ext != ".GIF" && ext != ".JPG" && ext !=".JPEG"){
+	        	alert('上传图标仅限于bmp,png,gif,jpeg,jpg格式!');
+	        	$("input[name='file']").val('');
+    	        return;
+	        }
+	        
+	 		$.messager.confirm('确认', '确认要保存吗?', function(r){
+        		if (r){  
+        			if($("input[name='file']").val() != ''){
+        				$('#FormUpload').submit();        				
+        			}else{
+        				jsOperation();
+        			}
+        		}
+        	});
+	 	}
+	 	var jsOperation = function(){
+	 		var params =  $.serializeObject($('#Form'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			switch ($('#hidOpt').val()){
+				case 'Insert':
+					$.getJSON('helper/insert', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							$('#dvForm').dialog('close');
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+					break;
+				case 'Update':
+					$.getJSON('helper/update', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							$('#dvForm').dialog('close');
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+					break;
+				default:
+					alert('保存失败:操作类型不明');
+					break;
+			}
+	 	}
+		var jsDelete = function(){
+			var row = grid.datagrid('getSelected');
+			if(row == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			$.messager.confirm('确认', '确认要删除该消息吗？', function(r){
+				if (r){
+					var params = {
+						'id' : row.id
+					};
+					$.getJSON('helper/delete', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+				}
+			});
+		}
+		var jsReUpload = function(){
+			$('#td_opt').show();
+	 		$('#td_show').hide();
+		}
+		$(function() {
+			$('#FormUpload').form({
+	    	    onSubmit: function(){
+	    	    	//验证通过，直接上传
+	    	        return true;
+	    	    },
+	    	    success:function(data){
+	    	    	try{
+	    	    		data = $.parseJSON(data);
+	    	    	}catch(e){
+	    	    		alert('图片上传错误，保存失败!');
+	    	    		return false;
+	    	    	}
+	    	    	if(data instanceof Array){
+	    	    		for(var i=0;i<data.length;i++){
+	    	    			var obj=data[i];
+	    	    			$('#icon').val(obj.key);
+	    	    		}
+	    	    		jsOperation();
+	    	    	}else{
+	    	    		alert('图片上传错误，保存失败!');
+	    	    		return false;
+	    	    	}
+	    	    }
+	    	});
+			
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'helper/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '250',
+					title : '标题',
+					align: 'left',
+					field : 'title',
+					formatter: function(value, row, index){
+						if(value.length > 20)
+							return value.substring(0,20)+"...";
+						else
+							return value;
+					}
+				},{
+					width : '250',
+					title : '说明',
+					align: 'left',
+					field : 'intro',
+					formatter: function(value,row,index){
+						if(value.length > 20)
+							return value.substring(0,20)+"...";
+						else
+							return value;
+					}
+				}, {
+					width : '150',
+					title : '图标',
+					align: 'left',
+					field : 'icon',
+					formatter: function(value,row,index){
+						return "<img src='" + row.icon + "' style='width:150px;float:left' />";
+					}
+				}, {
+					width : '300',
+					title : '链接地址',
+					align: 'left',
+					field : 'url',
+					formatter: function(value,row,index){
+						return "<a href='"+row.url+"' target='_blank'>" + value + "</a>";
+					}
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+			
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+		});
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<table>
+			<tr>	
+				<td>			
+				 	<a href="#" class="easyui-menubutton" data-options="menu:'#mm_opt',iconCls:'icon-edit'">操作</a>
+				  	<div id="mm_opt" style="width: 200px;">
+				  		<div data-options="iconCls:'icon-add'" onclick='jsInsert()'>新增</div>
+				  		<div data-options="iconCls:'icon-edit'" onclick='jsUpdate()'>修改</div>
+				  		<div data-options="iconCls:'icon-remove'" onclick='jsDelete()'>删除</div>
+					</div>
+				</td>	
+			</tr>
+		</table>
+	</div>
+	
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+	
+	<div class="easyui-dialog" title="保存小助手" id="dvForm"
+	 	 data-options="closed:true,buttons:[{
+					text:'确定',
+					iconCls:'icon-save',
+					handler:function(){jsSubmit();}
+				}]" style="width:400px;height:310px;padding:30px 10px 10px 10px">
+		<form id="Form">
+			<table>
+	    		<tr>
+	    			<td>标题:</td>
+	    			<td>
+	    				<input id="title" name="title" type="text" style="width: 300px;" maxlength="30" required="required"/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>说明:</td>
+	    			<td>
+	    				<textarea id="intro" name="intro" style="width:300px;height:50px;" maxlength="50" required="required"></textarea>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>URL:</td>
+	    			<td>
+	    				<input id="url" name="url" type="text" style="width: 300px;" />
+	    			</td>
+	    			<td>
+	    				<input id="id" name="id" type="hidden" /> 
+	    				<input id="icon" name="icon" type="hidden" />
+	    				<input id="hidOpt" name="hidOpt" type="hidden" />    
+	    			</td>
+	    		</tr>
+	    	</table>	
+	    </form>
+	    <form id="FormUpload" method="post" enctype="multipart/form-data" action="" th:action="'_f/u?'+${_csrf.parameterName}+'='+${_csrf.token}">
+	    	<table>
+	    		<tr>
+	    			<td>图标：</td>
+	    			<td id="td_opt" style="display:block;">
+	    				<div style="margin:20px;">
+							<input type="file" name="file" style="width:100%;" />
+							<input type="hidden" value="" name="belong" th:value="${belong}"/>
+						</div>
+					</td>
+					<td id="td_show" style="display:none;">
+						<span style="color:green">已上传图标，如需修改图标请重新上传！</span>
+						<a href="#" onclick="jsReUpload();">重新上传</a>
+					</td>
+	    		</tr>
+	    	</table>
+		</form>
+	</div>
+</body>
+</html>

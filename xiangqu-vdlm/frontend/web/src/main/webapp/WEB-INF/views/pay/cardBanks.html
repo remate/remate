@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageNoTitle">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8"/>
+    <title>选择支付银行</title>
+    <style type="text/css">
+        .pt10{
+            padding-top: 0.8em;
+        }
+        .img{
+        	width:40em;
+        }
+	</style>
+</head>
+
+<body class="as_page">
+	<div data-layout-fragment="content" class="mt44 relative">
+		<form id="order_submit_form"  data-th-action="@{/paybank/submit}" method="post">
+	    	<input type="hidden" name="tradeNo" data-th-value="${tradeNo}"/>
+	    	<input type="hidden" name="totalFee" data-th-value="${totalFee}"/>
+	    	<input type="hidden" id="payType" name="payType" value=""/>
+	    	<input type="hidden" id="bankCode" name="bankCode" value=""/>
+	    	<input type="hidden" id="cardType" name="cardType" value=""/>
+		    <input type="hidden" id="bankName" name="bankName" value=""/>
+			
+			<div data-th-each="bankItemsMap : ${bankList}" id="hot" data-th-if="${bankItemsMap.keyName.equals('hot')}" style="display:block;">
+				<div class="pro-list">
+		        	<div class="pro-infor" data-th-each="bank,row:${bankItemsMap.valueList}"  data-th-if="${row.even}">
+		           		<div data-th-onclick="'javascript:selectPayBank(\''+${bank.bankCode}+'\',\''+${bank.cardType}+'\',\''+${bank.paymentMode}+'\',\''+${bank.bankName}+'\');'">
+					    	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+	
+						</div>
+		        	</div>
+		    	</div>
+		    	<div class="pro-list">
+		        	<div class="pro-infor" data-th-each="bank,row:${bankItemsMap.valueList}"  data-th-if="${row.odd}">
+		           		<div data-th-onclick="'javascript:selectPayBank(\''+${bank.bankCode}+'\',\''+${bank.cardType}+'\',\''+${bank.paymentMode}+'\',\''+${bank.bankName}+'\');'">
+					    	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+						</div>
+		        	</div>
+		    	</div>
+			</div>
+			
+			<div id="all" style="display:none">
+				<div class="clearfix" data-th-each="bankItemsMap : ${bankList}" data-th-if="${!bankItemsMap.keyName.equals('hot')}">
+					<h2 class="pro-list2 fl-l" style="Padding-left:20px" data-th-text="${bankItemsMap.keyName}"></h2>
+					<div class="pro-list3 fl-l">
+			        	<div class="pro-infor" data-th-each="bank,row:${bankItemsMap.valueList}">
+			           		<div data-th-onclick="'javascript:selectPayBank(\''+${bank.bankCode}+'\',\''+${bank.cardType}+'\',\''+${bank.paymentMode}+'\',\''+${bank.bankName}+'\');'">
+						    	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+							</div>
+			        	</div>
+			    	</div>
+			    	<!-- 
+			    	<div class="pro-list2 fl-l">
+			        	<div class="pro-infor" data-th-each="bank,row:${bankItemsMap.valueList}"  data-th-if="${row.odd}">
+			           		<div data-th-onclick="'javascript:selectPayBank(\''+${bank.bankCode}+'\',\''+${bank.cardType}+'\',\''+${bank.paymentMode}+'\',\''+${bank.bankName}+'\');'">
+						    	<div class="flex1"><img class="flex1" data-th-src="${bank.img}"/></div>
+							</div>
+			        	</div>
+			    	</div>
+			    	 -->
+				</div>
+			</div>
+		    
+		    <div class="p30" id="showAllBtn" style="display:block">
+		    	<input class="button bg-orange cart-checkout-btn fz30 font-white ptb30" type="button" value="显示所有银行" onclick="showAll()"/>
+		    </div>
+		</form>
+    </div>
+    <div data-layout-fragment="postScript">
+	    <script type="text/javascript" charset="utf-8" data-th-inline="text">
+			
+			var selectPayBank = function(bankCode, cardType, payType, bankName){
+				$("#bankCode").val(bankCode);
+				$("#cardType").val(cardType);
+				$("#payType").val("UMPAY");//payType
+				$("#bankName").val(bankName);
+				$("#order_submit_form")[0].submit();
+			};
+			
+			var showAll = function(){
+				$("#hot").css('display','none');
+				$("#all").css('display','block');
+				$("#showAllBtn").css('display','none');
+			}
+	    </script>
+	</div>
+	
+</body>   
+</html>

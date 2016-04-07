@@ -1,0 +1,105 @@
+﻿[name]
+prop = name
+tag = h3
+attrs-name = class
+attrs-value = tb-main-title
+;取值
+extract-attr = strText.all
+
+[price]
+prop = price
+tag = em
+attrs-name = class
+attrs-value = tb-rmb-num
+;取值
+extract-attr = strText
+
+[img]
+prop = img
+tag = div
+attrs-name = class
+attrs-value = tb-pic tb-s50
+
+[img-extract]
+tag = img
+attrs-name = data-src
+attrs-value =
+;取值
+extract-attr = data-src
+
+[sku-type]
+prop = sku-type
+tag = ul
+attrs-name = data-property
+attrs-value =
+;取值
+extract-attr = data-property
+
+[sku-value]
+prop = sku-value
+is-child = true
+tag = li
+attrs-name = data-value
+attrs-value =
+;取值
+extract-attr = data-value
+
+[sku-text]
+prop = sku-text
+is-child = true
+tag = span
+attrs-name = 
+attrs-value =
+;取值
+extract-attr = strText
+
+[sku-img]
+prop = sku-img
+is-child = true
+tag = a
+attrs-name = style
+attrs-value =
+;取值
+extract-attr = style
+
+[title]
+prop = title
+tag = title
+attrs-name = 
+attrs-value =
+;取值
+extract-attr = strText
+
+[sold-out]
+prop = sold-out
+tag = p
+attrs-name = class
+attrs-value = tb-hint
+;取值
+extract-attr = strText
+
+[not-found]
+prop = not-found
+tag = div
+attrs-name = class
+attrs-value = error-notice-text
+;取值
+extract-attr = strText
+
+[shop-id]
+prop = shop-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = shopId=,;
+
+[user-id]
+prop = user-id
+tag = meta
+attrs-name = name
+attrs-value = microscope-data
+;取值
+extract-attr = content
+extract-kw = userid=,;

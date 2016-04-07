@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>商品管理</title>
+	
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+		var jsQuery = function() {
+			$(':text').each(function(){
+			    $(this).val($.trim($(this).val()));
+			  });
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		
+		var jsDelete = function(){
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				alert("请至少选择一行数据!");  
+				return;  
+			}
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	sIds += id + ',';  
+            } 
+			$.messager.confirm('请确认', '确认要执行删除操作吗？', function(r){
+				if (r){
+					var params = {
+						'ids' : sIds.substring(0,sIds.length-1)
+					};
+					$.messager.progress();
+					$.getJSON('product/delete', params, function(data) {
+						$.messager.progress('close');
+						if(data){
+							$.messager.show({
+								title:'提示',
+								msg:'删除成功'
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('提示','删除失败!','error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}
+			});
+		}
+		
+		var jsUnDelete = function(){
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				alert("请至少选择一行数据!");  
+				return;  
+			}
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	sIds += id + ',';  
+            } 			
+			$.messager.confirm('请确认', '确认要执行恢复操作吗？', function(r){
+				if (r){
+					var params = {
+						'ids' : sIds.substring(0,sIds.length-1)
+					};
+					$.messager.progress();
+					$.getJSON('product/undelete', params, function(data) {
+						$.messager.progress('close');
+						if(data){
+							$.messager.show({
+								title:'提示',
+								msg:'恢复成功'
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('提示','恢复失败!','error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}				
+			});
+		}
+		
+		
+		var jsView = function(id) {
+			var szUrl = 'product/view/' + id;
+			var dialog = commonDialog({
+				title : '查看商品信息',
+				maximizable : true,
+				content : '<iframe frameborder="0" src="' + szUrl + '" style="width:100%;height:100%;"></iframe>'
+			});
+		};
+		
+		var jsInstock = function(){
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				alert("请至少选择一行数据!");  
+				return;  
+			}
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	sIds += id + ',';  
+            } 
+			$.messager.confirm('确认', '确认要执行下架操作吗？', function(r){
+				if (r){
+					var params = {
+						'ids' : sIds.substring(0,sIds.length-1)
+					};
+					$.getJSON('product/instock', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}
+			});
+		}
+		
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'product/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : false,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					field : 'imgUrl',
+					width : '150',
+					title : '图片',
+					formatter: function(value,row,index){
+						return "<img src='" + row.img + "' style='width:150px;float:left' onclick='jsView(\""+row.id+"\")'/>";
+					}
+				},{
+					width : '150',
+					title : '产品名称',
+					field : 'name'
+					/* ,
+					formatter: function(value,row,index){
+						return "<a href='javascript:void(0);' onclick='jsView(\""+row.id+"\")'>" + value + "</a>";
+					} */
+					,
+					formatter: function(value,row,index){
+						return "<a href='redirectProductView/"+row.id+"' target='_blank'>" + value + "</a>";
+					}
+				},{
+					width : '130',
+					title : '店铺名称',
+					field : 'shopName'
+				},{
+					width : '80',
+					title : '店主电话',
+					field : 'phone'
+				}, {
+					width : '60',
+					title : '商品状态',
+					field : 'status'
+				}, {
+					width : '60',
+					title : '价格',
+					align: 'right',
+					field : 'price'
+				}, {
+					width : '60',
+					align: 'right',
+					title : '佣金比例',
+					field : 'commissionRate',
+					formatter: function(value,row,index){
+						if(value == null || value == '')	return '';
+					    var d = parseFloat(value);
+					    return d*100+'%';
+					}
+				}, {
+					width : '60',
+					title : '库存',
+					align: 'right',
+					field : 'amount'
+				}, {
+					width : '60',
+					title : '销量',
+					align: 'right',
+					field : 'sales'
+				},{
+					width : '120',
+					title : '创建时间', 
+					field : 'createdAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm');
+					}
+				}, {
+					width : '120',
+					title : '更新时间',
+					field : 'updatedAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm');
+					}
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+		});
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm">
+		<table>
+			<tr>
+				<td style="width: 60px; text-align: right;">商品名称</td>
+				<td><input type="text" id="product_name_kwd"  name="product_name_kwd" placeholder="商品名称查询条件" style="width:110px;" required="required"/></td>
+				<td style="width: 60px; text-align: right;">店铺名称</td>
+				<td><input type="text" id="shop_name_kwd"  name="shop_name_kwd" placeholder="店铺名字查询条件" style="width:110px;" required="required"/></td>
+				<td style="width: 60px; text-align: right;">商品状态</td>
+				<td style="width: 60px;">
+					<select name="product_status_kwd">
+						<option value="">全部</option>
+						<option value="DRAFT">DRAFT</option>
+						<option value="FORSALE">FORSALE</option>
+						<option value="ONSALE">ONSALE</option>
+						<option value="INSTOCK">INSTOCK</option>
+					</select>
+				</td>	
+				<td style="width: 80px; text-align: right;">商品删除状态</td>
+				<td style="width: 60px;">
+					<select name="archive_kwd">
+						<option value="0">正常</option>
+						<option value="1">已删除</option>
+					</select>
+				</td>		
+				<td style="width: 100px; text-align: right;"><input type="checkbox" id="contain_closed_shop_kwd" name="contain_closed_shop_kwd"/><label for='contain_closed_shop_kwd'>包含封店商品</label></td>
+			</tr>
+			<tr>
+				<td style="width: 80px; text-align: right;">创建时间</td>
+				<td colspan="8">
+					<input id="created1_kwd" name="created1_kwd" type="text" style="width:90px;" class="easyui-datebox" editable="false" />
+					-
+					<input id="created2_kwd" name="created2_kwd" type="text" style="width:90px;" class="easyui-datebox" editable="false" />
+					&nbsp;更新时间
+					<input id="updated1_kwd" name="updated1_kwd" type="text" style="width:90px;" class="easyui-datebox" editable="false" />
+					-
+					<input id="updated2_kwd" name="updated2_kwd" type="text" style="width:90px;" class="easyui-datebox" editable="false" />
+					<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+					onclick="jsQuery()" style="margin-left: 40px;">查询</a>
+					<div class="datagrid-btn-separator"></div>
+					<a href="#" class="easyui-menubutton" data-options="menu:'#mm_edit',iconCls:'icon-edit'">操作</a>
+					<div id="mm_edit" style="width: 115px;">
+						<div data-options="iconCls:'icon-remove'" onclick='jsDelete()'>批量删除</div>
+					  	<div data-options="iconCls:'icon-undo'" onclick='jsUnDelete()'>批量删除恢复</div>
+					  	<div data-options="iconCls:'ext_cancel'" onclick='jsInstock()'>批量下架</div>
+					  	<!-- 
+						<div>修改</div>
+					  	 -->
+					</div>
+				</td>	
+			</tr>
+		</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		<!-- 
+		 <thead>
+			<tr>
+			<th data-options="field:'code'">Code</th>
+			<th data-options="field:'name'">Name</th>
+			<th data-options="field:'price'">Price</th>
+			</tr>
+			</thead>
+		-->
+		</table>
+	</div>
+</body>
+</html>

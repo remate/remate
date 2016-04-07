@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQPC">
+
+<head>
+    <title>买家退款</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/refund.css?v=1}" />
+</head>
+
+<body class="as_page refund_bg">
+    <div data-layout-fragment="content" class="contain">
+        <span data-th-replace="fragments/pc_refund_step::pc_refund_step(step=1,style=2)">第几步以及几个步骤</span>
+
+        <div class="refund_box">
+            <div class="refund_title">
+                <em></em>
+                <div class="txt">申请服务:</div>
+                <select name="" id="">
+                    <option value=""></option>
+                </select>
+                <div class="txt nowState"></div>
+            </div>
+            <input type="hidden" id="getorderId" data-th-attr="value=${order.id} , data-fee=${order.totalFee} , data-logisticsfee=${order.logisticsFee},data-refundmax=${order.refundableFee}" />
+            <input type="hidden" id="getorderInfo" data-th-attr="data-orderid=${orderRefund.orderId} , data-reason=${orderRefund.refundReason} ,data-fee=${orderRefund.refundFee} ,data-memo=${orderRefund.refundMemo} "  />
+            <ul class="process_1">
+            	<li>
+            		<label for="refund_reason"></label>
+            		<select class="refund_reason" name="refund_reason">
+            			<option>请选择退款原因</option>
+            			<option data-th-each="reason : ${refundReasons}" data-th-attr="selected=${reason.key eq (orderRefund==null?'':orderRefund.refundReason)}" data-th-value="${reason.key}" data-th-text="${reason.value}"></option>
+            		</select>
+            	</li>
+            	<li class="refund_get_box">
+            		<label for="refund_price">是否已收到货：</label>
+            		<select class="refund_get" name="refund_get">
+            			<option>请选择是否已收到货</option>
+							<option value="1" >已收到货</option>
+							<option value="0" >未收到货</option>
+            		</select>
+            	</li>
+            	
+            	<li class="price_box" data-th-if="${orderRefund.refundFee==null}">
+            		<label for="refund_price">退款方式：</label>
+            		<select class="refund_style" name="refund_style">
+							<option value="0" >全额退款</option>
+							<option value="1" >部分退款</option>
+            		</select>
+            	</li>
+            	
+            	<li class="price_box" data-th-if="${orderRefund.refundFee==null}">
+            		<label for="refund_price">退款金额：</label>
+            		<input type="text"  readonly="readonly" name="refund_price" data-th-value="${orderRefund.refundFee==null?order.refundableFee:orderRefund.refundFee}"/> 元 （最多<b></b>元，包含发货邮费<b class="post"></b>元）
+            	</li>
+            	
+            	<li class="price_box" data-th-if="${orderRefund.refundFee!=null}" >
+            		<label for="refund_price">退款金额：</label>
+            		<input type="text" name="refund_price" data-th-value="${orderRefund.refundFee==null?order.refundableFee:orderRefund.refundFee}"/> 元 （最多<b></b>元，包含发货邮费<b class="post"></b>元）
+            	</li>
+            	
+            	<li>
+            		<label for="refund_explain">说明：</label>
+            		<textarea name="refund_explain"></textarea>
+            	</li>
+            	<li>
+            		<button type="button">提交申请</button> 
+            		<a href="javascript:;" class="returnbtn">&nbsp;取消并返回</a>
+            	</li>
+            </ul>
+            
+            
+            <ul class="process_2">
+            	<li>
+            		<span class="labelspan" name="reasonlable">退款原因：</span>
+            		<span class="reason"></span>
+            	</li>
+            	<li class="price_box">
+            		<span class="labelspan">退款金额：</span>
+            		<span><span class="request_price"></span>元（最多<b></b>元，包含发货邮费<b class="post"></b>元）</span>
+            	</li>
+            	<li>
+            		<span class="labelspan">说明：</span>
+            		<span class="explain"></span>
+            	</li>
+            	<li>
+            		<button class="revisebtn" type="button">修改申请</button> 
+            		<a href="javascript:;" class="returnToTemp1" data-th-attr="data-uri=${xiangquWebSite}">&nbsp;取消并返回</a>
+            	</li>
+            </ul>
+        </div>
+        <span data-th-replace="fragments/pc_refund_introduce">介绍部分</span>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        	jsArr.push('/resources/dist/kdweb/0.0.1/js/page/request.js');
+        </script>
+    </div>
+</body>
+
+</html>

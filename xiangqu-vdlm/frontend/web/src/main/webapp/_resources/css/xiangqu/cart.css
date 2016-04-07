@@ -1,0 +1,514 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+}
+
+a {
+    color: #000
+}
+
+.bg_gray {
+    background: #eee
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.none {
+    display: none
+}
+
+.hide {
+    visibility: hidden
+}
+
+.spriteImg {
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px
+}
+
+.icon-address {
+    width: 10px;
+    height: 12px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -11px 0
+}
+
+.icon-edit {
+    width: 10px;
+    height: 10px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px
+}
+
+.icon-bird {
+    width: 40px;
+    height: 29px;
+    background: url('/_resources/images/xiangqu/icon-bird.png') no-repeat;
+    background-size: 40px 29px
+}
+
+.icon-user {
+    width: 9px;
+    height: 10px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -23px 0
+}
+
+.icon-arrow-r {
+    width: 6px;
+    height: 9px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -38px 0
+}
+
+.cart_btn {
+    height: 28px;
+    line-height: 30px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 0 12px;
+    display: inline-block;
+    border-radius: 3px;
+    margin-left: 10px
+}
+
+.cart_btn.cart_btn_1 {
+    border-color: #333;
+    color: #333
+}
+
+.cart_btn.cart_btn_2 {
+    border-color: #d6a41d;
+    color: #d6a41d
+}
+
+.pt1 {
+    padding-top: 1px
+}
+
+.cartPannel {
+    padding: 0 14px;
+    margin: 12px auto;
+    border-bottom: 1px solid #dcdcdc;
+    background: #fff
+}
+
+.cart-red {
+    color: #c20000
+}
+
+.cart {
+    padding: 1px 0
+}
+
+.cart .numEditor {
+    border: 1px solid #a2a2a2;
+    border-radius: 2px
+}
+
+.cart .numEditor button {
+    width: 30px;
+    background-size: 50%
+}
+
+.cart .numEditor button,.cart .numEditor input {
+    height: 23px;
+    line-height: 23px
+}
+
+.cart .numEditor .numed {
+    border-color: #a2a2a2
+}
+
+.cart .cartDelete {
+    width: 44px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    color: #d8b53a;
+    border: 1px solid #d8b53a;
+    border-radius: 2px;
+    text-align: center
+}
+
+.cart .salerInfo {
+    padding: 11px 0 0;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    border-bottom: 1px solid #000
+}
+
+.cart .salerInfo .operation {
+    width: 45px;
+    position: relative;
+    right: -15px;
+    height: 100%
+}
+
+.cart .salerInfo .operation .done {
+    text-indent: 5px
+}
+
+.cart .salerInfo .operation .todo {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    top: 5px;
+    right: 15px
+}
+
+.cart .cartProduct {
+    border-bottom: 1px solid #dcdcdc;
+    padding: 12px 0;
+    width: 100%;
+    overflow: hidden;
+    opacity: 1
+}
+
+.cart .cartProduct:last-of-type {
+    border-bottom: 0
+}
+
+.cart .cartProduct .cartImg {
+    width: 64px;
+    height: 64px;
+    font-size: 0;
+    text-align: center;
+    overflow: hidden;
+    margin-right: 10px
+}
+
+.cart .cartProduct .cartImg a {
+    display: block
+}
+
+.cart .cartProduct .cartImg span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+.cart .cartProduct .cartImg img {
+    vertical-align: middle;
+    max-width: 64px;
+    max-height: 64px
+}
+
+.cart .cartProduct .changeType .changeNum {
+    margin-bottom: 9px
+}
+
+.cart .cartProduct .changeType .changeSku {
+    height: 28px;
+    line-height: 28px;
+    width: 101px
+}
+
+.cart .cartProduct .changeType .changeSku select {
+    width: 98px;
+    display: block;
+    height: 28px;
+    padding: 0;
+    border-radius: 2px;
+    text-indent: 6px
+}
+
+.cart .cartInfo {
+    width: 145px;
+    font-size: 10px;
+    line-height: 12px;
+    word-break: break-all;
+    margin-top: 2px
+}
+
+.cart .cartInfo .productName a {
+    color: #000
+}
+
+.cart .cartInfo .productSku,.cart .cartInfo .productNum {
+    color: #989898
+}
+
+.cart .cartInfo .productNum {
+    margin-top: 3px
+}
+
+.cart .cartPriceArea {
+    height: 100%;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+    min-height: 64px;
+    font-size: 11px;
+    line-height: 12px;
+    min-width: 46px
+}
+
+.cart .cartPriceArea .cartPriceNum {
+    margin-bottom: 4px
+}
+
+.cart .cartTransport {
+    height: 36px;
+    line-height: 36px;
+    color: #989898;
+    border-bottom: 1px solid #dcdcdc
+}
+
+.cart .cartMessage {
+    line-height: 36px;
+    height: 36px
+}
+
+.cart .cartMessage .cartMessage-box {
+    margin-left: 84px
+}
+
+.cart .cartMessage .cartMessage-ipt {
+    display: block;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    border: 0;
+    font-size: 12px
+}
+
+.cart .cartMessage .cartMessage-info {
+    padding-top: 10px;
+    line-height: 16px
+}
+
+.cart .cartMessage .state {
+    height: 36px;
+    text-indent: 14px
+}
+
+.cart .cartMessage .state:before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 10px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -23px 0;
+    left: 0;
+    top: 12px
+}
+
+.cart .cartMessage-show {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dcdcdc
+}
+
+.cart .cartMessage-show .state {
+    line-height: 16px;
+    padding-top: 10px;
+    text-indent: 14px
+}
+
+.cart .cartMessage-show .state:before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 10px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -23px 0;
+    left: 0;
+    top: 12px
+}
+
+.cart .amountBar {
+    height: 38px;
+    line-height: 38px;
+    text-align: right
+}
+
+.cart .amountBar .amountBarNum {
+    display: inline-block;
+    margin-right: 13px
+}
+
+.cart .amountBar .amountBarNum span {
+    padding: 0 2px
+}
+
+.cart .amountBar .amountPrice {
+    display: inline-block
+}
+
+.cart .cartTotal {
+    height: 54px;
+    line-height: 54px;
+    font-size: 12px
+}
+
+.cart .cartTotal .cartPay {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+    border: 1px solid #d8b53a;
+    color: #d8b53a;
+    top: 11px;
+    right: 15px;
+    border-radius: 2px;
+    font-size: 12px
+}
+
+.cart .cartFavour {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #363636
+}
+
+.cart .cartFavour .cartFavour-row {
+    display: block;
+    line-height: 30px;
+    border-bottom: 1px solid #dcdcdc
+}
+
+.cart .cartFavour .cartFavour-row i {
+    width: 6px;
+    height: 9px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -38px 0;
+    right: 0;
+    top: 12px
+}
+
+.cart .cartFavour .cartFavour-link {
+    color: #363636;
+    display: block
+}
+
+.cart .cartFavour .cartFavour-link li {
+    line-height: 30px
+}
+
+.cartAddress {
+    padding-top: 15px;
+    padding-bottom: 6px;
+    margin: 0 auto 25px;
+    color: #2f2f2f;
+    line-height: 18px;
+    font-size: 12px;
+    border-bottom: 1px solid #000
+}
+
+.cartAddress .cartUser {
+    text-indent: 16px;
+    margin-bottom: 2px
+}
+
+.cartAddress .cartUser:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    background-position: -11px 0;
+    left: 0;
+    top: 2px
+}
+
+.cartAddress .cartUser .js-editAddress {
+    width: 60px;
+    height: 30px;
+    right: -15px;
+    top: 2px
+}
+
+.cartAddress .cartUser .js-editAddress b {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: url('/_resources/images/xiangqu/cartSprite.png?v=1') no-repeat;
+    background-size: 50px 50px;
+    right: 15px;
+    top: 0
+}
+
+.cartAddress p {
+    text-indent: 16px
+}
+
+.cartAddress .bird {
+    width: 40px;
+    height: 29px;
+    background: url('/_resources/images/xiangqu/icon-bird.png') no-repeat;
+    background-size: 40px 29px;
+    right: 23px;
+    bottom: -14px
+}
+
+.cartShow .cartPriceArea {
+    -webkit-box-align: end
+}
+
+.cartStatus {
+    margin: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    color: #d6a41d;
+    border-bottom: 1px solid #dcdcdc
+}
+
+.cartOperate {
+    height: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: right
+}
+
+.cartOrderStatus {
+    padding-bottom: 13px
+}
+
+.cartOrderStatus .cartOrderBar {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 13px
+}
+
+.cartOrderStatus p {
+    font-size: 12px;
+    color: #333;
+    line-height: 15px
+}
+
+#afui .bg_gray{
+    padding-bottom: 60px;
+}
+
+#afui .cartTotal{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      margin: 0;
+      background: #fff;
+}
+.cart .salerInfo,.cart .cartMessage .state,.cart .cartFavour .cartFavour-row{
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<a data-th-href="'/p/'+${prod.id}" data-th-fragment="card(prod)" class="block-border">
+        <!--<img  class="js-img-size" style="text-align: center;width: 100%;" data-th-attr="imgWidth=${prod.imgWidth},imgHeight=${prod.imgHeight}" data-vd-src="${prod.img}" data-th-alt="${prod.name}"/>-->
+		<img class="js-img-size full" data-th-attr="imgWidth=${prod.imgWidth},imgHeight=${prod.imgHeight}" data-vd-src="${prod.img}" data-th-alt="${prod.name}" />
+		<div class="pro-information">
+			<p class="smaller pro-name long-txt" data-th-text="${prod.name}" />
+			<p class="smaller pro-price" data-vd-price="${prod.price}" />
+		</div>
+	</a>
+</body>
+</html>
+

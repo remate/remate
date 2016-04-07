@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>同步管理</title>
+	
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+		var jsQuery = function() {
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			if(grid.datagrid('getSelections').length != 0){
+				grid.datagrid('clearSelections');
+			}
+			grid.datagrid('load', params);
+		};
+		
+		var jsNew = function() {
+			var szUrl = 'sync/toStart';
+			var dialog = commonDialog({
+				title : '添加同步店铺',
+				width : 500,
+				height: 200,
+				content : '<iframe frameborder="0" src="' + szUrl + '" style="width:100%;height:100%;"></iframe>'
+			});
+		};
+		
+		var jsAuditPss = function() {
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				parent.$.messager.alert('提示','请选择要审核的店铺!','info');
+				return;  
+			} else {
+				var sIds = '';  
+				for (var i = 0; i < selRows.length; i++) {  
+	            	var id = selRows[i].id;
+	            	sIds += id + ',';  
+	            } 
+				var params = {
+					ids : sIds.substring(0,sIds.length-1),
+					auditResult: 'PASS'
+				};
+				$.getJSON('sync/audit', params, function(data) {
+					$.messager.progress('close');
+					if(data){
+						$.messager.show({
+							title:'提示',
+							msg:'更新成功,请稍后检查同步结果'
+						});
+						jsQuery();
+					}else{
+						parent.$.messager.alert('提示','操作失败,请选择待审核的店铺!','error');
+					}
+				});
+			}
+		};
+		
+		var jsAuditDeny = function() {
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				parent.$.messager.alert('提示','请选择要操作的记录!!!!!!','info');
+				return;  
+			}
+			$('#denyNames .denyName').remove();
+			var html = '';
+			for(var i=0;i<selRows.length;i++){
+				html += '<div style="height:15px;" class="denyName">'
+				if(selRows[i].auditSts == 'PASS'){
+					html += '<span style="color:red;">' + selRows[i].name + '(已通过审核)' + '</span></div>';
+				}else{
+					html += '<span>' + selRows[i].name + '</span></div>';
+				}
+			}
+			html += '<div style="height:15px;width:1px;" class="denyName" />'
+			$('#denyNames').append(html);
+			$('#dvDeny').dialog('open');
+		}
+		
+		var jsDenyOk = function() {
+			var selRows = grid.datagrid("getSelections");
+			var opDenyNote = $('#opDenyNote').combobox('getText'); 
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	sIds += id + ',';  
+            } 
+			if(opDenyNote == ''){
+				alert('请输入审核不通过原因');
+				return ;
+			}
+			var params = {
+				ids: sIds.substring(0,sIds.length-1),
+				auditResult: 'DENY',
+				auditNote:opDenyNote
+			};
+			$.getJSON('sync/audit', params, function(data) {
+				$.messager.progress('close');
+				if(data){
+					$.messager.show({
+						title:'提示',
+						msg:'已拒绝该店铺'
+					});
+					$('#dvDeny').dialog('close');
+					jsQuery();
+				}else{
+					parent.$.messager.alert('提示','操作失败,请选择待审核的店铺!','error');
+				}
+			});
+		};
+		
+		
+		var jsUpdate = function(){
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				parent.$.messager.alert('提示','请选择要更新的店铺!','info');
+				return;  
+			}
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	sIds += id + ',';  
+            } 
+			var params = {
+				'ids' : sIds.substring(0,sIds.length-1)
+			};
+			$.messager.progress();
+			$.getJSON('sync/update', params, function(data) {
+				$.messager.progress('close');
+				if(data){
+					$.messager.show({
+						title:'提示',
+						msg:'更新成功,请检查同步结果'
+					});
+					jsQuery();
+				}else{
+					parent.$.messager.alert('提示','操作失败,只能更新已审核通过的店铺!','error');
+				}
+			});
+		};
+		
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'sync/list',
+				striped : true,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : false,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				frozenColumns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '200',
+					title : '店铺名',
+					halign:'center',
+					field : 'name'
+				},{
+					width : '280',
+					title : '店铺地址',
+					halign:'center',
+					field : 'shopUrl'
+				} ] ],
+				columns : [ [ {
+					width : '60',
+					title : '同步状态',
+					halign:'center',
+					field : 'synced'
+				},{
+					width : '60',
+					title : '审核状态',
+					halign:'center',
+					field : 'auditSts'
+				}, {
+					width : '80',
+					title : '想去佣金比例',
+					halign:'center',
+					field : 'commissionRate'
+				}, {
+					width : '120', width : '120',
+					title : '创建日期',
+					field : 'createdAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm:ss');
+					}
+				}, {
+					width : '120', width : '120',
+					title : '更新日期',
+					field : 'updatedAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm:ss');
+					}
+				},{
+					width : '60',
+					title : '审核说明',
+					halign:'center',
+					field : 'auditNote'
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+		});
+		
+		function formatNum(value,row,index){
+			if(value===null)return "0.00";
+			return value.toFixed(2);
+		}
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm">
+		<table>
+			<tr>
+				<td style="width: 60px; text-align: right;">店铺名</td>
+				<td><input type="text" id="shopName"  name="shopName" placeholder="店铺名/手机号" style="width:140px;"/></td>
+				
+				<td style="width: 60px; text-align: right;">同步状态</td>
+				<td>
+					<select name="status" class="easyui-combobox">
+						<option value="">全部</option>
+						<option value="true">已同步</option>
+						<option value="false">待同步</option>
+					</select>
+				</td>
+				
+				<td style="width: 60px; text-align: right;">审核状态</td>
+				<td>
+					<select name="auditSts" class="easyui-combobox">
+						<option value="">全部</option>
+						<option value="AUDITTING">待审核</option>
+						<option value="PASS">审核通过</option>
+						<option value="DENY">审核不通过</option>
+					</select>
+				</td>
+				
+				<td style="width: 70px; text-align: right;">
+				<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+				onclick="jsQuery()">查询</a></td>
+				<td><div class="datagrid-btn-separator"></div></td>
+				<td>
+				 <a href="#" class="easyui-menubutton" data-options="menu:'#mm_edit',iconCls:'icon-edit'">操作</a>
+				  <div id="mm_edit" style="width: 100px;">
+				  		<!-- 
+				  		<div id="newSync" data-options="iconCls:'ext_user'" onclick='jsNew()'>新增店铺同步</div>
+				  		<div id="updateSync" data-options="iconCls:'ext_alipay'" onclick='jsUpdate()'>修复店铺同步数据</div>
+				  		 -->
+				  		<div id="newSync"  onclick='jsNew()'>新增店铺同步</div>
+				  		<div id="updateSync"  onclick='jsUpdate()'>更新同步数据</div>
+				  		<div id="auditPss"  onclick='jsAuditPss()'>通过店铺审核</div>
+				  		<div id="auditDeny"  onclick='jsAuditDeny()'>拒绝店铺审核</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+	<div class="easyui-dialog" title="店铺审核" id="dvDeny"
+	 	data-options="closed:true,buttons:[{
+					text:'审核拒绝',
+					handler:function(){jsDenyOk();}
+				}]" style="width:300px;height:200px;padding:10px 10px 10px 10px">
+			<div style="width:100%;" id="denyNames">
+				<div style="height:15px;font-weight:bold;"><span>该操作涉及店铺：</span></div>
+			</div>
+			<div style="width:100%;height:15px;font-weight:bold;"><span>审核说明：</span></div>
+			<select id="opDenyNote" class="easyui-combobox" name="opDenyNote" style="width: 200px;">
+				<option value=""></option>
+				<option value="佣金比例太低">佣金比例太低</option>
+				<option value="部分商品不合适">部分商品不合适</option>
+			</select>
+	</div>
+	<script>
+	/* $("document").ready(function(){
+		$(".easyui-layout").css("height",$("#toolbar").height();
+	}) */
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title data-layout-title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE" data-th-text="想去"></title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/normalize.css}" />
+</head>
+<body>
+<div id="afui">
+    <div id="header" data-layout-fragment="header">
+        <iframe id="iframe-header" data-th-attr="data-src=${xiangquWebHeadUrl}" width="100%" frameborder="0" height="160" scrolling="no"></iframe>
+    </div>
+    <div id="content">
+        <div id="nav" data-layout-fragment="nav">
+            <!-- <h1>Static content for prototyping purposes only</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+        <div id="main" data-layout-fragment="content">
+            <!-- <h1>Static content for prototyping purposes only</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+    </div>
+    <div data-layout-fragment="footer" data-th-remove="tag">
+        <iframe id="iframe-footer" data-th-attr="data-src=${xiangquWebFootUrl}" width="100%" frameborder="0" height="225" scrolling="no"></iframe>
+    </div>
+    <script data-th-src="@{/resources/js/sea.js}"></script>
+    <script>
+        seajs.config({
+            base : '/resources/dist/',
+            'map': [
+                [ /^(.*\.(?:css|js))(.*)$/i, '$1?20151217' ]
+            ],
+            alias:{
+            	'template':'../js/plugins/template.js'
+            	}
+        });
+        var jsArr = [];
+        jsArr.push('kdweb/0.0.1/js/app');
+
+    </script>
+    <script data-layout-fragment="postScript"></script>
+    <script>
+        seajs.use(jsArr);
+    </script>
+</div>
+</body>
+</html>

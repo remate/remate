@@ -1,0 +1,142 @@
+@import 'variable';
+.order-list {    
+    /* 单个订单 */
+    .order-item table{
+        margin-bottom: 0;
+        box-shadow: 1px 2px #d7dadf 0 0;
+        background-color: #fff;
+        border-left: transparent;
+        border-right: transparent;
+        border-top: transparent;
+        border-bottom: transparent;
+    }
+    .order-item{
+        margin-bottom: 10px;
+        border-bottom: 2px solid #d7dadf;
+        border-radius: 4px;
+    }
+    .order-item:hover{
+        border-bottom:2px solid @orange;
+    }
+    .order-item table.am-table-radius{
+        border-radius: 4px;
+    }
+    .order-item thead th{
+        text-indent: 14px;
+        font-size: 12px;
+        font-weight: normal;
+        color:#bababf;
+        border-bottom: none;
+    }
+    .order-item .am-checkbox{
+        min-width: 36px;
+        height: 24px;
+        padding-left: 0;
+        margin-left: 0;
+        overflow: hidden;
+    }
+    .order-item .order-item-no,.order-item .order-item-man{
+        line-height: 24px;
+    }
+    .order-item thead span{
+        color:@black;
+    }
+    .link-wait{
+        color: @red;
+    }
+    .wrap-dialog {
+        .J_rateEditPop{
+            label{
+                text-align: left;
+                width: auto;
+                padding: 0;
+                display: inline-block;
+                line-height: 40px;
+            }
+            input[type="text"]{
+                width: 225px;
+                margin: 0 5px;
+            }
+            .kd-modal-dialog{
+                padding: 14px 15px 20px;
+            }
+            .am-form-group-sm.am-cf label{
+                height: 24px;
+                line-height: 24px;
+            }
+            .am-form-group-sm.am-cf label.l40{
+                line-height: 40px;
+            }
+            .am-form-group-sm.am-cf div.am-fl{
+                min-height: 65px;
+                label{
+                    float: left;
+                    padding-left: 10px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .J_goodsSendPop{
+            line-height: 40px;
+            overflow: visible;
+            .kd-modal-dialog{
+                width: 320px;
+                padding: 14px 15px 20px;
+            }
+            ul{
+                padding: 0;
+                margin: 0;
+                &>li.am-cf{
+                    padding: 0 0 0 65px;
+                    min-height: 65px;
+                }
+            }
+            label{
+                display: block;
+                float: left;
+                text-align: left;
+                width: 65px;
+                margin: 0 0 0 -65px;
+            }
+            label.error{
+                width: auto;
+                margin-left: 0;
+                padding-top: 0;
+                height: 24px;
+                line-height: 24px;
+            }
+            .am-selected-btn{
+                width: 220px;
+            }
+        }
+    }
+    #J_sectOrderType{
+        width: 135px;
+    }
+    #form-import{
+        position: relative;
+        .excelFile{
+            position: absolute;
+            width: 84px;
+            height: 33px;
+            left: 20px;
+            top: 0;
+            opacity: 0;
+            filter:alpha(opacity=0);
+            z-index: -2;
+        }
+    }
+    #J_kdSect_chosen{
+        width: 220px !important;
+    }
+    .load-import{
+        display: block;
+        float: left;
+        margin: 10px 0 20px;
+    }
+    .load-import:hover{
+        text-decoration: underline;
+    }
+}
+
+

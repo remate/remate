@@ -1,0 +1,10 @@
+<a data-th-href="'/p/'+${prod.id}" data-th-fragment="card(prod)">
+	<div class="img-outer">
+		<img  class="js-img-size centered full" data-th-attr="imgWidth=${prod.imgWidth},imgHeight=${prod.imgHeight}" data-vd-src="${prod.img}" data-th-alt="${prod.name}"/>
+	</div>
+		<p data-th-text="${prod.name}"></p>
+		<div class="pricebtn">
+			<img  style="vertical-align: sub;" src="../../../_resources/images/h5_08.jpg" width="30" height="25" />
+			<span data-vd-price="${prod.price}"></span>
+		</div>
+</a>

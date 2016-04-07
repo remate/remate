@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8"/>
+    <title>选择支付银行</title>
+    <style type="text/css">
+    	*{
+    	font-size:15px;
+    	color:#505557;
+    	}
+    	.bankList-title{
+    		height: 45px;
+    		line-height: 45px;
+    		text-align: center;
+    		font-size: 16px;
+    		box-shadow:0 0 5px 0px #f0eeea;
+    	}
+		#menu {
+		font-size: 15px;
+		height:45px;
+		line-height: 45px;
+		font-weight: bolder;
+		border-bottom: 1px solid #f0eeea;
+		box-shadow: 0 0 1px 0px #f0eeea;
+		}
+		
+		#menu li{
+			position: relative;
+		}
+		#menu li a{
+			color:#888;
+			display: block;
+        	text-align: center;
+        	font-size: 15px;
+		}
+		#menu li.menu-checked a{
+			color:#000;
+		}
+		#menu li.menu-checked:after{
+			content:"";
+			position: absolute;
+			width:11px;
+			height:7px;
+			overflow: hidden;
+			background:#f4f0ec url('/_resources/images/bank_arrow.png');
+			background-size:11px 7px;
+			bottom: -2px;
+			margin-left: -6px;
+			left: 50%;
+		}
+
+		.cartNowChecked,.cart_word{
+			height: 30px;
+			line-height: 30px;
+			background: #f4f0ec;
+			font-size: 12px;
+			padding: 0 19px;
+		}
+		.cart_word{
+			margin-top: -3px;
+		}
+		#menu{
+			width:100%;
+		}
+		#menu li{
+            list-style-image: none;
+            list-style-type: none;
+            text-align: center;
+			font-size:18px;
+        }
+        .pt10{
+            padding-top: 0.8em;
+        }
+        table{
+        	width:100%;
+        	margin:0;
+        	padding:0;
+        }
+        table td{
+        	
+        	height: 40px;
+        	line-height: 40px;
+        	padding-left: 19px;
+        	border-bottom:1px solid #ddd;
+        }
+        table  tr:last-of-type td{
+        	border-bottom: none;
+        }
+        td img{
+        	width: 26px;
+        	height: 26px;
+        	margin: 0 14px 0 0;
+        }
+        section{
+        	border:0px;
+        }
+        .triangle{
+			width:0;
+			height:0;
+			border-left:10px solid transparent;
+			border-right:10px solid transparent;
+			border-bottom:10px solid rgb(243,243,243);
+		}
+		#creditNotHot h2 {
+			display:inline-block;
+		}
+		h1 span{
+			font-size:30px;
+			float:left;
+			margin-left:20px;
+		}
+	</style>
+</head>
+
+<body class="as_page">
+	<div data-layout-fragment="content" class="mt44 relative">
+		<h1 class="bankList-title">选择银行</h1>
+		<form id="order_submit_form" data-th-action="@{/paybank/submit}" method="post">
+	    	<section>
+			<ul class="box" id="menu">
+				<li id="creditCardLi" class="flex1 menu-checked" onclick="showTab('creditCardTab')">
+			    	<a href="#">信用卡</a>
+				</li>
+				<li id="debitCardLi" class="flex1" onclick="showTab('debitCardTab')">
+			    	<a href="#">储蓄卡</a>
+				</li>
+			</ul>
+                 <h3 class="cartNowChecked">常用</h3>
+			</section>
+			
+	    	<div id="creditCardHotTab" style="display:block;">
+			    <section data-th-each="creditCardBanks : ${creditCardBanks}">
+			    	<div id="creditHot" data-th-if="${creditCardBanks.keyName.equals('hot')}">
+			    		<table>
+			    		<div data-th-each="bean,stat:${creditCardBanks.valueList}">
+			    			<tr>
+			    				<div>
+			    					<td>
+					    				<li class="box" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" onclick="submitReq('hot',this)">
+						                	<div class="flex1">
+						                	<input type="hidden" th:id="'hot_'+${creditCardBanks.keyName}+'_'+${stat.index}" th:value="${'/cashier/' + tradeNo + '/' + cashierItemId + '/CREDITCARD/' + bean.bankCode + '/UMPAY'}"/>
+						                	<img class="flex1" th:src="${bean.img}"/><span class="" th:text="${bean.bankName}"></span>
+						                	</div>
+						                </li>
+					    			</td>
+			    				</div>
+				    		</tr>
+			    		</div>
+			    	</table>
+			    	</div>
+			    </section>
+	    	</div>
+	    	
+	    	<div id="creditCardAllTab" style="display:block;">
+			    <section data-th-each="creditCardBanks : ${creditCardBanks}">
+			    	<div id="creditNotHot" data-th-if="${!creditCardBanks.keyName.equals('hot')}">
+			    		<h3 class="cart_word" data-th-text="${creditCardBanks.keyName}"></h3>
+			    		<table>
+			    		<div data-th-each="bean,stat:${creditCardBanks.valueList}">
+			    			<tr>
+			    				<div>
+			    					<td>
+					    				<li class="box" data-th-id="${creditCardBanks.keyName}+'_'+${stat.index}" onclick="submitReq('credit',this)">
+						                	<div class="flex1">
+						                	<input type="hidden" th:id="'credit_'+${creditCardBanks.keyName}+'_'+${stat.index}" th:value="${'/cashier/' + tradeNo + '/' + cashierItemId + '/CREDITCARD/' + bean.bankCode + '/UMPAY'}"/>
+						                	<span th:text="${bean.bankName}"></span>
+						                	</div>
+						                </li>
+					    			</td>
+			    				</div>
+				    		</tr>
+			    		</div>
+			    	</table>
+			    	</div>
+			    </section>
+	    	</div>
+		    <div id="debitCardTab" style="display:none">
+			    <section data-th-each="debitCardBanks : ${debitCardBanks}">
+			    	<div id="debitHot" data-th-if="${debitCardBanks.keyName.equals('hot')}">
+			    	<table>
+			    		<div data-th-each="bean,stat:${debitCardBanks.valueList}">
+			    			<tr>
+				    			<div>
+			    					<td>
+					    				<li class="box" data-th-id="${debitCardBanks.keyName}+'_'+${stat.index}" onclick="submitReq('debit',this)">
+						                	<div class="flex1">
+						                	<input type="hidden" th:id="'debit_'+${debitCardBanks.keyName}+'_'+${stat.index}" th:value="${'/cashier/' + tradeNo + '/' + cashierItemId + '/DEBITCARD/' + bean.bankCode + '/UMPAY'}"/>
+						                	<img class="flex1" th:src="${bean.img}"/><span class="" th:text="${bean.bankName}"></span>
+						                	</div>
+						                </li>
+					    			</td>
+			    				</div>
+				    		</tr>
+			    		</div>
+			    	</table>
+			    	</div>
+			    </section>
+		    </div>
+		    <!-- 
+		    <div class="p30" id="showAllBtn" style="display:block">
+		    	<input class="button bg-orange cart-checkout-btn cart-checkout-btn-new fz30 font-white ptb30" type="button" value="显示所有银行" onclick="showAll()"/>
+		    </div>
+		     -->
+		</form>
+    </div>
+    <div data-layout-fragment="postScript">
+	    <script type="text/javascript" charset="utf-8" data-th-inline="text">
+			var submitReq = function(type,obj){
+				var id = $(obj).attr("ID");
+				var url = $("#"+type+"_"+id).val();
+				$("#order_submit_form").attr("action", url);
+				$("#order_submit_form")[0].submit();
+			}
+
+			var showTab = function(type){
+                $("#menu").children().removeClass('tab-active');
+				if(type=="creditCardTab"){
+					$("#creditCardHotTab").css('display','block');
+					$("#creditCardAllTab").css('display','block');
+					$("#creditCardLi").addClass('menu-checked').siblings().removeClass('menu-checked');
+					$("#debitCardTab").css('display','none');
+					$("#triangle").css('marginLeft', '25%');
+					
+				}else if(type=="debitCardTab"){
+					$("#creditCardHotTab").css('display','none');
+					$("#creditCardAllTab").css('display','none');
+                    $("#debitCardLi").addClass('menu-checked').siblings().removeClass('menu-checked');
+					$("#debitCardTab").css('display','block');
+					$("#triangle").css('marginLeft', '75%');
+					
+				}
+			}
+			
+			var showAll = function(){
+				$("#creditCardHotTab").css('display','none');
+				$("#creditCardAllTab").css('display','block');
+				$("#showAllBtn").css('display','none');
+			}
+	    </script>
+	</div>
+</body>   
+</html>

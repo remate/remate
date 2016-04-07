@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+
+<head>
+    <meta charset="utf-8" />
+    <title>店铺设置 - 想去商家版</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/set-shop.css}" />
+</head>
+
+<body>
+    <ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='settings')">
+    </ul>
+    <div data-layout-fragment="content">
+        <div class="setShop">
+            <div class="am-kdbar am-kd-search am-pannel am-pannel-round">
+                <nav data-th-replace="fragments/settings-nav::settings_nav(step=1)"></nav>
+            </div>
+            <div class="am-pannel set-pannel am-pr">
+                <form class="am-form am-form-horizontal kd-form" id="J-shop-form">
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label label-img">头像</label>
+                        <div class="am-fl shopImg-box">
+                            <div class="shop-img am-fl">
+                                <img />
+                            </div>
+                            <button type="button" id="J-img-upload" class="upload-shop-img am-btn am-btn-black am-center am-round am-btn-xs">上传图片</button>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="shop-name" class="am-fl am-form-label">店铺名称</label>
+                        <div class="am-fl">
+                            <input type="text" id="shop-name" name="shop-name" placeholder="请输入店铺名称" />
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="shop-weixin" class="am-fl am-form-label">微信号</label>
+                        <div class="am-fl">
+                            <input type="text" id="shop-weixin" name="shop-weixin" placeholder="请输入微信号" />
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="shop-desc" class="am-fl am-form-label">店铺说明</label>
+                        <div class="am-fl">
+                            <textarea id="shop-desc" class="shop-desc" name="shop-desc" placeholder="请输入店铺说明"></textarea>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label">所在地</label>
+                        <div class="am-fl">
+                            <select class="shop-province am-fl combox" data-placeholder="请选择" name="shop-province">
+                            </select>
+                            <select class="shop-city  am-fl combox"  data-placeholder="请选择" name="shop-city" >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="shop-name" class="am-fl am-form-label">客服联系号码</label>
+                        <div class="am-fl">
+                            <select class="am-fl combox" id="shop-mobileType" name="mobileType" data-placeholder="请选择">
+                                <option value="0">手机</option>
+                                <option value="1">固话</option>
+                            </select>
+                        </div>
+                        <input type="text" class="am-fl" id="shop-mobile" name="shop-mobile" placeholder="请输入卖家联系电话" />
+                        <span class="form-mark">必要时，此号码将用于买家与您的联系</span>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="shop-notice" class="am-fl am-form-label shop-notice-label">店铺公告</label>
+                        <div class="am-fl">
+                            <textarea id="shop-notice" class="shop-notice" name="shop-notice" placeholder="请输入店铺公告"></textarea>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label">店招图片</label>
+                        <div class="am-fl shop-background-box">
+                            <div class="shop-background am-fl">
+                                <img />
+                            </div>
+                            <button type="button" id="J-banner-upload" class="upload-shop-background am-btn am-btn-black am-center am-round am-btn-xs">上传图片</button>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="shop-danbao" class="am-fl am-form-label">担保交易</label>
+                        <div class="am-fl shop-danbao">
+                                <input type="checkbox" value="" class="kd-checkbox danbao-readed" name="danbao"  />
+                            <a href="javascript:;" class="show-danbao" data-am-modal="{target: '.modal-danbao', width: 600, height: 400}">我已阅读担保交易协议</a>
+                            <input class="am-switch danbao-open" name="open" type="checkbox" />
+                        </div>
+                    </div>
+                    <div data-th-replace="fragments/settings-footer"></div>
+                </form>
+            </div>
+            <div class="am-modal modal-danbao am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+                <div class="am-modal-dialog">
+                    <div class="am-modal-hd">
+                        <a href="javascript: void(0)" class="am-close " data-am-modal-close="">&times;</a>
+                    </div>
+                    <div class="am-margin-top">
+                        <iframe src="http://www.kkkd.com/static/about/danbao.html" width="100%" height="350" frameborder="0" border="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-layout-fragment="postScript">
+        <script>
+        require(['base/all', 'base/set-shop']);
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+{
+  "family": "kdweb",
+  "name": "kdweb",
+  "version": "0.0.1",
+  "description": "kdweb",
+  "keywords": [],
+  "homepage": "",
+  "author": "dike",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autowatch": "0.0.1",
+    "gulp-concat": "^2.4.3",
+    "gulp-imageisux": "^1.0.4",
+    "gulp-jshint": "^1.9.2",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-rename": "^1.2.0",
+    "gulp-shell": "^0.2.11",
+    "gulp-uglify": "^1.1.0",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-util": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "licenses": "MIT",
+  "spm": {
+    "buildArgs":{
+      "withDept":true,
+      "include":"relative"
+    },
+    "output": [
+      "js/app.js",
+      "js/page/request.js",
+      "js/page/refund.js",
+      "js/page/ship.js",
+      "js/page/confirm.js",
+      "js/page/coupons.js",
+      "js/page/cart.js",
+      "js/page/orderPay.js",
+      "js/page/addressManage.js"
+    ],
+    "dependencies": {
+      "jquery": "1.11.1",
+      "bootstrap": "3.2.0"
+    },
+    "devDependencies": {
+      "jquery": "1.11.1",
+      "bootstrap": "3.2.0"
+    }
+  }
+}

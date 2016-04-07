@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>购物车 - 想去</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" href="/_resources/css/scss/cart/cart.css" />
+</head>
+
+<body class="J_cart cart bg_gray" data-th-attr="data-isbindphone=${havePhone}">
+    <section class="J_hd cart-header">
+        <i class="J_cartBack cart-back"></i>
+        <h1>
+            购物车
+        </h1>
+    </section>
+
+    <section class="J_cartItems J_hd cartPannel cartItem" data-th-each="entry : ${cartItemMap}">
+        <div class="salerInfo clearfix">
+            <div class="shop-info fl-l" data-th-inline="text">
+                <i class="J_checkProAll shop-share-icon "></i>
+                <a class="shop-owner" data-th-href="${'/shop/' + entry.key.id}" target="_blank" >[[${entry.key.name}]]</a>
+            </div>
+        </div>
+        <!-- item start -->
+        <div class="cartProduct clearfix" data-th-each="item : ${entry.value}">
+            <section class="cart-product-item" data-th-attr="data-href=${item.product.id},data-sku-id=${item.sku.id},data-inventory=${item.sku.amount}">
+                <div class="cart-product-l">
+                    <div class="J_cratProCheck cart-pro-check "></div>
+                    <div class="cartImg ">
+                        <a class="J_js_hrefs js-hrefs" data-th-attr="data-href=${item.product.id}" target="_blank">
+                            <img data-vd-src="${item.product.img[s03]}" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cart-product-info">
+                    <h2 class="productName"><a class="J_js_hrefs js-hrefs" data-th-text="${item.product.name}" data-th-attr="data-href=${item.product.id}" target="_blank"></a></h2>
+                    <div class="cartPriceNum"><span data-vd-price="${item.sku.price}"></span></div>
+
+                    <div class="cart-sku-info">
+                        <div class="productSku">规格尺寸:<span data-th-text="${item.sku.spec}" ></span></div>
+                    </div>
+
+                    <div class="cart-product-shop clearfix">
+                        <div class="cart-product-num-fun">
+                            <span class="J_jianNum jian-sku-num"></span>
+                            <span class="J_current current-sku" data-th-text="${item.amount}">0</span>
+                            <span class="J_addNum add-sku-num"></span>
+                        </div>
+                        <div data-th-attr="data-item-id=${item.id}" class="J_delProduct del-product-item" ></div>
+                    </div>
+
+                </div>
+            </section>
+            <i class="product-item-bdmt"></i>
+        </div>
+        <!-- item end -->
+
+    </section>
+
+    <div class="J_hd last-bottom"></div>
+    <section class="J_cartTotal J_hd cart-total ">
+        <div class="cart-total-shop">
+            <div class="J_checkAll check-all-box">
+                <i class="check-all "></i>
+                <span>全选</span>
+            </div>
+            <div class="total-info">
+                <div class="total-cont">
+                合计：<span class="cart-red" >&yen;<em>0.00</em></span>
+                </div>
+                <span class="J_totalTip total-tip">不含邮费</span>
+            </div>
+            <div class="J_cartPay cartPay">结算</div>
+        </div>
+    </section>
+
+
+    <section class="J_tc tc-layout">
+        <div class="J_tcOpacity tc-opacity"></div>
+        <div class="J_tips tc-tips" >
+            <div class="tc-tips-body">
+                <div class="tc-tips-text">确定要删除该条吗？</div>
+                <div class="J_tcTipsBtn tc-tips-btn">
+                    <span class="J_cancel cancel">取消</span>
+                    <span class="J_sure sure">确定</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <span data-th-replace="xiangqu/wap/module/bind_phone"></span>
+
+    <!--<script type="text/javascript" charset="utf-8" src="/_resources/js/appframework.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="/_resources/js/plugins/tool.js?v=2"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="/_resources/js/vd_base.js?t=20141126"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="/_resources/js/xiangqu/cart.js?t=5"></script>-->
+
+    <script src="/_resources/js/lib.min.js"></script>
+    <script src="/_resources/js/md5_zepto.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/xiangqu/cart/cart.js?t=5"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<section class="J_delayTc  order_detail_tc">
+    <header class="header">
+        <i class="J_closeDelayTc"></i>
+    </header>
+    <section class="body">
+        <header class="J_tcTitle">延迟确认收货</header>
+        <div class="info">
+            <div class="time-box">
+                <p class="time J_getText">
+                    下一次自动确认收货时间
+                </p>
+                <p class="time J_YCSH" data-th-text="${order.nextLatestSignAt == null ? '' : #dates.format(order.nextLatestSignAt, 'yyyy-MM-dd HH:mm:ss')}">2016-01-30 06:35:12</p>
+                <p class="time J_QRSH" data-th-text="${order.latestSignAt == null ? '' : #dates.format(order.latestSignAt, 'yyyy-MM-dd HH:mm:ss')}">2016-01-30 06:35:12</p>
+            </div>
+            <p class="price" data-th-text="${order.totalFee}">
+            </p>
+        </div>
+        <div class="order_detail_Phone">
+            <ul>
+                <li>
+                    <input type="text" placeholder="手机号码" class="J_phoneNum input-group w100" />
+                </li>
+                <li class="J_picCodeBox pic-code-box">
+                    <div class="pic-code">
+                        <input type="text" placeholder="请输入图片验证码" class="J_codeNum input-group" />
+                    </div>
+                    <div class="J_codeNumBtn update-code-box">
+                        <img  src="" />
+                    </div>
+                </li>
+                <li>
+                    <div class="phone-code">
+                        <input type="text" class="J_imgCode input-group" placeholder="请输入验证码" />
+                    </div>
+                    <div class="J_phoneCode phone-code-btn" data-isable="1">
+                        获取验证码
+                    </div>
+
+                </li>
+
+
+            </ul>
+        </div>
+        <section class="J_delaySure delay-sure">确定</section>
+    </section>
+</section>
+

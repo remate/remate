@@ -1,0 +1,14 @@
+
+
+<ul class="am-nav" data-th-fragment="sider(page)">
+    <li><a data-th-href="@{/products/myproduct}" data-th-attr="class=${page} == 'product' ? 'active' : '' "><span>&#xe60c;</span>我的商品</a></li>
+    <li><a data-th-href="@{/products/category}" data-th-attr="class=${page} == 'category' ? 'active' : '' "><span>&#xe60e;</span>店铺分类</a></li>
+    <li><a data-th-href="@{/orders/list}" data-th-attr="class=${page} == 'order' ? 'active' : '' "><span>&#xe607;</span>订单<i></i></a></li>
+    <!-- <li><a href="#"><span>&#xe605;</span>统计<i></i></a></li> -->
+    <!-- <li><a href="#"><span>&#xe60b;</span>收入<i></i></a></li>
+    <li><a href="#"><span>&#xe60a;</span>客户<i></i></a></li>
+    <li><a href="#"><span>&#xe609;</span>活动<i></i></a></li>
+    <li><a href="#"><span>&#xe600;</span>消息<i></i></a></li> -->
+    <li><a data-th-href="@{/setShop}"  data-th-attr="class=${page} == 'settings' ? 'active' : '' "><span>&#xe60d;</span>设置<i></i></a></li>
+</ul>
+

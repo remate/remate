@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8"/>
+    <title>确认支付</title>
+</head>
+
+<body class="as_page">
+  <div data-layout-fragment="content" class="mt44 relative">
+        <section>
+        <input type="hidden" id="shopId" name="shopId" data-th-if="${shop != null}" data-th-value="${shop.id}"/>
+        <input type="hidden" id="skuId" name="skuId" data-th-value="${skuId}"/>
+        <h2 class="bg-grayed font-dark-bold cart-title plr30">向<span data-th-if="${shop != null}" data-th-text="${shop.name}">Desmond</span>购买</h2>
+        <ul class="error" data-th-each="error : ${errors}">
+            <li data-th-text="${error}"></li>
+        </ul>
+        <ul class="order_list">
+            <li class="bg-white" data-th-each="orderItem : ${order.orderItems}">
+                <div class="box order-bar bdb">
+                    <div class="flex5 w80 order-bar-title">
+                        <a class="font-dark-bold inlineb" data-th-href="${'/p/' + orderItem.productId}" data-th-text="${orderItem.productName}" target="_blank"></a>
+                       
+                    </div>
+                </div>
+                <ul class="bg-white">
+                <li class="ptb30 cartProduct box bdb" data-th-each="orderItem : ${order.orderItems}">
+                     <div class="flex1">
+                         <a class="cart-next-img" data-th-href="${'/p/' + orderItem.productId}" target="_blank">
+                             <img data-vd-src="${orderItem.productImg[s03]}" width="100%"/>
+                         </a>
+                     </div>
+                     <div class="flex8 w80 ml20 fz24">
+                         <a class="fz24 order-pro-title font-dark-bold" data-th-href="${'/p/' + orderItem.productId}" data-th-text="${orderItem.productName}" target="_blank"></a>
+                         <p class="font-dark-bold mt5" data-th-text="${orderItem.skuStr }" ></p>
+                         <ul class="order-infor clearfix">
+                        	<li class="fl-l">
+                         		<p class="font-dark font-dark-opacity">数量</p><p class="font-dark-bold mt3 ff-numb" data-th-text="${orderItem.amount}"></p>
+                         	</li>
+                         	<li class="fl-l ml40">
+                         		<p class="font-dark font-dark-opacity">价格</p><p class="font-dark-bold price-grey mt3 ff-numb" data-th-attr="tag=#{price}" data-vd-price="${orderItem.price}"></p>
+                         	</li>
+                         </ul>
+                     </div>
+                </li>
+            </ul>
+            </li>
+        </ul>
+    </section>
+        <section>
+                <div class="pay-msg bdb  fz1276">
+                    <h3 class="font-dark-bold fz1276">给卖家的备注留言</h3>
+                    <p class="font-dark font-dark-opacity pay-msg-info" data-th-if="${order.remark != ''}" data-th-text="${order.remark}"  >没什么想跟卖家讲~</p>
+                    <p class="font-dark font-dark-opacity pay-msg-info" data-th-if="${order.remark == ''}" >没什么想跟卖家讲~</p>
+                </div>
+        </section>
+
+      <form id="order_pay_form"  data-th-action="@{/order/pay}" method="get">
+      <!-- 
+          <input type="hidden" id="shopId" name="shopId" data-th-value="${shopId}"/>
+          <input type="hidden" id="skuId" name="skuId" data-th-value="${skuId}"/>
+          <input type="hidden" id="zoneId" name="zoneId" />
+       -->
+          <input type="hidden" id="isdanbao" name="danbao" value="true"/>
+          <input type="hidden" id="orderId" name="orderId" data-th-value="${order.id}"/>
+<input type="hidden" id="addressId" name="addressId" data-th-if="${order.orderAddress != null}" data-th-value="${order.orderAddress.id}"/>
+
+
+      <h2 class="bg-grayed font-dark-bold cart-title plr30">收货地址</h2>
+        <ul class="order-custmer-infor fz24 font-dark plr30 addressbox">
+            <li class="bg-white order-custmer-item  font-dark clearfix"><span>收件人:</span><span class="" data-th-text="${order.orderAddress.consignee}"></span></li>
+            <li class="bg-white order-custmer-item  font-dark clearfix"><span>微信号:</span><span class="" data-th-text="${order.orderAddress.weixinId}"></span></li>
+            <li class="bg-white order-custmer-item font-dark clearfix"><span>地 址:</span><span class="" data-th-text="${order.addressDetails}"></span></li>
+            <li class="bg-white order-custmer-item font-dark clearfix"><span data-th-text="${order.orderAddress.phone}"></span></li>
+        </ul>
+
+        <section>
+              <h2 class="bg-grayed cart-title plr40 font-dark-bold">合计</h2>
+              <ul class="pt50 cart-count">
+                 <li class="clearfix "><span class="fl-l font-dark-bold font-dark-opacity">合计</span><span id="goodsFee" class="fl-r cart-total-right ff-numb fz24" data-th-attr="tag=#{price}"  data-vd-price="${order.totalFee}"></span></li>
+                 <li class="mt20 clearfix"><span class="fl-l font-dark-bold font-dark-opacity">运费</span><span id="logisticsFee" class="fl-r  cart-total-right ff-numb fz24" data-th-attr="tag=#{price}"  data-vd-price="${order.logisticsFee}"></span></li>
+                 <li class="mt20 clearfix"><span class="fl-l font-dark-bold font-dark-opacity">优惠</span><span id="discountFee" class="fl-r  cart-total-right ff-numb fz24" data-th-attr="tag=#{price}" data-vd-price="${order.discountFee}"></span></li>
+              </ul>
+              <div class="bdt cart-total-price mlr30 ">
+                  <div class="fl-l fz28 font-dark ">应付总额</div>
+                  <div id="totalFee" class="fl-r cart-total-right fz28 font-orange-bold  ff-numb" data-th-attr="tag=#{price}"  data-vd-price="${order.totalFee}"></div>
+              </div>
+            </section>
+                  <section>
+            <div class="mt152 mt25">
+                <span data-th-replace="fragments/paymentSelect">选择支付方式</span>
+            </div>
+        </section>
+          
+          <section>
+          <div class="p-danbao bdt" id="pay-danbao" data-th-if="${shop.danbao eq null || !shop.danbao}">
+                  <span class="p-input">
+                      <img id="danbao" src="/../_resources/images/danbao_05.png" class="pay-selected" alt=""/>
+                  </span>
+                  <label class="o-danbao" for="pay-danbao">使用担保交易付款</label>
+              </div>
+          </section>
+          
+          <section class="bg-grayed p30">
+          
+                <div class="pay-danbao" data-th-if="${shop.danbao}">
+                    <p>该商家支持担保交易</p>
+                    <p>在您提交订单后7天内商家无法使用或提现货款</p>
+                    <p>请放心购买</p>
+                </div>
+          
+                <a id="payBtn" type="button" class="button bg-orange cart-checkout-btn fz30 font-white ptb30" >确认支付</a>
+            </section>
+        </form>
+        <div class="l-layer" style="display:none;" id="js-layer"></div>
+        <div class="l-danbao"  style="display:none;" id="js-body">
+            <h4>提示</h4>
+            <p class="l-p">如不使用担保交易，此次交易将有财物二失的风险，出现交易纠纷时且无法追回货款，确认要继续么？</p>
+            <div class="box l-btn">
+                <div id="js-close" class="flex1 l-close">取消</div>
+                <div class="flex1 l-next">继续</div>
+            </div>
+        </div>
+    </div>
+    <div data-layout-fragment="postScript">
+       <script type="text/javascript" data-th-src="@{/_resources/js/page/pay.js}"></script>
+       <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/paymentSelect.js?t=201408141750}"></script>
+       <!--<script type="text/javascript" charset="utf-8" data-vd-src="/_resources/js/plugins/pop.js"></script>-->
+        <script type="text/javascript">
+          /* $(document).ready(function(){
+               var btnObj = $("#js-add-address"),
+                       bodyObj = $("#js-address"),
+                       darkLayerObj = $(".dark-layer"),
+                       closeBtn = $("#js-close");
+               $.pop(btnObj,bodyObj,darkLayerObj,closeBtn);
+           })*/
+
+            window.onload=function(){
+                var obj = $('#js-body');
+                var btn = $('#js-close');
+                var layer = $('#js-layer');
+                var objbtn = $('#submitBtn');
+                $('#pay-danbao').click(function(){
+                    if($('#danbao').hasClass('pay-selected')){
+                        $('#danbao').attr('src','/../_resources/images/danbao_03.png').removeClass('pay-selected');
+                    }else{
+                        $('#danbao').attr('src','/../_resources/images/danbao_05.png').addClass('pay-selected');
+                    }
+                });
+                layer.css('display','none');
+                obj.css('display','none');
+                btn.click(function(){
+                    layer.css('display','none');
+                    obj.css('display','none');
+
+                });
+
+             };
+          
+             if(!iswap()){
+                // $("#aliPayMethod").remove();
+             }
+             else{
+             	$("#weixinMethod").remove();
+             }
+        </script>
+    </div>
+</body>   
+</html>

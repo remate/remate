@@ -1,0 +1,81 @@
+/**
+ * Created by ziyu on 2016/2/22.
+ */
+@charset "UTF-8";
+
+.tc-layout {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  height: 100%;
+  width: 100%;
+  display: none;
+
+  overflow: hidden;
+}
+
+
+.tc-opacity{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  background:rgba(51, 51, 51, 0.47);
+  overflow: hidden;
+  z-index:1001;
+}
+
+.tc-tips{
+  display: none;
+  position: absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  //max-height:px2rem(864);
+  height:100%;
+  z-index: 1003;
+  background: rgba(51, 51, 51, 0.47);
+  overflow:hidden;
+  .tc-tips-body{
+    position: fixed;
+    top:50%;
+    left:50%;
+    z-index: 1500;
+    width:px2rem(448);
+    height:px2rem(200);
+    margin-top:- px2rem(200);
+    margin-left:- px2rem(224);
+    overflow: hidden;
+    background: #fff;
+    border-radius:px2rem(10);
+    .tc-tips-text{
+      font-size:px2rem(26);
+      text-align: center;
+      height:px2rem(120);
+      width:px2rem(448);
+      display:table-cell;
+      vertical-align: middle;
+      border-bottom:1px solid #e5e5e5;
+    }
+    .tc-tips-btn{
+      height:px2rem(80);
+      span{
+        width:px2rem(223);
+        float: left;
+        font-size:px2rem(30);
+        text-align: center;
+        line-height:px2rem(80);
+        &.sure{
+          //background: #000;
+          //color: #fff;
+          border-bottom-right-radius: px2rem(10);
+          border-left:1px solid #e5e5e5;
+        }
+
+      }
+
+    }
+  }
+}

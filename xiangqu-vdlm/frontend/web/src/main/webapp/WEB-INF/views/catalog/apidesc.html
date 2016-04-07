@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes,maximum-scale=5" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<head>
+    <title data-th-text="${product.name}">商品名</title>
+    <style>
+    body {
+        margin: 11px 11px 15px;
+        font-size: 14px;
+        line-height: 18px;
+        color: #505557;
+    }
+    
+    img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    img {
+        margin: 27px 0 10px;
+        box-shadow: 0 0 1px #cbcbcb;
+    }
+    
+    img:first-child {
+        margin: 0 0 10px;
+    }
+    
+    p {
+        margin: 0;
+    }
+    
+    pre {
+        margin: 0;
+        padding: 0;
+        word-break: break-word;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="proImg" data-layout-fragment="content">
+        <div data-th-each="fragment:${fragmentList}" data-th-if="${#lists.size(fragmentList) != 0}">
+            <div data-th-if="${fragment.showModel}">
+                <pre data-th-utext="${fragment.description}"></pre>
+            </div>
+            <img data-th-each="fragmentImage : ${fragment.imgs}" data-vd-src="${fragmentImage.imgUrl}" />
+            <div data-th-unless="${fragment.showModel}">
+                <pre data-th-utext="${fragment.description}"></pre>
+            </div>
+        </div>
+        <div data-th-unless="${#lists.size(fragmentList) != 0}">
+            <img data-th-each="img : ${imgsList}" data-vd-src="${img}" />
+        </div>
+    </section>
+</body>
+
+</html>

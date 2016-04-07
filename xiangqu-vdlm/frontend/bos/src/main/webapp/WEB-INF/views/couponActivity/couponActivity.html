@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>生成优惠码</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+  		var grid;
+		var jsQuery = function() {
+			$(':text').each(function(){
+			    $(this).val($.trim($(this).val()));
+			  });
+			var params =  $.serializeObject($('#SearchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+			grid.datagrid('unselectAll');
+		};
+
+		jsAdd = function() {
+			var url = "couponActivity/add/couponActivity"
+			var dialog = commonDialog({
+				title : '创建新的红包',
+				width : 600,
+				height: 350,
+				content : '<iframe frameborder="0" src="' + url + '" style="width:100%;height:100%;"></iframe>'
+			});
+		};
+
+		jsEdit = function() {
+			var rows = grid.datagrid("getSelections");
+			if(rows.length == 0){  
+				alert("请先选择红包");  
+				return;  
+			} else if (rows.length > 1) {
+				alert("更新红包不能多选");
+				return;
+			}
+			var url = "couponActivity/edit/couponActivity?id=" + rows[0].id + ""
+			var dialog = commonDialog({
+				title : '更新红包',
+				width : 600,
+				height: 350,
+				content : '<iframe frameborder="0" src="' + url + '" style="width:100%;height:100%;"></iframe>'
+			});
+		};
+
+		jsDel = function() {
+			var rows = grid.datagrid("getSelections");
+			if(rows.length == 0){  
+				alert("请先选择红包");  
+				return;  
+			}
+			var ids = "";  
+			var info = "";
+			for (var i = 0; i < rows.length; i++) {  
+            	ids += rows[i].id + "#";  
+            	info += rows[i].id + "、";
+            }  
+            if (rows.length == 1) {
+            	info = "确认要删除该红包(ID：" + info.substring(0, info.length - 1) + ")吗？";
+            } else if (rows.length > 1) {
+            	info = "确认要删除这些红包(ID：" + info.substring(0, info.length - 1) + ")吗？"
+            }
+			$.messager.confirm('确认', info, function(r){
+				if (r){
+					var params = {
+						'ids' : ids.substring(0, ids.length - 1)
+					};
+					$.getJSON('couponActivity/delete', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}
+			});
+		};
+
+		jsClose = function() {
+			var rows = grid.datagrid("getSelections");
+			if(rows.length == 0){  
+				alert("请先选择红包");  
+				return;  
+			} else if (rows.length > 1) {
+				alert("关闭红包不能多选");
+				return;
+			}
+			if (rows[0].valid == 0) {
+				alert("该红包已被禁用");
+				return;
+			}
+			$.messager.confirm('确认', "确认要关闭该红包(ID：" + rows[0].id + ")吗？", function(r){
+				if (r){
+					var params = {
+						'id' : rows[0].id
+					};
+					$.getJSON('couponActivity/close', params, function(data) {
+						if(data.rc == '1'){
+							$.messager.show({
+								title:'提示',
+								msg: data.msg
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('错误', data.msg,'error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}
+			});
+		};
+
+		$(function() {
+			//初始化活动类型
+			$('#title').prepend("<option value=''>全部</option>");
+			$('#couponType').prepend("<option value=''>全部</option>");
+			$('#typeId').prepend("<option value=''>全部</option>");
+			$.getJSON("couponActivity/distinctAttribute/list", function(result){
+				for(var i = 0; i < result.titles.length; i++){
+					$('#title').append("<option value='"+ result.titles[i] +"'>"+ result.titles[i] +"</option>");
+				}
+				for(var i = 0; i < result.couponTypes.length; i++){
+					$('#couponType').append("<option value='"+ result.couponTypes[i] +"'>"+ result.couponTypes[i] +"</option>");
+				}
+				for(var i = 0; i < result.typeIds.length; i++){
+					$('#typeId').append("<option value='"+ result.typeIds[i] +"'>"+ result.typeIds[i] +"</option>");
+				}
+			});
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'couponActivity/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : false,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					width : '50',
+					title : '红包ID',
+					align: 'center',
+					field : 'id'
+				},{
+					width : '100',
+					title : '活动Code',
+					align: 'center',
+					field : 'actCode'
+				},{
+					width : '100',
+					title : '标题',
+					align: 'center',
+					field : 'title'
+				},{
+					width : '100',
+					title : 'Type',
+					align: 'center',
+					field : 'couponType'
+				},{
+					width : '110',
+					align: 'center',
+					title : '最低消费额度(￥)',
+					field : 'minPrice'
+				},{
+					width : '80',
+					align: 'center',
+					title : '优惠减免(￥)',
+					field : 'discount'
+				},{
+					width : '80',
+					align: 'center',
+					title : '发放规则',
+					field : 'grantRule',
+					formatter : function(value, row, index) {
+						switch(value) {
+							case "SINGLE":
+								return "单张";
+							case "MULTIPLE":
+								return "可多张";
+							case "DEVICE_SINGLE":
+								return "每个设备单张";
+							default :
+								return "";
+						}
+					}
+				},{
+					width : '100',
+					title : '有效开始时间',
+					align: 'center',
+					field : 'validFrom',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm:ss');
+						}
+					}
+				},{
+					width : '100',
+					title : '失效时间',
+					align: 'center',
+					field : 'validTo',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm:ss');
+						}
+					}
+				},{
+					width : '180',
+					align: 'center',
+					title : '使用规则',
+					field : 'useConstraint',
+					formatter : function (value, row, index) {
+						if (value != null && value != "" && value != undefined) {
+							var result = "";
+							var array = value.split("#");
+							for (var i = 0, size = array.length; i < size; i++) {
+								result += "<p>" + array[i] + "</p>"
+							}
+							return result;
+						}
+					}
+				},{
+					width : '100',
+					align: 'center',
+					title : '所属类型',
+					field : 'typeId'
+				},{
+					width : '100',
+					align: 'center',
+					title : '使用限制',
+					field : 'platform',
+					formatter : function(value, row,index) {
+						switch(value) {
+							case "MOBILE":
+								return "移动端";
+							case "ANDROID":
+								return "android客户端";
+							case "IOS":
+								return "iphone客户端";
+							case "PCWEB":
+								return "PC网页";
+							case "MWEB":
+								return "H5页面";
+							default:
+								return "无限制";
+						}
+					}					
+				},{
+					width : '60',
+					align: 'center',
+					title : '默认使用',
+					field : 'defaultSelect',
+					formatter: function(value,row,index){
+						if (value) {
+							return "<font color='green'>是</font>";
+						} else {
+							return "";
+						}
+					}
+				},{
+					width : '65',
+					align: 'center',
+					title : '是否被禁用',
+					field : 'valid',
+					formatter: function(value,row,index) {
+						if (value) { 
+							return "";
+						} else {
+							return "<font color='red'>已被禁用</font>";
+						} 
+					}
+				},{
+					width : '100',
+					align: 'center',
+					title : '有效时间',
+					field : 'timeLimit',
+					formatter: function(value, row, index) {
+						if (value != null) {
+							var result;
+							if (value/(3600*24*1000) > 1) {
+								var day = Math.floor(value/(3600*24*1000));
+								result = day + "天";
+								if (value/(3600*24*1000) != day) {
+									var hour = value/(3600*1000) - day*24;
+									result += hour + "个小时";
+								}
+							} else {
+								result = value/(3600*1000) + "个小时";
+							}
+							return result;
+						}	
+					}
+				},{
+					width : '60',
+					align: 'center',
+					title : '自动发放',
+					field : 'autoGrant',
+					formatter : function(value, row, index) {
+						if (value) {
+							return "<font color='green'>自动</font>";
+						} else {
+							return "";
+						}
+					}
+				},{
+					width : '100',
+					align: 'center',
+					title : '发放上限',
+					field : 'grantMax'
+				},{
+					width : '100',
+					align: 'center',
+					title : '单个用户领取上限',
+					field : 'singleGrantMax'
+				},{
+					width : '100',
+					align: 'center',
+					title : '用户单次使用上限',
+					field : 'singleUseMax'
+				},{
+					width : '100',
+					align: 'center',
+					title : '详细',
+					field : 'details'
+				},{
+					width : '100',
+					align: 'center',
+					title : '渠道',
+					field : 'channel'
+				},{
+					width : '100',
+					align: 'center',
+					title : '创建时间',
+					field : 'createdAt',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm:ss');
+						}
+					}
+				},{
+					width : '100',
+					align: 'center',
+					title : '更新时间',
+					field : 'updatedAt',
+					formatter: function(value,row,index){
+						if(value != null){
+					    	var d = new Date(parseInt(value));
+					    	return d.format('yyyy-MM-dd hh:mm:ss');
+						}
+					}
+				}] ],
+				toolbar : '#toolbar'
+			});
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+		});
+	// 	/*获取当前日期 yyyy-mm-dd*/
+	// 	function getDate() {
+	// 		var now=new Date()
+	// 		y=now.getFullYear()
+	// 		m=now.getMonth()+1
+	// 		d=now.getDate()
+	// 		m=m<10?"0"+m:m
+	// 		d=d<10?"0"+d:d
+	// 		return y+"-"+m+"-"+d
+	// 	} 
+	// 	/*日期比较 yyyy-mm-dd
+	// 	@bool 是否允许日期相同
+	// 	*/
+	// 	function DateCompare(a, b, bool) {
+	// 		var arr = a.split("-");
+	// 		var starttime = new Date(arr[0], arr[1], arr[2]);
+	// 		var starttimes = starttime.getTime();
+			
+	// 		var arrs = b.split("-");
+	// 		var lktime = new Date(arrs[0], arrs[1], arrs[2]);
+	// 		var lktimes = lktime.getTime();
+			
+	// 		if(!bool){
+	// 			if (starttimes > lktimes)
+	// 				return false;
+	// 			else
+	// 				return true;
+	// 		} else {
+	// 			if (starttimes >= lktimes)
+	// 				return false;
+	// 			else
+	// 				return true;
+	// 		}
+	// 	}
+	// /*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="SearchForm" th:action="@{/couponActivity/list/}" method="GET">
+			<table>
+				<tr>
+					<td>红包ID：</td>
+					<td>
+						<input type="text" id="id" name="id" style="width:80px;" />
+					</td>
+					<td>有效日期：</td>
+					<td>
+						<input id="validFrom" name="validFrom" type="text" class="easyui-datebox" style="width:100px;" editable="false" />
+					</td>
+					<td>-</td>
+					<td>	
+						<input id="validTo" name="validTo" type="text" class="easyui-datebox" style="width:100px;" editable="false" />
+					</td>
+					<td>标题：</td>
+					<td>
+						<select id="title" name="title" style="width:230px;"></select>
+					</td>
+					<td>Type：</td>
+					<td>
+						<select id="couponType" name="couponType" style="width:110px;"></select>
+					</td>
+					<td>所属类型：</td>
+					<td>
+						<select id="typeId" name="typeId" style="width:70px;"></select>
+					</td>
+					<td>状态：</td>
+					<td>
+						<select id="statusKwd" name="statusKwd" style="width:70px;">
+							<option value="">全部</option>
+							<option value="VALID">有效</option>
+							<option value="OVERDUE">无效</option>
+							<option value="FORBID">被禁用</option>
+						</select>
+					</td>
+					<td>
+						<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+							onclick="jsQuery()" style="margin-left: 10px;">查询</a>
+					</td>
+				</tr>
+			</table>
+
+			<table>
+				<td>
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="jsAdd()" style="margin-left:40px;">新增红包</a>
+				</td>
+				<td>
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="jsEdit()" style="margin-left:40px;">编辑红包</a>
+				</td>
+				<td>
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="jsDel()" style="margin-left:40px;">删除红包</a>
+				</td>
+				<td>
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="jsClose()" style="margin-left:40px;">关闭红包</a>
+				</td>
+			</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+</body>   
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html data-layout-decorator="/layout/mainPageXQKD">
+<head>
+	<meta charset="utf-8" />
+    <title>支付成功页面</title>
+    <style type="text/css">
+        .cart-btn{
+            width: 25%;
+            display: inline-block;
+            margin: 40px 10px 15px;
+            text-align: center;
+            font-size: 15pt;
+            color: #000;
+            padding: 6px 10px;
+            border: 2px solid #000;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .cart-btn:hover,.cart-btn:active{
+            color: #000;
+        }
+        .cart-img{
+            display: block;
+            width: 104px;
+            margin: 40px auto 20px;
+        }
+        .cart-text{
+            font-size: 18pt;
+            color: #000;
+            text-align: center;
+        }
+        .cart-infor{
+            font-size: 12pt;
+            text-align: center;
+            padding-top: 15px;
+        }
+        .cart-infor strong{
+            color: #d6a41d;
+        }
+        .cart-infor span {
+            display: none;
+            padding: 10px 30px;
+            line-height: 1.4em;
+            font-size: 10pt;
+            font-family: SimHei;
+        }
+        .cart-btn-raffle {
+            color: #d6a41d;
+            border-color: #d6a41d;
+            display: none;
+        }
+        .btnbox {
+            font-family: SimHei;
+            text-align: center;
+        }
+    </style>
+</head>
+<body data-layout-fragment="content" >
+    <img class="cart-img" data-th-src="@{/_resources/images/xiangqu/pic.png}" />
+    <p class="cart-text">您已付款成功！</p>
+    <p class="cart-infor">
+        在 <strong>“我的”</strong>里查看订单详情
+        <br />
+        <br />
+        <!--
+        <span class="raffle">
+            恭喜亲获得一次抽取礼物的机会，<br />
+            快快去试试手气吧！
+        </span>
+           <span class="notraffle">
+            活动期间满50元就能获得抽取礼物的机会，<br />
+            快去凑单吧！100%中奖哦！  
+        </span>
+        -->
+    </p>
+    <p class="btnbox">
+    <a class="cart-btn cart-btn-raffle" href='http://www.xiangqu.com/activity/raffle/17?source=kkkd'>点我抽奖</a>
+    <a class="cart-btn" data-th-href="'/order/'+${order.id}">查看订单</a>
+    </p>
+    <script data-th-inline="javascript">
+    /*<![CDATA[*/
+            // 2015.07.30想去年中活动
+            function setAct () {
+                var ordersInfo =  /*[[${orders}]]*/'orders';
+                var ordersLength = ordersInfo.length;
+                var total = 0;
+                for (var i = 0;i < ordersLength;i++) {
+                    total += Number(ordersInfo[i].totalFee);
+                }
+                if (total >= 50) {
+                    document.getElementsByClassName('raffle')[0].style.display = 'inline-block';
+                    document.getElementsByClassName('cart-btn-raffle')[0].style.display = 'inline-block';
+                }else {
+                    document.getElementsByClassName('notraffle')[0].style.display = 'inline-block';
+                }
+            }
+            setAct();
+        /*]]>*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/**
+ * Created by ziyu on 2016/1/18.
+ */
+
+html,body{
+  min-height:100%;
+}
+body.callIframe{
+  height: 100%;
+  overflow: hidden;
+}
+body.callIframe section{
+  opacity: 0;
+}
+pre{
+  line-height: 16px;
+  margin-top: 3px;
+}
+.j_frame_detail,.j_frame_detail2{
+  opacity: 1!important;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 100000;
+  background: #fff;
+  display: none;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+.j_frame_detail iframe,.j_frame_detail2 iframe{
+  border:none;
+  overflow: auto;
+}
+.cart .cartTotal .cartPay.disabled{
+  color:#ccc;
+  border-color:#f5f5f5;
+}

@@ -1,0 +1,7 @@
+﻿[name]
+prop = name
+tag = iframe
+attrs-name = id
+attrs-value = J_loginIframe
+;取值
+extract-attr = href

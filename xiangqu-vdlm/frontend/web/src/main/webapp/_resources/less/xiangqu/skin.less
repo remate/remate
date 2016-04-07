@@ -1,0 +1,82 @@
+@font-gray:#989898;
+@color-yellow:#d8b53a;
+@color-gold:#d6a41d;
+@border-color:#dcdcdc;
+@red:#c20000;
+@spriteSize:100px/2 100px/2;
+@bg-gray:#f6f7f8;
+@spriteURL : '/_resources/images/xiangqu/cartSprite.png?v=1';
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a{
+	color:#000;
+}
+.bg_gray{
+	background: #eee; 
+}
+.clearfix:after{
+	content:"";
+	display: block;
+	clear:both;
+}
+.none{
+	display: none;
+}
+.hide{
+	visibility: hidden;
+}
+
+.spriteImg{
+	background: url(@spriteURL) no-repeat;
+	background-size : @spriteSize;
+}
+
+.icon-address{
+	width: 10px;
+	height: 12px;
+	.spriteImg();
+	background-position:  -11px 0;
+}
+.icon-edit{
+	width:10px;
+	height: 10px;
+	.spriteImg();
+}
+.icon-bird{
+	width: 40px;
+	height: 29px;
+	background:url('/_resources/images/xiangqu/icon-bird.png') no-repeat;
+	background-size:40px 29px;
+}
+.icon-user{
+	width: 9px;
+	height: 10px;
+	.spriteImg();
+	background-position:  -23px 0;
+}
+.icon-arrow-r{
+	width: 6px;
+	height: 9px;
+	.spriteImg();
+	background-position:  -38px 0;
+}
+.cart_btn{
+	height: 28px;
+	line-height:30px;
+	border-width:1px;
+	border-style:solid;
+	padding: 0 12px;
+	display: inline-block;
+	border-radius:3px;
+	margin-left: 10px;
+	&.cart_btn_1{
+		border-color:#333;
+		color:#333;
+	}
+	&.cart_btn_2{
+		border-color:@color-gold;
+		color:@color-gold;
+	}
+}

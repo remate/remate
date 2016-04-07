@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>订单评论管理</title>
+
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+		var jsQuery = function() {
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		
+		var jsDelete = function(){
+			var selRows = grid.datagrid("getSelections");
+			if(selRows.length==0){  
+				alert("请至少选择一行数据!");  
+				return;  
+			}
+			var sIds = '';  
+			for (var i = 0; i < selRows.length; i++) {  
+            	var id = selRows[i].id;
+            	sIds += id + ',';  
+            } 
+			$.messager.progress();
+			$.messager.confirm('确认', '确认要删除吗？', function(r){
+				if (r){
+					var params = {
+						'ids' : sIds.substring(0,sIds.length-1)
+					};
+					$.getJSON('orderComment/delete', params, function(data) {
+						$.messager.progress('close');
+						if(data){
+							$.messager.show({
+								title:'提示',
+								msg:'删除成功'
+							});
+							jsQuery();
+						}else{
+							parent.$.messager.alert('提示','删除失败!','error');
+						}
+					});
+					grid.datagrid('unselectAll');
+				}
+			});
+		}
+		
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'orderComment/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				nowrap:false,
+				pageList: [10,15,20,30,50],
+				singleSelect : false,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				frozenColumns : [ [ {
+					field : 'id',
+					checkbox: true
+				},{
+					width : '150',
+					title : '订单号',
+					field : 'orderNum'
+				} ] ],
+				columns : [ [ {
+					width : '250',
+					title : '商品名称',
+					field : 'productName'
+				},
+				{
+					width : '300',
+					title : '评论内容',
+					field : 'content'
+				},
+				{
+					width : '300',
+					title : '回复内容',
+					field : 'reply'
+				},
+				{
+					width : '50',
+					title : '评分',
+					field : 'productScore'
+				},
+				{
+					width : '120',
+					title : '创建时间',
+					field : 'createdAt',
+					formatter: function(value,row,index) {
+				    	var d = new Date(parseInt(value));
+				    	return d.format('yyyy-MM-dd hh:mm');
+					}
+				} ] ],
+				toolbar : '#toolbar'
+			});
+		});
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm">
+		<table>
+			<tr>
+				<td style="width: 60px; text-align: right;">创建时间</td>
+				<td>
+				<input id="created1_kwd" name="created1_kwd" type="text" style="width:90px;" class="easyui-datebox" />
+				--
+				<input id="created2_kwd" name="created2_kwd" type="text" style="width:90px;" class="easyui-datebox" />
+				</td>
+				<td style="width: 70px; text-align: right;">
+				<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+				onclick="jsQuery()">查询</a></td>
+				<td>			
+			 	<a href="#" class="easyui-menubutton" data-options="menu:'#mm_opt',iconCls:'icon-edit'">操作</a>
+			  	<div id="mm_opt" style="width: 100px;">
+			  		<div data-options="iconCls:'icon-remove'" onclick='jsDelete()'>删除</div>
+				</div>
+				</td>	
+			</tr>
+		</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+</body>
+</html>

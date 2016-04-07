@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPageXQPC">
+<head>
+    <title>确认订单</title>
+    <link rel="stylesheet" type="text/css" data-th-href="@{/resources/css/page/confirm.css}" />
+</head>
+
+<body class="as_page">
+<div data-layout-fragment="content" class="contain">
+    <h3 class="h3-title clearfix fz26">确认收货地址</h3>
+
+    <div data-th-replace="xiangqu/module/addressEditor::addressEditor(address=${address}, editable=true)"></div>
+
+    <form id="id-cart" action="/xiangqu/web/order/submit" method="post">
+        <input type="hidden" name="token" data-th-value="${session.token}" />
+        <input type="hidden" id="isdanbao" name="danbao" value="true"/>
+        <input type="hidden" id="paymentChannel" name="paymentChannel" value=""/>
+        <input type="hidden" id="payType" name="payType" value=""/>
+        <input type="hidden" id="cardType" name="cardType" value=""/>
+        <input type="hidden" id="qty" name="qty" value="1" />
+        <input type="hidden" id="bankCode" name="bankCode" value=""/>
+        <input type="hidden" id="payAgreementId" name="payAgreementId" value=""/>
+        <input type="hidden" id="addressId" name="addressId" data-th-value="${address == null ? '' : address.id}"/>
+        <input type="hidden" data-th-each="item : ${cartItems}" name="skuIds" data-th-value="${item.sku.id}"/>
+
+        <h4 class="cart-h4">确认商品信息</h4>
+        <ul class="cart-operation clearfix">
+            <li class="fl-l font-light fz18 td1" colspan="2">商品</li>
+            <li class="fl-l font-light fz18 td2">单价(元)</li>
+            <li class="fl-l font-light fz18 td3">数量</li>
+            <li class="fl-l font-light fz18 td4">优惠</li>
+            <li class="fl-l font-light fz18 td6">实价</li>
+        </ul>
+        <div data-th-each="entry : ${cartItemMap}">
+            <input type="hidden" id="paymentChannel" name="paymentChannel" value=""/>
+            <table class="table table-center table-able" data-th-attr="data-shop-id=${entry.key.id}">
+                <thead>
+                    <tr>
+                        <th class="fz20" colspan="6" data-th-inline="text">分享人:[[${entry.key.name}]]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="confirm-tr" data-th-each="item : ${entry.value}" data-th-attr="data-sku-id=${item.sku.id},data-inventory=${item.sku.amount}">
+                        <td class="td1">
+                            <a class="pro-link" data-th-href="${xiangquWebSite + '/dtl/' + item.product.id + '.html'}" target="_blank">
+                                <img data-vd-src="${item.product.img[s03]}"/>
+                            </a>
+                        </td>
+                        <td class="td2 fz16">
+                            <a class="font-gray J-number" data-th-href="${xiangquWebSite + '/dtl/' + item.product.id + '.html'}" data-th-text="${item.product.name}" target="_blank"></a>
+                            <p class="confirm-sku" data-th-text="${item.sku.spec}"></p>
+                        </td>
+                        <td class="td3 font-light">
+                             <span data-vd-price="${item.sku.marketPrice}"></span>
+                        </td>
+                        <td class="td4" data-th-text="${item.amount}"></td>
+                        <td class="font-dark td5">
+							<span data-vd-price="${item.sku.marketPrice - item.sku.price}"></span>
+                            <!--
+                            0
+                            <p class="cart-yhq"><span class="cart-yhq-numb">-5.00</span><span class="cart-yhq-type">店铺</span></p>
+                            <p class="cart-yhq"><span class="cart-yhq-numb">-15.00</span><span class="cart-yhq-type">红包优惠</span></p>
+                            -->
+                        </td>
+                        <td class="font-light td7 fz16" data-vd-price="${item.sku.price * item.amount}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footer font-dark clearfix">
+                <div class="cart-message fz18 fl-l">
+                    <span class="fl-l cart-message-name">给卖家留言:</span>
+                    <textarea class="fl-l cart-message-text" data-th-name="${'remarks[' + entry.key.id + ']'}" cols="30" rows="1"></textarea>
+                </div>
+                <span class="footer-youfei fz20">运费:&nbsp;<em class="footer-youfei-price" data-vd-price="${prices.pricesMap.get(entry.key.id).logisticsFee}"></em></span>
+                <span class="lh-normal footer-total fz20 fl-l">合计&nbsp;&nbsp; :&nbsp;&nbsp;
+                    <em class="ff-numb"><i class="totalprice" data-vd-price="${prices.pricesMap.get(entry.key.id).totalFee}"></i></em>
+                </span>
+            </div>
+        </div>
+        <!--想去双十一-->
+
+        <div id="cart-total-price" class="cart-total-price">订单总额&nbsp;<span data-vd-price="${prices.totalFee}"></span></div>
+
+        <div class="cart-vip">
+            <div class="cart-vip-select clearfix fz20">
+                <span data-th-replace="xiangqu/module/select"></span>
+                <span class=" fl-l">使用抵扣券或优惠代码</span>
+            </div>
+            <ul class="J_couponsItems cart-vip-list">
+                <li class="cart-vip-item clearfix radio" data-th-each="coupons:${coupons}">
+                    <div data-th-remove="tag" data-th-if="${coupons.activity.couponType.name() == 'CODE'}">
+                        <div data-th-remove="tag" data-th-if="${coupons.selected == true}">
+                            <label class="fl-l" for="vip2choose">
+                                <input id="vip2choose" class="cart-vip-input-list" type="checkbox" checked="checked"/>
+                                <span class="cart-vip-name">红包</span>
+                            </label>
+                            <div class="cart-vip3-list cart-vip-text fl-l">
+                                <div class="clearfix cart-vip3-item">
+                                    <input id="vip2" class="cart-vip-input cart-vip2-input fl-l" data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected}" type="checkbox" checked="checked" />
+                                    <span id="cart-youhuima-name" class="cart-vip-name fl-l">优惠码红包</span>
+                                    <input id="youhuimaInput" class="cart-input fl-l" name="youhuima" value="" type="text"/>
+                                    <a id="cart-vip-btn" class="cart-vip-btn fl-l" href="javascript:;">兑换</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-th-remove="tag" data-th-if="${coupons.selected != true}">
+                            <label class="fl-l" for="vip2choose">
+                                <input id="vip2choose" class="cart-vip-input-list" type="checkbox" />
+                                <span class="cart-vip-name">红包</span>
+                            </label>
+                            <div class="cart-vip3-list cart-vip-text fl-l">
+                                <div class="clearfix cart-vip3-item">
+                                    <input id="vip2" class="cart-vip-input cart-vip2-input fl-l" data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected}" type="checkbox"/>
+                                    <span id="cart-youhuima-name" class="cart-vip-name fl-l">优惠码红包</span>
+                                    <input id="youhuimaInput" class="cart-input fl-l" name="youhuima" value="" type="text"/>
+                                    <a id="cart-vip-btn" class="cart-vip-btn fl-l" href="javascript:;">兑换</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-th-remove="tag" data-th-if="${coupons.activity.couponType.name() != 'CODE'}">
+                        <label for="vip1">
+                            <div data-th-remove="tag" data-th-if="${coupons.selected == true}">
+                                <input class="cart-vip-input" data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected}" checked="checked" type="checkbox"/>
+                            </div>
+                            <div data-th-remove="tag" data-th-if="${coupons.selected != true}">
+                                <input class="cart-vip-input" data-th-attr="data-id=${coupons.id},data-coupon-type=${coupons.activity.actCode},data-extCouponId=${coupons.extCouponId},data-numb=${coupons.discount},data-selected=${coupons.selected}" type="checkbox"/>
+                            </div>
+                            <span class="cart-vip-name" data-th-text="${coupons.activity.title}+'('+ ${coupons.discount} +'元)'"></span>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="cart-total-price">减免&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&yen;&nbsp;<span id="vip-youhui">0</span></div>
+
+        <div class="cart-pay">
+            <div class="cart-h4">选择支付方式</div>
+            <!--
+                <section data-th-each="userAgreeBank : ${userAgreeBanks}">
+                <ul class="plr30 bdb">
+                   <li class="clearfix bdb paymentMethod-item" data-th-onclick="'javascript:selectPayType(this, \'UMPAY\', \'' +${userAgreeBank.aggreeId} + '\');'">
+                        <div class="fl-l paymentMethod-item-img mt10"><img data-th-src="${userAgreeBank.bankImg}"/></div>
+                        <div class="fl-l paymentMethod-item-info mt20 mt2020"  >
+                               <div class="fz26 font-dark-bold" data-th-text="${userAgreeBank.bankName}">招商银行</div>
+                               <div class="fz18 font-light pt10" >尾号<span  data-th-text="${userAgreeBank.accountNum}">9999</span>信用卡</div>
+                           </div>
+						<p  class="fl-r width5 talignr mr5 mt5">
+                           <img class="imgCheck size50" src="/_resources/images/pay/c_00.png"></img>
+                           </p>
+                    </li>
+                 </ul>
+                 </section>
+             -->
+            <!--
+            <section>
+               <ul class="cart-pay-list clearfix">
+                    <li class="cart-pay-item fl-l" data-pay-type="UMPAY" data-th-each="userAgreeBank : ${userAgreeBanks}">
+                        <label class="radio" for="KJ-pay-zhifubao">
+                            <input type="radio" class="cart-pay-choose" name="pay-type"  id="KJ-pay-zhifubao"/>
+                            <div class="cart-pay-img fl-l"><img data-th-src="${userAgreeBank.bankImg}" alt=""/></div>
+                            <div class="cart-pay-numb fz18 fl-l">****<span data-th-text="${userAgreeBank.accountNum}">9999</span></div>
+                            <span class="cart-pay-cord fl-l">信用卡</span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+             -->
+
+            <ul class="cart-pay-list clearfix">
+                <li class="cart-pay-item fl-l" data-th-attr="data-agreementId=${userAgreeBank.aggreeId}" data-pay-type="UMPAY" data-th-each="userAgreeBank : ${userAgreeBanks}">
+                    <label class="radio" data-th-for="${userAgreeBank.aggreeId}">
+                        <input type="radio" class="cart-pay-choose" name="pay-type" data-th-id="${userAgreeBank.aggreeId}"/>
+                        <div class="cart-pay-img fl-l"><img data-th-src="${userAgreeBank.bankImg}" alt=""/></div>
+                        <div class="cart-pay-numb fz18 fl-l">****<span data-th-text="${userAgreeBank.accountNum}">9999</span></div>
+                        <span class="cart-pay-cord card-bg-orange fl-l" data-th-text="${userAgreeBank.cardTypeName}">信用卡</span>
+                    </label>
+                </li>
+            </ul>
+            <ul class="cart-pay-list clearfix">
+                <li class="cart-pay-item fl-l" data-pay-type="ALIPAY">
+                    <label class="radio" for="pay-zhifubao">
+                        <input type="radio" class="cart-pay-choose" name="pay-type" id="pay-zhifubao"/>
+                        <div class="cart-pay-img fl-l"><img src="../../../resources/images/pay_12.jpg" alt=""/></div>
+                        <div class="cart-pay-infor fl-l">
+                            <span class="cart-pay-name fz18">支付宝</span>
+                            <span class="cart-pay-text font-light fz16">推荐支付宝用户使用</span>
+                        </div>
+                    </label>
+                </li>
+                <li class="cart-pay-item fl-l" data-pay-type="WEIXIN">
+                    <label class="radio" for="pay-weixin">
+                        <input type="radio" class="cart-pay-choose" name="pay-type" id="pay-weixin"/>
+                        <div class="cart-pay-img fl-l"><img src="../../../resources/images/pay_06.jpg" alt=""/></div>
+                        <div class="cart-pay-infor fl-l">
+                            <span class="cart-pay-name fz18">微信支付</span>
+                            <span class="cart-pay-text font-light fz16">支持信用卡，储蓄卡支付</span>
+                        </div>
+                    </label>
+                </li>
+                <li class="cart-pay-item fl-l" data-pay-type="UMPAY">
+                    <label class="radio" for="pay-card">
+                        <input type="radio" class="cart-pay-choose" name="pay-type" id="pay-card"/>
+                        <div class="cart-pay-img fl-l"><img src="../../../resources/images/pay_09.jpg" alt=""/></div>
+                        <div class="cart-pay-infor fl-l">
+                            <span class="cart-pay-name fz18">银行卡支付</span>
+                            <span class="cart-pay-text font-light fz16">支持信用卡，储蓄卡支付</span>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+            <div class="cart-card">
+                <span data-th-replace="xiangqu/module/cardBank"></span>
+            </div>
+        </div>
+        <div class="cart-price">
+            <div class="cart-price-container">
+                <i class="cart-price-i"></i>
+                <span class="cart-price-name fz24">实付款:</span>
+
+                <span class="cart-price-numb fz30"><em id="totalFee" data-vd-price="${prices.totalFee}"></em></span>
+            </div>
+        </div>
+        <div class="footer-btn clearfix"><input id="order-btn" type="submit" value="订单确认"/></div>
+    </form>
+
+        <!-- test-coupons
+            <div data-th-each="coupons:${promotions}" data-th-if="${#lists.size(promotions) != 0}">
+                <input type="hidden" name="coupons" data-th-value="${coupons.activity.title}"/>
+                <input type="hidden" name="coupons" data-th-value="${coupons.id}"/>
+                <input type="hidden" name="coupons" data-th-value="${coupons.discount}"/>
+                <input type="hidden" name="coupons" data-th-value="${coupons.activity.couponType.name()}"/>
+                <input type="hidden" name="coupons" data-th-value="${coupons.activity.actCode}"/>
+                <input type="hidden" name="coupons" data-th-value="${coupons.extCouponId}"/>
+                <input type="hidden" name="coupons" data-th-value="${coupons.selected}"/>
+            </div>
+        -->
+
+</div>
+<div data-layout-fragment="postScript">
+
+    <script>
+        jsArr.push('/resources/dist/kdweb/0.0.1/js/page/confirm.js');
+
+    </script>
+    
+    <!-- 20151110 start-->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.js"></script>-->
+    <!--<script src="/resources/js/common/jquery_1111.min.js?20150611"></script>-->
+    <!--<script src="/resources/js/page/coupons.js?20150611"></script>-->
+    <!--<script src="/resources/dist/kdweb/0.0.1/js/page/coupons.js?20150611"></script>-->
+    <!-- 20151110 end-->
+</div>
+</body>
+</html>
+
+

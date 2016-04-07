@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .animate{
+            width: 50px;
+            height: 20px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="animate" class="animate"></div>
+<script type="text/javascript" src="../../../_resources/js/appframework.min.js"></script>
+<script type="text/javascript" src="af.css3animate.js"></script>
+<script type="text/javascript">
+    $("#animate").css3Animate({
+        x: 20,
+        y: 30,
+        time: "300ms",
+        callback: function () {
+            $("#animate").css3Animate({
+                x: 50,
+                y: 0,
+                time: "500ms",
+                previous: true,
+                callback: function () {
+                    reset();
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

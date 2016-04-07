@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+
+<head>
+    <meta charset="utf-8" />
+    <title>发布商品</title>
+    <link rel="stylesheet" data-th-href="@{/_resources/css/product.css?v=2}" />
+</head>
+
+<body>
+    <ul data-layout-fragment="siderBar" data-th-replace="fragments/sider::sider(page='product')"></ul>
+    <div data-layout-fragment="content">
+        <!-- prodcut start -->
+        <div class="product">
+            <div class="am-pannel set-pannel am-pr">
+                <form class="am-form am-form-horizontal kd-form" id="J-product-form">
+                    <p>发布商品</p>
+                    <hr />
+                    <div class="am-form-group am-form-group-sm product-imgs">
+                        <label class="am-fl am-form-label">商品图片</label>
+                        <div class="am-fl desc-pop-imgs">
+                            <div class="desc-pop-imgs-box">
+                                <em class="desc-pop-add" id="J-product-img-add"></em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="J-product-name" class="am-fl am-form-label">商品名称</label>
+                        <div class="am-fl am-text-left">
+                            <input type="text" id="J-product-name" class="product-name longIpt" name="product-name" placeholder="请输入商品名称" />
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label for="J-product-info" class="am-fl am-form-label">商品描述</label>
+                        <div class="am-fl am-text-left">
+                            <textarea id="J-product-info" class="product-info longIpt" name="product-info" placeholder="请输入商品描述"></textarea>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm" id="defaultPrice">
+                        <label for="J-product-price" class="am-fl am-form-label">商品价格</label>
+                        <div class="am-fl am-text-left">
+                            <input type="text" id="J-product-price" class="product-price" name="product-price" placeholder="请输入商品价格" />
+                        </div>
+                        <label class="am-fl am-form-label am-text-center product-union am-margin-right">元</label>
+                        <label for="J-product-amount" class="am-fl am-form-label am-margin-left-lg">商品库存</label>
+                        <div class="am-fl am-text-left">
+                            <input type="text" id="J-product-amount" class="product-amount" name="product-amount" placeholder="请输入商品库存" />
+                        </div>
+                        <label class="am-fl am-form-label am-text-center product-union">件</label>
+                    </div>
+                    <div class="am-form-group am-form-group-sm product-select">
+                        <label class="am-fl am-form-label">店铺分类</label>
+                        <div class="am-fl product-category-box">
+                            <select class="am-fl combox product-Category" data-placeholder="未分类" name="product-Category">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm product-select">
+                        <label class="am-fl am-form-label">商品分类</label>
+                        <div class="am-fl platform-category">
+                            <!-- <select class="am-fl combox platform-select" data-placeholder="未分类">
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label">推荐商品</label>
+                        <div class="am-fl">
+                            <input class="am-switch proRecomend" type="checkbox" checked="checked" />
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm product-status-box">
+                        <label class="am-fl am-form-label">发布设置</label>
+                        <div class="am-fl">
+                            <label class="am-radio-inline am-warning">
+                                <input type="radio" name="prudct-status" value="ONSALE" class="kd-radio" checked="checked" />
+                                <span>立即发布</span>
+                            </label>
+                            <label class="am-radio-inline am-warning">
+                                <input type="radio" name="prudct-status" value="FORSALE" class="kd-radio" />
+                                <span>计划发布</span>
+                            </label>
+                            <label class="am-radio-inline am-warning">
+                                <input type="radio" name="prudct-status" value="DRAFT" class="kd-radio" />
+                                <span>保存到草稿箱</span>
+                            </label>
+                            <div class="date-picker hidden">
+                                <input type="text" class="am-form-field Wdate" placeholder="选择日期" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm">
+                        <label class="am-fl am-form-label">商品型号</label>
+                        <div class="am-fl product-skus-show longIpt">
+                            <div class="skus-show-box">
+                                
+                            </div>
+                            <button type="button" class="am-btn am-btn-blue am-round am-btn-xs" id="J-eidt-skus">编辑型号</button>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm product-editType-box am-hide">
+                        <label class="am-fl am-form-label">编辑方式</label>
+                        <div class="am-fl">
+                            <label class="am-radio-inline am-warning">
+                                <input type="radio" name="prudct-pubType" value="pc" class="kd-radio" />
+                                <span>仅在网页上编辑</span>
+                            </label>
+                            <label class="am-radio-inline am-warning">
+                                <input type="radio" name="prudct-pubType" value="all" class="kd-radio" checked="checked" />
+                                <span>APP与网页都可编辑</span>
+                            </label>
+                            <div class="product-tips">
+                                （注：选择某种方式并编辑后，再次切换则之前的内容将删除）
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-group-sm ueditBox">
+                        <textarea id="J-editor" class="editorText" name="content"></textarea>
+                    </div>
+                    <div class="am-form-group am-form-group-sm desc-show-box">
+                        <label class="am-fl am-form-label">段落描述</label>
+                        <div class="am-fl">
+                            <table class="am-table am-table-hover desc-table desc-tabel-show">
+                                <tbody class="desc-sort-box">
+                                </tbody>
+                            </table>
+                            <button type="button" class="am-btn am-btn-blue am-round am-btn-xs am-margin-right" id="J-desc-callList">段落描述列表</button>
+                            <button type="button" class="am-btn am-btn-blue am-round am-btn-xs" id="J-desc-add">新建段落描述</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="prodcut-footer am-pa am-text-center">
+                    <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" id="J-all-save">发布</button>
+                </div>
+            </div>
+            <!-- 设置段落描述弹出框 -->
+            <div class="am-modal am-modal-confirm desc-pop" tabindex="-1" id="J-desc-pop">
+                <div class="kd-modal-dialog am-modal-dialog">
+                    <p class="kd-modal-title">段落设置</p>
+                    <div class="kd-modal-body">
+                        <form class="am-form am-form-horizontal kd-form" id="J-per-desc">
+                            <div class="am-form-group am-form-group-sm">
+                                <label for="J-desc-pop-name" class="am-fl am-form-label">段落名称</label>
+                                <div class="am-fl am-text-left">
+                                    <input type="text" id="J-desc-pop-name" class="desc-pop-name" name="desc-pop-name" placeholder="请输入段落名称" />
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label for="J-desc-pop-info" class="am-fl am-form-label">描述内容</label>
+                                <div class="am-fl am-text-left">
+                                    <textarea id="J-desc-pop-info" class="desc-pop-info" name="desc-pop-info" placeholder="段落描述内容">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label class="am-fl am-form-label">段落图片</label>
+                                <div class="am-fl desc-pop-imgs">
+                                    <div class="desc-pop-imgs-box">
+                                        <em class="desc-pop-add" id="J-desc-pop-add"></em>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label for="J-desc-pop-position" class="am-fl am-form-label">描述位置</label>
+                                <div class="am-fl">
+                                    <label class="am-radio-inline am-warning">
+                                        <input type="radio" name="desc-pop-position" class="kd-radio" />
+                                        <span>描述内容在图片前显示</span>
+                                    </label>
+                                    <label class="am-radio-inline am-warning">
+                                        <input type="radio" name="desc-pop-position" class="kd-radio" />
+                                        <span>描述内容在图片后显示</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer am-text-center">
+                                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                                <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- 设置段落描述弹出框 end -->
+            <!-- 段落描述列表弹出框 -->
+            <div class="am-modal am-modal-confirm descList-pop" tabindex="-1" id="J-descList-pop">
+                <div class="kd-modal-dialog am-modal-dialog">
+                    <p class="kd-modal-title">段落描述列表</p>
+                    <hr />
+                    <div class="kd-modal-body">
+                        <table class="am-table am-table-hover desc-table">
+                            <tbody >
+                            </tbody>
+                        </table>
+                        <div class="prodcut-footer am-pa am-text-center">
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" data-am-modal-confirm="">确认</button>
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 段落描述列表弹出框 end -->
+            <!-- SKU编辑弹出框 -->
+            <div class="am-modal am-modal-confirm modifySku-pop" tabindex="-1" id="J-modifySku-pop">
+                <div class="kd-modal-dialog am-modal-dialog">
+                    <p class="kd-modal-title">编辑类型</p>
+                    <div class="step1">
+                        <div class="stepStatus am-text-center">
+                            <span class="active"><em>1</em>创建类型</span>
+                            <span><em>2</em>添加型号</span>
+                            <span><em>3</em>编辑型号</span>
+                        </div>
+                        <hr />
+                        <form class="am-form am-form-horizontal kd-form am-text-left" id="J-sku-step1">
+                            <div class="am-form-group am-form-group-sm">
+                                <label class="am-fl am-form-label">常用类型</label>
+                                <div class="am-fl am-text-left step1-skuList" id="J-skuBank">
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label class="am-fl am-form-label">自定义类型</label>
+                                <div class="am-fl am-text-left step1-skuList" id="J-skuSelf">
+                                    
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm">
+                                <label class="am-fl am-form-label"></label>
+                                <div class="am-fl am-text-left ">
+                                    <button type="button" class="am-btn am-btn-blue am-round am-btn-xs" id="J-step1-add">添加类型</button>
+                                </div>
+                            </div>
+                            <div class="am-form-group am-form-group-sm am-margin-top step1-sku-add-model">
+                                <label class="am-fl am-form-label"></label>
+                                <div class="am-fl am-text-left ">
+                                    <input type="text" class="step1-sku-add-name" placeholder="输入类型名称" />
+                                    <i class="kkkd skuModify-del am-margin-left">&#xe608;</i>
+                                    <i class="kkkd skuModify-add">&#xe618;</i>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="skuModify-footer am-pa am-text-center">
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes goNext" >下一步</button>
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                        </div>
+                    </div>
+                    <div class="step2">
+                        <div class="stepStatus am-text-center">
+                            <span><em>1</em>创建类型</span>
+                            <span  class="active"><em>2</em>添加型号</span>
+                            <span><em>3</em>编辑型号</span>
+                        </div>
+                        <form class="am-form am-form-horizontal kd-form am-text-left sku-step2-form" id="J-sku-step2">
+                            <div class="step2-item am-pr">
+                                <div class="am-form-group am-form-group-sm">
+                                    <label class="am-fl am-form-label">颜色</label>
+                                    <div class="am-fl">
+                                        <div class="step2-skuType am-pr">
+                                            <input type="text" />
+                                            <em class="step2-skuType-del am-pa">&times;</em>
+                                        </div>
+                                        <div class="step2-skuType am-pr">
+                                            <input type="text" />
+                                            <em class="step2-skuType-del am-pa">&times;</em>
+                                        </div>
+                                        <div class="step2-skuType am-pr">
+                                            <input type="text" />
+                                            <em class="step2-skuType-del am-pa">&times;</em>
+                                        </div>
+                                        <div class="step2-skuType am-pr">
+                                            <input type="text" />
+                                            <em class="step2-skuType-del am-pa">&times;</em>
+                                        </div>
+                                        <div class="step2-skuType am-pr">
+                                            <input type="text" />
+                                            <em class="step2-skuType-del am-pa">&times;</em>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="am-form-group am-form-group-sm step2-skuType-handel">
+                                    <label class="am-fl am-form-label"></label>
+                                    <div class="am-fl am-text-left ">
+                                        <p class="step2-skuType-add"><a href="javascript:;"><span class="kkkd">&#xe617;</span><span>添加类型</span></a></p>
+                                    </div>
+                                </div>
+                                <i class="kkkd skuModify-del step2-skuType-delAll">&#xe608;</i>
+                            </div>
+                        </form>
+                        <div class="skuModify-footer am-pa am-text-center">
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes goPrev">上一步</button>
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes goNext">下一步</button>
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                        </div>
+                    </div>
+                    <div class="step3">
+                        <div class="stepStatus am-text-center">
+                            <span><em>1</em>创建类型</span>
+                            <span><em>2</em>添加型号</span>
+                            <span class="active"><em>3</em>编辑型号</span>
+                        </div>
+                        <div class="step3-table-box">
+                            
+                        </div>
+                        <div class="skuModify-footer am-pa am-text-center">
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes goPrev">上一步</button>
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-yes" id="complete">完成</button>
+                            <button type="button" class="am-btn am-btn-comfirm am-btn-comfirm-no" data-am-modal-cancel="">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SKU编辑弹出框 end -->
+        </div>
+        <script type="text/template" class="tpl-table">
+        /*
+            <![CDATA[*/
+            <table class="am-table">
+                <thead>
+                    {{~it.mappings:map:index}}
+                    <th data-name="spec{{=index}}">{{=map}}</th>
+                    {{~}} 
+                    <th>库存</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </thead>
+                <tbody>
+                {{~it.skus:sku:index}}
+                     <tr data-skus="skus[{{=index}}]">
+                        {{~sku.sku:v:i}}
+                        <td><div data-name="spec{{=i}}">{{=v}}</div></td>
+                        {{~}}
+                        <td><div><input type="text" value="{{=sku.amount || 0}}"  data-name="amount"></div></td>
+                        <td><div><input type="text" value="{{=sku.price || ''}}"  data-name="price"></div></td>
+                        <td><a href="javascript:;">删除</a></td>
+                     </tr>
+                {{~}}
+                </tbody>
+            </table>
+            /*]]>*/
+        </script>
+        <script type="text/template" class="tpl-step2-item">
+            <div class="step2-skuType am-pr">
+                <input type="text" value="" maxlength="40" />
+                <em class="step2-skuType-del am-pa">&times;</em>
+            </div>
+        </script>
+        <script type="text/template" class="tpl-step2">
+            {{~it.keyArr:item:index}}
+            <div class="step2-item am-pr" data-name="{{=item}}">
+                <div class="am-form-group am-form-group-sm">
+                    <label class="am-fl am-form-label step2-item-key">{{=item}}</label>
+                    <div class="am-fl step2-item-list">
+                    {{?it.typeList[item]}}
+                        {{~it.typeList[item]:skuItem:j}}
+                            <div class="step2-skuType am-pr">
+                                <input type="text" value="{{=skuItem}}" maxlength="40" />
+                                <em class="step2-skuType-del am-pa">&times;</em>
+                            </div>
+                        {{~}}
+                    {{??}}
+                        <div class="step2-skuType am-pr">
+                            <input type="text" value="" maxlength="40" />
+                            <em class="step2-skuType-del am-pa">&times;</em>
+                        </div>
+                    {{?}}
+                    </div>
+                </div>
+                <div class="am-form-group am-form-group-sm step2-skuType-handel">
+                    <label class="am-fl am-form-label"></label>
+                    <div class="am-fl am-text-left ">
+                        <p class="step2-skuType-add"><a href="javascript:;"><span class="kkkd">&#xe617;</span><span>添加类型</span></a></p>
+                    </div>
+                </div>
+                <i class="kkkd skuModify-del step2-skuType-delAll">&#xe608;</i>
+            </div>
+            {{~}}
+        </script>
+        <script type="text/template" class="tpl-skuType">
+            <div class="step1-skuItem">
+                <input type="checkbox" class="kd-checkbox" data-val="{{=it.name}}" />
+                <span>{{=it.name}}</span>
+                {{? it.isSelf}}
+                <i class="kkkd skuModify-del">&#xe608;</i>
+                {{?}}
+            </div>
+        </script>
+        <script type="text/template" class="tpl-skuUI">
+            <div class="skus-show-price">
+                价格：¥<span class="product-skus-show-price am-padding-right">{{=it.price}}</span> 库存：
+                <span class="product-skus-show-amount">{{=it.amount}}</span>
+            </div>
+            <div class="skus-show-list">
+                {{~it.mappings:map:index}}
+                <div class="skus-show-item">
+                    <span class="skus-show-key">{{=map}}：</span>
+                    {{~it.types[index]:type:i}}
+                        <span class="skus-show-value">{{=type}}</span>
+                    {{~}}
+                </div>
+                {{~}}
+            </div>   
+        </script>
+        <script type="text/template" class="tpl-desc-img">
+            <span class="desc-pop-img">
+                <img src="{{=it.imgUrl}}" data-img="{{=it.img}}" />
+                <em class="desc-pop-img-del">&times;</em>
+            </span>
+        </script>
+        <script type="text/template" class="tpl-desc-List">
+        {{~it.data:item:index}}
+        <tr data-showmodel="{{=item.showModel}}" data-id="{{=item.id}}">
+            <td class="kd-pictext-td desc-info am-pr">
+                <div class="imgsData">
+                    {{~item.imgs:img}}
+                        <span data-img="{{=img.img}}" data-imgurl="{{=img.imgUrl}}"></span>
+                    {{~}}
+                </div>
+                <input type="checkbox" name="fragmentId" class="kd-checkbox" />
+                {{? item.imgs.length}}
+                    <img class="kd-pictext-td-img" src="{{=item.imgs[0].imgUrl}}" />
+                {{?}}
+                <p class="desc-name">{{=item.name}}</p>
+                <i class="kd-table-line"></i>
+            </td>
+            <td class="desc-detail am-pr">
+                {{=item.description}}
+            </td>
+        </tr>
+        {{~}}
+        </script>
+        <script type="text/template" class="tpl-desc">
+            /*
+            <![CDATA[*/
+            <tr data-id="{{=it.id}}" data-showmodel="{{=it.showModel == 1 ? 'true' : 'false'}}">
+                <td class="kd-pictext-td desc-info am-pr">
+                    <div class="imgsData">
+                        {{~it.imgList:img}}
+                        <span data-imgurl="{{=img.imgUrl}}" data-img="{{=img.img}}"></span>
+                        {{~}}
+                    </div>
+                    <span class="kkkd desc-sort">&#xe615;</span>
+                    {{? it.imgList.length}}
+                    <img src="{{=it.imgList[0].imgUrl}}" class="kd-pictext-td-img" />
+                    {{?}}
+                    <p class="desc-name">{{=it.name}}</p>
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="desc-detail am-pr">
+                    {{=it.description}}
+                    <i class="kd-table-line"></i>
+                </td>
+                <td class="table-op">
+                    <a class="desc-modify" href="javascript:;">编辑</a>
+                    <br />
+                    <a class="desc-del" href="javascript:;">删除</a>
+                </td>
+            </tr>
+        /*]]>*/
+        </script>
+        <!-- product end -->
+        <script thsss:src="@{/_resources/js/plugins/ueditor/ueditor.config.js}"></script>
+        <script thsss:src="@{/_resources/js/plugins/ueditor/ueditor.all.min.js}"></script>
+    </div>
+    <!-- fragment-content end -->
+    <div data-layout-fragment="postScript">
+        <script>
+        require(['base/all', 'base/product']);
+        </script>
+    </div>
+    <!-- fragment-postScript end -->
+</body>
+</html>

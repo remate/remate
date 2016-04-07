@@ -1,0 +1,254 @@
+/**
+ * Created by ziyu on 2016/1/23.
+ */
+@charset "UTF-8";
+.tc-address-manage-box{
+  .tc-cont-body{
+    background: #fff;
+  }
+}
+.form-base-info{
+  ul{
+    li{
+      //height:px2rem(80);
+      padding:px2rem(15) px2rem(24);
+      margin:0;
+      border-bottom:1px solid #e5e5e5;
+      input{
+        font-size:px2rem(28);
+        height:px2rem(60);
+        line-height:px2rem(60);
+        width:100%;
+        outline: none;
+        padding:0;
+        margin: 0;
+        border-color: #fff;
+        background: #fff;
+      }
+    }
+  }
+}
+
+.street-box{
+  padding:px2rem(24);
+  background: #fff;
+  textarea{
+    font-size:px2rem(28);
+    line-height:px2rem(40);
+    width:100%;
+    height:px2rem(130);
+    border-color: #fff;
+    outline:none;
+  }
+
+}
+
+.set-default{
+  height:px2rem(36);
+  padding:px2rem(24);
+  background: #f0f0f0;
+  //margin-bottom:px2rem(93);
+  overflow: hidden;
+  margin-bottom:px2rem(93);
+  .check-default{
+    width:px2rem(260);
+    .icon-check-default{
+      display: inline-block;
+      width:px2rem(36);
+      height:px2rem(36);
+      background: url($icon-check_default) no-repeat;
+      background-size:contain;
+      float: left;
+    }
+    .default-label{
+      font-size:px2rem(24);
+      padding-left:px2rem(10);
+      line-height:px2rem(36);
+    }
+    &.active{
+      .icon-check-default{
+        display: inline-block;
+        width:px2rem(36);
+        height:px2rem(36);
+        background:url($icon-checked_default) no-repeat;
+        background-size:contain;
+        float: left;
+      }
+    }
+  }
+
+}
+
+.pdc-box{
+
+  .tc-city-box{
+    .city-item{
+      border-bottom:1px solid #e5e5e5;
+      padding:px2rem(10) px2rem(24);
+      position: relative;
+      z-index:2001;
+      select{
+        width:100%;
+        height:px2rem(60);
+        font-size:px2rem(28);
+        line-height:px2rem(50);
+        border:none;
+        outline:none;
+
+
+
+      }
+      i{
+        display: block;
+        width:px2rem(12);
+        height:px2rem(26);
+        overflow: hidden;
+        position: absolute;
+        right: px2rem(24);
+        top:50%;
+        margin-top:- px2rem(13);
+        background: url($icon-select) no-repeat;
+        background-position:right center;
+        background-size: contain;
+      }
+
+    }
+
+  }
+}
+
+
+//收货地址管理
+.my-address-box-shop{
+  display: none;
+  //display: block;
+    .tc-my-address-box{
+      width:100%;
+      height: 100%;
+      position: relative;
+      z-index: 10;
+    }
+  .tc-address-manage-box{
+    .tc-cont-body{
+      margin-bottom:0;
+    }
+
+  }
+  .tc-my-coupon-box{
+    width:100%;
+    position: relative;
+    z-index: 20;
+    display: none;
+    //display: block;
+    ul{
+      padding: 0 px2rem(24) px2rem(93) px2rem(24);
+      li{
+        background: #fff;
+        border:1px solid #e5e5e5;
+        padding:px2rem(24);
+        margin-bottom: px2rem(20);
+        overflow: hidden;
+        .discont{
+          width:30%;
+          height:px2rem(120);
+          float: left;
+          border-right:1px dashed #ccc;
+          text-align: center;
+          overflow: hidden;
+          span{
+            font-size:px2rem(50);
+            line-height:px2rem(120);
+          }
+          em{
+            font-size:px2rem(60);
+            line-height:px2rem(120);
+          }
+
+        }
+        .coupon-info{
+          float: left;
+          width:65%;
+          padding-left:px2rem(24);
+          position: relative;
+          z-index: 30;
+          //height:px2rem(120);
+
+          .title{
+            font-size:px2rem(26);
+            line-height:px2rem(28);
+            max-height:px2rem(60);
+            overflow: hidden;
+          }
+          .min-price{
+            padding: px2rem(5) 0;
+          }
+          .valid-from{
+            //position: absolute;
+            //left: px2rem(24);
+            //bottom:- px2rem(3);
+            //z-index: 31;
+
+          }
+
+          .min-price,.valid-from{
+            font-size:px2rem(22);
+            color: #858585;
+            line-height:px2rem(28);
+          }
+          .platfrom{
+            display: inline-block;
+            width:auto;
+            position: absolute;
+            padding:0 px2rem(5);
+            right:- px2rem(28);
+            top:0;
+            height: px2rem(30);
+            font-size:px2rem(18);
+            background: #ff9292;
+            line-height:px2rem(30);
+            text-align: center;
+            color:#fff;
+          }
+
+
+        }
+        &.active{
+          background: #2e2e2e;
+          .discont{
+            color: #fff;
+          }
+          .coupon-info{
+            color: #fff;
+            .min-price,.valid-from{
+              color: #fff;
+            }
+            
+          }
+
+        }
+        &.disabled{
+          background: #e2e2e2;
+          .discont{
+            color: #939393;
+          }
+          .coupon-info{
+            color: #939393;
+            .min-price,.valid-from{
+              color: #939393;
+            }
+          }
+          .platfrom{
+            background: #939393;
+            color:#fff;
+          }
+        }
+
+
+      }
+    }
+
+  }
+}
+.J_home{
+  //display: none;
+}

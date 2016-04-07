@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>账务明细</title>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar1" style="display: none;">
+		<form id="searchForm1" th:action="@{/tradeDetails/exportExcel}" method="GET">
+		<table>
+			<input type="hidden" id="userId" name="userId" th:value="${userId}" />
+			<tr>
+				<td style="width: 60px; text-align: right;">交易单号</td>
+				<td><input type="text" id="bizId" name="bizId" placeholder="交易单号" style="width:110px;"/></td>
+				<td style="width: 60px; text-align: right;">账户类别</td>
+				<td>
+					<select id="accountType" name="accountType">
+						<option value="">全部</option>
+						<option value="AVAILABLE" selected="selected">可用账户</option>
+						<option value="DANBAO">担保账户</option>
+						<option value="FROZEN">冻结账户</option>
+						<option value="COMMISSION">佣金账户</option>
+						<option value="WITHDRAW">提现账户</option>
+						<option value="CREDIT">信用账户</option>
+						<option value="HONGBAO">红包账户</option>
+						<option value="CONSUME">消费账户</option>
+					</select>
+				</td>
+				<td style="width: 60px; text-align: right;">交易类型</td>
+				<td>
+					<select id="payType" name="payType">
+						<option value="">全部</option>
+						<option value="RECHARGE">充值</option>
+						<option value="INSTANT" selected="selected">即时转账</option>
+						<option value="DANBAO">担保转账</option>
+						<option value="REFUND">即时转账 退款</option>
+						<option value="WITHDRAW">提现</option>
+						<option value="FROZEN">冻结</option>
+						<option value="UNFROZEN">解冻</option>
+						<option value="AVAILABLE2CONSUME">从自己的可用账户转到消费账户</option>
+						<option value="HONGBAO2CONSUME">从自己的红包账户到可消费账户</option>
+						<option value="CONSUME2AVAILABLE">从自己可消费账户到可用账户</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					开始时间
+				</td>
+				<td>
+					<input id="startTime" name="startTime" type="text" class="easyui-datetimebox" />
+				</td>
+				<td>
+					结束时间
+				</td>
+				<td>
+					<input id="endTime" name="endTime" type="text" class="easyui-datetimebox" />
+				</td>
+				<td style="width: 70px; text-align: right;">
+				<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+				onclick="queryTradeDetails()">查询</a></td>
+				<td style="width: 70px; text-align: right;">
+				<a href="javascript:void(0);" class="easyui-linkbutton" 
+				onclick="queryTradeDetails4Excel()">导出Excel</a></td>
+			</tr>
+		</table>
+		</form>
+	</div>
+		<table id="detailsGrid" data-options="fit:true,border:false">
+		</table>
+	<div layout:fragment="postScript">
+	    <script type="text/javascript" charset="utf-8" th:inline="text">
+	 /*<![CDATA[*/
+	 	var detailsGrid;
+	 	var userId = $("#userId").val();
+	 	var accountType = $("#accountType").val();
+	 	var payType = $("#payType").val();
+	 	var queryTradeDetails4Excel = function() {
+			$.messager.confirm('请确认', '确认导出账务明细Excel吗？', function(r){
+				if (r){
+					var params1 =  $.serializeObject($('#searchForm1'));
+					params1.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+					$("#searchForm1")[0].submit();
+				}
+			});
+	 	};
+	 	
+	 	var queryTradeDetails = function() {
+			var params1 =  $.serializeObject($('#searchForm1'));
+			params1.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			detailsGrid.datagrid('load', params1);
+		};
+		
+		$(function() {
+			detailsGrid =  $('#detailsGrid').datagrid({
+				url : 'tradeDetails/list',
+				striped : true,
+				rownumbers : true,
+				showFooter: true,
+				fitColumns: true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]',
+					userId : userId,
+					accountType : accountType,
+					payType : payType
+				},
+				frozenColumns : [ [ /*{
+					width : '70',
+					title : '明细id',
+					field : 'idLong',
+					hidden: false
+				},*/{
+					width : '80',
+					title : '用户',
+					field : 'userPhone'
+				} ] ],
+				columns : [ [ {
+					width : '80',
+					title : '账户类型',
+					field : 'remarkAccountType'
+				}, {
+					width : '80',
+					title : '资金操作类型',
+					field : 'remarkOpType'
+				}, {
+					width : '50',
+					title : '金额',
+					field : 'amount'
+				}, {
+					width : '140',
+					title : '交易单号',
+					field : 'bizId'
+				}, {
+					width : '70',
+					title : '交易类型',
+					field : 'remarkPayType'
+				}, {
+					width : '60',
+					title : '支付渠道',
+					field : 'outId'
+				}, {
+					width : '60',
+					title : '支付状态',
+					field : 'outStatus'
+				}, {
+					width : '100',
+					title : '创建时间', 
+					field : 'createdAtStr'
+				}  ] ],
+				toolbar : '#toolbar1'
+			});
+		});
+		/*]]>*/
+	</script>
+	</div>
+</body>
+</html>

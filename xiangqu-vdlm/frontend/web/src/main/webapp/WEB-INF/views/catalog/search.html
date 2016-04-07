@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+	<meta charset="utf-8" />
+    <title data-th-text="#{shop.search}">搜索店铺</title>
+</head>
+<body class="as_page bg-gray-new search-box">
+	<header class="header bg-white font-orange-bold clearfix searchHeader searchBoxShadow" data-layout-fragment="header" >
+   		 <form action="/catalog/search" method="get">
+			<input type="hidden" name="shopId" data-th-value="${param.shopId ne null?param.shopId[0]:''}" />
+			<div class="search-input fl-l" >
+				<i><img data-vd-src="/_resources/images/search_shop.png" alt="" /></i>
+				<input id="j-search-input" placeholder="搜索店铺内商品" type="text" required="true" autofocus="autofocus" name="key" data-th-value="${param.key ne null?param.key[0]:''}" />
+				<span class="k-detele" id="j-detele"><img data-vd-src="/_resources/images/delete.png" alt="" /></span>
+			</div>
+            <input type="submit" class="button search-button fl-l" data-th-value="#{Search}" />
+            <!--<a class="button search-back fl-l" data-th-href="'/shop/'+${param.shopId[0]}" >回到店铺</a>-->
+		</form>
+	</header>
+
+	<div data-layout-fragment="content" class="searchResult">
+		<!--<section class="content">
+		    <form action="/catalog/search" method="get" class="relative grid">
+				<input type="hidden" name="shopId" data-th-value="${param.shopId ne null?param.shopId[0]:''}" />
+				<div class="abs-top-left content" style="right:75px"><input type="text" required="true" autofocus="autofocus" name="key" data-th-value="${param.key ne null?param.key[0]:''}" /></div>
+
+			</form>
+		</section>-->
+		<section class="grid gridSection ">
+			<div class="pl10r30">
+				<!-- 
+				<div class="col2 content" data-th-each="prod:${prods}">
+	                <div class="content"><div data-th-replace="fragments/productCard::card(prod=${prod})"></div></div>
+	            </div>
+	             -->
+	            <div class="width310" data-th-if="${prods != null}">
+					<div class="col2 content" data-th-each="prod:${prods}">
+		                <div class="content"><div data-th-replace="fragments/productCard::card(prod=${prod})" ></div></div>
+		            </div>
+				</div>
+				<div data-th-if="${keyWord != null}">
+					<div class="content">
+						<div data-th-replace="fragments/searchNoResult"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div data-layout-fragment="postScript">
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#j-detele").click(function(){
+			$("#j-search-input").val('');
+		});
+	})
+	</script>
+	</div>
+</body>
+</html>

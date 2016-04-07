@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" data-th-href="@{/resources/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <footer class="footer centered" data-th-fragment="footer(shopId)">
+    	<span class=" content"><a data-th-href="'/catalog/search?shopId='+${shopId}" class="yellow button" data-th-text="#{shop.search}"></a></span>
+    	<!--<span class=" content"><a data-th-href="'/shop/' + ${shopId} + '/cart'" class="orange button" data-th-text="#{Cart}"></a></span>-->
+    </footer>
+</body>
+</html>

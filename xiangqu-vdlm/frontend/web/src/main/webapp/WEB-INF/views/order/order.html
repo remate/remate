@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta charset="utf-8"/>
+    <title>确认下单1</title>
+</head>
+
+<body class="as_page">
+    <div class="afScrollPanel" data-layout-fragment="content">
+        <div class="formGroupHead">收货人信息</div>
+        <label for="consignee">收货人：</label><span data-th-text="${address.consignee}"></span>
+        <label for="phone">手机号码：</label><span data-th-text="${address.phone}"></span>
+        <label for="street">地址：</label><span data-th-text="${address.street}"></span>
+        <label for="remark">备注：</label><span data-th-text="${form.remark}"></span>
+        <label for="wechat">微信号：</label><span data-th-text="${address.weixinId}"></span>
+
+        <div class="formGroupHead">选择支付方式</div>
+        <ul class="list inset">
+            <li data-th-each="payment : ${payments}">
+                <div class="grid">
+                    <a href="${payment.img}" data-th-text="${payment.name}"></a>
+                    <div><span data-th-text="${payment.description}"></span></div>
+                </div>
+            </li>
+        </ul>
+        <div class="formGroupHead">已选购的商品</div>
+        <ul class="list inset">
+            <li data-th-each="product : ${products}">
+                <div class="grid">
+                    <div class="col1-3">
+                        <a data-th-href="${'/p/' + product.id}">
+                            <img data-vd-src="${product.img[s03]}"/>
+                        </a>
+                    </div>
+                    <div class="col2-3">
+                        <a data-th-href="${product.id}" data-th-text="${product.name}"></a>
+                        <div class="control_count abs" data-stock="10" data-current-num="1">
+                            <div><span data-th-text="${product.price}"></span>&nbsp;x&nbsp;</div>
+                            <div><input type="number" data-th-value="${product.amount}"/></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="button-grouped flex tabbed">
+             <a class="button icon cloud pressed" data-ignore-pressed="true">合计(不含运费):<span>￥1000.00</span></a>
+             <a class="button" data-ignore-pressed="true">结算(1)</a>
+        </div>
+    </div>
+    <script data-layout-fragment="postScript">
+        $.wxShare($('#prod_title').text(), $('#prod_desc').text(), $('#prod_img')[0].src, location.href);
+        $(document).ready(function(){
+            $(".prodOption").click(function(ev){
+                $(".numInc").attr('th:atrrs',$(ev.target).attr('sku_amount'));
+            })
+        })
+    </script>
+</body>
+</html>

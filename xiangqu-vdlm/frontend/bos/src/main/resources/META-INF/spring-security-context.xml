@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<security:http auto-config="true" disable-url-rewriting="true">
+		<security:csrf request-matcher-ref="csrfMatcher"/>
+        <security:form-login login-page="/signin" default-target-url="/workshop" authentication-failure-url="/signin?error=1"/>
+		<security:logout invalidate-session="true" logout-success-url="/signin" logout-url="/logout" />
+		<security:remember-me  key="${rememberMeServices.key}" services-ref="rememberMeServices" />
+		<security:intercept-url pattern="/_resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/signin" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/paymentBatch/alipay/notify" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/refundBatch/alipay/notify" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/refundBatch/alipay/notify/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/**" access="ROLE_ADMIN" />
+	</security:http>
+</beans>

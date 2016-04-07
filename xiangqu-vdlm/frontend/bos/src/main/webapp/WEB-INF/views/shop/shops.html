@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+	<title>商店管理</title>
+	
+	<script th:inline="text">
+	 /*<![CDATA[*/
+	    var grid;
+		var jsQuery = function() {
+			$(':text').each(function(){
+				$(this).val($.trim($(this).val()));
+			});
+			var params =  $.serializeObject($('#searchForm'));
+			params.[[${_csrf.parameterName}]] = '[[${_csrf.token}]]';
+			grid.datagrid('load', params);
+		};
+		
+		var jsClose = function(){
+			var updated = grid.datagrid('getSelected');
+			if(updated == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			$('#dvClose').dialog('open');
+		}
+		
+	    var jsCloseOk = function(){
+
+			var opRemark = $('#opRemark').combobox('getText'); 
+		
+			if(opRemark == ''){
+				alert('请输入封店原因');
+				return ;
+			}
+			
+			var updated = grid.datagrid('getSelected');
+			$.messager.confirm('请确认', '确认'+updated.phone+'封店吗？', function(r){
+				if (r){
+				var params = {
+					'shopId' : updated.id,
+					'opRemark' : opRemark
+				};
+
+				parent.$.messager.progress();
+				$.getJSON('shop/close', params, function(data) {
+					parent.$.messager.progress('close');
+					if(data.rc == '1'){
+						$.messager.show({
+							title:'提示',
+							msg: data.msg
+						});
+						$('#dvClose').dialog('close');
+						jsQuery();
+					}else{
+						parent.$.messager.alert('错误', data.msg,'error');
+					}
+				});
+				}
+			});
+		}
+		
+	    var jsUnClose = function(){
+			var updated = grid.datagrid('getSelected');
+			if(updated == null){
+				parent.$.messager.alert('提示','请选择要操作的记录!','info');
+				return ;
+			}
+			
+			$('#dvUnClose').dialog('open');
+		}
+		
+	    var jsUnCloseOk = function(){
+
+			var opRemark = $('#unCloseRemark').combobox('getText'); 
+		
+			if(opRemark == ''){
+				alert('请输入恢复店铺原因');
+				return ;
+			}
+			
+			var updated = grid.datagrid('getSelected');
+			$.messager.confirm('请确认', '确认要恢复'+updated.phone+'的店铺吗？', function(r){
+				if (r){
+				var params = {
+					'shopId' : updated.id,
+					'opRemark' : opRemark
+				};
+
+				parent.$.messager.progress();
+				$.getJSON('shop/unClose', params, function(data) {
+					parent.$.messager.progress('close');
+					if(data.rc == '1'){
+						$.messager.show({
+							title:'提示',
+							msg: data.msg
+						});
+						$('#dvUnClose').dialog('close');
+						jsQuery();
+					}else{
+						parent.$.messager.alert('错误', data.msg,'error');
+					}
+				});
+				}
+			});
+		}
+		
+		$(function() {
+			grid = $('#grid').datagrid({
+				title : '',
+				url : 'shop/list',
+				striped : true,
+				nowrap : false,
+				rownumbers : true,
+				pagination : true,
+				pageSize : 15,
+				pageList: [10,15,20,30,50],
+				singleSelect : true,
+				idField : 'id',
+				queryParams: {
+					[[${_csrf.parameterName}]] : '[[${_csrf.token}]]'
+				},
+				columns : [ [ {
+					width : '65',
+					title : '店铺ID',
+					field : 'id',
+				},{
+					width : '190',
+					title : '店铺名称',
+					field : 'name',
+					formatter: function(value,row,index){
+						return "<a href='redirectShopView/"+row.id+"' target='_blank'>" + value + "</a>";
+					}
+				},{
+					width : '130',
+					title : '卖家登录手机号码',
+					field : 'phone'
+				},{
+					width : '80',
+					title : '卖家客服电话',
+					field : 'mobile'
+				}, {
+					width : '80',
+					align: 'right',
+					title : '佣金比例',
+					field : 'commisionRate',
+					formatter: function(value,row,index){
+						if(value == null || value == '')	return '';
+					    var d = parseFloat(value);
+					    return d*100+'%';
+					}
+				}, {
+					width : '60',
+					title : '担保开通',
+					align: 'center',
+					field : 'danbao',
+					formatter: function(value,row,index){
+					    return value?'已开通':'未开通';
+					},
+					styler: function(value,row,index){
+						if (!value){
+							return 'color:#ffee00;color:gray;';
+						}
+					}
+				},{
+					width : '110',
+					title : '创建时间', 
+					field : 'createdAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm');
+					}
+				}, {
+					width : '110',
+					title : '更新时间',
+					field : 'updatedAt',
+					formatter: function(value,row,index){
+					    var d = new Date(parseInt(value));
+					    return d.format('yyyy-MM-dd hh:mm');
+					}
+				}, {
+					width : '80',
+					title : '备注',
+					field : 'opRemark'
+				}  ] ],
+				toolbar : '#toolbar'
+			});
+			 $(':text').bind('keypress',function(event){
+		            if(event.keyCode == "13") {
+		            	jsQuery();
+		            }
+		     });
+		});
+		/*]]>*/
+	</script>
+</head>
+<body class="easyui-layout" data-options="fit:true,border:false" layout:fragment="content">
+	<div id="toolbar" style="display: none;">
+		<form id="searchForm">
+		<table>
+			<tr>
+				<td style="width: 60px; text-align: right;">店铺名称</td>
+				<td style="width: 115px;"><input type="text" id="shop_name_kwd"  name="shop_name_kwd" placeholder="店铺名字查询条件" style="width:110px;"/></td>
+				<td style="width: 100px; text-align: right;">卖家登录手机号码</td>
+				<td style="width: 115px;"><input type="text" id="phone_kwd"  name="phone_kwd" placeholder="卖家登录手机号码查询条件" style="width:130px;"/></td>
+				<td style="width: 40px; text-align: right;">佣金</td>
+				<td style="width: 60px;">
+					<select name="commision_kwd">
+						<option value="">全部</option>
+						<option value="1">有佣金</option>
+						<option value="0">无佣金</option>
+					</select>
+				</td>	
+				<td style="width: 60px; text-align: right;">担保交易</td>
+				<td style="width: 60px;">
+					<select name="danbao_kwd">
+						<option value="">全部</option>
+						<option value="1">已开通</option>
+						<option value="0">未开通</option>
+					</select>
+				</td>		
+				<td style="width: 60px; text-align: right;">店铺状态</td>
+				<td style="width: 60px;">
+					<select name="archive_kwd">
+						<option value="0">正常</option>
+						<option value="1">已封店</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+			<td style="width: 80px; text-align: right;">店铺创建时间</td>
+				<td colspan="5">
+					<input id="created1_kwd" name="created1_kwd" type="text" style="width:90px;" class="easyui-datebox" />
+					--
+					<input id="created2_kwd" name="created2_kwd" type="text" style="width:90px;" class="easyui-datebox" />
+				<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+				onclick="jsQuery()" style="margin-left: 40px;">查询</a>
+				<div class="datagrid-btn-separator"></div>
+				
+				 <a href="#" class="easyui-menubutton" data-options="menu:'#mm_edit',iconCls:'icon-edit'">操作</a>
+				  <div id="mm_edit" style="width: 200px;">
+				  		<div data-options="iconCls:'icon-remove'" onclick='jsClose()'>封店(包含店铺和卖家)</div>
+				  		<div data-options="iconCls:'icon-undo'" onclick='jsUnClose()'>恢复店铺</div>
+				  		<!-- 
+				  		 -->
+					</div>
+				</td>	
+			</tr>
+		</table>
+		</form>
+	</div>
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="grid" data-options="fit:true,border:false">
+		</table>
+	</div>
+	<div class="easyui-dialog" title="请输入封店原因" id="dvClose"
+	 	data-options="closed:true,buttons:[{
+					text:'确定封店',
+					iconCls:'icon-save',
+					handler:function(){jsCloseOk();}
+				}]" style="width:300px;height:200px;padding:30px 10px 10px 10px">
+			<select id="opRemark" class="easyui-combobox" name="opRemark"	style="width: 200px;">
+				<option value=""></option>
+				<option value="诈骗">诈骗</option>
+				<option value="套现">套现</option>
+				<option value="销售违规商品">销售违规商品</option>
+				<option value="虚假发货">虚假发货</option>
+			</select>
+			<div style="color: red;margin-top: 10px;">请注意：该操作会把用户同时禁用</div>	
+	</div>
+	<div class="easyui-dialog" title="请输入恢复店铺原因" id="dvUnClose"
+	 	data-options="closed:true,buttons:[{
+					text:'确定恢复店铺',
+					iconCls:'icon-save',
+					handler:function(){jsUnCloseOk();}
+				}]" style="width:300px;height:200px;padding:30px 10px 10px 10px">
+			<select id="unCloseRemark" class="easyui-combobox" name="unCloseRemark" style="width: 200px;">
+				<option value=""></option>
+				<option value="操作失误">操作失误</option>
+			</select>
+			<div style="color: red;margin-top: 10px;">请注意：恢复店铺会把用户同时解禁</div>	
+	</div>
+</body>
+</html>

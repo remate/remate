@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title data-layout-title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE" >想去</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" data-th-href="@{/_resources/css/xiangqu/base.css?v=1.4}" />
+    <style>
+        .tc-layout{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<section class="J_tc tc-layout">
+    <div class="J_tcOpacity tc-opacity"></div>
+    <div class="J_tips tc-tips" >
+        <div class="tc-tips-body">
+            <div class="tc-tips-text">确定要提交退款申请吗?</div>
+            <div class="J_tcTipsBtn tc-tips-btn">
+                <span class="J_cancel cancel">取消</span>
+                <span class="J_sure sure">确定</span>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="afui">
+    <div id="header" data-layout-fragment="header"></div>
+    <div id="content">
+        <div id="nav" data-layout-fragment="nav">
+        </div>
+        <div id="main" data-layout-fragment="content">
+        </div>
+    </div>
+    <div data-layout-fragment="footer" data-th-remove="tag"></div>
+    <!--[if !IE]><!-->
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/appframework.min.js}"></script>
+    <!--<![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript" charset="utf-8" src="/_resources/js/jquery-1.11.1.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/plugins/fastclick.js}"></script>
+    <script>
+        FastClick.attach(document.body);
+    </script>
+    <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/vd_base.js}"></script>
+    <script data-layout-fragment="postScript"></script>
+</div>
+</body>
+</html>

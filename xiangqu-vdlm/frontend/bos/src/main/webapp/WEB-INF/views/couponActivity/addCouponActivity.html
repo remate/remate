@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.uldivaq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>运营消息</title>
+    <script th:inline="text">
+	 /*<![CDATA[*/
+	    $(function(){
+	        $('#btnSubmit').bind('click', function(){
+	        	if($('#actCode').val() == ''){
+	        		alert('活动Code不能为空！');
+	        		return false;
+	        	}
+	        	$.messager.confirm('确认', '确认要新增红包?', function(r){
+	        		if (r){
+						$('#btnSubmit').linkbutton('disable');
+						$.messager.progress({text:'创建中...'});
+						$('#frmCouponActivity').submit();;
+	        		}
+	        	});
+	        });
+
+
+	       	$.getJSON("optionInfo/list", function(result){
+	       		var zhValue = "";
+	       		$("#platform").prepend("<option value=''>无限制</option>");
+	       		$("#channel").prepend("<option value=''>无限制</option>");
+	       		for (var i = 0, size = result.couponTypes.length; i < size; i++) {
+	       			var value = result.couponTypes[i];
+	       			switch(value) {
+	       				case "REDUCTION":
+	       					zhValue = "优惠减免"
+	       					break;
+	       				case "CODE":
+	       					zhValue = "优惠码";
+	       					break;
+	       				default:
+	       					alert("未知错误");
+	       					break;
+	       			}
+	       			$("#couponType").append("<option value='" + value +  "'>" + zhValue + "</option>");
+	       		}
+	       		for (var i = 0, size = result.grantRules.length; i < size; i++) {
+	       			var value = result.grantRules[i];
+	       			switch(value) {
+	       				case "SINGLE":
+	       					zhValue = "单张";
+	       					break;
+	       				case "MULTIPLE":
+	       					zhValue = "可多张";
+	       					break;
+	       				case "DEVICE_SINGLE":
+							zhValue = "每个设备单张";
+							break;
+						default :
+							zhValue = "";
+							break;
+	       			}
+	       			$("#grantRule").append("<option value='" + value + "'>" + zhValue + "</option>");
+	       		}
+	       		for (var i = 0, size = result.platforms.length; i < size; i++) {
+	       			var value = result.platforms[i];
+	       			switch(value) {
+       					case "MOBILE":
+							zhValue = "移动端";
+							break;
+						case "ANDROID":
+							zhValue = "android客户端";
+							break;
+						case "IOS":
+							zhValue = "iphone客户端";
+							break;
+						case "PCWEB":
+							zhValue = "PC网页";
+							break;
+						case "MWEB":
+							zhValue = "H5页面";
+							break;
+						default:
+							zhValue = "无限制";
+							break;
+	       			}
+	       			$("#platform").append("<option value='" + value + "'>" + zhValue + "</option>");
+	       		}
+	       		for (var value in result.channels) {
+	       			$("#channel").append("<option value='" + value + "'>" + result.channels[value] + "</option>");
+	       		}
+	       	});
+	      });
+	    /*]]>*/
+	</script>
+
+	<style type="text/css">
+		.colName {
+			width:180px;
+			float:left;
+			display: block;
+			text-align: right;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 5px;">   
+	    <form id="frmCouponActivity" th:action="@{doAddCouponActivity}" method="post">
+			<div style="margin-bottom:5px;">
+				<label class="colName">活动Code</label>
+				<input id="actCode" name="actCode" style="width: 300px;" />
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">标题</label>
+				<input id="title" name="title" style="width:300px;" />
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">Type</label>
+				<select id="couponType" name="couponType"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">默认使用</label>
+				<select id="defaultSelect" name="defaultSelect" >
+				<option value="0">手选</option>
+				<option value="1">默认使用</option>
+				</select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">最低消费额度(￥)</label>
+				<input id="minPrice" name="minPrice" style="width:300px"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">优惠减免(￥)</label>
+				<input id="discount" name="discount" style="width:300px"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">发放规则</label>
+				<select id="grantRule" name="grantRule"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">自动发放</label>
+				<select id="autoGrant" name="autoGrant">
+					<option value="0">点击领取</option>
+					<option value="1">自动发放</option>
+				</select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">有效开始时间</label>
+				<input id="validFromText" name="validFromText" placeholder="格式:2016-01-01 14:12:24"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">失效时间</label>
+				<input id="validToText" name="validToText" placeholder="格式:2016-01-02 14:12:24"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">互斥类型</label>
+				<input id="unType" name="unType" style="width:300px" placeholder="可多个以'#'分开,例(2#3)"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">互斥ID</label>
+				<input id="unId" name="unId" style="width:300px" placeholder="可多个以'#'分开,例(12#13)"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">该红包类型单次使用上限</label>
+				<input id="typeMax" name="typeMax" style="width:300px"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">该红包单次使用上限</label>
+				<input id="idMax" name="idMAx" style="width:300px"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">使用限制</label>
+				<select id="platform" name="platform"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">所属类型</label>
+				<input id="typeId" name="typeId" style="width:300px" placeholder="填数字或不填(1-现金券;2-邀请码;3\6\7-满减红包)"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">渠道</label>
+				<select id="channel" name="channel"></select>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">有效时间</label>
+				<input id="timeLimit" name="timeLimit" style="width:300px" placeholder="单位(小时)"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">发放上限</label>
+				<input id="grantMax" name="grantMax" style="width:300px"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">单个用户领取上限</label>
+				<input id="singleGrantMax" name="singleGrantMax" style="width:300px"/>
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">用户单次使用上限</label>
+				<input id="singleUseMax" name="singleUseMax" style="width:300px" />
+			</div>
+			<div style="margin-bottom:5px;">
+				<label class="colName">详细</label>
+    			<textarea id="details" name="details" style="width:300px;height:60px">
+				</textarea>
+			</div>
+			<div style="margin-left:450px;">
+				<a id="btnSubmit" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确认新增红包</a>
+			</div>
+	     </form>
+    </div>
+</body>   
+</html>

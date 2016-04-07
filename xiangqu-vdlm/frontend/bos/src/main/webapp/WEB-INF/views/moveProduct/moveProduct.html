@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layout/mainPage">
+<head>
+    <title>手工搬家</title>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    	$(function(){
+    		$('#type').change(function(){ 
+    			$("#tabBody tr").empty();
+    			if($('#type').val() == '1') {
+    				$("#shop").css("display","block"); 
+					$("#item").css("display","none"); 
+    			} else if($('#type').val() == '2') {
+    				$("#shop").css("display","none"); 
+					$("#item").css("display","block"); 
+    			}    			
+	    	});
+    	});
+    	
+	    function jsMoveProduct() {
+        	$("#tabBody tr").empty();
+        	if($('#shopId').val() == '') {
+        	alert('店铺都没填怎么搬呀');
+        		return;
+        	}
+        	if(!isNaN($('#shopId').val())) {
+        		alert('店铺格式输入有误哟，确认下是不是混淆过？');
+        		return;
+        	}
+        	if($('#taobaoUrl').val() == '') {
+        		alert('淘宝店铺地址都没有怎么搬呀');
+        		return;
+        	}
+        	if(confirm("come on,再确认下填入信息？")) {
+        		var params = {
+        			'shopId' : $('#shopId').val(),
+        			'shopUrl' : $('#taobaoUrl').val()
+        		};
+        		$.getJSON('moveProduct/byhand', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+	    
+	    function jsMoveItem() {
+        	$("#tabBody tr").empty();
+        	if($('#shopId1').val() == '') {
+        	alert('店铺都没填怎么搬呀');
+        		return;
+        	}
+        	if(!isNaN($('#shopId1').val())) {
+        		alert('店铺格式输入有误哟，确认下是不是混淆过？');
+        		return;
+        	}
+        	if($('#itemId').val() == '') {
+        		alert('宝贝都没有搬什么呀');
+        		return;
+        	}
+        	if(confirm("come on,再确认下填入信息？")) {
+        		var params = {
+        			'shopId' : $('#shopId1').val(),
+        			'itemId' : $('#itemId').val()
+        		};
+        		$.getJSON('moveItem/byhand', params, function(data) {
+        			if(data.msg != null && data.rc == 1)
+        				alert(data.msg);
+        			else {
+        				var trHTML = "<tr><td>"+$("#tab").find("tr").length+"</td><td>"+data.rc+"</td><td>" + data.msg + "</td></tr>" ;
+        				$("#tabBody").prepend(trHTML);
+        			}
+        		});
+        	}	
+	    }
+    /*]]>*/
+	</script>
+</head>
+
+<body layout:fragment="content">
+	<div style="margin: 20px;">
+		选择搬家类型：
+		<select name="type" id="type">
+			<option value="1">店铺</option>
+			<option value="2">商品</option>
+		</select>
+	</div>
+	<div id="shop" style="margin: 20px;">	    
+	    <div>
+	    	店铺ID（混淆后）：
+	    	<input type="text" name="shopId" id="shopId" style="width:120px;"/>
+	    	淘宝店铺地址：
+	    	<input type="text" name="taobaoUrl" id="taobaoUrl" style="width:350px;"/>
+	    	<input id="btn" type="button" value="确定" onclick="jsMoveProduct();" />
+	    </div>
+    </div>
+    <div id="item" style="margin: 20px; display:none;">	    
+	    <div>
+	    	店铺ID（混淆后）：
+	    	<input type="text" name="shopId1" id="shopId1" style="width:120px;"/>
+	    	淘宝宝贝ID：
+	    	<input type="text" name="itemId" id="itemId" style="width:120px;"/>
+	    	<input id="btn1" type="button" value="确定" onclick="jsMoveItem();" />
+	    </div>
+    </div>
+    <div style="margin: 20px;">
+		<table id="tab" border="1">
+			<tr><td style="width:30px;">&nbsp;</td><td style="width:100px;">StatusCode</td><td style="width:300px;">Info</td></tr>
+			<tbody id="tabBody">
+			</tbody>
+		</table>
+	</div>	
+</body>   
+</html>

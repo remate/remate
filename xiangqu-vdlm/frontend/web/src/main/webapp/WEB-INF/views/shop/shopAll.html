@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html data-layout-decorator="/layout/mainPage">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8" />
+    <title data-th-text="${shop.name}">商品名</title>
+</head>
+<body data-th-class="${styles}">
+<div data-layout-fragment="content" class="">
+	<section >
+			<div class="shopTopBg">
+				<div class="shopAvator  ">
+					<img id="shop_img" class="images-bdra img160" data-th-if="${shop != null and shop.img != null}" data-vd-src="${shop.img[s025]}"/>
+					<div class="securedTransactions">
+						<span class="securedTransaction01"></span>
+						<span class="securedTransaction02"></span>
+						<span class="securedTransaction03"></span>
+					</div>
+				</div>
+				<div class="shopInfo">
+					<div class="shopName" data-th-text="${shop.name}" ></div>
+					<div class="addressLocation"><span></span><span>杭州|江浙沪包邮</span></div>
+					<ul class="spreadActions">
+						<li class="weixinSpread"><span class="weixinIcon"></span><span>微信</span></li>
+						<li class="shareSpread"><span class="shareIcon"></span><span>分享</span></li>
+						<li class="announcementSpread"><span class="announcementIcon"></span><span>公告</span></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="merchandiseDisplay">
+			<div class="allCategory">
+				<div class="categoryIcon"><span></span></div>
+				<ul class="homeCategory">
+					<li class="font-dark-bold fz30 centered" index="01"><a data-th-href="'/shop/'+${shop.id}">店长推荐</a></li>
+					<li class="font-dark-bold fz30 centered" index="02"><a data-th-href="'/shop/'+${shop.id}">热卖商品</a></li>
+					<li class="font-dark-bold fz30 centered selected" index="03">
+						<a>全部商品</a>
+					</li>
+				</ul>
+			</div>
+			<div class="goodsList" id="goodsList01">  <!-- 店长推荐的商品 -->
+				<div class="goodsItem" data-th-each="prod:${prodsRecommended}" >
+	                <div data-th-replace="fragments/productCard::card(prod=${prod})"></div>
+	            </div>
+
+			</div>
+			<div class="goodsList hotGoods" id="goodsList02">   <!-- 热卖商品 -->
+                <div class="goodsItem" data-th-each="prod:${prodsHot}" >
+                    <div data-th-replace="fragments/productCard::card(prod=${prod})"></div>
+                </div>
+			</div>
+			<div class="goodsList allGoods" id="goodsList03">   <!-- 热卖商品 -->
+	            <div class="goodsItem" data-th-each="prod,row:${products}">
+                    <div data-th-replace="fragments/productCard::card(prod=${prod})"></div>
+                </div>
+			</div>
+			
+		</section>
+	<!--
+    <section>
+        <div class="shop-start">
+            <img class="shop-start-img" data-vd-src="/_resources/images/shop-start.png" alt="" />
+            <a class="shop-start-btn button bg-orange btn-round fz24 font-white" href="http://www.kkkd.com">我要开店</a>
+        </div>
+    </section>
+    -->
+    <section class="footer-bottom">
+        <ul class="foorer-nav box">
+            <li class="footer-item flex1 footer-line">
+                <a data-th-href="'/catalog/search?shopId='+${shop.id}">
+                    <i class="footer-ico">
+                        <img class="img-auto" data-vd-src="/_resources/images/footerico_22.png" alt="" />
+                    </i>
+                    <span class="footer-text fz26 font-light">店内搜索</span>
+                </a>
+            </li>
+            <!--
+            <li class="footer-item flex1">
+                <a data-th-href="'/cart?shopId='+${shop.id}">
+                    <i class="footer-ico">
+                        <img class="img-auto" data-vd-src="/_resources/images/footerico_19.png" alt="" />
+                    </i>
+                    <span class="footer-text fz26 font-light">购物车</span>
+                </a>
+            </li>
+            -->
+        </ul>
+    </section>
+</div>
+<!--
+<div data-layout-fragment="footer">
+    <footer >&copy; 2015 The Static Templates</footer>
+	</div>
+	-->
+	<div data-layout-fragment="postScript" >
+	    <script type="text/javascript" charset="utf-8" ></script>
+	    <script type="text/javascript" charset="utf-8" >
+	    // var url = '/statistics?shopId=' + [[${shop.id}]];
+	    // $.get(url, function() {
+	    // });
+	    </script>
+	</div>
+    <div data-layout-fragment="postScript">
+        <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/shop.js}"></script>
+        <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/imgsize.js}"></script>
+        <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/waterfall.js?t=20140812}"></script>
+        <script type="text/javascript" charset="utf-8" data-th-src="@{/_resources/js/page/shop_style.js?t=20140814}"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                if($('body').hasClass('smallimg')){
+                    $('.pro-infor').removeClass("pro-infor-pos");
+                    $('.pro-smallimg').removeClass('hiddle');
+                    $('.pro-waterfall').addClass('hiddle');
+                    $('.pro-infor').css({
+                        'display': 'inline-block',
+                        'width': '50%',
+                        'float': 'left'
+                    });
+                    var imgObj= $(".js-img-size");
+                    var imgWidth= $(".pro-infor");
+                    imgSize(imgObj,imgWidth);
+                }else if($('body').hasClass('waterfall')) {
+                    $('.img-outer ').css({
+                        'width':'100%',
+                        'height':'auto'
+                    });
+                    $('.js-img-size').css({
+                        'width':'100%',
+                        'height':'auto',
+                        'margin': 0
+                    });
+                    $('.pro-infor').css({
+                        'width':'100%',
+                        'float':'none'
+                    })
+                    $('.pro-smallimg').addClass('hiddle');
+                    $('.pro-waterfall').removeClass('hiddle');
+                }else if($('body').hasClass('bigimg')){
+                    $('.pro-infor').removeClass("pro-infor-pos");
+                    $('.pro-smallimg').removeClass('hiddle');
+                    $('.pro-waterfall').addClass('hiddle');
+                    $('.pro-infor').css({
+                        'width':'100%',
+                        'float':'none'
+                    });
+                    $('.img-outer').css({
+                        'width':'100%',
+                        'height':'auto'
+                    });
+                    $('.js-img-size').css({
+                        'width':'100%',
+                        'height':'auto',
+                        'margin':'0'
+                    });
+                }
+
+            })
+        </script>
+        <script type="text/javascript" charset="utf-8" data-th-inline="javascript">
+        /* header scroll */
+        /*$(function() {
+         var elm = $('#header');
+         $.event.add(window, "scroll", function() {
+         var p = document.body.scrollTop;
+         if(p > 255){
+         $(elm).addClass('bg-white').addClass('box-shadow').replaceClass('font-white-bold','font-orange-bold');
+         }else{
+         $(elm).removeClass('bg-white').removeClass('box-shadow').replaceClass('font-orange-bold','font-white-bold');
+         }
+
+         });
+         });
+         */
+         </script>
+         <script>
+         $("#goodsList01").hide();
+         $("#goodsList02").hide();
+         $("#goodsList03").show();
+	    
+	    </script>
+	</div>
+</body>
+</html>

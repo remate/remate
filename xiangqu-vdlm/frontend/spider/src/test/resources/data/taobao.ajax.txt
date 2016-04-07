@@ -1,0 +1,362 @@
+
+
+
+g_config.RequstPrior='success';	g_config.DynamicStock={
+"virtQuantity":"125738","holdQuantity":"15","stock":        "125738"
+            ,"sku":{
+    	"dummy":1
+                        ,";20549:30106;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "9996"
+                                    }
+                                ,";20549:670;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "9984"
+                                    }
+                                ,";20549:671;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "9961"
+                                    }
+                                ,";20549:29542;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "9953"
+                                    }
+                                ,";20549:28388;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "9964"
+                                    }
+                                ,";20549:672;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "9977"
+                                    }
+                                ,";20549:30106;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "9996"
+                                    }
+                                ,";20549:670;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "9992"
+                                    }
+                                ,";20549:671;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "9976"
+                                    }
+                                ,";20549:29542;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "9983"
+                                    }
+                                ,";20549:28388;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "9980"
+                                    }
+                                ,";20549:672;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "9989"
+                                    }
+                                ,";20549:28389;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "500"
+                                    }
+                                ,";20549:28389;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "500"
+                                    }
+                                ,";20549:28390;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "498"
+                                    }
+                                ,";20549:28390;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "499"
+                                    }
+                                ,";20549:28391;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "500"
+                                    }
+                                ,";20549:28391;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "497"
+                                    }
+                                ,";20549:28392;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "500"
+                                    }
+                                ,";20549:28392;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "497"
+                                    }
+                                ,";20549:28393;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "500"
+                                    }
+                                ,";20549:28393;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "499"
+                                    }
+                                ,";20549:28394;1627207:28332;":{
+                                            "oversold":"false",
+                "stock": "497"
+                                    }
+                                ,";20549:28394;1627207:3232483;":{
+                                            "oversold":"false",
+                "stock": "500"
+                                    }
+                    }
+    }
+;
+			g_config.PromoData={
+									"def":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:30106;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:670;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:671;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:29542;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28388;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:672;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:30106;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:670;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:671;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:29542;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28388;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:672;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28389;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28389;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28390;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28390;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28391;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28391;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28392;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28392;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28393;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28393;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28394;1627207:28332;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			],				";20549:28394;1627207:3232483;":[
+				{		
+			type:  "最后2小时"	,
+			 price:"98.00",			limitTime: "",
+			channelkey: "",
+			add: "",
+			gift: "",
+			cart: "true",
+			amountRestriction:"",
+			isStart:"false"					}			]		}
+;
+		g_config.vdata.asyncViewer={
+	"viewer":{
+      	      	"admin":false,"lgin":false,"cc":false,
+      	"cartDomain":"cart.taobao.com", "buyDomain":"buy.taobao.com",
+      	"bs":""      	,"tkn":"317339e3aae73"
+  	}
+ };
+    g_config.DeliveryFee=false
+;
+	g_config.PostageFee={
+postage:{
+	postageType:'applyPostage',
+	type:'applyPostage',
+	location:'广东广州',
+	destination:'浙江杭州',
+		carriage:'<span>快递:&nbsp;免运费</span>',
+		estimation:'卖家承诺24小时内发货',
+		dataUrl:'http://detailskip.taobao.com/json/postageFee.htm?itemId=39903061042&al=false&ap=false&ss=false&free=true&sellerId=1574527048',
+	cityId:'330100'
+}
+};
+	    g_config.ContractList=[{"id":0,"img":"http://gtms01.alicdn.com/tps/i1/T1EQA5FpVgXXceOP_X-16-16.jpg","name":"7天退货","new":false,"serviceId":"7d","title":"7天退货","url":"http://xiaobao.taobao.com/contract/item_service.htm?scm=1010.100.100.1&contract_id=7d&item_id=39903061042"}]
+;
+	    g_config.QrcodeImgUrl='http://gqrcode.alicdn.com/img?type=ci&item_id=39903061042&isShow=0&v=1'
+;
+    g_config.Oneclick=false
+;
+	g_config.sellerDetail={"show":false};
