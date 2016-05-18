@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+    <script src="../angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <p> 返回请求的数据:</p>
+    <h3>{{myRequest}}</h3>
+</div>
+<script>
+    var app = angular.module('myApp', []).controller('myCtrl',function($scope,$http){
+//        $http.get("index.json").then(function(response){
+//            $scope.myRequest = response.data.status;
+//        });
+//            两种方法，注意比较
+        $http.get("index.json").success(function(response){
+            $scope.myRequest = response.status;
+        });
+    });
+</script>
+</body>
+</html>
