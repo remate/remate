@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="jquery-1.9.1.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    $.ajax({
+        url: 'index.json',
+        dataType: 'jsonp',
+        jsonpCallback: 'CallBack',
+        success: function (data) {
+            console.log(data);
+        }
+    });
+</script>
+</body>
+</html>

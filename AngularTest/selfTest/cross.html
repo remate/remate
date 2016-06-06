@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="app">
+<div ng-controller = "run1">
+    <span>{{name1}}</span>
+</div>
+<div ng-controller = "run2">
+    <span>{{name2 | uppercase}}</span>
+</div>
+<a href="{{ahref}}" ng-init="ahref='http://www.baidu.com'">href</a>
+<script>
+    var app = angular.module('app', []);
+    app.controller('run1',function($scope) {
+                $scope.name1 = "Hello";
+            })
+            .controller('run2',function($scope) {
+                $scope.name2 = "World";
+            });
+</script>
+</body>
+</html>
