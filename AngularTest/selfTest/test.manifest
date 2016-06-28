@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# 注释：需要缓存的文件，无论在线与否，均从缓存里读取
+CACHE:
+
+
+# 注释：不缓存的文件，无论缓存中存在与否，均从新获取
+NETWORK:
+index.js
+jquery-1.9.1.js
+
+
