@@ -12,20 +12,37 @@
             padding:0;
             margin:0;
         }
+        ul{
+            height:30px;
+            overflow: hidden;
+        }
+        li{
+            float: left;
+        }
+        #canvas{
+            display: block;
+            width:200px;
+            height:200px;
+            border:1px solid #000;
+            margin:50px auto;
+            background: #eee;
+        }
     </style>
 </head>
 <body>
-<div id="a" style="height: 1000px;background: #eee;margin-top: 153px"></div>
-<!--<div class="a haha">放<i></i>映<i></i>厅</div>-->
-<!--<div class="a">语<i></i>言</div>-->
-<!--<div class="a">放<i></i>映<i></i>时<i></i>间</div>-->
-<!--<div class="a">5<i></i>排<i></i>6<i></i>座</div>-->
+<img style="display: none" src="http://g.alicdn.com/browser/uc123_no/0.2.17/index/img/sprite-home-yellow-icon.png"/>
+    <canvas id="canvas" width="200" height="200"></canvas>
 <script type="text/javascript">
-    (function(){
-      document.getElementById("a").addEventListener("touchstart",function(event){
-          console.log(event.touches[0].pageX);
+    (function($){
+        var a = {
+            init:function(){
+                alert(1)
+            }
+        }
+        $(function(){
+            a.init();
         })
-    })();
+    })(jQuery);
 </script>
 </body>
 </html>
