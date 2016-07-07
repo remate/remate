@@ -1,6 +1,6 @@
 (function(){
 	
 	$(function(){
-		alert("")
+		alert("hello world")
 	});
 })(jQuery);
