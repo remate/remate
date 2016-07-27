@@ -11,14 +11,23 @@
     </style>
 </head>
 <body>
-<button>显示</button>
-    <div class="iframeContainer"></div>
+<div class="a">
+    <button>显示</button>
+    <div class="coin" style="height: 50px; background: red"></div>
     <div class="close">关闭</div>
+</div>
 <!--<iframe width="400" height="500" frameborder="1" src="http://192.168.3.236:8090/agreementddsc.html?accountid=100000000000055902&itemid=100000000000001609"></iframe>-->
 <script type="text/javascript">
-   $('body').delegate($('.close'),'click',function(){
+    $(document).ready(function(){
+        var html = '<div>haha</div>';
+        $('.coin').append(html);
+        $('.a').delegate($('.close'),'click',function(e){
+            e.preventDefault()
+            e.stopPropagation()
        alert(1)
-   })
+        })
+    })
+
 </script>
 </body>
 </html>
