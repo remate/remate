@@ -1,0 +1,193 @@
+﻿@charset "utf-8";
+body, ul, dl, dd, dt, ol, li, p, h1, h2, h3, h4, h5, h6, textarea, form, select, fieldset, table, td, div, input {margin:0;padding:0;-webkit-text-size-adjust: none}
+h1, h2, h3, h4, h5, h6{font-size:36px;}
+body>div{margin:0 auto}
+div {text-align:left}
+a img {border:0}
+body { color: #333; text-align: center; font: 12px "宋体"; }
+ul, ol, li {list-style-type:none;vertical-align:0}
+a {outline-style:none;color:#535353;text-decoration:none}
+* { margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+.container { width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
+.img100{
+    display: block;
+    width: 100%;
+}
+.xiangxiatishi {
+    z-index: 2;
+    position: fixed;
+    bottom: 10px;
+    /*left: 50%;*/
+    left: 16%;
+    margin-left: -14px;
+    width:28px;
+    animation: dong 1s linear 0s infinite alternate;
+    -webkit-animation: dong 1s linear 0s infinite alternate; }
+
+/*@media screen and (max-width:320px){*/
+    /*.xiangxiatishi{*/
+        /*left: 16%;*/
+    /*}*/
+/*}*/
+.xiangxiatishi.top {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    animation: dong 1s linear 0s infinite alternate;
+    -webkit-animation: dong 1s linear 0s infinite alternate; }
+@keyframes dong {
+from {
+    bottom:10px;
+}
+to { bottom: 20px; }
+}
+@-webkit-keyframes dong {
+    from {
+        bottom:10px;
+    }
+    to { bottom: 20px; }
+}
+.page{
+    position: relative;
+    background: #062551;
+    height: 100%;
+    color:#fff;
+    text-align:center;
+    overflow: hidden;
+}
+.page img{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.showWindowLeft{
+    position: absolute;
+    left:-4rem;
+    top:.6rem;
+    width:3.83rem;
+    height: 5rem;
+    overflow: hidden;
+}
+.showWindowLeft div{
+    font-size: 13px;
+    color: #d8f8fb;
+}
+.showWindowLeft span{
+    color: #ffa10c;
+}
+.a{
+    position: absolute;
+    left:-145px;
+}
+.a1{
+    top:20px;
+}
+.a2{
+    top:40px;
+}
+.a3{
+    top:60px;
+}
+.a4{
+    top:80px;
+}
+.a5{
+    top:100px;
+}
+.a6{
+    top:120px;
+}
+.a7{
+    top:140px;
+}
+.a8{
+    top:160px;
+}
+.showWindowRight{
+    position:absolute;
+    right:-4.7rem;
+    top:5.78rem;
+    width:4.73rem;
+    height: 5.2rem;
+    overflow: hidden;
+}
+@media screen and (max-width:320px){
+    .showWindowRight{
+        top:5.58rem;
+    }
+}
+.rightMain{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4.3rem;
+    height: 4.8rem;
+    overflow: hidden;
+}
+.rightMain h2{
+    text-align: center;
+    font-size: 13px;
+    color: #d8f8fb;
+    height: .76rem;
+    line-height: .76rem;
+}
+.name{
+    height:.4rem;
+    line-height: .4rem;
+}
+.name1{
+    width:2.94rem;
+    height:.4rem;
+    line-height: .4rem;
+    text-align: center;
+    display: inline-block;
+    color: #e0c8c9;
+}
+.name2{
+    height:.4rem;
+    line-height: .4rem;
+    color: #e0c8c9;
+    float: right;
+    margin-right: .1rem;
+}
+.list_lh{
+    height:3.6rem;
+    overflow: hidden;
+    margin:0 .1rem;
+}
+.list_lh ul li{
+    height:22px;
+    line-height: 22px;
+    overflow: hidden;
+}
+.list_lh ul li div{
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+}
+.li_name{
+    height:22px;
+    width:2.79rem;
+}
+.li_name span:first-child{
+    width: 1rem;
+    height: 22px;
+    float: left;
+}
+.li_name span:last-child{
+    width: 1.7rem;
+    height: 22px;
+    float: right;
+}
+.li_money{
+    height:22px;
+    width:1.3rem;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

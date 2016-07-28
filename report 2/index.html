@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<title>上半年运营报告</title>
+    <script>
+        !new function(){var t=this;t.width=750,t.fontSize=100,t.widthProportion=function(){var e=(document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/t.width;return e>1?1:.5>e?.5:e},t.changePage=function(){var t=document.documentElement.clientWidth;t>540&&(t=540),document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+t/7.5+"px !important")},"complete"===window.document.readyState?window.document.body.style.fontSize="12px":window.document.addEventListener("DOMContentLoaded",function(t){window.document.body.style.fontSize="12px"},!1),t.changePage(),window.addEventListener("resize",function(){t.changePage()},!1)};
+    </script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body onmousewheel="return false;">
+        <img  class="xiangxiatishi" src="images/tip.png"/>
+    <!--效果html开始-->
+    <div class="container">
+        <div class="page cur">
+            <img src="images/bg2.png">
+            <div class="showWindowLeft">
+                <img class="img100" src="images/showLeft.png"/>
+                <div class="a a1">点点钱庄项目自</div>
+                <div class="a a2"><span>2015年8月13号</span>上线</div>
+                <div class="a a3">将于<span>2016年7月31日</span>下线</div>
+                <div class="a a4">这一年来，我们为</div>
+                <div class="a a5"><span>26888</span>人</div>
+                <div class="a a6">提供了</div>
+                <div class="a a7"><span>894760.00</span>元</div>
+                <div class="a a8">钱庄佣金奖励</div>
+            </div>
+            <div class="showWindowRight">
+                <img class="img100" src="images/showRight.png"/>
+                <div class="rightMain">
+                    <h2>点点钱庄最高佣金<span>TOP10</span></h2>
+                    <div class="name">
+                        <span class="name1">点点钱庄用户名</span>
+                        <span class="name2">获取佣金</span>
+                    </div>
+                    <div class="list_lh">
+                        <ul>
+                            <li>
+                                <div class="li_name"><span cla>左左大人1</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人2</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人3</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人4</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                            <li>
+                                <div class="li_name"><span>左左大人5</span><i>&nbsp;</i><span>188****3357</span></div><div class="li_money">2000000元</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page">
+            <img src="images/bg2.png">
+        </div>
+        <div class="page">
+            <img src="images/bg2.png">
+        </div>
+    </div>
+    <!--效果html结束-->
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript">
+            $('.showWindowLeft').animate({left:20+'px'},1500);
+            setTimeout(function(){
+                $('.a1').animate({left:6+'px'},300);
+                $('.a2').animate({left:6+'px'},600);
+                $('.a3').animate({left:6+'px'},900);
+                $('.a4').animate({left:6+'px'},1200);
+                $('.a5').animate({left:6+'px'},1500);
+                $('.a6').animate({left:6+'px'},1800);
+                $('.a7').animate({left:6+'px'},2100);
+                $('.a8').animate({left:6+'px'},2400);
+            },1500);
+            setTimeout(function(){
+                $('.showWindowRight').animate({right:20+'px'},1500)
+            },1200);
+            $(document).ready(
+                    function() {
+                        var nowpage = 0;
+                        //给最大的盒子增加事件监听
+                        $(".container").swipe(
+                                {
+                                    swipe:function(event, direction, distance, duration, fingerCount) {
+                                        if(direction == "up"){
+                                            nowpage = nowpage + 1;
+                                        }else if(direction == "down"){
+                                            nowpage = nowpage - 1;
+                                        }
+
+                                        if(nowpage >=2){
+                                            nowpage = 2;
+                                            $('.xiangxiatishi').addClass('top');
+                                        } else {
+                                            $('.xiangxiatishi').removeClass('top')
+                                        }
+
+                                        if(nowpage < 0){
+                                            nowpage = 0;
+                                        }
+
+                                        $(".container").animate({"top":nowpage * -100 + "%"},400);
+
+                                        $(".page").eq(nowpage).addClass("cur").siblings().removeClass("cur");
+                                    }
+                                }
+                        );
+                    }
+            );
+
+//            无缝滚动
+            (function($){
+                $.fn.myScroll = function(options){
+                    //默认配置
+                    var defaults = {
+                        speed:40,  //滚动速度,值越大速度越慢
+                        rowHeight:24 //每行的高度
+                    };
+
+                    var opts = $.extend({}, defaults, options),intId = [];
+
+                    function marquee(obj, step){
+
+                        obj.find("ul").animate({
+                            marginTop: '-=1'
+                        },0,function(){
+                            var s = Math.abs(parseInt($(this).css("margin-top")));
+                            if(s >= step){
+                                $(this).find("li").slice(0, 1).appendTo($(this));
+                                $(this).css("margin-top", 0);
+                            }
+                        });
+                    }
+
+                    this.each(function(i){
+                        var sh = opts["rowHeight"],speed = opts["speed"],_this = $(this);
+                        intId[i] = setInterval(function(){
+                            if(_this.find("ul").height()<=_this.height()){
+                                clearInterval(intId[i]);
+                            }else{
+                                marquee(_this, sh);
+                            }
+                        }, speed);
+
+                        _this.hover(function(){
+                            clearInterval(intId[i]);
+                        },function(){
+                            intId[i] = setInterval(function(){
+                                if(_this.find("ul").height()<=_this.height()){
+                                    clearInterval(intId[i]);
+                                }else{
+                                    marquee(_this, sh);
+                                }
+                            }, speed);
+                        });
+
+                    });
+
+                }
+
+            })(jQuery);
+            $(function(){
+                $(".list_lh").myScroll({
+                    speed:80, //数值越大，速度越慢
+                    rowHeight:22 //li的高度
+                });
+            });
+        </script>
+</body>
+</html>
