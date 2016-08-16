@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.0.js"></script>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        *{padding:0;margin:0}
+        body{
+            text-align:center
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        a,img,button,input,textarea,div{
+            -webkit-tap-highlight-color:rgba(255,255,255,0);
+            -webkit-tap-highlight-color: transparent;
+        }
+        input,textarea{-webkit-appearance:none;}
+        li{
+            list-style: none;
+        }
+        body{
+            height: 100%;
+            width: 100%;
+        }
+        b{
+            font-style:italic;
+        }
+        button{
+            margin-bottom:10px;
+        }
+        h1{
+            font-size:14px;
+            font-weight:bold;
+            margin-left:12px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        /*正式文本*/
+        body,html{
+            background-color: rgb(255,255,255);
+        }
+        .wrap,article,header,header img,section,ul{
+            width: 100%;
+            /*line-height: 0px !important;*/
+        }
+        img{
+            border: 0;
+        }
+        .aChange{
+            width: 25%;
+            height: 30px;
+            background: rgb(255,250,222);
+            padding: 3px 5px;
+            line-height: 30px;
+            box-shadow: 0px 0px 14px rgb(184,182,183);
+            -o-box-shadow: 0px 0px 14px rgb(184,182,183);
+            -ms-box-shadow: 0px 0px 14px rgb(184,182,183);
+            -webkit-box-shadow: 0px 0px 14px rgb(184,182,183);
+            -moz-box-shadow: 0px 0px 14px rgb(184,182,183);
+            margin:20px auto 10px;
+        }
+
+        .ly-plate{
+            width:89%;
+            margin: 28px auto;
+        }
+        .rotate-bg{
+            width:100%;
+            position: relative;
+        }
+        .rotate-bg img.my_circle{
+            width: 100%;
+        }
+        .ly-plate .lottery-star{
+            position: absolute;
+            width: 28%;
+            top: 31%;
+            left: 50%;
+            margin-left: -14%;
+            -webkit-transform-origin: 50% 57.5%;
+            -moz-transform-origin: 50% 57.5%;
+            -ms-transform-origin: 50% 57.5%;
+            -o-transform-origin: 50% 57.5%;
+            transform-origin: 50% 57.5%;
+            outline:none
+        }
+        .rotate-bg img.start_goods{
+            width: 100%;
+        }
+        .show_my_get{
+            width: 44%;
+            position: absolute;
+            top: 18%;
+            left: 78%;
+            margin-left: -22%;
+            background-color:white;
+            overflow: hidden;
+            z-index: 99999;
+        }
+        .show_my_get ul li{
+            width: 100%;
+            height: 22px;
+            background-color: #ffffff;
+            display: block;
+            line-height: 23px;
+            padding: 5px;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            border-bottom: 1px solid black;
+        }
+
+        .show_my_get ul li a{
+            color: #000000;
+        }
+        .helloGood_inf_wrap{
+            width: 77%;
+            height: 57%;
+            position: absolute;
+            left: 11%;
+        }
+        .user-address{
+            width: 55%;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+        .xing-1{
+            color: red;
+            position: absolute;
+            right: -7%;
+            top: 7%;
+        }
+        .xing-2{
+            color: red;
+            position: absolute;
+            right: -7%;
+            top: 26%;
+        }
+        .xing-3{
+            color: red;
+            position: absolute;
+            right: -7%;
+            top: 45%;
+        }
+        .xing-4{
+            color: red;
+            position: absolute;
+            right: -7%;
+            top: 64%;
+        }
+        .xing-5{
+            color: red;
+            position: absolute;
+            right: -7%;
+            top: 82%;
+        }
+        .good-show{
+            width: 40%;
+            float: right;
+            height: 100%;
+        }
+        .good-img{
+            width: 98%;
+            margin: 0 auto;
+            background: rgb(224,246,249);
+            height: 95%;
+            display: box;
+            display: -webkit-box;
+            display: -moz-box;
+            box-pack:center;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            box-align:center;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+        }
+        .img_ys{
+            width: 85px;
+        }
+        .img_ys img{
+            width: 100%;
+        }
+        .user-address input{
+            background: rgb(255,250,222);
+            height: 17%;
+            border: 0;
+            margin-bottom: 4%;
+            width: 94%;
+            padding-left: 3%;
+            padding-right: 3%;
+        }
+        .submit-inf{
+            width: 100%;
+            height: 17%;
+            background: rgb(255,145,153);
+            border: 0;
+            margin: 0 auto;
+            color: white;
+            letter-spacing:15px;
+            text-align: center;
+            font-size: 1.0em;
+            text-indent: 15px;
+            line-height: 28px;
+        }
+        .reset-inf{
+            width: 100%;
+            height: 17%;
+            background: #808080;
+            border: 0;
+            margin: 7% auto 0;
+            color: white;
+            letter-spacing:15px;
+            text-align: center;
+            font-size: 1.0em;
+            text-indent: 15px;
+            line-height: 28px;
+        }
+
+        /*商品*/
+
+        ul,li{
+            list-style-type:none;
+            margin: 0;
+            padding: 0;
+        }
+        .rotate-bg ul li img{
+            position: absolute;
+        }
+
+        .rotate-bg ul li img{
+            width: 20%;
+        }
+        .item4{
+            bottom: 9%;
+            left: 50%;
+            margin-left: -10%;
+        }
+        .item5{
+            bottom: 29%;
+            left: 13%;
+        }
+        .item6{
+            bottom: 56%;
+            left: 14%;
+        }
+
+        .item1{
+            top: 9%;
+            left: 50%;
+            margin-left: -10%;
+        }
+
+        .item2{
+            bottom: 56%;
+            right: 14%;
+        }
+        .item3{
+            bottom: 29%;
+            right: 13%;
+        }
+    </style>
+</head>
+<body>
+<div class="ly-plate">
+    <div class="rotate-bg">
+        <section class="show_my_get">
+            <ul class="J_SeeItems see-items-content">
+                <!--<li>-->
+                <!--<a href="" title="凡在活动期间，单笔订单超过50元" target="_blank">凡在活动期间，单笔订单超过50元</a>-->
+                <!--</li>-->
+            </ul>
+        </section>
+        <img class="my_circle" src="images/pc_ly.png" alt="年中庆"/>
+        <ul>
+            <li>
+                <a href="" target="_blank">
+                    <img class="item1" src="http://xqproduct.xiangqu.com/FimZU4scePs_djIK8DYoZWhvHJOU" alt="$item.title"/>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img class="item2" src="http://xqproduct.xiangqu.com/FimZU4scePs_djIK8DYoZWhvHJOU" alt="$item.title"/>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img class="item3" src="http://xqproduct.xiangqu.com/FimZU4scePs_djIK8DYoZWhvHJOU" alt="$item.title"/>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img class="item4" src="http://xqproduct.xiangqu.com/FimZU4scePs_djIK8DYoZWhvHJOU" alt="$item.title"/>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img class="item5" src="http://xqproduct.xiangqu.com/FimZU4scePs_djIK8DYoZWhvHJOU" alt="$item.title"/>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img class="item6" src="http://xqproduct.xiangqu.com/FimZU4scePs_djIK8DYoZWhvHJOU" alt="$item.title"/>
+                </a>
+            </li>
+        </ul>
+        <!--<div class="J_rotateStart lottery-star" data-isable="1"><img class="start_goods" src="/build/activity/xiangqu_Lottery/images/rotate-static.png" id="lotteryBtn"></div>-->
+        <div class="J_rotateStart lottery-star" data-product="1" data-key="${key}" data-isable="1"><img class="start_goods" src="images/rotate-static.png" id="lotteryBtn"></div>
+    </div>
+    <section class="aChange">换一换</section>
+</div>
+<script src="js/h5_index.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jQueryRotate.2.2.js"></script>
+</body>
+</html>
