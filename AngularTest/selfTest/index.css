@@ -1,1 +1,103 @@
-/*@import url("http://fonts.useso.com/css?family=Open+Sans:300,400,600,700&amp;lang=en")*/
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+a,img,button,input,textarea,div{
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
+    -webkit-tap-highlight-color: transparent;
+}
+input,textarea{-webkit-appearance:none;}
+li{
+    list-style: none;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+b{
+    font-style:italic;
+}
+button{
+    margin-bottom:10px;
+}
+/*em{
+    width: 10px;
+    height: 0;
+    border-top: 3px solid transparent;
+    border-left: 4px solid #000;
+    border-bottom: 3px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+}*/
+h1{
+    font-size:14px;
+    font-weight:bold;
+    margin-left:12px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+/*正式文本*/
+body,html{
+    background-color: rgb(255,255,255);
+}
+.wrap,article,header,header img,section,ul{
+    width: 100%;
+    /*line-height: 0px !important;*/
+}
+.getMB{
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.9;
+    filter:alpha(opacity=90);
+    -moz-opacity:0.9;
+    position: absolute;
+    z-index: 2;
+    display:none;
+}
+.time-over{
+    height: 39px;
+    display: block;
+    background: rgb(254,218,218);
+    width: 88%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 39px;
+    margin: 0 auto;
+}
+img{
+    border: 0;
+}
+.time-layer{
+    margin-top: -2px;
+}
+.time-layer span{
+    padding: 6px;
+    background: white;
+    margin: auto 4px;
+}
+.btn_lh:hover{ color:#fff; text-decoration:none;}
+.fr{
+    float: right;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.aChange{
+    width: 25%;
+    height: 30px;
+    background: rgb(255,250,222);
+    padding: 3px 5px;
+    line-height: 30px;
+    box-shadow: 0px 0px 14px rgb(184,182,183);
+    -o-box-shadow: 0px 0px 14px rgb(184,182,183);
+    -ms-box-shadow: 0px 0px 14px rgb(184,182,183);
+    -webkit-box-shadow: 0px 0px 14px rgb(184,182,183);
+    -moz-box-shadow: 0px 0px 14px rgb(184,182,183);
+    margin:20px auto 10px;
+}
