@@ -1,0 +1,5 @@
+$(".bird").transition({
+    'right': "3rem",
+}, 10000,'linear',function(){
+    alert("½áÊø")
+});
