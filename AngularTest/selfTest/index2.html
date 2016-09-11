@@ -1,43 +1,42 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>圣诞主题</title>
-    <style type="text/css">
-        section {
-            width: 100%;
-            height: 100%;
-            background: red;
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.4/jquery.fullPage.min.css"/>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            text-align: center;
+            font-size: 16px;
         }
-        .page{
-            width: 5rem;
-            height: 10rem;
-            background: yellow;
-            font-size: 0.3rem;
+        .box{
+            width: 100px;
+            height:200px;
+            background: red;
+            transition: all 2s 1s;
+        }
+        .active{
+            width:200px;
+            height:100px;
+            background: green;
         }
     </style>
 </head>
-
 <body>
-<section>
-    <div class="page">rem跟着html:font-size变化</div>
-</section>
-</body>
-<script type="text/javascript">
-    var docEl = document.documentElement,
-    //当设备的方向变化（设备横向持或纵向持）此事件被触发。绑定此事件时，
-    //注意现在当浏览器不支持orientationChange事件的时候我们绑定了resize 事件。
-    //总来的来就是监听当然窗口的变化，一旦有变化就需要重新设置根字体的值
-            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-            recalc = function() {
-                //设置根字体大小
-                docEl.style.fontSize = docEl.style.fontSize = 20 * (docEl.clientWidth / 320) + 'px';
-            };
+<div id="box" class="box"></div>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>-->
+<script>
+ ;(function(){
+        var g = function(id){
+            return document.getElementById(id);
+        }
+     document.body.onclick = function(){
+         g('box').className += ' active';
+     }
 
-    //绑定浏览器缩放与加载时间
-    window.addEventListener(resizeEvt, recalc, false);
-    document.addEventListener('DOMContentLoaded', recalc, false);
+ })();
 </script>
-
+</body>
 </html>
