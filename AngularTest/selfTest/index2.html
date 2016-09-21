@@ -1,42 +1,401 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.4/jquery.fullPage.min.css"/>
-    <style>
-        *{
-            padding:0;
-            margin: 0;
-            text-align: center;
-            font-size: 16px;
-        }
-        .box{
-            width: 100px;
-            height:200px;
-            background: red;
-            transition: all 2s 1s;
-        }
-        .active{
-            width:200px;
-            height:100px;
-            background: green;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=false" />
+    <meta name="description" content="搞怪专家,生成器" />
+    <meta name="keywords" content="搞怪专家,生成器,248小游戏,248游戏,HTML5游戏,H5游戏,手机小游戏" />
+    <meta itemprop="name" content="搞怪专家 - 带你装逼带你飞" id="qTitle">
+    <meta name="description" itemprop="description" content="来自--【搞怪专家】" id="qDesc">
+    <meta itemprop="image" content='http://funny.cdn.itwlw.com/index/img/logo.png' id="qImg" />
+    <title>人流手术单</title>
+
+
+
+    <link rel="stylesheet" href="http://funny.cdn.itwlw.com/common/css/style.css?v=2.2">
+
+
+
+
+
+
+    <script>
+        (function( doc, win ){
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange':'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if(clientWidth > 640 ) clientWidth = 640;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 20*(clientWidth/320) + 'px';
+                    };
+            if (!doc.addEventListener) return;
+            win.addEventListener( resizeEvt, recalc, false );
+            doc.addEventListener( 'DOMContentLoaded', recalc, false );
+            recalc();
+            if (typeof(WeixinJSBridge) == "undefined") {
+                document.addEventListener("WeixinJSBridgeReady", function (e) {
+                    setTimeout(function(){
+                        WeixinJSBridge.invoke('setFontSizeCallback',{"fontSize":0}, function(res) {
+                        });
+                    },0);
+                });
+            } else {
+                setTimeout(function(){
+                    WeixinJSBridge.invoke('setFontSizeCallback',{"fontSize":0}, function(res) {
+                    });
+                },0);
+            }
+        })( document, window );
+    </script>
+
+
 </head>
 <body>
-<div id="box" class="box"></div>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>-->
-<script>
- ;(function(){
-        var g = function(id){
-            return document.getElementById(id);
-        }
-     document.body.onclick = function(){
-         g('box').className += ' active';
-     }
+<div id="inputbox" class="mainbox">
 
- })();
-</script>
+    <div class="navbox">
+        <div class="common-nav">
+            <img id="header-menubtn" class="header-menubtn" src="http://funny.cdn.itwlw.com/common/menu/img/header-menubtn-back.png" alt="">
+            人流手术单          <a href="/index.php/home/index/index"><i class="icon-home iconfont">&#xe605</i></a>
+        </div>
+    </div>
+
+
+
+    <div id="page1" class="box active">
+        <div id="openexample"  class="gameinfobox">
+            <img src="http://uploads-admin.cdn.itwlw.com/funny/14728085988NnMn.jpg.jpg">
+            <div class="gamebox">
+                <div class="game">
+                    <dl class="meta">
+                        <div class="btn">查看示例</div>
+              <span class="count">
+                <span class="iconstars icon-start-filled5"></span>
+                &nbsp;531.6万人在玩
+              </span>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="page1-inputbox">
+
+
+
+
+            <div class="inputlist">
+                <span class="short-inputname">输入名字：</span>
+    <span class="short-input">
+      <input id="username" type="text" class="input input-name" placeholder="输入名字" maxlength="4" />
+    </span>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="start"><span id="submitbtn" class="start">确认生成</span></div>
+        <iframe src="/index.php/home/funny/googlead" style="width: 100%; height: 100px;background-color: #F3F3F3;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing: border-box;margin-bottom: 10px;" scrolling="auto" frameborder="none"></iframe>
+    </div>
+
+
+    <div id="page2" class="box">
+        <div class="ResultTitlebox">
+            <img id="loading" class="loading" src="http://funny.cdn.itwlw.com/common/img/loading.png" >
+            <p id="loading-text" class="loading-text">正在生成</p>
+        </div>
+    </div>
+
+
+    <div id="page3" class="box">
+        <div class="page3">
+            <div class="ResultTitlebox">
+                <div id="" class="common-result-btn-box commonbtn-changecontent"><img src="http://funny.cdn.itwlw.com/funny/img/changetxt.png"><span class="changecontent-text">换个文案</span>
+                </div><div id="" class="common-result-btn-box commonbtn-changegender"><img src="http://funny.cdn.itwlw.com/funny/img/gender.png"><span class="changegendertext">换个性别</span></div>
+            </div>
+            <div class="resultimgbox">
+                <div id="savetipsbox">
+                    <div class="savetip"></div>
+                    <span>长按图片</span>
+                    <span>即可保存到相册</span>
+                </div>
+                <img id="result" class="result" src="" >
+            </div>
+            <div class="savetipbox   ">
+                <div id="showsavetipbtn" class="savebox"><img src="http://funny.cdn.itwlw.com/funny/img/saveicon.png"><span>保存图片到相册</span></div>
+                <div id="resultsharebtn" class="sharebox"><img src="http://funny.cdn.itwlw.com/funny/img/shareicon.png" alt=""><span>分享</span></div>
+            </div>
+        </div>
+        <iframe id="homeadbox" src="" style="width: 100%; height: 100px;background-color: #F3F3F3;padding: 0 8px;box-sizing: border-box;-webkit-box-sizing: border-box;margin-bottom: 43px;" scrolling="auto" frameborder="none"></iframe><span></span>
+    </div>
+
+
+    <div id="page4" class="box ">
+        <div id="backtohomgpage" class="examplebox">
+            <img class="exampleimg result" src="http://uploads-admin.cdn.itwlw.com/funny/1472808593R5qKv.jpg.jpg">
+        </div>
+    </div>
+
+
+    <script>
+        var input_file = document.getElementsByClassName('upload-pic-pre-value');
+        var is_wx = 0;
+        var is_wb = 0;
+        var is_iphone = navigator.userAgent.toLowerCase().match(/iphone/i) ? true : false;
+        if( input_file.length > 0 && is_wx == 0 && is_wb == 0 && is_iphone == false){
+            input_file[0].removeAttribute('capture');
+        }
+        var gloableValue = (function(){
+
+            var _host = "http://" + window.location.host,
+                    platFormUrl = _host + "/index.php/home/funny/playbyplatform/name/abortionsingle/platfrom/",
+                    shareTitle = "让意外不再蔓延";
+            return {
+                page1 : document.getElementById('page1'),
+                page2 : document.getElementById('page2'),
+                page3 : document.getElementById('page3'),
+                page4 : document.getElementById('page4'),
+                submitBtn : document.getElementById('submitbtn'),
+                shareBtn : document.getElementById('btn-share'),
+                resultImg : document.getElementById('result'),
+                resurl : "http://funny.cdn.itwlw.com",
+                resurlLocal : "http://funny.cdn.itwlw.com",
+                requestUrl : "/index.php/home/funny/getcommentbygid",
+                submitUrl : "/index.php/home/funny/addcomment",
+                gid : 96,
+                pageIndex : 2,
+                serverUrl : "/index.php/home/funny/getcommentdata/gid/96/pageIndex/",
+                comment_count : 12,
+                isWeiXin : "0",
+                qnToken : "4_VSH3mF8EJavKmGngKnb4ZxXEDr2_UuM5BFdEzt:RYEwaQgpEb7XCEgMBM7Ewf7jaAw=:eyJzY29wZSI6InVwbG9hZHMtdXNlciIsImRlYWRsaW5lIjoxNDc0MzU1NTc5fQ==",
+                qiniupath : "http://7xlmq4.com1.z0.glb.clouddn.com/",
+                firstgoogle : true,
+                _host : _host,
+                shareTitle : shareTitle,
+                indexUrl : _host + "/index.php/home/index/index",
+                googleUrl : _host + "/index.php/home/funny/googlead",
+                platFormUrl : platFormUrl,
+                sinaTopic : "人流手术单",
+                shareConfig : {
+                    url: platFormUrl,
+                    title: shareTitle,
+                    desc: shareTitle,
+                    pic: 'http://uploads-admin.cdn.itwlw.com/funny/1472120254OCEKf.jpg.png',
+                    pics: 'http://uploads-admin.cdn.itwlw.com/funny/1472120254OCEKf.jpg.png',
+                    summary: '★★★★★',
+                    site: ''
+                }
+            };
+        })();
+        for(key in gloableValue){
+            window[key] = gloableValue[key];
+        }
+        var built = '../../common/dist/built.1-2-7.min';//built版本控制
+        //生成script标签
+        function G(selfName,version){
+            var selfScript = document.createElement('script');
+            selfScript.type = 'text/javascript';
+            selfScript.src = resurl + '/common/dist/require.js';
+            selfScript.setAttribute('data-main',resurl + '/funny/' + selfName + '/main.js?v=' + version);
+            var scriptplaceholder = document.getElementById('scriptplaceholder');
+            var inputbox = document.getElementById('inputbox');;
+            inputbox.insertBefore(selfScript,scriptplaceholder);
+            inputbox.removeChild(scriptplaceholder);
+        }
+        //依赖配置
+        //outerDependent 数组 外侧依赖 默认包括built
+        //innerDependent 数组 内部依赖 默认包括util
+        //cbargs  要求返回的参数，默认包含util
+        //cb 回调函数
+        function R(outerDependent, innerDependent, cb){
+            if(typeof outerDependent === 'function'){
+                requirejs([built], function() {
+                    requirejs(['util'],
+                            function() {
+                                outerDependent&outerDependent.apply(outerDependent, arguments);
+                            });
+                });
+            }else{
+                outerDependent = outerDependent||[];
+                innerDependent = innerDependent||[];
+                requirejs([built].concat(outerDependent), function() {
+                    requirejs(['util'].concat(innerDependent),
+                            function() {
+                                cb&cb.apply(cb, arguments);
+                            });
+                });
+            }
+        }
+    </script>
+    <div id="scriptplaceholder"></div>
+
+
+    <script>
+        var getImagePath = "/index.php/home/name_sign/getabortionsingle";
+        G('abortionsingle','1.0');
+    </script>
+
+
+
+    <div class="moregamebox" id="moregamebox">
+        <h5 class="moregame-padded">相关游戏<a class="moregame-more" href="/index.php/home/index/index">更多<i>&#xe601;</i></a></h5>
+        <ul class="moregameul">
+            <li class="moregameli">
+                <a href="/index.php/home/funny/play/name/housecertificate" target="_blank">
+                    <figure class="cover brief-cover">
+                        <img src="http://uploads-admin.cdn.itwlw.com/game248/1458271138ZYHLo.png" class="tuijian-img">
+                    </figure>
+                    <div class="mui-media-body tuijian-title">房产证生成器</div>
+                </a>
+            </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/divorce" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/1461726951oYOyB.jpg" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">离婚证生成器</div>
+            </a>
+        </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/funnyquotes" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/1470192395VZoPt.jpg.png" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">装x名言生成器</div>
+            </a>
+        </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/maldives" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/1463806749MT4Dt.jpg.jpg" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">马尔代夫机票生成器</div>
+            </a>
+        </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/wqtrip" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/1461034399tROun.jpg" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">环球旅行出团通知书</div>
+            </a>
+        </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/funnyNewsGen" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/1469164756Zq6pZ.jpg.jpg" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">恶搞新闻生成器</div>
+            </a>
+        </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/funnynews" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/1465369533hoZ7k.jpg.jpg" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">高考新闻生成器</div>
+            </a>
+        </li><li class="moregameli">
+            <a href="/index.php/home/funny/play/name/sellbody" target="_blank">
+                <figure class="cover brief-cover">
+                    <img src="http://uploads-admin.cdn.itwlw.com/funny/14701906715Mclh.jpg.jpg" class="tuijian-img">
+                </figure>
+                <div class="mui-media-body tuijian-title">卖身契生成器</div>
+            </a>
+        </li>        </ul>
+        <div class="moregame-btn">
+            <a href="/index.php/home/index/index" class="more-game">更多精彩游戏</a>
+        </div>
+        <p><br /><br /></p>
+    </div>
+
+</div>
+
+
+
+<div class="funny-Main-box">
+    <div id="funny-menu-box" class="funny-menu-box">
+        <div class="funny-fullscreen"></div>
+        <div id="funny-btn-box" class="funny-btn-box">
+            <div id="scroll-box">
+                <div class="funny-userinfo">
+                    <p></p>
+                    <a href="/index.php/home/funny/jumptologin/name/abortionsingle"><img class="funny-user-icon" src="http://funny.cdn.itwlw.com/common/menu/img/unlisted.png" alt="icon"></a>
+                    <p class="funny-user-name"><a href="/index.php/home/funny/jumptologin/name/abortionsingle">登录/注册</a></p>
+                    <img id="funny-user-icon" src="" alt="" style="display: none;">
+                    <p id="funny-user-name" style="display: none;"></p>            </div>
+                <div class="funny-menu-btnbox">
+                    <img class="funny-menu-btn" src="http://funny.cdn.itwlw.com/common/menu/img/1.png" alt=""><span class="funny-menu-text">讨论区<span class="UnreadMessage">1</span></span><i class="iconfont-menu">&#xe601;</i>
+                </div>
+                <div class="funny-menu-btnbox funny-menu-btnbox2">
+                    <div class="funny-showshareinfo"><img class="funny-menu-btn" src="http://funny.cdn.itwlw.com/common/menu/img/2.png" alt=""><span class="funny-menu-text">分享</span><i class="iconfont-menu icon1">&#xe601;</i><i class="iconfont-menu icon2">&#xe603;</i></div>
+                    <div class="funny-share-btnbox">
+                        <img class="funny-share-btn funny-share-a" style="display: none;" src="http://funny.cdn.itwlw.com/common/menu/img/a.png" alt="">
+                        <img class="funny-share-btn funny-share-b" src="http://funny.cdn.itwlw.com/common/menu/img/b.png" alt="">
+                        <img class="funny-share-btn funny-share-c" src="http://funny.cdn.itwlw.com/common/menu/img/c.png" alt="">
+                    </div>
+                </div>
+                <div class="funny-menu-btnbox funny-menu-btnbox3">
+                    <img class="funny-menu-btn" src="http://funny.cdn.itwlw.com/common/menu/img/3.png" alt=""><span class="funny-menu-text">更多搞怪</span><i class="iconfont-menu">&#xe601;</i>
+                </div>
+                <div class="funny-menu-btnbox funny-menu-btnbox5">
+                    <img class="funny-menu-btn" src="http://funny.cdn.itwlw.com/common/menu/img/5.png" alt=""><span class="funny-menu-text">刷新</span><i class="iconfont-menu">&#xe601;</i>
+                </div>
+            </div>
+            <div class="funny-bottom-tips" ><a href="">Powered by 怪哥</a></div>
+        </div>
+    </div>
+    <div id="funny-comment-box" class="funny-comment-box">
+        <div class="funny-comment-back"><i class="iconfont-menu">&#xe600;</i>讨论区</div>
+        <div class="funny-comment-footer">
+            <input id="funny-comment-input" class="funny-comment-input" placeholder="我也来说两句..." type="text" maxlength="50"> <span class="funny-comment-submit">发表</span>
+        </div>
+        <div id="funny-comment-body" class="funny-comment-body">
+            <ul id="funny-comment-list">
+                <img class="funny-comment-loadingimg" src="http://funny.cdn.itwlw.com/common/menu/img/loading.png">
+                <p class="funny-comment-loadingtext">正在加载评论</p>
+            </ul>
+            <p id="Refresh-tip" class="Refresh-tip"><img src="http://funny.cdn.itwlw.com/common/menu/img/loading.gif" alt=""><span>更多评论加载中</span></p>
+        </div>
+    </div>
+    <div class="funny-share-wx">
+        <img src="http://funny.cdn.itwlw.com/common/menu/img/sharetip2.png" alt="">
+    </div>
+</div>
+<div class="funny-input-tips funny-input-success"><img src="http://funny.cdn.itwlw.com/common/menu/img/inputsuccess.png" alt=""></div>
+<div class="funny-input-tips funny-input-error"><img src="http://funny.cdn.itwlw.com/common/menu/img/inputerror.png" alt=""></div>
+
+
+
+<div id='float-menu' style="display: none">
+    <img src="http://funny.cdn.itwlw.com/common/menu/img/float-menu.png?v=1.1" alt="">
+    <span class="UnreadMessage_head" style="display: block;">18</span>
+</div>
+
+
+
 </body>
+
+<script>
+    var
+            gameinfo = 96,
+            tjurl = "/index.php/home/funny/incview/id/"+gameinfo;
+    function ajaxGet(url,callback){
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET",url,true);
+        xmlHttp.onreadystatechange= function(){
+            if (xmlHttp.readyState==4 && xmlHttp.status==200){
+                callback&&callback(xmlHttp.responseText);
+            }
+        };
+        xmlHttp.send();
+    }
+    setTimeout(function(){
+        ajaxGet(tjurl,function(text){
+
+        });
+    },2000);
+</script>
+<span style="display: none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258654082'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1258654082' type='text/javascript'%3E%3C/script%3E"));</script>
+</span>
 </html>

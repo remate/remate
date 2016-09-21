@@ -1,0 +1,106 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>生成器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <script>
+        !new function(){var t=this;t.width=750,t.fontSize=100,t.widthProportion=function(){var e=(document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/t.width;return e>1?1:.5>e?.5:e},t.changePage=function(){var t=document.documentElement.clientWidth;t>540&&(t=540),document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+t/7.5+"px !important")},"complete"===window.document.readyState?window.document.body.style.fontSize="12px":window.document.addEventListener("DOMContentLoaded",function(t){window.document.body.style.fontSize="12px"},!1),t.changePage(),window.addEventListener("resize",function(){t.changePage()},!1)};
+    </script>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script src="index.js"></script>
+</head>
+<body>
+    <span id="span"></span>
+    <section class="canBg">
+        <section class="canWrap">
+            <img class="mainImg" src="images/mainImg.png"/>
+        </section>
+    </section>
+    <canvas id="canvas" width="302" height="284" style="display: none"></canvas>
+    <input id="input" placeholder="请输入姓名（限制2~6个字）"/>
+    <section id='submit' class="submit">一键生成</section>
+    <script>
+        // get ID CLASS方法封装
+        function g(e){
+            var a = e.substring(0,1);
+            console.log(a);
+            if(a == '#'){
+                return document.getElementById(e.substring(1));
+            } else {
+                return document.getElementsByClassName(e.substring(1));
+            }
+        }
+
+
+        //获取宽高方法封装
+        function whGet(){
+            var height = Math.floor(g('.canWrap')[0].offsetHeight);
+            var width = Math.floor(g('.canWrap')[0].offsetWidth);
+            return {width:width,height:height};
+        }
+
+        //设置canvas高宽
+        var canvasWidth = whGet().width, canvasHeight = whGet().height;
+        var canvas = g('#canvas');
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        //文字定位计算
+        var widthPercent = parseFloat(355/708);
+        var heightPercent = parseFloat(211/666);
+        var realWidthPercent = canvasWidth*widthPercent;
+        var realHeightPercent = canvasHeight*heightPercent;
+
+        var context = canvas.getContext('2d');
+
+        var getPixelRatio = function(context) {
+            var backingStore = context.backingStorePixelRatio ||
+                    context.webkitBackingStorePixelRatio ||
+                    context.mozBackingStorePixelRatio ||
+                    context.msBackingStorePixelRatio ||
+                    context.oBackingStorePixelRatio ||
+                    context.backingStorePixelRatio || 1;
+
+            return (window.devicePixelRatio || 1) / backingStore;
+        };
+
+        var ratio = getPixelRatio(context);
+        var img = new Image();
+        img.src = 'images/iphone7.png';
+        img.onload = function(){
+            context.drawImage( img, 0, 0, canvasWidth*ratio, canvasHeight*ratio);
+
+            g('#submit').onclick = function(){
+                context.drawImage( img, 0, 0, canvasWidth*ratio, canvasHeight*ratio);
+                var inputName = g('#input').value;
+                var _length = inputName.length;
+                if(_length<2||_length>6){
+                    alert("只允许输入2-6可字或字符哦");
+                    return false;
+                }
+                var getName = inputName + '定制版';
+                g('#span').innerHTML = getName;
+                var spanWidthHalf = g('#span').offsetWidth/2;
+                context.beginPath();
+                context.save();
+                context.font = '12px 楷体';
+                context.textAlign = 'left';
+                context.textBaseline = 'top';
+                context.fillStyle = '#988f90';
+                context.transform(0.7,0.03,0, 0.7, realWidthPercent*ratio,realHeightPercent*ratio)
+                context.rotate(0.35);
+                context.fillText(getName,-spanWidthHalf,0);
+                var copyImg = canvas.toDataURL();
+//            var img1 = document.createElement("img");
+//            img1.src=copyImg;
+//            img1.id='download';
+//            img1.style.height = canvasHeight +'px';
+//            img1.style.width = canvasWidth +'px';
+                g('.mainImg')[0].setAttribute('src',copyImg);
+                context.restore();
+                context.closePath();
+            }
+        }
+    </script>
+</body>
+</html>
