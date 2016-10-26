@@ -1,0 +1,188 @@
+.product_ul{
+    display: block;
+    overflow: hidden;
+}
+.product_li{
+    background: rgb(239,239,239);
+    list-style: none;
+    float: left;
+    width: 47%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    overflow: hidden;
+}
+.product_a{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.product_pic{
+    /*background: url("http://xqproduct.xiangqu.com/FtK35OMf6OHGtyDjNEhnQQKHnkJG") no-repeat;*/
+    background: url("http://xqproduct.xiangqu.com/FthbcanAXdEy3NLUC6HmbIaR_cYI") no-repeat;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    padding-bottom: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+}
+.product_img{
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    vertical-align: middle;
+    background: silver;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.introduce_title{
+    margin-top: .5rem;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    height: 2.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+    color: #000;
+}
+.introduce_price{
+    overflow: hidden;
+    text-align: center;
+}
+.introduce_priceBody{
+    display: inline-block;
+}
+.introduce_icon{
+    background: red;
+    margin-left: -3px;
+    color: #fff;
+    height: 18px;
+    line-height: 18px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: .2rem;
+    vertical-align: middle;
+    display: inline-block;
+    transform: scale(0.7);
+    -ms-transform:scale(0.7); 	/* IE 9 */
+    -moz-transform:scale(0.7); 	/* Firefox */
+    -webkit-transform:scale(0.7); /* Safari 和 Chrome */
+    -o-transform:scale(0.7);
+}
+.introduce_nowPrice{
+    font-size: 1.2rem;
+    color: #000;
+    display: inline-block;
+    line-height: 18px;
+    font-weight: 400;
+    vertical-align: middle;
+}
+.introduce_originalPrice{
+    font-size: 1.2rem;
+    color: #777;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.7);
+    -ms-transform:scale(0.7); 	/* IE 9 */
+    -moz-transform:scale(0.7); 	/* Firefox */
+    -webkit-transform:scale(0.7); /* Safari 和 Chrome */
+    -o-transform:scale(0.7);
+}
+.price_wrap i,.price_wrap_original i{
+    font-family: "Helvetica Neue";
+}
+.i_2{
+    font-size: 1.3rem;
+}
+.click_more{
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    height: 3.7rem;
+    line-height: 3rem;
+    z-index: 2;
+}
+.like_wrap{
+    border-radius: 1rem;
+    color: #fff;
+    height: 24px;
+    line-height: 24px;
+    background:#000;
+    overflow: hidden;
+    min-width: 52px;
+    margin-top: .9rem;
+}
+.price_wrap{
+    display: inline-block;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+}
+.price_wrap_now{
+    margin-left: -0.4rem;
+}
+.price_wrap_original{
+    display: inline-block;
+    float: left;
+    margin-left: -0.4rem;
+    height: 18px;
+    line-height: 18px;
+}
+.likeWrap_bgOut{
+    display: inline-block;
+    line-height: 24px;
+    width: 18px;
+    height: 24px;;
+    overflow: hidden;
+    float: left;
+}
+.likeWrap_bg{
+    display: inline-block;
+    width: 12px;
+    height: 100%;
+    margin-left:6px;
+    vertical-align: middle;
+}
+.favor{
+    background: url("http://xqproduct.xiangqu.com/FhLYWtvtEM4YjkIqz9afZ3CpCEC2") no-repeat center;
+    background-size: 12px 10px;
+}
+.notFavor{
+    background: url("http://xqproduct.xiangqu.com/FpwF10FHUlKvxEkslL7txv0HQu2v") no-repeat center;
+    background-size: 12px 10px;
+}
+.likeWrap_num{
+    height: 24px;
+    display: inline-block;
+    margin: auto 6px;
+    font-family: "Helvetica Neue";
+    font-size: 1.4rem;
+    line-height: 24px;
+    vertical-align: middle;
+}
+/*loadImg*/
+.loadImg{
+    width:16px;
+    display: none;
+    margin: 0 auto;
+}
+.J_SloadTest{
+    height: 47px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*loadImg结束*/
