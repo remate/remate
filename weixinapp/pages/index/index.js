@@ -5,12 +5,19 @@ console.log(app.globalData.userName)
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {
+      avatarUrl:"http://xquser.xiangqu.com/FsOANBP51aSamPo4GZ1sstQFgWrj?imageView2/2/w/140/q/90/format/jpg/180x180/"
+    }
   },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  sayHello:function(){
+    this.setData({
+      motto:"zuoci 你好"
     })
   },
   onLoad: function () {
