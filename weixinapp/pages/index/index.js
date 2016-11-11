@@ -4,10 +4,14 @@ var app = getApp()
 console.log(app.globalData.userName)
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {
       avatarUrl:"http://xquser.xiangqu.com/FsOANBP51aSamPo4GZ1sstQFgWrj?imageView2/2/w/140/q/90/format/jpg/180x180/"
-    }
+    },
+    count:1,
+    isManager:"false",
+    loop:[1, 2, 3],
+    staffA: {firstName: 'Hulk', lastName: 'Hu'},
+    staffB: {firstName: 'Shang', lastName: 'You'}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,10 +19,17 @@ Page({
       url: '../logs/logs'
     })
   },
-  sayHello:function(){
+  like:function(e){
     this.setData({
-      motto:"zuoci 你好"
-    })
+      count: this.data.count + 1
+    });
+    console.log(e)
+  },
+  requestManager:function(){
+    console.log("提交申请")
+    this.setData({
+      isManager:"true"
+      })
   },
   onLoad: function () {
     console.log('onLoad');
