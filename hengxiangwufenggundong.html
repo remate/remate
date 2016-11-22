@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+
+    <title></title>
+</head>
+<style>
+    *{ margin: 0px; padding: 0px;}
+    .systemdialog_part {
+        width: 100%;
+        background: #ffee9d;
+        height: 30px;
+        line-height: 30px;
+        position: fixed;
+        left: 0;
+        top: 42px;
+    }
+    .systemdialog_part .systemdialog {
+        z-index: 5;
+        position: fixed;
+        left: 0;
+        top: 42px;
+        line-height: 30px;
+        color: #ff683e;
+        text-align: center;
+        font-size: 12px;
+        margin: 0 2%;
+        width: 96%;
+        overflow: hidden;
+    }
+    .systemdialog_part .systemdialog > ul {
+        margin: 0 40px 0 5px;
+        width: 60000px;
+        height: 30px;
+    }
+    .systemdialog_part .systemdialog > ul > li {
+        float: left;
+        padding-left: 20px;
+    }
+    .systemdialog_part .systemdialog > ul > li span {
+        /* margin-left: 15px; */
+    }
+</style>
+<body>
+<div class="systemdialog_part">
+    <div class="systemdialog">
+        <ul>
+            <li>
+                <span class="message_title">此银行最近维护</span>&nbsp;&nbsp;&nbsp;</li>
+            <li>
+                <span class="message_title">此银行最近维护</span>&nbsp;&nbsp;&nbsp;</li>
+            <li>
+                <span class="message_title">此银行最近维护</span>&nbsp;&nbsp;&nbsp;</li>
+            <li>
+                <span class="message_title">此银行最近维护</span>&nbsp;&nbsp;&nbsp;</li>
+            <li>
+                <span class="message_title">此银行最近维护</span>&nbsp;&nbsp;&nbsp;</li>
+            <li>
+                <span class="message_title">此银行最近维护</span>&nbsp;&nbsp;&nbsp;</li>
+        </ul>
+    </div>
+</div>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+    var scrolltopBox = $('.systemdialog');
+    var scrolltop_li = scrolltopBox.find("li");
+    var scrolltop_liwidth = 0;
+    $.each( scrolltop_li, function(i, n){
+        scrolltop_liwidth += n.offsetWidth;
+    });
+    var ul_html = scrolltopBox.find("ul").html();
+    scrolltopBox.find("ul").append(ul_html).append(ul_html);
+    function scrollLeft(){
+        console.log(scrolltopBox[0].scrollLeft);
+        console.log(scrolltop_liwidth);
+        if(scrolltopBox[0].scrollLeft >= scrolltop_liwidth){
+            scrolltopBox[0].scrollLeft = 1;
+        }else{
+            scrolltopBox[0].scrollLeft = scrolltopBox[0].scrollLeft +1;
+        }
+    }
+    var left_scroll = setInterval("scrollLeft()",30);//系统提示调用*/
+//    $(".systemdialog").on("click", function(){
+//     clearInterval(left_scroll);
+//     });//清除滚动
+</script>
+</body>
+</html>
