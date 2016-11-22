@@ -6,7 +6,7 @@
 </head>
 <body>
 <canvas id="myChart" width="400" height="400"></canvas>
-<canvas id="myChart2" width="400" height="400"></canvas>
+<!--<canvas id="myChart2" width="400" height="400"></canvas>-->
 <div class="haha">change</div>
 <script src="jquery-1.9.1.js"></script>
 <script src="Chart.js"></script>
@@ -33,7 +33,7 @@
         segmentStrokeWidth : 2,
 
         //Boolean - Whether we should animate the chart
-        animation : true,
+        animation : false,
 
         //Number - Amount of animation steps
         animationSteps : 100,
@@ -65,8 +65,11 @@
         var options2 = $.extend(options,{
             animation : false
         });
-        var ctx2 = $("#myChart2").get(0).getContext("2d");
-        new Chart(ctx2).Pie(data2,options2);
+//        var ctx2 = $("#myChart2").get(0).getContext("2d");
+       console.log($("#myChart").width())
+        $("#myChart").attr({'width':400,'height':400});
+        new Chart(ctx).Pie(data2,options2);
+
     })
 </script>
 </body>
