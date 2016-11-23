@@ -3,73 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>manage</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<canvas id="myChart" width="400" height="400"></canvas>
-<!--<canvas id="myChart2" width="400" height="400"></canvas>-->
-<div class="haha">change</div>
+<div class="container">
+    <h1 class="pageTitle">服务器在离线情况统计预览</h1>
+    <div class="main">
+            <div class="nav">
+                <h2>服务器列表</h2>
+                <ul class="list">
+
+                </ul>
+            </div>
+        <div class="article">
+            <canvas id="myChart" width="400" height="400"></canvas>
+            <div class="chartNav">
+                <div class="online"><i class="onlineRec lineCom"></i>在线服务器</div>
+                <div class="offline"><i class="offlineRec lineCom"></i>离线服务器</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="haha" style="width: 100px;height: 30px;line-height: 30px;text-align: center;border: 1px solid #000">TestBtn</div>-->
 <script src="jquery-1.9.1.js"></script>
 <script src="Chart.js"></script>
 <script>
-    var ctx = $("#myChart").get(0).getContext("2d");
-    var data = [
-        {
-            value: 50,
-            color:"#F38630"
-        },
-        {
-            value : 50,
-            color : "#E0E4CC"
-        }
-    ];
-    var options = {
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke : true,
-
-        //String - The colour of each segment stroke
-        segmentStrokeColor : "#fff",
-
-        //Number - The width of each segment stroke
-        segmentStrokeWidth : 2,
-
-        //Boolean - Whether we should animate the chart
-        animation : false,
-
-        //Number - Amount of animation steps
-        animationSteps : 100,
-
-        //String - Animation easing effect
-        animationEasing : "easeOutBounce",
-
-        //Boolean - Whether we animate the rotation of the Pie
-        animateRotate : true,
-
-        //Boolean - Whether we animate scaling the Pie from the centre
-        animateScale : false,
-
-        //Function - Will fire on animation completion.
-        onAnimationComplete : null
-    };
-    new Chart(ctx).Pie(data,options);
-    $('.haha').click(function(){
-        var data2 = [
-            {
-                value: 30,
-                color:"#F38630"
-            },
-            {
-                value : 50,
-                color : "#E0E4CC"
+    $(function(){
+        var onlineToltal=0, offlineTotal= 0,defer = $.Deferred();
+        var options = {
+            segmentShowStroke : true,
+            segmentStrokeColor : "#fff",
+            segmentStrokeWidth : 2,
+            animation : false,
+            animationSteps : 100,
+            animationEasing : "easeOutBounce",
+            animateRotate : true,
+            animateScale : false,
+            onAnimationComplete : null
+        };
+        $.ajax({
+            url:'test.json',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                var staLength = data.length,html = '';
+                for(var i = 0; i < staLength; i++){
+                    html += '<li class="select" data-offline="'+data[i].offline+'" data-online="'+data[i].online+'">'+data[i].name+'</li>';
+                    onlineToltal += data[i].online;
+                    offlineTotal += data[i].offline;
+                    defer.resolve();
+                }
+                $('.list').append(html);
+//                console.log(onlineToltal +' '+offlineTotal);
             }
-        ];
-        var options2 = $.extend(options,{
-            animation : false
-        });
-//        var ctx2 = $("#myChart2").get(0).getContext("2d");
-       console.log($("#myChart").width())
-        $("#myChart").attr({'width':400,'height':400});
-        new Chart(ctx).Pie(data2,options2);
+        })
+        var ctx = $("#myChart").get(0).getContext("2d");
+        defer.done(function(){
+            var data = [
+                {
+                    value: onlineToltal,
+                    color:"#F38630"
+                },
+                {
+                    value : offlineTotal,
+                    color : "#907a5a"
+                }
+            ];
+            new Chart(ctx).Pie(data,options);
+        })
 
+        $('body').delegate('.select','click',function(){
+            //点击变换颜色
+            $(this).addClass('selected').siblings().removeClass('selected');
+            var thisOnline = $(this).attr('data-online');
+            var thisOffline = $(this).attr('data-offline');
+            var data2 = [
+                {
+                    value: parseInt(thisOnline),
+                    color:"#F38630"
+                },
+                {
+                    value : parseInt(thisOffline),
+                    color : "#907a5a"
+                }
+            ];
+            new Chart(ctx).Pie(data2,options);
+        });
     })
 </script>
 </body>
