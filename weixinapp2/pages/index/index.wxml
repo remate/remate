@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view wx:if="{{isManager == 'true'}}">身份：主播</view>
+  <view catchtap="like">点赞</view>
+  <view>{{count}}</view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view wx:if="{{isManager == 'false'}}" class="requestManager" bindtap="requestManager">我要申请成为主播</view>
+  <view wx:for="{{loop}}">{{item}}:{{index}}</view>
+</view>
+<template name="staffName">
+  <view>姓:{{firstName}},名:{{lastName}}</view>
+</template>
+<template is="staffName" data="{{...staffA}}"></template>
+<template is="staffName" data="{{...staffB}}"></template>
