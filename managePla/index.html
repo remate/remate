@@ -23,15 +23,52 @@
             </div>
         </div>
     </div>
-</div>
-<!--<div class="haha" style="width: 100px;height: 30px;line-height: 30px;text-align: center;border: 1px solid #000">TestBtn</div>-->
+        <div class="table">
+            <div class="caption">服务器概览</div>
+            <div class="selectName">
+                <span>筛选条件</span>
+                <select>
+                    <option data-index="0">domain</option>
+                    <option data-index="1">group</option>
+                    <option data-index="2">appname</option>
+                    <option data-index="3">ip</option>
+                    <option data-index="4">端口</option>
+                    <option data-index="5">在(离)线</option>
+                </select>
+                <input class="selectFor" placeholder="请输入筛选条件"/>
+                <button class="startSelect">筛选</button>
+                <i>重启</i>
+            </div>
+            <table width="1200">
+                <tr class="firstLine">
+                    <td width="200">服务器序号</td>
+                    <td width="200">group</td>
+                    <td width="200">appname</td>
+                    <td width="200">在(离)线状态</td>
+                    <td width="200">IP</td>
+                    <td width="200">端口</td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td>服务器1</td>-->
+                    <!--<td>服务器组一</td>-->
+                    <!--<td>abc</td>-->
+                    <!--<td>在线</td>-->
+                    <!--<td>192.1.2</td>-->
+                    <!--<td>8081</td>-->
+                <!--</tr>-->
+            </table>
+        </div>
+    </div>
 <script src="jquery-1.9.1.js"></script>
 <script src="Chart.js"></script>
 <script>
+    var selectText = '0';//筛选时条件选择,初始选择为1，domain
+    var selectFor = '';//筛选时的参数index
+    var selectMain = ''//筛选的条件输入获取
     $(function(){
-        var onlineToltal=0, offlineTotal= 0,defer = $.Deferred();
+        var onlineToltal=0, offlineTotal= 0,defer = $.Deferred(),fwqGroup=[];
         var options = {
-            segmentShowStroke : true,
+            segmentShowStroke : false,
             segmentStrokeColor : "#fff",
             segmentStrokeWidth : 2,
             animation : false,
@@ -48,32 +85,73 @@
             success:function(data){
                 var staLength = data.length,html = '';
                 for(var i = 0; i < staLength; i++){
-                    html += '<li class="select" data-offline="'+data[i].offline+'" data-online="'+data[i].online+'">'+data[i].name+'</li>';
+                    html += '<li class="select" data-index='+i+' data-offline="'+data[i].offline+'" data-online="'+data[i].online+'">'+data[i].group+'</li>';
                     onlineToltal += data[i].online;
                     offlineTotal += data[i].offline;
-                    defer.resolve();
+                    fwqGroup.push(data[i].children);//所有服务器集合
                 }
                 $('.list').append(html);
-//                console.log(onlineToltal +' '+offlineTotal);
+                defer.resolve();
             }
-        })
+        });
+
+        function selectFwq(index, selectText, selectFor){
+            var _html='',k=0;
+            if(index == 'all'){
+                for(var i=0; i<fwqGroup.length; i++){
+                    for(var j=0;j<fwqGroup[i].length;j++){
+                        ++k;
+                        _html += '<tr>\
+                                 <td>'+k+'</td>\
+                                 <td>'+fwqGroup[i][j].group+'</td>\
+                                 <td>'+fwqGroup[i][j].appname+'</td>\
+                                 <td>'+fwqGroup[i][j].status+'</td>\
+                                 <td>'+fwqGroup[i][j].ip+'</td>\
+                                 <td>'+fwqGroup[i][j].port+'</td>\
+                               </tr>';
+                    }
+                }
+            } else {
+                for(var j=0;j<fwqGroup[index].length;j++){
+                    ++k;
+                    _html += '<tr>\
+                                 <td>'+k+'</td>\
+                                 <td>'+fwqGroup[index][j].group+'</td>\
+                                 <td>'+fwqGroup[index][j].appname+'</td>\
+                                 <td>'+fwqGroup[index][j].status+'</td>\
+                                 <td>'+fwqGroup[index][j].ip+'</td>\
+                                 <td>'+fwqGroup[index][j].port+'</td>\
+                               </tr>';
+                }
+            }
+            $(".table tr").not('.firstLine').hide();
+            $(".table table").append(_html);
+        }
+
         var ctx = $("#myChart").get(0).getContext("2d");
         defer.done(function(){
             var data = [
                 {
-                    value: onlineToltal,
+                    value: parseInt(onlineToltal),
                     color:"#F38630"
                 },
                 {
-                    value : offlineTotal,
+                    value : parseInt(offlineTotal),
                     color : "#907a5a"
                 }
             ];
             new Chart(ctx).Pie(data,options);
-        })
+
+            //默认显示全部服务器
+            selectFwq('all');//如果为all，则展示全部服务器，0，1，2则为服务器组序；
+            selectFor = 'all';
+        });
 
         $('body').delegate('.select','click',function(){
             //点击变换颜色
+            var _index = $(this).attr("data-index");
+            selectFwq(_index);
+            selectFor = _index;
             $(this).addClass('selected').siblings().removeClass('selected');
             var thisOnline = $(this).attr('data-online');
             var thisOffline = $(this).attr('data-offline');
@@ -87,7 +165,18 @@
                     color : "#907a5a"
                 }
             ];
+            $("#myChart").attr({'width':400,'height':400});
             new Chart(ctx).Pie(data2,options);
+        });
+
+        $('select').change(function(){
+            selectText = $(this).find('option:selected').attr('data-index');
+        });
+
+        $('.startSelect').click(function(){
+            selectMain = $('.selectFor').val();
+//            console.log(selectFor+selectText+selectMain)
+//            selectFwq(selectFor, selectText, selectMain);
         });
     })
 </script>

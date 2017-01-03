@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //app.js
 App({
   onLaunch: function () {
@@ -34,5 +35,19 @@ App({
   globalData:{
     userName:"zuoci",
     userInfo:null
+=======
+App({
+  onLaunch: function () {
+    console.log('App Launch')
+  },
+  onShow: function () {
+    console.log('App Show')
+  },
+  onHide: function () {
+    console.log('App Hide')
+  },
+  globalData: {
+    hasLogin: false
+>>>>>>> 91839d51f1fed0ef9a1ab3776913296343bd2d6f
   }
 })
