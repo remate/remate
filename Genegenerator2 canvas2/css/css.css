@@ -1,0 +1,352 @@
+@charset "UTF-8";
+* {
+  font-family: "微软雅黑";
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  /*box-sizing : border-box;*/
+  /*-webit-box-sizing : border-box;*/
+  /*-moz-box-sizing : border-box;*/ }
+
+iframe {
+  display: none; }
+
+* {
+  -webkit-touch-callout: none; }
+
+html {
+  -webkit-text-size-adjust: none; }
+
+/* 字体+抗锯齿 */
+body {
+  -webkit-font-smoothing: subpixel-antialiased; }
+
+body {
+  width:7.5rem;
+  font-size: 12px;
+  margin: 0 auto;
+  background: #212b2d url("../images/mainbg.jpg") repeat-x; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+ol, ul, li {
+  list-style: none; }
+
+button {
+  background: none;
+  border: none; }
+
+i, cite, em, var, address, dfn {
+  font-style: normal; }
+
+ins, a {
+  text-decoration: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+table, td, img, fieldset, iframe {
+  border: none;
+  width: 100%; }
+
+textarea {
+  resize: none;
+  overflow: auto; }
+
+caption, th, td {
+  font-weight: normal; }
+
+blockquote :before, blockquote:after, q:before, q:after {
+  content: ""; }
+
+blockquote, q {
+  quotes: "" ""; }
+
+td, th, div {
+  word-break: break-all;
+  word-wrap: break-word; }
+.hide{
+  display: none !important;
+}
+input, textarea {
+  -webkit-appearance: none; }
+
+a, img, button, input, textarea, div {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent; }
+
+.clearfix {
+  *zoom: 1; }
+
+.clearfix:before, .clearfix:after {
+  line-height: 0;
+  display: table;
+  content: ''; }
+
+.clearfix:after {
+  clear: both; }
+
+form {
+  display: inline; }
+
+.hide {
+  display: none; }
+
+.show {
+  display: block; }
+
+/*
+main
+*/
+.bg01 {
+  width: 100%;
+  background: url("../images/bg.jpg") no-repeat;
+  background-size: 100% 100%; }
+  .bg01 .versionbox {
+    padding-top: 2rem; }
+    .bg01 .versionbox .version {
+      position: relative;
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto; }
+      .bg01 .versionbox .version #smstyle > img {
+        width: 100%; }
+      .bg01 .versionbox .version .animationline {
+        position: absolute;
+        width: 4rem;
+        height: .4rem;
+        top: -.1rem;
+        left: 0;
+        right: 0;
+        -webkit-animation: float linear 2.5s infinite;
+        animation: float linear 2.5s infinite; }
+        .bg01 .versionbox .version .animationline > img {
+          width: 100%; }
+@-webkit-keyframes float {
+  0% {
+    -webkit-transform: translateY(0rem);
+    transform: translateY(0rem); }
+  10% {
+    -webkit-transform: translateY(0.3rem);
+    transform: translateY(0.3rem); }
+  20% {
+    -webkit-transform: translateY(0.6rem);
+    transform: translateY(0.6rem); }
+  30% {
+    -webkit-transform: translateY(0.9rem);
+    transform: translateY(0.9rem); }
+  40% {
+    -webkit-transform: translateY(1.2rem);
+    transform: translateY(1.2rem); }
+  50% {
+    -webkit-transform: translateY(1.5rem);
+    transform: translateY(1.5rem); }
+  60% {
+    -webkit-transform: translateY(1.8rem);
+    transform: translateY(1.8rem); }
+  70% {
+    -webkit-transform: translateY(2.1rem);
+    transform: translateY(2.1rem); }
+  80% {
+    -webkit-transform: translateY(2.4rem);
+    transform: translateY(2.4rem); }
+  90% {
+    -webkit-transform: translateY(2.7rem);
+    transform: translateY(2.7rem); }
+  100% {
+    -webkit-transform: translateY(3rem);
+    transform: translateY(3rem); } }
+@keyframes float {
+  0% {
+    -webkit-transform: translateY(0rem);
+    transform: translateY(0rem); }
+  10% {
+    -webkit-transform: translateY(0.3rem);
+    transform: translateY(0.3rem); }
+  20% {
+    -webkit-transform: translateY(0.6rem);
+    transform: translateY(0.6rem); }
+  30% {
+    -webkit-transform: translateY(0.9rem);
+    transform: translateY(0.9rem); }
+  40% {
+    -webkit-transform: translateY(1.2rem);
+    transform: translateY(1.2rem); }
+  50% {
+    -webkit-transform: translateY(1.5rem);
+    transform: translateY(1.5rem); }
+  60% {
+    -webkit-transform: translateY(1.8rem);
+    transform: translateY(1.8rem); }
+  70% {
+    -webkit-transform: translateY(2.1rem);
+    transform: translateY(2.1rem); }
+  80% {
+    -webkit-transform: translateY(2.4rem);
+    transform: translateY(2.4rem); }
+  90% {
+    -webkit-transform: translateY(2.7rem);
+    transform: translateY(2.7rem); }
+  100% {
+    -webkit-transform: translateY(3rem);
+    transform: translateY(3rem); } }
+  .bg01 .sexbox {
+    width: 3.5rem;
+    margin: 20px auto 0px; }
+    .bg01 .sexbox li {
+      position: relative;
+      width: .6rem;
+      height: .6rem;
+      float: left;
+      padding-right: .5rem;
+      padding-left: .5rem; }
+      .bg01 .sexbox li img {
+        width: 100%; }
+    .bg01 .sexbox li.cur {
+      background: url("../images/checked.png") 0 0.2rem no-repeat;
+      background-size: .35rem .35rem; }
+  .bg01 .personalbox {
+    width: 54%;
+    margin: 0 auto;
+    padding: .5rem 0 0 0; }
+    .bg01 .personalbox li {
+      float: left;
+      width: 100%;
+      margin-bottom: 15px;
+      height: 34px; }
+      .bg01 .personalbox li .title {
+        width: 20%;
+        color: #ffff60;
+        font-weight: bold;
+        float: left;
+        line-height: 34px;
+        text-align: center; }
+      .bg01 .personalbox li .Nameinput {
+        width: 80%;
+        height: 100%;
+        float: left; }
+        .bg01 .personalbox li .Nameinput > input {
+          border: 1px solid #fff;
+          width: 100%;
+          border-radius: 4px;
+          -webkit-border-radius: 4px;
+          color: #909090;
+          background-color: rgba(234, 86, 151, 0);
+          opacity: 0.46;
+          padding: 7px 0px;
+          text-indent: .2rem; }
+      .bg01 .personalbox li .bloodtypeselect {
+        width: 80%;
+        height: 100%;
+        float: left;
+        position: relative; }
+        .bg01 .personalbox li .bloodtypeselect > select {
+          width: 100%;
+          position: absolute;
+          z-index: 2;
+          overflow: hidden;
+          border: 1px solid #fff;
+          -webkit-appearance: none;
+          border-radius: 4px;
+          -webkit-border-radius: 4px;
+          color: #909090;
+          background-color: rgba(234, 86, 151, 0);
+          opacity: 0.46;
+          padding: 7px 0px;
+          text-indent: .2rem;
+          background-color: transparent; }
+        .bg01 .personalbox li .bloodtypeselect .bloodtype_jt {
+          overflow: hidden;
+          position: absolute;
+          z-index: 1;
+          width: 33px;
+          right: 1px;
+          top: 0;
+          height: 32px;
+          border: none;
+          border-left-width: 1px;
+          border-left-style: solid;
+          border-radius: 4px 0px 0px 4px;
+          -webkit-border-radius: 4px 0px 0px 4px;
+          border-left-color: rgba(255, 255, 255, 0.46);
+          background-color: rgba(255, 255, 255, 0.251); }
+          .bg01 .personalbox li .bloodtypeselect .bloodtype_jt .arrow {
+            overflow: hidden;
+            width: .5rem;
+            height: .3rem;
+            position: absolute;
+            left: 50%;
+            margin-left: -.25rem;
+            top: 50%;
+            margin-top: -.15rem; }
+
+.surebtn {
+  width: 4rem;
+  height: 1.6rem;
+  margin: .7rem auto 1rem; }
+  .surebtn > img {
+    width: 100%; }
+
+.lookcount {
+  width: 70%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  color: #68fff9;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center; }
+  .lookcount span {
+    color: #ff9160;
+    margin: 0px 3px; }
+
+
+.error_msg {
+  height: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #ffcd55; }
+
+#hideMB{
+  width:6.3rem;
+  height:10.45rem;
+  margin:0 auto;
+}
+#canvas{
+  margin-left:.6rem;
+  background: #fff;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.mainImg{
+  display: block;
+}
+.mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 8;
+  height: 100%;
+  display: none;
+  width: 100%;
+  background: #000000;
+  opacity: 0.8; }
+.saveMB{
+  width:6.3rem;
+  height:10rem;
+  position: fixed;
+  top:50%;
+  left:50%;
+  z-index: 9;
+  margin-left: -3.15rem;
+  transform: translateY(-50%);
+}
+.close{
+  width:40px;
+  height:40px;
+  position: absolute;
+  top:-20px;
+  right:-20px;
+}

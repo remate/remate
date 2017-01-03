@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>基因生成器</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <script>
+        !new function(){var t=this;t.width=750,t.fontSize=100,t.widthProportion=function(){var e=(document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/t.width;return e>1?1:.5>e?.5:e},t.changePage=function(){var t=document.documentElement.clientWidth;t>540&&(t=540),document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+t/7.5+"px !important")},"complete"===window.document.readyState?window.document.body.style.fontSize="12px":window.document.addEventListener("DOMContentLoaded",function(t){window.document.body.style.fontSize="12px"},!1),t.changePage(),window.addEventListener("resize",function(){t.changePage()},!1)};
+    </script>
+    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+<div class="bg01">
+    <div class="versionbox">
+        <div class="version">
+            <div id="smstyle"><img src="images/smn.png"></div>
+            <div class="animationline">
+                <img src="images/animationline.png">
+            </div>
+        </div>
+    </div>
+    <ul class="sexbox clearfix">
+        <li class="cur"   id="boycheck">
+            <img src="images/boy.png" class="boy">
+        </li>
+        <li   id="girlcheck">
+            <img src="images/girl.png" class="girl">
+        </li>
+    </ul>
+    <ul class="personalbox clearfix">
+        <li class="clearfix">
+            <div class="title">姓名</div>
+            <div class="Nameinput">
+                <input id="Gname" placeholder="请输入姓名"  maxlength="6" onkeyup="value=value.replace(/[^\a-zA-Z\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\a-zA-Z\u4E00-\u9FA5]/g,''))">
+            </div>
+        </li>
+        <li class="clearfix">
+            <div class="title">血型</div>
+            <div class="bloodtypeselect">
+                <select id="selectID" >
+                    <option value="1">O型</option>
+                    <option value="2">A型</option>
+                    <option value="3">B型</option>
+                    <option value="4">AB型</option>
+                </select>
+                <div class="bloodtype_jt">
+                    <img src="images/arrow.png" class="arrow">
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="error_msg"></div>
+<div class="surebtn">
+    <img src="images/surebtn.png">
+</div>
+<div class="lookcount">已有<span id="peoplenum">1023</span>人查看了基因报告</div>
+<!--弹出层-->
+<div class="mark"></div>
+<div class="saveMB hide">
+    <img class="savethis">
+    <img class="close" src="images/closebtn.png">
+</div>
+<canvas id="canvas" class="hide" width="315" height="284"></canvas>
+<!--<img class="mainImg" src="">-->
+<script src="js/indexpic.js"></script>
+<script>
+    var error = $(".error_msg"),imgFinished= 0,winCanvas='',winContext='';
+    //性别选择
+    $(".sexbox li").click(function(){
+        $(this).addClass("cur").siblings().removeClass("cur");
+    });
+    //匹配扫描图片
+    $(".sexbox li").click(function(){
+        if($("#boycheck").hasClass("cur") && $('.sexbox img').hasClass('boy')){
+            $("#smstyle img").attr("src","images/smn.png");
+        }
+        if($("#girlcheck").hasClass("cur") && $('.sexbox img').hasClass('girl')){
+            $("#smstyle img").attr("src","images/smu.png");
+        }
+    })
+    $(".surebtn").click(function(){
+        /*var inputName = $('#Gname').value;
+         var _length = inputName.length;*/
+        var value = $('#Gname').val().trim();
+        var length = value.length;
+        if(length<2||length>6){
+            errorMsg("*只允许输入2-6可字或字符哦");
+            return false;
+        }
+            startCanvas();
+            var inter = setInterval(function(){
+                var loadProgress = imgFinished;
+                if(loadProgress==10){
+                    imgFinished = 0;
+                    clearInterval(inter);
+                   setTimeout(function(){
+                       $('.mark').show();
+                       $('.saveMB').removeClass('hide');
+                       $("body").css({"height":"100%","overflow-y":"hidden"});
+                       $("html").css({"height":"100%","overflow-y":"hidden"});
+                       var copyImg = winCanvas.toDataURL("image/jpeg");
+                       $('.saveMB img.savethis').attr('src',copyImg);
+                   },500)
+                }
+                },200);
+
+    })
+    $('.close').click(function(){
+        $('.mark').hide();
+        $('.saveMB').addClass('hide');
+        $("body").css({"height":"auto","overflow-y":"scroll"});
+        $("html").css({"height":"auto","overflow-y":"scroll"});
+        winContext.clearRect(0,0,rem2px(6.3),rem2px(10.45));
+    })
+    //错误信息提示
+    function errorMsg(data){
+        error.html(data);
+        setTimeout('error.html("");', 4000);
+    }
+    function g(e){
+        var a = e.substring(0,1);
+        if(a == '#'){
+            return document.getElementById(e.substring(1));
+        } else {
+            return document.getElementsByClassName(e.substring(1));
+        }
+    }
+    function rem2px(rem){
+        var width=window.screen.availWidth;
+        return parseFloat(width*rem/7.5);
+    }
+    //获取宽高方法封装
+
+    function startCanvas(){
+        //设置canvas高宽
+        var canvasWidth = rem2px(6.3), canvasHeight = rem2px(10.45);
+        var canvas = g('#canvas');
+        winCanvas = canvas;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        var context = canvas.getContext('2d');
+        winContext = context;
+        context.beginPath();
+        context.rect(0,rem2px(5.68),canvasWidth,rem2px(4.77));
+        context.fillStyle='#ffffff';
+        context.fill();
+        context.closePath();
+
+//        var getPixelRatio = function(context) {
+//            var backingStore = context.backingStorePixelRatio ||
+//                    context.webkitBackingStorePixelRatio ||
+//                    context.mozBackingStorePixelRatio ||
+//                    context.msBackingStorePixelRatio ||
+//                    context.oBackingStorePixelRatio ||
+//                    context.backingStorePixelRatio || 1;
+//            return (window.devicePixelRatio || 1) / backingStore;
+//        };
+//
+//        var ratio = getPixelRatio(context);
+        context.save();
+        var img1 = new Image();
+        img1.src = 'images/tkbg.png';
+        img1.onload = function(){
+            context.drawImage( img1, 0, 0, canvasWidth, rem2px(5.68));
+            imgFinished++;
+            var name = $("#Gname").val().trim();
+            context.font = 'bold 19px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#c9e484';
+            context.fillText(name,rem2px(5.06),rem2px(.29));
+
+            var type = '';
+            if($("#selectID").val() == 1){
+                type="O型";
+            }
+            if($("#selectID").val() == 2){
+                type="A型";
+            }
+            if($("#selectID").val() == 3){
+                type="B型";
+            }
+            if($("#selectID").val() == 4){
+                type="AB型";
+            }
+            context.font = 'bold 12px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#ececec';
+            context.fillText(type,rem2px(5.78),rem2px(.40));
+
+            //血统
+            var bloodline = ["秦始皇血脉","周王姬发血脉","汉武帝刘彻血脉","西楚项羽血脉","大理段正淳血脉","唐太宗李世民血脉","成吉思汗铁木真血脉",
+                "宋太祖赵匡胤血脉","明太祖朱元璋血脉","梁武帝萧衍血脉","吴越钱镠血脉","大清爱新觉罗血脉","神医华佗血脉","宰相狄仁杰血脉","才子唐伯虎血脉","思想家孔子血脉",
+                "诗仙李白血脉","诗圣杜甫血脉","唐宋八大家苏轼血脉","大周女皇武则天血脉","商圣范蠡血脉","书法家王羲之血脉","越国美女西施血脉","太公望姜子牙血脉"];
+
+            var text1 = (Math.random()*20).toFixed(2)+"%"+bloodline[Math.floor(Math.random() * bloodline.length)];
+            context.font = 'bold 12px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#feb550';
+            context.fillText(text1,rem2px(5.78),rem2px(.82));
+
+            //母系祖源
+            var mxmsg = ["D5a3","F3a1","M10a1a1","c4a2","M7c1a3a","N9a1","Z3","C7a2","Z4a1"];
+            var text2 = mxmsg[Math.floor(Math.random() * mxmsg.length)];
+
+            context.font = 'bold 12px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#f29c9f';
+            context.fillText(text2,rem2px(5.78),rem2px(1.28));
+
+            var text3 = '母系祖源';
+            context.font = 'bold 12px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#ffffff';
+            context.fillText(text3,rem2px(4.22),rem2px(1.28));
+
+            //父系祖源
+            var fxmsg = ["O1a1a1a1a1a","O2a1c1a2 ","o2a2b2","O2b2a1b1a6b","D1a2","N1c2b2","O-M122","Wegene","Q1a1a1"];
+            var text4 = fxmsg[Math.floor(Math.random() * fxmsg.length)];
+            context.font = 'bold 12px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#b4adc0';
+            context.fillText(text4,rem2px(5.78),rem2px(1.7));
+
+            var text5 = '父系祖源';
+            context.font = 'bold 12px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#ffffff';
+            context.fillText(text5,rem2px(4.22),rem2px(1.7));
+        }
+
+        var img2 = new Image();
+        if($("#boycheck").hasClass("cur") && $('.sexbox img').hasClass('boy')){
+            img2.src = 'images/man.png';
+
+        }else if($("#girlcheck").hasClass("cur") && $('.sexbox img').hasClass('girl')){
+            img2.src = 'images/woman.png';
+        }
+        img2.onload = function(){
+            context.drawImage( img2, rem2px(.87), rem2px(.29), rem2px(1.35), rem2px(3.07));
+            imgFinished++;
+        }
+
+        var img3 = new Image();
+        img3.src = 'images/code.png';
+        img3.onload = function(){
+            context.drawImage( img3, rem2px(.52), rem2px(3.59), rem2px(1.57), rem2px(1.57));
+            imgFinished++;
+        }
+        //基因库
+        var m=21,imgBrand=[]; //随机显示图片的总数量
+        for(var i=1;i<8;i++){
+            var n=Math.floor(Math.random()*m+1);
+            imgBrand.push("images/style"+i+"/style"+i+"_"+n+".png");
+        }
+        var img4 = new Image();
+        img4.src = imgBrand[0];
+        img4.onload = function(){
+            context.drawImage( img4, rem2px(2.82), rem2px(2.32), rem2px(3.12), rem2px(.72));
+            imgFinished++;
+        }
+
+        var img5 = new Image();
+        img5.src = imgBrand[1];
+        img5.onload = function(){
+            context.drawImage( img5, rem2px(2.52), rem2px(3.13), rem2px(1.48), rem2px(.76));
+            imgFinished++;
+        }
+
+        var img6 = new Image();
+        img6.src = imgBrand[2];
+        img6.onload = function(){
+            context.drawImage( img6, rem2px(4.12), rem2px(3.18), rem2px(1.83), rem2px(.65));
+            imgFinished++;
+        }
+
+        var img7 = new Image();
+        img7.src = imgBrand[3];
+        img7.onload = function(){
+            context.drawImage( img7, rem2px(2.34), rem2px(3.91), rem2px(1.48), rem2px(.65));
+            imgFinished++;
+        }
+
+        var img8 = new Image();
+        img8.src = imgBrand[4];
+        img8.onload = function(){
+            context.drawImage( img8, rem2px(4.05), rem2px(3.91), rem2px(1.83), rem2px(.65));
+            imgFinished++;
+        }
+
+        var img9 = new Image();
+        img9.src = imgBrand[5];
+        img9.onload = function(){
+            context.drawImage( img9, rem2px(2.66), rem2px(4.62), rem2px(1.13), rem2px(.65));
+            imgFinished++;
+        }
+
+        var img10 = new Image();
+        img10.src = imgBrand[6];
+        img10.onload = function(){
+            context.drawImage( img10, rem2px(3.88), rem2px(4.62), rem2px(2.24), rem2px(.65));
+            imgFinished++;
+        }
+
+        var text6 = '我的基因特色报告';
+        context.font = 'bold 14px 楷体';
+        context.textAlign = 'center';
+        context.textBaseline = 'top';
+        context.fillStyle = '#888888';
+        context.fillText(text6,rem2px(3.15),rem2px(6));
+
+
+
+        //画矩形
+        var _height2 = 6.6,rectColor=['#f29c9f','#c9e484','#d4cae1','#feb550','#8bdbdb','#a4d1f3','#969fb0'],rectWidth=[];
+        for(var i=0;i<7;i++){
+            var random = Math.floor(Math.random()*32+1)/10;
+            rectWidth.push(random);
+        }
+        //基因报告
+        if($("#boycheck").hasClass("cur") && $('.sexbox img').hasClass('boy')){
+        var title=['懒癌','直男癌','剁手指数','手机上瘾症','拖延症','夜猫症','中二癌'];
+        }
+        if($("#girlcheck").hasClass("cur") && $('.sexbox img').hasClass('girl')){
+        var title=['懒癌','直女癌','剁手指数','手机上瘾症','拖延症','夜猫症','中二癌'];
+        }
+        for(var i=0;i<7;i++){
+            context.font = '100 13px 楷体';
+            context.textAlign = 'right';
+            context.textBaseline = 'top';
+            context.fillStyle = '#000000';
+            context.fillText(title[i],rem2px(1.78),rem2px(_height2));
+            context.beginPath();
+            context.lineWidth="1";
+            context.strokeStyle="#f1f1f1";
+            context.rect(rem2px(2),rem2px(_height2),rem2px(3.2),rem2px(.28));
+            context.stroke();
+            context.fillStyle="#f1f1f1";
+            context.fill();
+            context.closePath();
+            context.beginPath();
+            context.rect(rem2px(2),rem2px(_height2),rem2px(rectWidth[i]),rem2px(.28));
+            context.fillStyle=rectColor[i];
+            context.fill();
+            context.closePath();
+            _height2 += 0.5;
+        }
+        context.restore();
+    }
+</script>
+</body>
+</html>
