@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app2.js"></script>
+
+</head>
+<body ng-app="photoGallery">
+<a ui-sref="content.home">Home</a>
+    <ul>
+        <li>
+            <a ui-sref="content.photos">Photos</a>
+        </li>
+        <li>
+            <a ui-sref="content.about">About</a>
+        </li>
+    </ul>
+<div ui-view></div>
+</body>
+<html>

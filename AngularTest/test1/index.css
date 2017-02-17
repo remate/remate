@@ -1,6 +1,18 @@
-h1{
-    color: red;
-}
 h2{
     color: forestgreen;
+}
+.color_a{
+    color: red;
+}
+.color_b{
+    color: #fc8c84;
+}
+.color_c{
+    color: #ffc520;
+}
+.color_d{
+    color: #006600;
+}
+loader{
+    color: #fc8c84;
 }

@@ -1,6 +1,28 @@
 var testApp=angular.module('testapp',['ngRoute','testapp2']);
-testApp.controller('testController',function($scope){
+testApp.controller('testController',function($scope,$http){
+    $http({
+        url:'index.json',
+        method:'GET'
+    }).then(function(data){
+        alert(data)
+    },function(data){alert(data)})
     $scope.yourName='yourname';
+    $scope.color='a';
+    $scope.colorc=true;
+    $scope.colord=false;
+    $scope.ngShow=true;
+    $scope.changeColor=function(){
+        $scope.color='b';
+        $scope.colorc=!$scope.colorc;
+        $scope.colord=!$scope.colord;
+        $scope.ngShow=!$scope.ngShow;
+    };
+    $scope.howtoloader=function(){
+        console.log(1)
+    };
+    $scope.howtoloader2=function(){
+        console.log(2)
+    };
 }).config(function($routeProvider){
     $routeProvider.when('/hello',{
         templateUrl:'index2.html',
@@ -8,5 +30,18 @@ testApp.controller('testController',function($scope){
     }).when('/haha',{
         templateUrl:'index3.html',
         controller:'helloctrls'
+    }).otherwise({
+        templateUrl:'index2.html',
+        controller:'helloctrl'
     })
+}).directive('loader',function(){
+    return{
+        restrict:'AE',
+        link:function(scope,element,attrs){
+            element.bind('mouseenter',function(){
+                //attr.howtoloader();
+                scope.$apply(attrs.howtoload);
+            })
+        }
+    }
 })

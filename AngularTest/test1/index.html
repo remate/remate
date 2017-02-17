@@ -9,12 +9,14 @@
     <script src="controller.js"></script>
 </head>
 <body ng-controller="testController">
-<div>
-    <label>Name:</label>
-    <input type="text" ng-model="yourName" placeholder="Enter a name here">
-    <hr>
-    <h1>Hello {{yourName}}!</h1>
-</div>
+<!--<div>-->
+    <!--<label ng-class='{color_c:colorc,color_d:colord}'>Name:</label>-->
+    <!--<input type="text" ng-model="yourName" placeholder="Enter a name here">-->
+    <!--<hr ng-show='ngShow'>-->
+    <!--<h1 class="color_{{color}}" ng-click="changeColor()">Hello {{yourName}}</h1>-->
+<!--</div>-->
 <div ng-view></div>
+<loader howToLoad="howtoloader()">loader</loader>
+<loader howToLoad="howtoloader2()">loader2</loader>
 </body>
 </html>
