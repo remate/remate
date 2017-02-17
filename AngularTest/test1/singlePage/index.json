@@ -1,0 +1,11 @@
+[
+    {"name":"home",
+     "status":"complete"
+    },
+    {"name":"photos",
+        "status":"fail"
+    },
+    {"name":"about",
+        "status":"complete"
+    }
+]
