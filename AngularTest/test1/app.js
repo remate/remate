@@ -1,10 +1,14 @@
 var testApp=angular.module('testapp',['ngRoute','testapp2']);
 testApp.controller('testController',function($scope,$http){
+
+    console.log(angular.lowercase('aasS'));
+    $scope.switcher='home';
+
     $http({
         url:'index.json',
         method:'GET'
     }).then(function(data){
-        alert(data)
+        //alert(data)
     },function(data){alert(data)})
     $scope.yourName='yourname';
     $scope.color='a';
