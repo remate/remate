@@ -2,7 +2,9 @@ var testApp=angular.module('testapp',['ngRoute','testapp2']);
 testApp.controller('testController',function($scope,$http){
 
     console.log(angular.lowercase('aasS'));
-    $scope.switcher='home';
+    $scope.switcher=function(){
+        alert(1)
+    }
 
     $http({
         url:'index.json',
