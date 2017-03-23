@@ -3,6 +3,10 @@ testApp.controller('testController',function($scope,$http){
 
     console.log(angular.lowercase('aasS'));
     $scope.switcher='home';
+    $scope.title='home';
+    $scope.myFunc=function(){
+        console.log(2)
+    };
 
     $http({
         url:'index.json',
@@ -48,4 +52,27 @@ testApp.controller('testController',function($scope,$http){
             })
         }
     }
-})
+}).directive('myDirective',function(){
+   return {
+       scope:{title:'=',newFunc:'&myFunc',info:'@'},
+       template:'<div ng-click="newFunc()">{{title}} : {{info}}</div>',
+       link:function(scope,elem,attr){
+           //scope.title='dada'
+           //console.log(attr.inf)
+       }
+   }
+}).directive('add',function(){
+    return {
+        template:'<div ng-click="addnum()">{{numnow}}</div>',
+        link:function(scope,elem,attr){
+            scope.addnum=function(){
+                scope.numnow=scope.numnow+1;
+                scope.$watch('numnow',function(newValue,oldValue){
+                    if(newValue>15){
+                        scope.numnow=11;
+                    }
+                })
+            }
+        }
+    }
+});

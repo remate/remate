@@ -6,7 +6,7 @@ testApp2.controller('helloctrl',function($scope){
     $scope.b=[{c:12},{c:13}];
 }).directive('hello',function(){
     return{
-        restrict:'ACME',
+        restrict:'ACE',
         transclude:true,
         template:'<div class="color_a">hi<div ng-transclude></div></div>',
         //使hello里的div不被末班内容覆盖使用transclude
