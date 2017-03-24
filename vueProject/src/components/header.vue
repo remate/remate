@@ -26,6 +26,9 @@
             <span class="bulletin-title">公告</span><span class="bulletin-text">{{seller.bulletin}}</span>
             <span class="icon-circle-right"></span>
         </div>
+        <div class="background">
+            <img :src="seller.avatarPath" width="100%" height="100%">
+        </div>
     </div>
 </template>
 
@@ -79,7 +82,9 @@
 
     .header
         color #fff
-        background #AB9795
+        position relative
+        background rgba(7,17,27,.5)
+        /*background #AB9795*/
         .content-wrapper
             position relative
             padding 24px 12px 18px 24px
@@ -174,4 +179,13 @@
                     margin-left 2px
                     font-size 10px
                     content "\ea42"
+        .background
+            position: absolute
+            top 0
+            left 0
+            width 100%
+            height 100%
+            z-index -1
+            filter blur(10px)
+
 </style>
