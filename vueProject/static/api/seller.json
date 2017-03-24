@@ -1,0 +1,31 @@
+{
+  "seller":{
+    "avatarPath":"http://xquser.xiangqu.com/FkLhb3xrwUTsnc_DnQ4ZuaQJPCW0?imageView2/2/w/100/q/90/format/jpg/100x100/",
+    "name":"yy粥店",
+    "description":"yy配送",
+    "deliveryTime":52,
+    "score":100,
+    "serviceScore":100,
+    "foodScore":100,
+    "rankRate":100,
+    "minPrice":22,
+    "deliveryPrice":2,
+    "ratingCount":522,
+    "sellCount":1000,
+    "bulletin":"yy粥店是中国老字号店铺，历史悠久，美名远扬，采用秘制祖传制作工艺，发展至今成为粥类引领品牌，是2008年安云辉和2014园博会制定的餐饮服务商。",
+    "supports":[
+      {
+        "type":0,
+        "description":"在线支付满22减10"
+      },
+      {
+        "type":1,
+        "description":"货到付款"
+      },
+      {
+        "type":2,
+        "description":"好评加送美味可选饮料"
+      }
+    ]
+  }
+}
