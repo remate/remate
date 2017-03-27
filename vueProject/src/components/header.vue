@@ -125,7 +125,7 @@
         -moz-osx-font-smoothing: grayscale
 
     .fade-enter-active,.fade-leave-active
-        transition opacity .5s
+        transition opacity .3s
     .fade-enter,.fade-leave-active
         opacity 0
     .header
@@ -245,6 +245,7 @@
             height 100%
             overflow auto
             background rgba(1,17,27,.8)
+            -webkit-backdrop-filter blur(10px)
             .detail-wrapper
                 min-height 100%
                 overflow hidden

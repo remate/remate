@@ -6,7 +6,7 @@
       <router-link to="/comments" class="tab-item">评论</router-link>
       <router-link to="/sellers" class="tab-item">商家</router-link>
   </div>
-    <router-view></router-view>
+    <router-view  :goodthings="goodthings"></router-view>
   </div>
 </template>
 
@@ -18,14 +18,16 @@
     export default {
         data() {
             return {
-                seller:{}
+                seller:{},
+                goodthings:{}
             }
         },
         created() {
             this.$http.get('../static/api/seller.json').then((res) => {
-//                console.log(res);
                 var response = res.body;
                 this.seller = response.seller;
+                this.goodthings = response.goods;
+
             });
         },
         components:{
@@ -47,8 +49,8 @@ bgcolor(el)
     color: #000
     flex 1
     text-align center
-    height 30px
-    line-height 30px
+    height 40px
+    line-height 40px
     bgcolor(#eee)
     &:hover
         bgcolor(#ddd)
