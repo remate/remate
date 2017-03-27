@@ -29,22 +29,38 @@
         <div class="background">
             <img :src="seller.avatarPath" width="100%" height="100%">
         </div>
-        <div class="detail" v-show="detailShow">
-            <div class="detail-wrapper">
-                <div class="detail-main">
-                    <div class="name">{{seller.name}}</div>
-                    <v-star :score="seller.score"></v-star>
+        <transition name="fade">
+            <div class="detail" v-show="detailShow">
+                <div class="detail-wrapper">
+                    <div class="detail-main">
+                        <div class="name">{{seller.name}}</div>
+                        <v-star :score="seller.score"></v-star>
+                        <div class="title">
+                            <div class="line"></div>
+                            <div class="text">优惠信息</div>
+                            <div class="line"></div>
+                        </div>
+                        <ul v-if="seller.supports" class="supports">
+                            <li class="support-item" v-for="(item,i) in seller.supports">
+                                <span class="icon" :class="">{{iconMap[i]}}</span>
+                                <span class="text">{{item.description}}</span>
+                            </li>
+                        </ul>
+                        <div class="title">
+                            <div class="line"></div>
+                            <div class="text">商家公告</div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="bulletin">
+                            <p class="content">{{seller.bulletin}}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="title">
-                    <div class="line"></div>
-                    <div class="text"></div>
-                    <div class="line"></div>
+                <div class="detail-close" @click="hideDetail">
+                    <i class="close">X</i>
                 </div>
             </div>
-            <div class="detail-close" @click="hideDetail">
-                <i class="close">X</i>
-            </div>
-        </div>
+        </transition>
     </div>
 </template>
 
@@ -56,7 +72,8 @@
        /*props: ['seller'],*/
         data() {
             return {
-                detailShow:false
+                detailShow:false,
+                iconMap:['减','付','评']
             }
         },   //方法一不采用对象模式
         methods:{
@@ -107,6 +124,10 @@
         -webkit-font-smoothing: antialiased
         -moz-osx-font-smoothing: grayscale
 
+    .fade-enter-active,.fade-leave-active
+        transition opacity .5s
+    .fade-enter,.fade-leave-active
+        opacity 0
     .header
         color #fff
         position relative
@@ -235,10 +256,12 @@
                         text-align center
                         font-size 16px
                         font-weight 700
+                    .star
+                        margin-top 20px
                     .title
                         display flex
                         width:80%
-                        margin:30px auto 24px auto
+                        margin:20px auto 22px auto
                         .line
                             flex 1
                             position relative
@@ -247,6 +270,37 @@
                         .text
                             padding: 0 12px
                             font-size 14px
+                    .supports
+                        width: 80%
+                        margin:0 auto
+                        .support-item
+                            padding:0 12px
+                            margin-bottom 12px
+                            font-size 12px
+                            &:last-child
+                                margin-bottom 0
+                                .icon
+                                    background red
+                            &:nth-child(1)
+                                .icon
+                                    background #1B9BD8
+                            .icon
+                                text-align center
+                                display inline-block
+                                line-height 14px
+                                width: 14px
+                                height: 14px
+                                color: #fff
+                                margin-right 6px
+                                background green
+                    .bulletin
+                        width:80%
+                        margin:0 auto
+                        p.content
+                            padding:0 12px
+                            font-size 12px
+                            line-height 24px
+                            text-align justify
             .detail-close
                 position relative
                 width 32px
