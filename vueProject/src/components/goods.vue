@@ -2,7 +2,7 @@
    <div class="goods">
        <div class="menu-wrapper" ref="menuWrapper">
             <ul>
-                <li v-if="goods" class="menu-list" :class="{active: currentIndex==i||isActive==i?true:false}" v-for="(item,i) in goods" @click="goodsTab(i,$event)">
+                <li v-if="goods" class="menu-list" :class="{active: currentIndex==i?true:false}" v-for="(item,i) in goods" @click="goodsTab(i,$event)">
                     <span class="border-1px">{{item.name}}</span>
                 </li>
             </ul>
@@ -42,8 +42,7 @@
             return {
                 goods:{},
                 listHeight:[],
-                scrollY:0,
-//                isActive:-1
+                scrollY:0
             }
         },
         computed:{
@@ -65,8 +64,7 @@
                 }
                 var foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
                 var el = foodList[i];
-                this.foodsScroll.scrollToElement(el,300);
-//                this.isActive = i;
+                this.foodsScroll.scrollToElement(el,300)
             },
             _initScroll(){
 //                new BScroll(document.querySelector('.menu-wrapper'),{});
@@ -89,7 +87,7 @@
                     var item = foodList[i];
                     height += item.clientHeight;
                     this.listHeight.push(height);
-                    console.log(this.listHeight)
+//                    console.log(this.listHeight);
                 }
             }
         },
