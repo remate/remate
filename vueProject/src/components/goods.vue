@@ -20,12 +20,10 @@
                                 <h2 class="name">{{food.name}}</h2>
                                 <p class="desc">{{food.description}}</p>
                                 <div class="extra">
-                                    <span>月售{{food.sellCount}}份</span>
-                                    <span>好评率{{food.rating}}%</span>
+                                    <span class="count">月售{{food.sellCount}}份</span><span>好评率{{food.rating}}%</span>
                                 </div>
                                 <div class="price">
-                                    <span class="now">￥{{food.price}}</span>
-                                    <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                                    <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                                 </div>
                             </div>
                         </li>
@@ -37,6 +35,7 @@
 </template>
 <script type="text/ecmascript-6">
     /* eslint-disable */
+    import BScroll from "better-scroll";
     export default {
 //        props:['seller','goodthings'],
         data(){
@@ -48,12 +47,19 @@
         methods:{
             goodsTab(i){
                 this.isActive = i;
+            },
+            initScroll(){
+                new BScroll(document.querySelector('.menu-wrapper'),{});
+                new BScroll(document.querySelector('.foods-wrapper'),{});
             }
         },
         created() {
             this.$http.get('/static/api/seller.json').then((res) => {
                 var response = res.body;
                 this.goods = response.goods;
+                this.$nextTick(() => {
+                    this.initScroll();
+                })
             })
         }
     }
@@ -126,7 +132,7 @@
                     .desc
                         margin-bottom:8px
                     .extra
-                        &.count
+                        .count
                             margin-right 12px
                     .price
                         font-weight 700
