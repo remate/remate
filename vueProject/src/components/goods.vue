@@ -1,15 +1,15 @@
 <template>
    <div class="goods">
-       <div class="menu-wrapper">
+       <div class="menu-wrapper" ref="menuWrapper">
             <ul>
-                <li v-if="goods" class="menu-list" :class="{active: isActive==i?true:false}" v-for="(item,i) in goods" @click="goodsTab(i)">
+                <li v-if="goods" class="menu-list" :class="{active: currentIndex==i||isActive==i?true:false}" v-for="(item,i) in goods" @click="goodsTab(i,$event)">
                     <span class="border-1px">{{item.name}}</span>
                 </li>
             </ul>
        </div>
-       <div class="foods-wrapper">
+       <div class="foods-wrapper" ref="foodsWrapper">
             <ul>
-                <li v-for="item in goods" class="food-list">
+                <li v-for="item in goods" class="food-list food-list-hook">
                     <h1 class="title">{{item.name}}</h1>
                     <ul>
                         <li v-for="food in item.foods" class="food-item border-1px">
@@ -41,16 +41,56 @@
         data(){
             return {
                 goods:{},
-                isActive:0
+                listHeight:[],
+                scrollY:0,
+//                isActive:-1
+            }
+        },
+        computed:{
+            currentIndex(){
+                for(var i = 0; i < this.listHeight.length; i++){
+                    var height1 = this.listHeight[i];
+                    var height2 = this.listHeight[i+1];
+                    if( !height2 || (this.scrollY >= height1 && this.scrollY < height2) ){
+                        return i;
+                    }
+                }
+                return 0;
             }
         },
         methods:{
-            goodsTab(i){
-                this.isActive = i;
+            goodsTab(i,event){
+                if(event._constructed){
+                    return;
+                }
+                var foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
+                var el = foodList[i];
+                this.foodsScroll.scrollToElement(el,300);
+//                this.isActive = i;
             },
-            initScroll(){
-                new BScroll(document.querySelector('.menu-wrapper'),{});
-                new BScroll(document.querySelector('.foods-wrapper'),{});
+            _initScroll(){
+//                new BScroll(document.querySelector('.menu-wrapper'),{});
+//                new BScroll(document.querySelector('.foods-wrapper'),{});
+                this.menuScroll = new BScroll(this.$refs.menuWrapper,{
+                    click:true
+                });
+                this.foodsScroll = new BScroll(this.$refs.foodsWrapper,{
+                    probeType:3
+                });
+                this.foodsScroll.on('scroll',(pos) => {
+                    this.scrollY = Math.abs(Math.round(pos.y));
+                })
+            },
+            _calculateHeight(){
+                var foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
+                var height = 0;
+                this.listHeight.push(height);
+                for(var i = 0; i<foodList.length; i++){
+                    var item = foodList[i];
+                    height += item.clientHeight;
+                    this.listHeight.push(height);
+                    console.log(this.listHeight)
+                }
             }
         },
         created() {
@@ -58,7 +98,8 @@
                 var response = res.body;
                 this.goods = response.goods;
                 this.$nextTick(() => {
-                    this.initScroll();
+                    this._initScroll();
+                    this._calculateHeight();
                 })
             })
         }
@@ -93,9 +134,10 @@
                     vertical-align middle
                     font-size 12px
                 &.active
-                    background #c7c5c5
+                    background #fff
+                    font-weight 500
                     span
-                        border-1px(#c7c5c5)
+                        border-1px(#fff)
         .foods-wrapper
             flex:1
             .title
@@ -130,6 +172,7 @@
                         font-size:10px
                         color: rgb(147,153,159)
                     .desc
+                        line-height 13px
                         margin-bottom:8px
                     .extra
                         .count
