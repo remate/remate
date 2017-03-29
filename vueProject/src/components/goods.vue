@@ -31,11 +31,13 @@
                 </li>
             </ul>
        </div>
+       <v-cart></v-cart>
    </div>
 </template>
 <script type="text/ecmascript-6">
     /* eslint-disable */
     import BScroll from "better-scroll";
+    import shopCart from "./shopcart.vue";
     export default {
 //        props:['seller','goodthings'],
         data(){
@@ -59,7 +61,7 @@
         },
         methods:{
             goodsTab(i,event){
-                if(event._constructed){
+                if(!event._constructed){
                     return;
                 }
                 var foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
@@ -100,13 +102,15 @@
                     this._calculateHeight();
                 })
             })
+        },
+        components:{
+            'v-cart':shopCart
         }
     }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
     @import "../../static/border_1px.styl"
-
     .goods
         position: absolute
         display flex
