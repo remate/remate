@@ -31,7 +31,7 @@
                 </li>
             </ul>
        </div>
-       <v-cart></v-cart>
+       <v-cart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></v-cart>
    </div>
 </template>
 <script type="text/ecmascript-6">
@@ -47,6 +47,7 @@
                 scrollY:0
             }
         },
+        props:['seller'],
         computed:{
             currentIndex(){
                 for(var i = 0; i < this.listHeight.length; i++){
