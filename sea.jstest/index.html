@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>seajs</title>
+</head>
+<body>
+<div class="app">haha</div>
+<!--<script src="require.js" data-main="jquery"></script>-->
+<script src="sea.js"></script>
+<!--<script src="seajs-style/dist/seajs-style.js"></script>-->
+<!--<script src="bower_components/seajs-css/dist/seajs-css.js"></script>-->
+<!--<script src="seajs-preload/dist/seajs-preload.js"></script>-->
+<!--<script src="seajs-flush/dist/seajs-flush.js"></script>-->
+<!--<script src="bower_components/seajs-combo/dist/seajs-combo.js"></script>-->
+<script>
+
+
+//    seajs.use(['a', 'b'], function(a, b) {
+//        // ...
+//    })
+//    seajs.use(['c', 'd'], function(c, d) {
+//        // ...
+//    })
+//    // The combined request is http://test.com/path/to/??a.js,b.js,c.js,d.js
+//    seajs.flush()
+
+
+
+    //    seajs.use('./index.css');
+//    seajs.importStyle("body { background-color: red; } .app{font-size:22px}");
+seajs.config({
+//    preload: ['jquery.slim'],preload中的会在seajs。use调用是开始加载
+    //    base: './bower_components/jquery/dist', 一般不要配置base
+//    alias: {
+//        'jQuery': './bower_components/jquery/dist/jquery'
+//    },
+//    paths:{
+//
+//    }
+//    vars:{
+//        'locale': 'zh-cn'
+//    } 在其他配置路径是可以使用{locale}
+});
+//seajs.use('jQuery',function(){
+//    $('.app').click(function(){
+//        alert(1)
+//    });
+//})
+
+</script>
+</body>
+</html>
